@@ -8,7 +8,7 @@ const routes: Routes = [
   {path: 'main',component: PageMainComponent},
   {path: 'profile', component: PageProfileComponent},
   {path: '', component: SigninSignupComponent}
-];
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

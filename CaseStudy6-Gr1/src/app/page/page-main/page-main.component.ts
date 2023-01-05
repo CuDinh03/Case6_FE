@@ -17,4 +17,8 @@ export class PageMainComponent {
     this.router.navigate(['/profile'])
   }
 
+  modalView(){
+    this.router.navigate(['/modal'])
+  }
+
 }
