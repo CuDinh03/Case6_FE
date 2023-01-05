@@ -12,7 +12,7 @@ import { PageProfileComponent } from './page/page-profile/page-profile.component
     AppComponent,
     SigninSignupComponent,
     PageMainComponent,
-    PageProfileComponent
+    PageProfileComponent,
   ],
   imports: [
     BrowserModule,

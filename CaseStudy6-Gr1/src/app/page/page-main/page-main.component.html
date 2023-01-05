@@ -9,6 +9,24 @@
             <input class="form-control mr-sm-4" type="search" align="center" placeholder="Search" aria-label="Search">
           </td>
           <td>
+            <a type="button" class="btn btn-light position-relative" data-bs-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+              </svg>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+<!--                chỗ này để hiển thị số thông báo -->
+    99+
+    <span class="visually-hidden">unread messages</span>
+  </span>
+            </a>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+              </div>
+            </div>
+
+          </td>
+          <td>
             <svg type="button" (click)="profileView()"  xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-file-earmark-person" viewBox="0 0 16 16">
               <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
               <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5v2z"/>
@@ -25,8 +43,7 @@
   <div class="profile-page tx-13">
 
     <div class="row profile-body">
-      <div class="d-none d-md-block col-md-4 col-xl-3 left-wrapper">
-
+      <div class="d-none d-md-block col-md-4 col-xl-3 left-wrapper" id="trangCaNhan">
         <div class="card rounded">
           <div class="card-body">
 
@@ -54,10 +71,27 @@
       </div>
 
       <!-- middle wrapper start -->
+
       <div class="col-md-12 col-xl-6 middle-wrapper">
         <div class="row">
+          <div class="col-md-12">
+            <div class="card rounded">
+              <div class="card-header">
+                <div class="d-flex align-items-center justify-content-between">
+                  <div class="d-flex align-items-center">
+                    <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
+                    <div class="ml-2">
+<!--                      nhập trạng thái-->
+                      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Hôm nay bạn nghĩ gì">
 
-          <div class="col-md-14 grid-margin">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12 grid-margin">
             <div class="card rounded">
               <div class="card-header">
                 <div class="d-flex align-items-center justify-content-between">
@@ -68,45 +102,30 @@
                       <p class="tx-11 text-muted">1 min ago</p>
                     </div>
                   </div>
+
+<!--                  select status-->
                   <div class="dropdown">
-                    <button class="btn p-0" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal icon-lg pb-3px">
-                        <circle cx="12" cy="12" r="1"></circle>
-                        <circle cx="19" cy="12" r="1"></circle>
-                        <circle cx="5" cy="12" r="1"></circle>
-                      </svg>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                      <a class="dropdown-item d-flex align-items-center" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-meh icon-sm mr-2">
-                          <circle cx="12" cy="12" r="10"></circle>
-                          <line x1="8" y1="15" x2="16" y2="15"></line>
-                          <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                          <line x1="15" y1="9" x2="15.01" y2="9"></line>
-                        </svg> <span class="">Unfollow</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-right-up icon-sm mr-2">
-                          <polyline points="10 9 15 4 20 9"></polyline>
-                          <path d="M4 20h7a4 4 0 0 0 4-4V4"></path>
-                        </svg> <span class="">Go to post</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2 icon-sm mr-2">
-                          <circle cx="18" cy="5" r="3"></circle>
-                          <circle cx="6" cy="12" r="3"></circle>
-                          <circle cx="18" cy="19" r="3"></circle>
-                          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-                          <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-                        </svg> <span class="">Share</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy icon-sm mr-2">
-                          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                        </svg> <span class="">Copy link</span></a>
+                    <div class="btn-group">
+                      <button type="button" class="btn p-0" data-bs-toggle="dropdown" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal icon-lg pb-3px">
+                          <circle cx="12" cy="12" r="1"></circle>
+                          <circle cx="19" cy="12" r="1"></circle>
+                          <circle cx="5" cy="12" r="1"></circle>
+                        </svg>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Chỉnh sửa bài viết</a></li>
+                        <li><a class="dropdown-item" href="#">Chỉnh sửa đối tượng</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Chuyển vào thùng rác </a></li>
+                      </ul>
                     </div>
                   </div>
 
                 </div>
               </div>
+
+
               <div class="card-body">
 
                 <!--                //noi dung cua bai viet -->
@@ -143,13 +162,14 @@
           </div>
         </div>
       </div>
+
+
       <!-- middle wrapper end -->
 
 
       <!-- right wrapper start -->
       <div class="d-none d-xl-block col-xl-3 right-wrapper">
         <div class="row">
-
           <div class="col-md-12 grid-margin">
             <div class="card rounded">
               <div class="card-body">
@@ -175,11 +195,14 @@
       <!-- right wrapper end -->
     </div>
 
-
   </div>
 </div>
 
+
 <style type="text/css">
+
+
+
   body{
     background-color: #f9fafb;
     margin-top:20px;}
@@ -405,6 +428,19 @@
     top: 0; /*Nằm trên cùng*/
     left: 0; /*Nằm sát bên trái*/
     z-index: 100000; /*Hiển thị lớp trên cùng*/
+  }
+  /*chinh hien thong bao*/
+  #collapseExample{
+    position: absolute;
+    top: 60px;
+    right: 50px;
+    width: 350px;
+    height: 1000px;
+
+  }
+  #formGroupExampleInput2{
+    width: 550px;
+    margin-left: 10px;
   }
 
 </style>
