@@ -1,7 +1,7 @@
 import {Role} from "./role";
 import {Img} from "./img";
 
-export interface User {
+export interface AccountToken {
   id: number;
   userName: string;
   password: string;
@@ -14,5 +14,5 @@ export interface User {
   gender: string;
   img: [Img];
   role: [Role];
-
+  accessToken: string;
 }
