@@ -1,6 +1,6 @@
 export class Account {
   id: number;
-  username: string;
+  userName: string;
   password: string;
   email: string;
   firstname: string;
@@ -10,11 +10,11 @@ export class Account {
   birthday: Date;
   gender: string;
 
-  constructor(id: number, username: string, password: string, email: string, firstname: string, lastname: string, phone: string, address: string, birthday: Date, gender: string)
-
+  constructor(id: number, userName: string, password: string, email: string, firstname: string, lastname: string,
+              phone: string, address: string, birthday: Date, gender: string)
 {
   this.id = id;
-  this.username = username;
+  this.userName = userName;
   this.password = password;
   this.email = email;
   this.firstname = firstname;
