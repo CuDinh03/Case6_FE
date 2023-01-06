@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { SigninSignupComponent } from './page/signin-signup/signin-signup.component';
 import { PageMainComponent } from './page/page-main/page-main.component';
 import { PageProfileComponent } from './page/page-profile/page-profile.component';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +16,8 @@ import { PageProfileComponent } from './page/page-profile/page-profile.component
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

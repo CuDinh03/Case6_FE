@@ -453,9 +453,20 @@
                           <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Danh sách bạn bè </h1>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
-                          <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt=""> username
-                        </div>
+                        <table class="table table-striped" style="background-color: darksalmon">
+
+                          <tr *ngFor="let f of friendList ">
+                            <th><div class="modal-body">
+                              <img class="img-xs rounded-circle" src="{{f.img}}" alt="">
+                            </div>
+                            </th>
+                            <th style="text-align: center">{{f.fistName}} {{f.lastName}}</th>
+                            <th style="text-align: center">{{f.address}} </th>
+
+                          </tr>
+
+                        </table>
+
                         <div class="modal-footer">
                           <!--                          <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>-->
                         </div>
