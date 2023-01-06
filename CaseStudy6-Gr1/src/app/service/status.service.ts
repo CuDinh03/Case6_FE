@@ -13,7 +13,7 @@ export class StatusService {
   constructor(private http:HttpClient) {
   }
 
-  getAll(): Observable<Status[]>{
+  getAll(): Observable<any>{
     return this.http.get<Status[]>(API_URL+'/statuses');
   }
 
