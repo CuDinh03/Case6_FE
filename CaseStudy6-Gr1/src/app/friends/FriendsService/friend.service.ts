@@ -14,6 +14,6 @@ export class FriendService implements  OnInit {
     this.getAllFriends();
   }
   getAllFriends() :Observable<Friend[]>{
-  return this.http.get<Friend[]>("http://localhost:8080/4")
+  return this.http.get<Friend[]>("http://localhost:8080/1")
 }
 }
