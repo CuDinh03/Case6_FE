@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
+import {StatusService} from "../../service/status.service";
+import {Status} from "../../model/status";
 
 @Component({
   selector: 'app-page-profile',
@@ -7,7 +9,17 @@ import {Router} from "@angular/router";
   styleUrls: ['./page-profile.component.css']
 })
 export class PageProfileComponent {
-  constructor(private router: Router) {
+  statuses: Status[] = [];
+
+  constructor(private router: Router, private statusService: StatusService) {
+  }
+
+  ngOnInit(): void {
+    // @ts-ignore
+    this.statusService.findById(localStorage.getItem("id")).subscribe((data) => {
+      this.statuses = data;
+      console.log(this.statuses);
+    })
   }
 
   mainView(){

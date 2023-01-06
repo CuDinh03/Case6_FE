@@ -21,9 +21,9 @@ export class StatusService {
     return this.http.post<Status>(API_URL + '/statuses', status);
   }
 
-  findById(id: number): Observable<Status> {
+  findById(id: number): Observable<any> {
     console.log(this.http.get<Status>(`${API_URL}/statuses/${id}`))
-    return this.http.get<Status>(`${API_URL}/status/${id}`);
+    return this.http.get<Status>(`${API_URL}/statuses/${id}`);
   }
   updateStatus(id: number, status: Status): Observable<Status>{
     return this.http.put<Status>(`${API_URL}/statuses/${id}`, status);
