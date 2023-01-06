@@ -21,4 +21,9 @@ export class PageMainComponent {
     this.router.navigate(['/modal'])
   }
 
+  showComment(){
+    let cmt = document.getElementById('o-hide')
+
+  }
+
 }

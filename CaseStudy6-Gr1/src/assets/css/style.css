@@ -266,5 +266,10 @@ img {
 .card{
   margin: 2px;
 }
+textarea{
+  border: none;
+}
+
+
 
 
