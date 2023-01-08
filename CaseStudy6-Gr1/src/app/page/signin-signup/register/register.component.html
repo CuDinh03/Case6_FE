@@ -1,5 +1,4 @@
 <main>
-
   <!-- Container START -->
   <div class="container">
     <div class="row justify-content-center align-items-center vh-100 py-5">
@@ -13,157 +12,140 @@
             <span class="d-block">Bạn đã sẵn sàng đăng ký tài khoản?<a routerLink="/login"> Đăng nhập</a></span>
           </div>
           <!-- Form START -->
-          <form class="mt-4" [formGroup]="registerForm" (submit)="register()" novalidate>
-            <!-- Email -->
+          <form class="mt-4" [formGroup]="registerForm" (ngSubmit)="register()">
+            <!-- User-->
             <div class="mb-3 input-group-lg">
               <input type="text" class="form-control" placeholder="Nhập tên tài khoản" formControlName="userName">
             </div>
-            <div *ngIf="userName?.invalid && (userName?.dirty || userName?.touched)">
-              <div style="color: red" *ngIf="userName?.errors?.['required']">
-                <div>Tên tài khoản không được bỏ trống</div>
-              </div>
-              <div style="color: red" *ngIf="userName?.errors?.['minlength']">
-                <div>Tên tài khoản phải ít nhất 6 kí tự</div>
-              </div>
-              <div style="color: red" *ngIf="userName?.errors?.['maxlength']">
-                <div>Tên tài khoản tối đa 32 kí tự</div>
-              </div>
-            </div>
-            <div style="display: none;color: red" id="check-username">
-              <div>Tài khoản đã tồn tại</div>
-            </div>
-            <!-- New password -->
-            <div class="mb-3 position-relative">
-              <!-- Input group -->
-              <div class="input-group input-group-lg">
-                <input class="form-control fakepassword" type="password" id="psw-input" placeholder="Nhập mật khẩu"
-                       formControlName="password">
-              </div>
-            </div>
+            <p
+              *ngIf="!registerForm.get('userName')?.invalid && registerForm.get('userName')?.touched">
+            </p>
+            <p style="color: red" *ngIf="registerForm.get('userName')?.errors?.['minlength']">
+              Tên tài khoản phải ít nhất 6 kí tự
+            </p>
+            <p style="color: red" *ngIf="registerForm.get('userName')?.errors?.['maxlength']">
+              Tên tài khoản tối đa 32 kí tự
+            </p>
+            <p id="checkUserName" style="color: red " *ngIf="!checkDuplicateUsername">Người dùng đã tồn tại</p>
+            <!-- End User-->
 
-            <div *ngIf="password?.invalid && (password?.dirty || password?.touched)">
-              <div style="color: red" *ngIf="password?.errors?.['required']">
-                <div> Mật khẩu không được bỏ trống</div>
-              </div>
-              <div style="color: red" *ngIf="password?.errors?.['minlength']">
-                <div> Mật khẩu phải có ít nhất 6 kí tự</div>
-              </div>
-              <div style="color: red" *ngIf="password?.errors?.['maxlength']">
-                <div>Mật khẩu tối đa 32 kí tự</div>
+            <!-- Password -->
+            <div class="mb-3 input-group-lg">
+              <input class="form-control fakepassword" type="password" id="psw-input" placeholder="Nhập mật khẩu"
+                     formControlName="password">
+            </div>
+            <p
+              *ngIf="!registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)">
+            </p>
+            <p style="color: red" *ngIf="registerForm.get('password')?.errors?.['minlength']">
+              Mật khẩu phải có ít nhất 6 kí tự
+            </p>
+            <p style="color: red" *ngIf="registerForm.get('password')?.errors?.['maxlength']">
+              Mật khẩu tối đa 32 kí tự
+            </p>
+            <!-- End password -->
+
+            <!-- Confirm password -->
+            <div class="mb-3 input-group-lg">
+              <input class="form-control" type="password" placeholder="Nhập lại mật khẩu"
+                     formControlName="confirmPassword" (change)="checkConfirmPassword()">
+              <div style="display: none;color: red" id="abc">
+                <div>Mật khẩu nhập lại không đúng</div>
               </div>
             </div>
-            <!-- Confirm password -->
-            <!--            <div class="mb-3 input-group-lg">-->
-            <!--              <input class="form-control" type="password" placeholder="Nhập lại mật khẩu" formControlName="confirmPassword" (change)="checkConfirmPassword()">-->
-            <!--            </div>-->
-            <!--            <div style="display: none;color: red" id="abc" >-->
-            <!--              <div>Mật khẩu nhập lại không đúng</div>-->
-            <!--            </div>-->
-            <!--            <div *ngIf="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)">-->
-            <!--              <div style="color: red" *ngIf="confirmPassword?.errors?.['required']">-->
-            <!--                <div>Xác nhận mật khẩu không được bỏ trống</div>-->
-            <!--              </div>-->
-            <!--              <div style="color: red" *ngIf="confirmPassword?.errors?.['minlength']">-->
-            <!--                <div>Xác nhận mật khẩu phải có ít nhất 6 kí tự </div>-->
-            <!--              </div>-->
-            <!--              <div style="color: red" *ngIf="confirmPassword?.errors?.['maxlength']">-->
-            <!--                <div>Xác nhận mật khẩu tối đa 32 kí tự</div>-->
-            <!--              </div>-->
-            <!--            </div>-->
+            <p
+              *ngIf="!registerForm.get('confirmPassword')?.invalid && (registerForm.get('confirmPassword')?.dirty || registerForm.get('confirmPassword')?.touched)"></p>
+            <p style="color: red" *ngIf="registerForm.get('confirmPassword')?.errors?.['minlength']">
+              Xác nhận mật khẩu phải có ít nhất 6 kí tự
+            </p>
+            <p style="color: red" *ngIf="registerForm.get('confirmPassword')?.errors?.['maxlength']">
+              Xác nhận mật khẩu tối đa 32 kí tự
+            </p>
+            <!-- End Confirm password -->
+
+            <!-- Email -->
             <div class="mb-3 input-group-lg">
               <input type="email" class="form-control" placeholder="Nhập email" formControlName="email">
             </div>
-            <div style="display: none;color: red" id="check-email">
-              <div>Email đã tồn tại</div>
-            </div>
-            <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
-              <div style="color: red" *ngIf="email?.errors?.['required']">
-                <div>Email không được bỏ trống</div>
-              </div>
-              <div style="color: red" *ngIf="email?.errors?.['email']">
-                <div>Email nhập không dúng định dạng</div>
-              </div>
-            </div>
+
+            <p
+              *ngIf="!registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)">
+            <p style="color: red" *ngIf="registerForm.get('email')?.errors?.['required']">
+            </p>
+            <p style="color: red" *ngIf="registerForm.get('email')?.errors?.['email']">
+              Email nhập không dúng định dạng
+            </p>
+            <p id="checkMail" style="color: red " *ngIf="!checkDuplicateMail">Email đã tồn tại</p>
+            <!-- End Email -->
+
+            <!-- Phone -->
             <div class="mb-3 input-group-lg">
-              <input type="text" class="form-control" placeholder="Nhập số điện thoại" formControlName="phoneNumber">
+              <input type="text" class="form-control" placeholder="Nhập số điện thoại"
+                     formControlName="phoneNumber">
             </div>
-            <div *ngIf="phoneNumber?.invalid && (phoneNumber?.dirty || phoneNumber?.touched)">
-              <div style="color: red" *ngIf="phoneNumber?.errors?.['required']">
+            <div
+              *ngIf="!registerForm.get('phoneNumber')?.invalid && (registerForm.get('phoneNumber')?.dirty || registerForm.get('phoneNumber')?.touched)">
+              <div style="color: red" *ngIf="registerForm.get('phoneNumber')?.errors?.['required']">
                 <div>Số điện thoại không được bỏ trống</div>
               </div>
-              <div style="color: red" *ngIf="phoneNumber?.errors?.['pattern']">
-                <div>Số điện thoại không đúng định dạng</div>
-              </div>
             </div>
+            <p style="color: red" *ngIf="registerForm.get('phoneNumber')?.errors?.['pattern']">
+              Số điện thoại không đúng định dạng - 10 so
+            </p>
+
+            <!--End Phone -->
+
+            <!--birthday -->
             <div class="mb-3 input-group-lg">
               <input type="date" class="form-control" id="datePickerId" formControlName="birthday">
             </div>
+            <div
+              *ngIf="!registerForm.get('birthday')?.invalid && (registerForm.get('birthday')?.dirty || registerForm.get('birthday')?.touched)">
+              <div style="color: red" *ngIf="registerForm.get('birthday')?.errors?.['required']">
+                <div>Ngày sinh không được bỏ trống</div>
+              </div>
+            </div>
+            <!--end birthday -->
 
-            <div class="mb-3 position-relative">
-              <!-- Input group -->
-              <div class="input-group input-group-lg">
-                <input class="form-control" type="number" formControlName="status" >
-              </div>
+            <!--fistName-->
+            <div class="mb-3 input-group-lg">
+              <input type="text" class="form-control" placeholder="Nhập Fist Name"
+                     formControlName="fistName">
             </div>
+            <!--end fistName-->
 
-            <div class="mb-3 position-relative">
-              <!-- Input group -->
-              <div class="input-group input-group-lg">
-                <input class="form-control" type="number" formControlName="role" >
-              </div>
+            <!--lastName-->
+            <div class="mb-3 input-group-lg">
+              <input type="text" class="form-control" placeholder="Nhập Tên"
+                     formControlName="lastName">
             </div>
-            <div class="mb-3 position-relative">
-              <!-- Input group -->
-              <div class="input-group input-group-lg">
-                <input class="form-control" type="text" formControlName="fistName" placeholder="Nhập FistName">
-              </div>
+            <!--end lastName-->
+
+            <!--gender-->
+            <div class="mb-3 input-group-lg">
+              <input type="text" class="form-control" placeholder="Nhập giới tính"
+                     formControlName="gender">
             </div>
-            <div class="mb-3 position-relative">
-              <!-- Input group -->
-              <div class="input-group input-group-lg">
-                <input class="form-control" type="text" formControlName="lastName" placeholder="Nhập LastName">
-              </div>
+            <!--end gender-->
+
+            <!--address-->
+            <div class="mb-3 input-group-lg">
+              <input type="text" class="form-control" placeholder="Nhập địa chỉ"
+                     formControlName="address">
             </div>
-            <div class="mb-3 position-relative">
-              <!-- Input group -->
-              <div class="input-group input-group-lg">
-                <input class="form-control" type="text" formControlName="address" placeholder="Nhập Address">
-              </div>
-            </div>
-            <div class="mb-3 position-relative">
-              <!-- Input group -->
-              <div class="input-group input-group-lg">
-                <input class="form-control" type="text" formControlName="gender" placeholder="Nhập gender">
-              </div>
-            </div>
-            <div class="mb-3 position-relative">
-              <!-- Input group -->
-              <div class="input-group input-group-lg">
-                <input class="form-control" type="text" formControlName="img" >
-              </div>
-            </div>
-            <div class="mb-3 position-relative">
-              <!-- Input group -->
-              <div class="input-group input-group-lg">
-                <div *ngIf="birthday?.invalid && (birthday?.dirty || birthday?.touched)">
-                  <div style="color: red" *ngIf="birthday?.errors?.['required']">
-                    <div>Ngày sinh không được bỏ trống</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <!--end address-->
+
             <!-- Button -->
             <div class="d-grid">
-              <button type="submit"  [disabled]="!registerForm.valid"  class="btn btn-lg btn-primary">Đăng ký</button>
+              <button type="submit" [disabled]="!registerForm.valid" class="btn btn-lg btn-primary">Đăng ký</button>
             </div>
-
           </form>
-          <!-- Form END -->
         </div>
-        <!-- Sign up END -->
+        <!-- Form END -->
       </div>
-    </div> <!-- Row END -->
-  </div>
+      <!-- Sign up END -->
+    </div>
+  </div> <!-- Row END -->
   <!-- Container END -->
 
 </main>
