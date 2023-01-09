@@ -58,9 +58,13 @@ export class RegisterComponent implements OnInit {
   }
 
   checkConfirmPassword() {
+
     if (this.registerForm.get('password')?.value != this.registerForm.get('confirmPassword')?.value) {
       // @ts-ignore
       document.getElementById("abc").style.display = "block";
+    } else {
+      // @ts-ignore
+      document.getElementById("abc").style.display = "none";
     }
   }
 }
