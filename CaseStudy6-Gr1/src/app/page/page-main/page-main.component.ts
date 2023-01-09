@@ -67,18 +67,20 @@ export class PageMainComponent implements OnInit {
     this.statusService.editStatus(index, status2).subscribe(() => {
       this.view();
       this.createForm.reset();
-      // this.router.navigate(["/main"]);
+      this.router.navigate(["/main"]);
     })
   }
 
   deleteEdit(index: number) {
     this.statusService.deleteStatus(index).subscribe(() => {
+      this.view();
       this.router.navigate(['/main'])})
   }
 
   mainView(){
     this.router.navigate(['/main'])
   }
+
   profileView(){
     this.router.navigate(['/profile'])
   }
