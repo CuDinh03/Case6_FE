@@ -1,14 +1,17 @@
+import { Account } from "./account";
 
-export class Status {
-id: number;
-content: String;
-date: Date;
-status: any;
+export class Status{
+  id: number;
+  content: string;
+  postDay: string
+  status: string;
+  owner: Account;
 
-  constructor(id: number, content: String, date: Date, status: any) {
+  constructor(id: number, content: string, postDay: string, status: string, owner: Account){
     this.id = id;
     this.content = content;
-    this.date = date;
+    this.postDay = postDay;
     this.status = status;
+    this.owner = owner;
   }
 }

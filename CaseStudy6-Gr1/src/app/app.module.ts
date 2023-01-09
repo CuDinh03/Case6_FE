@@ -7,18 +7,30 @@ import { SigninSignupComponent } from './page/signin-signup/signin-signup.compon
 import { PageMainComponent } from './page/page-main/page-main.component';
 import { PageProfileComponent } from './page/page-profile/page-profile.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CreateComponent } from './status/create/create.component';
+import { DeleteComponent } from './status/delete/delete.component';
+import { EditComponent } from './status/edit/edit.component';
+import { ShowComponent } from './status/show/show.component';
+import { ViewComponent } from './status/view/view.component';
+import {ReactiveFormsModule} from "@angular/forms";
 @NgModule({
   declarations: [
     AppComponent,
     SigninSignupComponent,
     PageMainComponent,
-    PageProfileComponent
+    PageProfileComponent,
+    CreateComponent,
+    DeleteComponent,
+    EditComponent,
+    ShowComponent,
+    ViewComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,15 +1,15 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Router} from "@angular/router";
-import {StatusService} from 'src/app/service/status.service';
-import {FormGroup} from "@angular/forms";
 import {Status} from "../../model/status";
+import {StatusService} from "../../service/status.service";
+import {FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-page-main',
   templateUrl: './page-main.component.html',
   styleUrls: ['./page-main.component.css']
 })
-export class PageMainComponent implements OnInit, OnChanges {
+export class PageMainComponent implements OnInit {
   statuses: Status[] = [];
 
   constructor(private router: Router, private statusService: StatusService) {
@@ -17,27 +17,23 @@ export class PageMainComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.statusService.getAll().subscribe((data) => {
-      this.statuses = data;
+      this.statuses = data[0];
+      console.log(this.statuses);
     })
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.statusService.getAll().subscribe((data) => {
-      this.statuses = data;
-    })
-  }
+  createForm = new FormGroup({
 
-  createForm = new FormGroup({})
+  })
 
-  mainView() {
+  mainView(){
     this.router.navigate(['/main'])
   }
-
-  profileView() {
+  profileView(){
     this.router.navigate(['/profile'])
   }
 
-  modalView() {
+  modalView(){
     this.router.navigate(['/modal'])
   }
 
