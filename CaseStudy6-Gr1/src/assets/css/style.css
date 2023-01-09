@@ -223,6 +223,7 @@ img {
   top: 0; /*Nằm trên cùng*/
   left: 0; /*Nằm sát bên trái*/
   z-index: 100000; /*Hiển thị lớp trên cùng*/
+
 }
 /*chinh hien thong bao*/
 #collapseExample{
@@ -270,12 +271,13 @@ textarea{
   border: none;
 }
 body{
-  background-color: #F0997D;
+  background-color: #c8c5d8;
 
 }
 #messenger{
   background-color: snow;
 }
+
 
 
 
