@@ -65,11 +65,13 @@ export class PageProfileComponent implements OnInit {
     this.statusService.editStatus(index, status2).subscribe(() => {
       this.router.navigate(['/main'])})
   }
-  showlistStatus(index: number){
-
-
-
-
+  showStatus(index: number){
+    console.log(index);
+    this.statusService.findById(index).subscribe((result) => {
+      console.log(result);
+      this.statusE = result;
+      console.log(this.statusE);
+    })
    }
 
 
