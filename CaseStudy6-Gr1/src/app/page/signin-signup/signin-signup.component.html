@@ -18,7 +18,10 @@
   <!-- Pills content -->
   <div class="tab-content">
     <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-      <form>
+
+      <!-- Form START -->
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+
         <div class="text-center mb-3">
           <p>Sign in with:</p>
           <button type="button" class="btn btn-link btn-floating mx-1">
@@ -40,16 +43,19 @@
 
         <p class="text-center">or:</p>
 
-        <!-- Email input -->
+        <!-- Email -->
         <div class="form-outline mb-4">
-          <input type="email" id="loginName" class="form-control" />
-          <label class="form-label" for="loginName">Email or username</label>
-        </div>
+          <label class="form-label" for="loginName"> User Name<span style="color: red">*</span></label>
+          <input type="text" id="loginName" class="form-control" formControlName="userName" placeholder="Username" />
 
-        <!-- Password input -->
+          <p *ngIf="!loginForm.get('userName')?.valid && loginForm.get('userName')?.touched" style="color: red">Can't be blank</p>
+        </div>
+        <!-- Password -->
         <div class="form-outline mb-4">
+
           <input type="password" id="loginPassword" class="form-control" />
-          <label class="form-label" for="loginPassword">Password</label>
+          <label class="form-label" for="loginPassword" formControlName="password" placeholder="password">Password<span style="color: red">*</span></label>
+          <p *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched" style="color: red">Can't be blank</p>
         </div>
 
         <!-- 2 column grid layout -->
@@ -68,80 +74,178 @@
           </div>
         </div>
 
-        <!-- Submit button -->
-        <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+        <!-- Button -->
+        <div class="align-items-center mt-0">
+          <div class="d-grid">
+            <button class="btn btn-primary btn-block mb-4" type="submit">Login</button>
+          </div>
+        </div>
 
         <!-- Register buttons -->
         <div class="text-center">
           <p>Not a member? <a href="#!">Register</a></p>
         </div>
       </form>
+      <!-- Form END -->
+
     </div>
     <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-      <form>
-        <div class="text-center mb-3">
-          <p>Sign up with:</p>
-          <button type="button" class="btn btn-link btn-floating mx-1">
-            <i class="fab fa-facebook-f"></i>
-          </button>
 
-          <button type="button" class="btn btn-link btn-floating mx-1">
-            <i class="fab fa-google"></i>
-          </button>
 
-          <button type="button" class="btn btn-link btn-floating mx-1">
-            <i class="fab fa-twitter"></i>
-          </button>
+      <form class="mt-4" [formGroup]="registerForm" (ngSubmit)="register()">
 
-          <button type="button" class="btn btn-link btn-floating mx-1">
-            <i class="fab fa-github"></i>
-          </button>
-        </div>
-
-        <p class="text-center">or:</p>
-
-        <!-- Name input -->
-        <div class="form-outline mb-4">
-          <input type="text" id="registerName" class="form-control" />
-          <label class="form-label" for="registerName">Name</label>
-        </div>
 
         <!-- Username input -->
         <div class="form-outline mb-4">
-          <input type="text" id="registerUsername" class="form-control" />
+          <input type="text" id="registerUsername" class="form-control" placeholder="Nhập tên tài khoản" formControlName="userName" />
           <label class="form-label" for="registerUsername">Username</label>
         </div>
 
-        <!-- Email input -->
-        <div class="form-outline mb-4">
-          <input type="email" id="registerEmail" class="form-control" />
-          <label class="form-label" for="registerEmail">Email</label>
-        </div>
+        <p
+          *ngIf="!registerForm.get('userName')?.invalid && registerForm.get('userName')?.touched">
+        </p>
+        <p style="color: red" *ngIf="registerForm.get('userName')?.errors?.['minlength']">
+          Tên tài khoản phải ít nhất 6 kí tự
+        </p>
+        <p style="color: red" *ngIf="registerForm.get('userName')?.errors?.['maxlength']">
+          Tên tài khoản tối đa 32 kí tự
+        </p>
+        <p id="checkUserName" style="color: red " *ngIf="!checkDuplicateUsername">Người dùng đã tồn tại</p>
+        <!-- End User-->
 
         <!-- Password input -->
         <div class="form-outline mb-4">
-          <input type="password" id="registerPassword" class="form-control" />
+          <input type="password" id="registerPassword" class="form-control" placeholder="Nhập mật khẩu"
+                 formControlName="password" />
           <label class="form-label" for="registerPassword">Password</label>
         </div>
 
-        <!-- Repeat Password input -->
+        <p
+          *ngIf="!registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)">
+        </p>
+        <p style="color: red" *ngIf="registerForm.get('password')?.errors?.['minlength']">
+          Mật khẩu phải có ít nhất 6 kí tự
+        </p>
+        <p style="color: red" *ngIf="registerForm.get('password')?.errors?.['maxlength']">
+          Mật khẩu tối đa 32 kí tự
+        </p>
+        <!-- End password -->
+
+        <!-- Confirm password -->
         <div class="form-outline mb-4">
-          <input type="password" id="registerRepeatPassword" class="form-control" />
+          <input class="form-control" id="registerRepeatPassword" type="password" placeholder="Nhập lại mật khẩu"
+                 formControlName="confirmPassword" (change)="checkConfirmPassword()">
           <label class="form-label" for="registerRepeatPassword">Repeat password</label>
+          <div style="display: none;color: red" id="abc">
+            <div>Mật khẩu nhập lại không đúng</div>
+          </div>
         </div>
 
-        <!-- Checkbox -->
-        <div class="form-check d-flex justify-content-center mb-4">
-          <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
-                 aria-describedby="registerCheckHelpText" />
-          <label class="form-check-label" for="registerCheck">
-            I have read and agree to the terms
-          </label>
+        <p
+          *ngIf="!registerForm.get('confirmPassword')?.invalid && (registerForm.get('confirmPassword')?.dirty || registerForm.get('confirmPassword')?.touched)"></p>
+        <p style="color: red" *ngIf="registerForm.get('confirmPassword')?.errors?.['minlength']">
+          Xác nhận mật khẩu phải có ít nhất 6 kí tự
+        </p>
+        <p style="color: red" *ngIf="registerForm.get('confirmPassword')?.errors?.['maxlength']">
+          Xác nhận mật khẩu tối đa 32 kí tự
+        </p>
+        <!-- End Confirm password -->
+
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+          <input type="email" id="registerEmail" class="form-control" placeholder="Nhập email" formControlName="email" />
+          <label class="form-label" for="registerEmail">Email</label>
         </div>
 
-        <!-- Submit button -->
-        <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
+        <p
+          *ngIf="!registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)">
+        <p style="color: red" *ngIf="registerForm.get('email')?.errors?.['required']">
+        </p>
+        <p style="color: red" *ngIf="registerForm.get('email')?.errors?.['email']">
+          Email nhập không dúng định dạng
+        </p>
+        <p id="checkMail" style="color: red " *ngIf="!checkDuplicateMail">Email đã tồn tại</p>
+        <!-- End Email -->
+
+        <!-- Phone -->
+        <div class="form-outline mb-4">
+          <input type="text" class="form-control" id="registerPhone" placeholder="Nhập số điện thoại"
+                 formControlName="phoneNumber">
+          <label class="form-label" for="registerPhone">Phone</label>
+
+        </div>
+
+
+        <div
+          *ngIf="!registerForm.get('phoneNumber')?.invalid && (registerForm.get('phoneNumber')?.dirty || registerForm.get('phoneNumber')?.touched)">
+          <div style="color: red" *ngIf="registerForm.get('phoneNumber')?.errors?.['required']">
+            <div>Số điện thoại không được bỏ trống</div>
+          </div>
+        </div>
+        <p style="color: red" *ngIf="registerForm.get('phoneNumber')?.errors?.['pattern']">
+          Số điện thoại không đúng định dạng - 10 so
+        </p>
+
+        <!--End Phone -->
+
+        <!--birthday -->
+        <div class="form-outline mb-4">
+          <input type="date" class="form-control" id="datePickerId" formControlName="birthday">
+        </div>
+
+        <div
+          *ngIf="!registerForm.get('birthday')?.invalid && (registerForm.get('birthday')?.dirty || registerForm.get('birthday')?.touched)">
+          <div style="color: red" *ngIf="registerForm.get('birthday')?.errors?.['required']">
+            <div>Ngày sinh không được bỏ trống</div>
+          </div>
+        </div>
+        <!--end birthday -->
+
+        <!--fistName-->
+        <div class="form-outline mb-4">
+          <input type="text" class="form-control" placeholder="Nhập First Name"
+                 formControlName="fistName" id="registerName">
+          <label class="form-label" for="registerName">First Name</label>
+
+        </div>
+
+        <!--end fistName-->
+
+        <!--lastName-->
+
+        <div class="form-outline mb-4">
+          <input type="text" class="form-control" placeholder="Nhập Last Name"
+                 formControlName="lastName" id="registerLastName">
+          <label class="form-label" for="registerLastName">Last Name</label>
+
+        </div>
+        <!--end lastName-->
+
+        <!--gender-->
+        <div class="form-outline mb-4">
+          <input type="text" class="form-control" placeholder="Nhập giới tính"
+                 formControlName="gender" id="registerGender">
+          <label class="form-label" for="registerGender">Gender</label>
+
+        </div>
+        <!--end gender-->
+
+        <!--address-->
+
+        <div class="form-outline mb-4">
+          <input type="text" class="form-control" placeholder="Nhập địa chỉ"
+                 formControlName="address" id="registerAddress">
+          <label class="form-label" for="registerAddress">Address</label>
+
+        </div>
+        <!--end address-->
+
+        <!-- Button -->
+        <div class="d-grid">
+          <button type="submit" [disabled]="!registerForm.valid" class="btn btn-primary btn-block mb-3">Đăng ký</button>
+        </div>
       </form>
+
     </div>
   </div>
   <!-- Pills content -->
@@ -160,7 +264,7 @@
     /*margin: 200px 500px 100px 500px  ;*/
     position: fixed;
     width: 400px;
-    top: 200px;
+    top: 20px;
     left: 500px;
     background-color: snow;
     background-size: cover ;

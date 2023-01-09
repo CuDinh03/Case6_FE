@@ -7,12 +7,11 @@ import { AppComponent } from './app.component';
 import { PageMainComponent } from './page/page-main/page-main.component';
 import { PageProfileComponent } from './page/page-profile/page-profile.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {RegisterComponent} from "./page/signin-signup/register/register.component";
 import {ReactiveFormsModule} from "@angular/forms";
 
-import {LoginComponent} from "./page/signin-signup/login/login.component";
 
 import {AuthInterceptor} from "./auth/jwt-interceptor";
+import {SigninSignupComponent} from "./page/signin-signup/signin-signup.component";
 
 
 @NgModule({
@@ -20,8 +19,7 @@ import {AuthInterceptor} from "./auth/jwt-interceptor";
     AppComponent,
     PageMainComponent,
     PageProfileComponent,
-    RegisterComponent,
-    LoginComponent
+    SigninSignupComponent
   ],
   imports: [
     BrowserModule,

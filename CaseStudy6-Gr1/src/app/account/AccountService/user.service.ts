@@ -44,10 +44,10 @@ export class LoginService {
   constructor(private http:HttpClient) { }
 
   login(user: any): Observable<UserToken>{
-    return this.http.post<UserToken>("http://localhost:8080/login",user);
+    return this.http.post<UserToken>("http://localhost:8080",user);
   }
   register(account: any): Observable<any>{
-    return this.http.post<any>("http://localhost:8080/register",account);
+    return this.http.post<any>("http://localhost:8080",account);
   }
 
   setToken(token: string){
