@@ -18,11 +18,15 @@ export class PageMainComponent implements OnInit {
   constructor(private router: Router, private statusService: StatusService) {
   }
 
-  ngOnInit(): void {
+  view(): void {
     this.statusService.getAll().subscribe((data) => {
       this.statuses = data[0];
       console.log(this.statuses);
     })
+  }
+
+  ngOnInit(): void {
+    this.view()
   }
 
   createForm = new FormGroup({
@@ -61,9 +65,9 @@ export class PageMainComponent implements OnInit {
     const status2: Status = {content: this.createForm.value.content, status: this.createForm.value.status}
     console.log(status2);
     this.statusService.editStatus(index, status2).subscribe(() => {
-      this.ngOnInit();
+      this.view();
       this.createForm.reset();
-      this.router.navigate(["/main"]);
+      // this.router.navigate(["/main"]);
     })
   }
 
