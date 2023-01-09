@@ -12,6 +12,8 @@ import {FormControl, FormGroup} from "@angular/forms";
 export class PageMainComponent implements OnInit {
   statuses: Status[] = [];
   status1: any;
+  statusE!: Status;
+  userName = localStorage.getItem('userName');
 
   constructor(private router: Router, private statusService: StatusService) {
   }
@@ -38,12 +40,26 @@ export class PageMainComponent implements OnInit {
     }
     this.statusService.saveStatus(this.status1).subscribe((data) => {
       this.createForm.reset()
-      this.router.navigate(["/"]);
+      this.router.navigate(["/main"]);
     })
 
   }
 
+  showedtit(index: number) {
+    console.log(index);
+    this.statusService.findById(index).subscribe((result) => {
+      console.log(result);
+      this.statusE = result;
+      console.log(this.statusE);
+    })
+  }
+
   edit(index: number) {
+    // @ts-ignore
+    const status2: Status = {content: this.createForm.value.content, status: this.createForm.value.status}
+    console.log(status2);
+    this.statusService.editStatus(index, status2).subscribe(() => {
+      this.router.navigate(['/main'])})
   }
 
   mainView(){

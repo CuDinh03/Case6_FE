@@ -151,15 +151,15 @@
                             <circle cx="5" cy="12" r="1"></circle>
                           </svg>
                         </button>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#">Công khai</a></li>
-                          <li><a class="dropdown-item" href="#">Bạn bè </a></li>
-                          <li><a class="dropdown-item" href="#">Chỉ mình tôi </a></li>
-                        </ul>
+                        <select class="dropdown-menu" formControlName="status">
+                          <option class="dropdown-item" href="#" value="1">Công khai</option>
+                          <option class="dropdown-item" href="#" value="2">Bạn bè </option>
+                          <option class="dropdown-item" href="#" value="3">Chỉ mình tôi </option>
+                        </select>
                       </div>
                     </div>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                              placeholder="Username, đang nghĩ gì thế ?"></textarea>
+                              placeholder= "{{userName}}, đang nghĩ gì thế ?" formControlName="content"></textarea>
                   </div>
                   <div class="modal-footer">
                     <button class="btn btn-primary">Đăng</button>
@@ -197,12 +197,12 @@
                       </button>
                       <ul class="dropdown-menu">
                         <li>
-                          <button class="dropdown-item" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">
+                          <button class="dropdown-item" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" (click)="showedtit(s.id)">
                             Chỉnh sửa bài viết
                           </button>
                         </li>
                         <li>
-                          <button class="dropdown-item">Chỉnh sửa đối tượng</button>
+                          <button class="dropdown-item" >Chỉnh sửa đối tượng</button>
                         </li>
                         <li>
                           <hr class="dropdown-divider">
@@ -220,7 +220,7 @@
                     <div class="modal-dialog modal-dialog-centered">
 
                       <div class="modal-content">
-                        <form [formGroup]="createForm" (ngSubmit)="edit(i)">
+                        <form [formGroup]="createForm" (ngSubmit)="edit(s.id)">
                         <div class="modal-header">
                           <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Sửa bài viết</h1>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -247,7 +247,7 @@
                             </div>
                           </div>
                           <textarea class="form-control" id="exampleFormControlTextarea" rows="3"
-                                    placeholder="noi dung cần sửa"></textarea>
+                                    placeholder="noi dung cần sửa">{{statusE.content}}</textarea>
                         </div>
                         <div class="modal-footer">
                           <button class="btn btn-primary">Đăng</button>
