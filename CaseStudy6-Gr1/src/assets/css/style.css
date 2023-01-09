@@ -269,7 +269,13 @@ img {
 textarea{
   border: none;
 }
+body{
+  background-color: #F0997D;
 
+}
+#messenger{
+  background-color: snow;
+}
 
 
 
