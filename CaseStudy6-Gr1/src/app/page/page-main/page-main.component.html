@@ -197,7 +197,7 @@
                       </button>
                       <ul class="dropdown-menu">
                         <li>
-                          <button class="dropdown-item" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" (click)="showedtit(s.id)">
+                          <button class="dropdown-item" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" (click)="showEdtit(s.id)">
                             Chỉnh sửa bài viết
                           </button>
                         </li>
@@ -207,7 +207,7 @@
                         <li>
                           <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">Chuyển vào thùng rác </a></li>
+                        <li><a class="dropdown-item" href="#" (click)="deleteEdit(s.id)">Chuyển vào thùng rác </a></li>
                       </ul>
                     </div>
                   </div>
@@ -239,15 +239,15 @@
                                   <circle cx="5" cy="12" r="1"></circle>
                                 </svg>
                               </button>
-                              <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Công khai</a></li>
-                                <li><a class="dropdown-item" href="#">Bạn bè </a></li>
-                                <li><a class="dropdown-item" href="#">Chỉ mình tôi </a></li>
-                              </ul>
+                              <select class="dropdown-menu" formControlName="status">
+                                <option class="dropdown-item" href="#" value="1">Công khai</option>
+                                <option class="dropdown-item" href="#" value="2">Bạn bè </option>
+                                <option class="dropdown-item" href="#" value="3">Chỉ mình tôi </option>
+                              </select>
                             </div>
                           </div>
                           <textarea class="form-control" id="exampleFormControlTextarea" rows="3"
-                                    placeholder="noi dung cần sửa">{{statusE.content}}</textarea>
+                                    placeholder="" formControlName="content" ></textarea>
                         </div>
                         <div class="modal-footer">
                           <button class="btn btn-primary">Đăng</button>
