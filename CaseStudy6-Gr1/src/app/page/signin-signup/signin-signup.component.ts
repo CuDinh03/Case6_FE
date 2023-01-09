@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {LoginService} from "../../account/AccountService/user.service";
 import {Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-// import {Swal} from "sweetalert2";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-signin-signup',
@@ -33,27 +33,27 @@ export class SigninSignupComponent implements OnInit{
 
   })
 
-  // register() {
-  //   this.loginService.register(this.registerForm.value).subscribe((data) => {
-  //
-  //     this.checkDuplicateUsername = data[0];
-  //     this.checkDuplicateMail = data[1];
-  //     if (data[0] && data[1]) {
-  //       this.message()
-  //       this.router.navigate(["/login"])
-  //     }
-  //   });
-  // }
+  register() {
+    this.loginService.register(this.registerForm.value).subscribe((data) => {
 
-  // message() {
-  //   Swal.fire({
-  //     position: 'center',
-  //     icon: 'success',
-  //     title: 'Register account success ',
-  //     showConfirmButton: false,
-  //     timer: 1500
-  //   })
-  // }
+      this.checkDuplicateUsername = data[0];
+      this.checkDuplicateMail = data[1];
+      if (data[0] && data[1]) {
+        this.message()
+        this.router.navigate(["/login"])
+      }
+    });
+  }
+
+  message() {
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Register account success ',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
 
   checkConfirmPassword() {
 
