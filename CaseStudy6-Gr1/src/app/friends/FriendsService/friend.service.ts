@@ -1,4 +1,4 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable, OnChanges, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {Friend} from "../../model/friend";
 import {HttpClient} from "@angular/common/http";
@@ -6,7 +6,10 @@ import {HttpClient} from "@angular/common/http";
 @Injectable({
   providedIn: 'root'
 })
-export class FriendService implements  OnInit {
+export class FriendService implements  OnInit{
+
+  fiendList!:Friend[];
+  idInf!:number;
 
   constructor( private  http: HttpClient) { }
 
@@ -14,6 +17,11 @@ export class FriendService implements  OnInit {
     this.getAllFriends();
   }
   getAllFriends() :Observable<Friend[]>{
-  return this.http.get<Friend[]>("http://localhost:8080/1")
+  return this.http.get<Friend[]>("http://localhost:8080/1");
 }
+getInFor(id:number) :Observable<Friend>{
+    return this.http.get<Friend>("http://localhost:8080/profileId/"+id);
+}
+
+
 }

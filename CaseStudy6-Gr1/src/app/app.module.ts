@@ -12,6 +12,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 
 import {AuthInterceptor} from "./auth/jwt-interceptor";
 import {SigninSignupComponent} from "./page/signin-signup/signin-signup.component";
+import {ProfileComponent} from "./friends/profile/profile.component";
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {SigninSignupComponent} from "./page/signin-signup/signin-signup.componen
     AppComponent,
     PageMainComponent,
     PageProfileComponent,
-    SigninSignupComponent
+    SigninSignupComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -9,7 +9,10 @@ import {Friend} from "../../model/friend";
   styleUrls: ['./page-profile.component.css']
 })
 export class PageProfileComponent implements OnInit {
+
   friendList ! : Friend[];
+  friendInF! : Friend;
+
   constructor(public friendservice :FriendService, private router: Router) {
   }
 
@@ -22,8 +25,14 @@ export class PageProfileComponent implements OnInit {
   getAllFriends(){
     this.friendservice.getAllFriends().subscribe((friends) => {
       this.friendList=friends;
+
     })
   }
+  showProfile(id : number){
+    this.friendservice.idInf=id;
+    this.router.navigate(['showProfile'])
+  }
+
   ngOnInit(): void {
     this.getAllFriends();
   }
