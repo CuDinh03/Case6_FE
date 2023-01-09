@@ -2,9 +2,13 @@ import {Component, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Status} from "../model/status";
-
-const API_URL = `http://localhost:8080`;
-
+import {environment} from "../environments/environments";
+const API_URL = `${environment.apiUrl}`;
+@Component({
+  selector: 'app-service',
+  templateUrl: './service.component.html',
+  styleUrls: ['./service.component.css']
+})
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +17,7 @@ export class StatusService {
   constructor(private http:HttpClient) {
   }
 
-  getAll(): Observable<any>{
+  getAll(): Observable<Status[]>{
     return this.http.get<Status[]>(API_URL+'/statuses');
   }
 
