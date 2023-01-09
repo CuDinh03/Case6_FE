@@ -223,6 +223,7 @@ img {
   top: 0; /*Nằm trên cùng*/
   left: 0; /*Nằm sát bên trái*/
   z-index: 100000; /*Hiển thị lớp trên cùng*/
+
 }
 /*chinh hien thong bao*/
 #collapseExample{
@@ -234,7 +235,7 @@ img {
 
 }
 #formGroupExampleInput2{
-  width: 550px;
+  width: 540px;
   margin-left: 10px;
 }
 .nav1{
@@ -259,5 +260,24 @@ img {
   bottom: 30px;
   right: 10px;
 }
+#imgUp{
+  align-content: center;
+}
+
+.card{
+  margin: 2px;
+}
+textarea{
+  border: none;
+}
+body{
+  background-color: #c8c5d8;
+
+}
+#messenger{
+  background-color: snow;
+}
+
+
 
 

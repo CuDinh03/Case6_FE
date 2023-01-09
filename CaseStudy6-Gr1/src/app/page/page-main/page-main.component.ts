@@ -41,4 +41,9 @@ export class PageMainComponent implements OnInit, OnChanges {
     this.router.navigate(['/modal'])
   }
 
+  showComment(){
+    let cmt = document.getElementById('o-hide')
+
+  }
+
 }
