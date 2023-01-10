@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Router} from "@angular/router";
 import {StatusService} from "../../service/status.service";
 import {FormControl, FormGroup} from "@angular/forms";
@@ -13,9 +13,9 @@ export class PageMainComponent implements OnInit {
   statuses: Status[] = [];
   status1: any;
   statusE!: Status;
-  userToken: any;
+  userToken : any;
 
-  constructor(private router: Router, private statusService: StatusService) {
+  constructor(private router: Router, private statusService: StatusService ) {
   }
 
   view(): void {
@@ -37,7 +37,7 @@ export class PageMainComponent implements OnInit {
   })
 
   create() {
-    this.status1 = {
+    this.status1 ={
       content: this.createForm.value.content,
       status: this.createForm.value.status,
       account: {
@@ -62,10 +62,6 @@ export class PageMainComponent implements OnInit {
     })
   }
 
-  findByName(name: string) {
-
-  }
-
   edit(index: number) {
     // @ts-ignore
     const status2: Status = {content: this.createForm.value.content, status: this.createForm.value.status}
@@ -80,19 +76,18 @@ export class PageMainComponent implements OnInit {
   deleteEdit(index: number) {
     this.statusService.deleteStatus(index).subscribe(() => {
       this.view();
-      this.router.navigate(['/main'])
-    })
+      this.router.navigate(['/main'])})
   }
 
-  mainView() {
+  mainView(){
     this.router.navigate(['/main'])
   }
 
-  profileView() {
+  profileView(){
     this.router.navigate(['/profile'])
   }
 
-  modalView() {
+  modalView(){
     this.router.navigate(['/modal'])
   }
 

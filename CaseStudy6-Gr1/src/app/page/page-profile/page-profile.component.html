@@ -1,6 +1,6 @@
 <div id="fixNav">
   <nav class="navbar navbar-light bg-light justify-content-between">
-    <p class="navbar-brand" type="button" (click)="mainView()">BackMain</p>
+    <img type="button" style="padding-left: 5px; height: 50px; width: 50px" class="img-xs rounded-circle" src="/src/assets/pic/logo.jpg" (click)="mainView()">
     <form class="form-inline">
       <div class="inputWithIcon">
         <tr>
@@ -31,7 +31,8 @@
           </td>
           <td class="nav1">
 
-            <img type="button" (click)="profileView()" class="img-xs rounded-circle" src="{{userToken.img}}"
+            <img type="button" (click)="profileView()" class="img-xs rounded-circle"
+                        src="{{userToken.img.name}}"
                  alt="">
 
           </td>
@@ -77,8 +78,10 @@
             </figure>
             <div class="cover-body d-flex justify-content-between align-items-center">
               <div>
-                <img class="profile-pic" src="{{userToken.img}}">
-                <span class="profile-name">{{userToken.userName}}</span>
+                <img class="img-xs rounded-circle" style="height: 100px; width: 100px" src="{{userToken.img.name}}" >
+
+                <span class="profile-name">{{userToken.userName}} </span>
+
               </div>
               <div class="d-none d-md-block">
                 <button class="btn " style="background-color: #d3d7f4;">
@@ -551,7 +554,7 @@
                               </div>
                             </th>
                             <button class="btn btn-light" (click)="showProfile(f.id)" data-bs-dismiss="modal"
-                                    style="text-align: center">{{f.fistName}} {{f.lastName}}</button>
+                                    style="text-align: center">{{f.firstName}} {{f.lastName}}</button>
                         </table>
 
 

@@ -6,19 +6,25 @@ import {HttpClient} from "@angular/common/http";
 @Injectable({
   providedIn: 'root'
 })
-export class FriendService implements  OnInit{
+export class FriendService{
 
   fiendList!:Friend[];
   idInf!:number;
   name!:string;
-
-  constructor( private  http: HttpClient) { }
+userToken : any;
+  constructor( private http:HttpClient) { }
 
   ngOnInit(): void {
+
+    // @ts-ignore
+    this.userToken = JSON.parse(localStorage.getItem("userToken"));
+
     this.getAllFriends();
+
   }
+
   getAllFriends() :Observable<Friend[]>{
-  return this.http.get<Friend[]>("http://localhost:8080/8");
+  return this.http.get<Friend[]>("http://localhost:8080/" + this.userToken.id);
 }
 getInFor(id:number) :Observable<Friend>{
     return this.http.get<Friend>("http://localhost:8080/profileId/"+id);

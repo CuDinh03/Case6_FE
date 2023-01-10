@@ -18,6 +18,7 @@ export class ProfileComponent implements  OnInit{
   mutualFriend!:Friend[];
   friend!:Friend;
   fiendList!:Friend[];
+
   constructor(private friendService: FriendService,private router: Router) {
   }
 getInFor(){
