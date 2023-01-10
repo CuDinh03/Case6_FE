@@ -1,6 +1,5 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Router} from "@angular/router";
-import {Status} from "../../model/status";
 import {StatusService} from "../../service/status.service";
 import {FormControl, FormGroup} from "@angular/forms";
 
