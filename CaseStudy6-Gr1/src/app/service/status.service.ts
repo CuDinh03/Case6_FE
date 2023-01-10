@@ -21,6 +21,11 @@ export class StatusService {
     return this.http.post<Status>(API_URL + '/statuses', status);
   }
 
+  findByAccountId(id: number): Observable<any> {
+    // console.log(this.http.get<Status>(`${API_URL}/statuses/one/${id}`))
+    return this.http.get<Status>(`${API_URL}/statuses/${id}`);
+  }
+
   findById(id: number): Observable<any> {
     // console.log(this.http.get<Status>(`${API_URL}/statuses/one/${id}`))
     return this.http.get<Status>(`${API_URL}/statuses/one/${id}`);

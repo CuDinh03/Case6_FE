@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {FriendService} from "../../friends/FriendsService/friend.service";
 import {Friend} from "../../model/friend";
+import {StatusService} from "../../service/status.service";
+import {Status} from "../../model/status";
 
 @Component({
   selector: 'app-page-profile',
@@ -12,10 +14,20 @@ export class PageProfileComponent implements OnInit {
 
   friendList ! : Friend[];
   friendInF! : Friend;
-
-  constructor(public friendservice :FriendService, private router: Router) {
+  statuses: Status[] = [];
+  status1: any;
+  statusE!: Status;
+  userName = localStorage.getItem('userName');
+  id: any;
+  constructor(public friendservice :FriendService, private statusService: StatusService ,private router: Router) {
   }
 
+  view(): void{
+    this.statusService.findByAccountId(2).subscribe((data) => {
+      this.statuses= data[0];
+      console.log(data);
+    })
+  }
   mainView(){
     this.router.navigate(['/main'])
   }
@@ -35,6 +47,7 @@ export class PageProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllFriends();
+    this.view();
   }
 
 }
