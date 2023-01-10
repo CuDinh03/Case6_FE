@@ -1,0 +1,151 @@
+<main>
+  <!-- Container START -->
+  <div class="container">
+    <div class="row justify-content-center align-items-center vh-100 py-5">
+      <!-- Main content START -->
+      <div class="col-sm-10 col-md-8 col-lg-7 col-xl-6 col-xxl-5">
+        <!-- Sign up START -->
+        <div class="card card-body rounded-3 p-4 p-sm-5">
+          <div class="text-center">
+            <!-- Title -->
+            <h1 class="mb-2">Đăng ký tài khoản</h1>
+            <span class="d-block">Bạn đã sẵn sàng đăng ký tài khoản?<a routerLink="/login"> Đăng nhập</a></span>
+          </div>
+          <!-- Form START -->
+          <form class="mt-4" [formGroup]="registerForm" (ngSubmit)="register()">
+            <!-- User-->
+            <div class="mb-3 input-group-lg">
+              <input type="text" class="form-control" placeholder="Nhập tên tài khoản" formControlName="userName">
+            </div>
+            <p
+              *ngIf="!registerForm.get('userName')?.invalid && registerForm.get('userName')?.touched">
+            </p>
+            <p style="color: red" *ngIf="registerForm.get('userName')?.errors?.['minlength']">
+              Tên tài khoản phải ít nhất 6 kí tự
+            </p>
+            <p style="color: red" *ngIf="registerForm.get('userName')?.errors?.['maxlength']">
+              Tên tài khoản tối đa 32 kí tự
+            </p>
+            <p id="checkUserName" style="color: red " *ngIf="!checkDuplicateUsername">Người dùng đã tồn tại</p>
+            <!-- End User-->
+
+            <!-- Password -->
+            <div class="mb-3 input-group-lg">
+              <input class="form-control fakepassword" type="password" id="psw-input" placeholder="Nhập mật khẩu"
+                     formControlName="password">
+            </div>
+            <p
+              *ngIf="!registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)">
+            </p>
+            <p style="color: red" *ngIf="registerForm.get('password')?.errors?.['minlength']">
+              Mật khẩu phải có ít nhất 6 kí tự
+            </p>
+            <p style="color: red" *ngIf="registerForm.get('password')?.errors?.['maxlength']">
+              Mật khẩu tối đa 32 kí tự
+            </p>
+            <!-- End password -->
+
+            <!-- Confirm password -->
+            <div class="mb-3 input-group-lg">
+              <input class="form-control" type="password" placeholder="Nhập lại mật khẩu"
+                     formControlName="confirmPassword" (change)="checkConfirmPassword()">
+              <div style="display: none;color: red" id="abc">
+                <div>Mật khẩu nhập lại không đúng</div>
+              </div>
+            </div>
+            <p
+              *ngIf="!registerForm.get('confirmPassword')?.invalid && (registerForm.get('confirmPassword')?.dirty || registerForm.get('confirmPassword')?.touched)"></p>
+            <p style="color: red" *ngIf="registerForm.get('confirmPassword')?.errors?.['minlength']">
+              Xác nhận mật khẩu phải có ít nhất 6 kí tự
+            </p>
+            <p style="color: red" *ngIf="registerForm.get('confirmPassword')?.errors?.['maxlength']">
+              Xác nhận mật khẩu tối đa 32 kí tự
+            </p>
+            <!-- End Confirm password -->
+
+            <!-- Email -->
+            <div class="mb-3 input-group-lg">
+              <input type="email" class="form-control" placeholder="Nhập email" formControlName="email">
+            </div>
+
+            <p
+              *ngIf="!registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)">
+            <p style="color: red" *ngIf="registerForm.get('email')?.errors?.['required']">
+            </p>
+            <p style="color: red" *ngIf="registerForm.get('email')?.errors?.['email']">
+              Email nhập không dúng định dạng
+            </p>
+            <p id="checkMail" style="color: red " *ngIf="!checkDuplicateMail">Email đã tồn tại</p>
+            <!-- End Email -->
+
+            <!-- Phone -->
+            <div class="mb-3 input-group-lg">
+              <input type="text" class="form-control" placeholder="Nhập số điện thoại"
+                     formControlName="phoneNumber">
+            </div>
+            <div
+              *ngIf="!registerForm.get('phoneNumber')?.invalid && (registerForm.get('phoneNumber')?.dirty || registerForm.get('phoneNumber')?.touched)">
+              <div style="color: red" *ngIf="registerForm.get('phoneNumber')?.errors?.['required']">
+                <div>Số điện thoại không được bỏ trống</div>
+              </div>
+            </div>
+            <p style="color: red" *ngIf="registerForm.get('phoneNumber')?.errors?.['pattern']">
+              Số điện thoại không đúng định dạng - 10 so
+            </p>
+
+            <!--End Phone -->
+
+            <!--birthday -->
+            <div class="mb-3 input-group-lg">
+              <input type="date" class="form-control" id="datePickerId" formControlName="birthday">
+            </div>
+            <div
+              *ngIf="!registerForm.get('birthday')?.invalid && (registerForm.get('birthday')?.dirty || registerForm.get('birthday')?.touched)">
+              <div style="color: red" *ngIf="registerForm.get('birthday')?.errors?.['required']">
+                <div>Ngày sinh không được bỏ trống</div>
+              </div>
+            </div>
+            <!--end birthday -->
+
+            <!--fistName-->
+            <div class="mb-3 input-group-lg">
+              <input type="text" class="form-control" placeholder="Nhập Fist Name"
+                     formControlName="fistName">
+            </div>
+            <!--end fistName-->
+
+            <!--lastName-->
+            <div class="mb-3 input-group-lg">
+              <input type="text" class="form-control" placeholder="Nhập Tên"
+                     formControlName="lastName">
+            </div>
+            <!--end lastName-->
+
+            <!--gender-->
+            <div class="mb-3 input-group-lg">
+              <input type="text" class="form-control" placeholder="Nhập giới tính"
+                     formControlName="gender">
+            </div>
+            <!--end gender-->
+
+            <!--address-->
+            <div class="mb-3 input-group-lg">
+              <input type="text" class="form-control" placeholder="Nhập địa chỉ"
+                     formControlName="address">
+            </div>
+            <!--end address-->
+
+            <!-- Button -->
+            <div class="d-grid">
+              <button type="submit" [disabled]="!registerForm.valid" class="btn btn-lg btn-primary">Đăng ký</button>
+            </div>
+          </form>
+        </div>
+        <!-- Form END -->
+      </div>
+      <!-- Sign up END -->
+    </div>
+  </div> <!-- Row END -->
+  <!-- Container END -->
+
+</main>

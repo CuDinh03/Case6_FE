@@ -1,298 +1,298 @@
-<body id="bodySignUp">
+<!--<body id="bodySignUp">-->
 
-<div id="signIn">
+<!--<div id="signIn">-->
 
-  <!-- Pills navs -->
-  <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
-    <li class="nav-item" role="presentation">
-      <a class="nav-link active" id="tab-login" data-mdb-toggle="pill" href="#pills-login" role="tab"
-         aria-controls="pills-login" aria-selected="true">Login</a>
-    </li>
-    <li class="nav-item" role="presentation">
-      <a class="nav-link" id="tab-register" data-mdb-toggle="pill" href="#pills-register" role="tab"
-         aria-controls="pills-register" aria-selected="false">Register</a>
-    </li>
-  </ul>
-  <!-- Pills navs -->
+<!--  &lt;!&ndash; Pills navs &ndash;&gt;-->
+<!--  <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">-->
+<!--    <li class="nav-item" role="presentation">-->
+<!--      <a class="nav-link active" id="tab-login" data-mdb-toggle="pill" href="#pills-login" role="tab"-->
+<!--         aria-controls="pills-login" aria-selected="true">Login</a>-->
+<!--    </li>-->
+<!--    <li class="nav-item" role="presentation">-->
+<!--      <a class="nav-link" id="tab-register" data-mdb-toggle="pill" href="#pills-register" role="tab"-->
+<!--         aria-controls="pills-register" aria-selected="false">Register</a>-->
+<!--    </li>-->
+<!--  </ul>-->
+<!--  &lt;!&ndash; Pills navs &ndash;&gt;-->
 
-  <!-- Pills content -->
-  <div class="tab-content">
-    <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+<!--  &lt;!&ndash; Pills content &ndash;&gt;-->
+<!--  <div class="tab-content">-->
+<!--    <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">-->
 
-      <!-- Form START -->
-      <form [formGroup]="loginForm" (ngSubmit)="login()">
+<!--      &lt;!&ndash; Form START &ndash;&gt;-->
+<!--      <form [formGroup]="loginForm" (ngSubmit)="login()">-->
 
-        <div class="text-center mb-3">
-          <p>Sign in with:</p>
-          <button type="button" class="btn btn-link btn-floating mx-1">
-            <i class="fab fa-facebook-f"></i>
-          </button>
+<!--        <div class="text-center mb-3">-->
+<!--          <p>Sign in with:</p>-->
+<!--          <button type="button" class="btn btn-link btn-floating mx-1">-->
+<!--            <i class="fab fa-facebook-f"></i>-->
+<!--          </button>-->
 
-          <button type="button" class="btn btn-link btn-floating mx-1">
-            <i class="fab fa-google"></i>
-          </button>
+<!--          <button type="button" class="btn btn-link btn-floating mx-1">-->
+<!--            <i class="fab fa-google"></i>-->
+<!--          </button>-->
 
-          <button type="button" class="btn btn-link btn-floating mx-1">
-            <i class="fab fa-twitter"></i>
-          </button>
+<!--          <button type="button" class="btn btn-link btn-floating mx-1">-->
+<!--            <i class="fab fa-twitter"></i>-->
+<!--          </button>-->
 
-          <button type="button" class="btn btn-link btn-floating mx-1">
-            <i class="fab fa-github"></i>
-          </button>
-        </div>
+<!--          <button type="button" class="btn btn-link btn-floating mx-1">-->
+<!--            <i class="fab fa-github"></i>-->
+<!--          </button>-->
+<!--        </div>-->
 
-        <p class="text-center">or:</p>
+<!--        <p class="text-center">or:</p>-->
 
-        <!-- username  -->
-        <div class="form-outline mb-4">
-          <input type="text" id="loginName" class="form-control" formControlName="userName" placeholder="Username" />
-          <label class="form-label" for="loginName"> User Name<span style="color: red">*</span></label>
-
-
-          <p *ngIf="!loginForm.get('userName')?.valid && loginForm.get('userName')?.touched" style="color: red">Can't be blank</p>
-        </div>
-        <!-- Password -->
-        <div class="form-outline mb-4">
-
-          <input type="password" id="loginPassword" class="form-control" />
-          <label class="form-label" for="loginPassword" formControlName="password" placeholder="password">Password<span style="color: red">*</span></label>
-          <p *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched" style="color: red">Can't be blank</p>
-        </div>
-
-        <!-- 2 column grid layout -->
-        <div class="row mb-4">
-          <div class="col-md-6 d-flex justify-content-center">
-            <!-- Checkbox -->
-            <div class="form-check mb-3 mb-md-0">
-              <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
-              <label class="form-check-label" for="loginCheck"> Remember me </label>
-            </div>
-          </div>
-
-          <div class="col-md-6 d-flex justify-content-center">
-            <!-- Simple link -->
-            <a href="#!">Forgot password?</a>
-          </div>
-        </div>
-
-        <!-- Button -->
-        <div class="align-items-center mt-0">
-          <div class="d-grid">
-            <button class="btn btn-primary btn-block mb-4" type="submit">Login</button>
-          </div>
-        </div>
-
-        <!-- Register buttons -->
-        <div class="text-center">
-          <p>Not a member? <a href="#!">Register</a></p>
-        </div>
-      </form>
-      <!-- Form END -->
-
-    </div>
-    <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+<!--        &lt;!&ndash; username  &ndash;&gt;-->
+<!--        <div class="form-outline mb-4">-->
+<!--          <input type="text" id="loginName" class="form-control" formControlName="userName" placeholder="Username" />-->
+<!--          <label class="form-label" for="loginName"> User Name<span style="color: red">*</span></label>-->
 
 
-      <form class="mt-4" [formGroup]="registerForm" (ngSubmit)="register()">
+<!--          <p *ngIf="!loginForm.get('userName')?.valid && loginForm.get('userName')?.touched" style="color: red">Can't be blank</p>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; Password &ndash;&gt;-->
+<!--        <div class="form-outline mb-4">-->
+
+<!--          <input type="password" id="loginPassword" class="form-control" />-->
+<!--          <label class="form-label" for="loginPassword" formControlName="password" placeholder="password">Password<span style="color: red">*</span></label>-->
+<!--          <p *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched" style="color: red">Can't be blank</p>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; 2 column grid layout &ndash;&gt;-->
+<!--        <div class="row mb-4">-->
+<!--          <div class="col-md-6 d-flex justify-content-center">-->
+<!--            &lt;!&ndash; Checkbox &ndash;&gt;-->
+<!--            <div class="form-check mb-3 mb-md-0">-->
+<!--              <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />-->
+<!--              <label class="form-check-label" for="loginCheck"> Remember me </label>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          <div class="col-md-6 d-flex justify-content-center">-->
+<!--            &lt;!&ndash; Simple link &ndash;&gt;-->
+<!--            <a href="#!">Forgot password?</a>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Button &ndash;&gt;-->
+<!--        <div class="align-items-center mt-0">-->
+<!--          <div class="d-grid">-->
+<!--            <button class="btn btn-primary btn-block mb-4" type="submit">Login</button>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Register buttons &ndash;&gt;-->
+<!--        <div class="text-center">-->
+<!--          <p>Not a member? <a href="#!">Register</a></p>-->
+<!--        </div>-->
+<!--      </form>-->
+<!--      &lt;!&ndash; Form END &ndash;&gt;-->
+
+<!--    </div>-->
+<!--    <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">-->
 
 
-        <!-- Username input -->
-        <div class="form-outline mb-4">
-          <input type="text" id="registerUsername" class="form-control" placeholder="Nhập tên tài khoản" formControlName="userName" />
-          <label class="form-label" for="registerUsername">Username</label>
-        </div>
-
-        <p
-          *ngIf="!registerForm.get('userName')?.invalid && registerForm.get('userName')?.touched">
-        </p>
-        <p style="color: red" *ngIf="registerForm.get('userName')?.errors?.['minlength']">
-          Tên tài khoản phải ít nhất 6 kí tự
-        </p>
-        <p style="color: red" *ngIf="registerForm.get('userName')?.errors?.['maxlength']">
-          Tên tài khoản tối đa 32 kí tự
-        </p>
-        <p id="checkUserName" style="color: red " *ngIf="!checkDuplicateUsername">Người dùng đã tồn tại</p>
-        <!-- End User-->
-
-        <!-- Password input -->
-        <div class="form-outline mb-4">
-          <input type="password" id="registerPassword" class="form-control" placeholder="Nhập mật khẩu"
-                 formControlName="password" />
-          <label class="form-label" for="registerPassword">Password</label>
-        </div>
-
-        <p
-          *ngIf="!registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)">
-        </p>
-        <p style="color: red" *ngIf="registerForm.get('password')?.errors?.['minlength']">
-          Mật khẩu phải có ít nhất 6 kí tự
-        </p>
-        <p style="color: red" *ngIf="registerForm.get('password')?.errors?.['maxlength']">
-          Mật khẩu tối đa 32 kí tự
-        </p>
-        <!-- End password -->
-
-        <!-- Confirm password -->
-        <div class="form-outline mb-4">
-          <input class="form-control" id="registerRepeatPassword" type="password" placeholder="Nhập lại mật khẩu"
-                 formControlName="confirmPassword" (change)="checkConfirmPassword()">
-          <label class="form-label" for="registerRepeatPassword">Repeat password</label>
-          <div style="display: none;color: red" id="abc">
-            <div>Mật khẩu nhập lại không đúng</div>
-          </div>
-        </div>
-
-        <p
-          *ngIf="!registerForm.get('confirmPassword')?.invalid && (registerForm.get('confirmPassword')?.dirty || registerForm.get('confirmPassword')?.touched)"></p>
-        <p style="color: red" *ngIf="registerForm.get('confirmPassword')?.errors?.['minlength']">
-          Xác nhận mật khẩu phải có ít nhất 6 kí tự
-        </p>
-        <p style="color: red" *ngIf="registerForm.get('confirmPassword')?.errors?.['maxlength']">
-          Xác nhận mật khẩu tối đa 32 kí tự
-        </p>
-        <!-- End Confirm password -->
-
-        <!-- Email input -->
-        <div class="form-outline mb-4">
-          <input type="email" id="registerEmail" class="form-control" placeholder="Nhập email" formControlName="email" />
-          <label class="form-label" for="registerEmail">Email</label>
-        </div>
-
-        <p
-          *ngIf="!registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)">
-        <p style="color: red" *ngIf="registerForm.get('email')?.errors?.['required']">
-        </p>
-        <p style="color: red" *ngIf="registerForm.get('email')?.errors?.['email']">
-          Email nhập không dúng định dạng
-        </p>
-        <p id="checkMail" style="color: red " *ngIf="!checkDuplicateMail">Email đã tồn tại</p>
-        <!-- End Email -->
-
-        <!-- Phone -->
-        <div class="form-outline mb-4">
-          <input type="text" class="form-control" id="registerPhone" placeholder="Nhập số điện thoại"
-                 formControlName="phoneNumber">
-          <label class="form-label" for="registerPhone">Phone</label>
-
-        </div>
+<!--      <form class="mt-4" [formGroup]="registerForm" (ngSubmit)="register()">-->
 
 
-        <div
-          *ngIf="!registerForm.get('phoneNumber')?.invalid && (registerForm.get('phoneNumber')?.dirty || registerForm.get('phoneNumber')?.touched)">
-          <div style="color: red" *ngIf="registerForm.get('phoneNumber')?.errors?.['required']">
-            <div>Số điện thoại không được bỏ trống</div>
-          </div>
-        </div>
-        <p style="color: red" *ngIf="registerForm.get('phoneNumber')?.errors?.['pattern']">
-          Số điện thoại không đúng định dạng - 10 so
-        </p>
+<!--        &lt;!&ndash; Username input &ndash;&gt;-->
+<!--        <div class="form-outline mb-4">-->
+<!--          <input type="text" id="registerUsername" class="form-control" placeholder="Nhập tên tài khoản" formControlName="userName" />-->
+<!--          <label class="form-label" for="registerUsername">Username</label>-->
+<!--        </div>-->
 
-        <!--End Phone -->
+<!--        <p-->
+<!--          *ngIf="!registerForm.get('userName')?.invalid && registerForm.get('userName')?.touched">-->
+<!--        </p>-->
+<!--        <p style="color: red" *ngIf="registerForm.get('userName')?.errors?.['minlength']">-->
+<!--          Tên tài khoản phải ít nhất 6 kí tự-->
+<!--        </p>-->
+<!--        <p style="color: red" *ngIf="registerForm.get('userName')?.errors?.['maxlength']">-->
+<!--          Tên tài khoản tối đa 32 kí tự-->
+<!--        </p>-->
+<!--        <p id="checkUserName" style="color: red " *ngIf="!checkDuplicateUsername">Người dùng đã tồn tại</p>-->
+<!--        &lt;!&ndash; End User&ndash;&gt;-->
 
-        <!--birthday -->
-        <div class="form-outline mb-4">
-          <input type="date" class="form-control" id="datePickerId" formControlName="birthday">
-        </div>
+<!--        &lt;!&ndash; Password input &ndash;&gt;-->
+<!--        <div class="form-outline mb-4">-->
+<!--          <input type="password" id="registerPassword" class="form-control" placeholder="Nhập mật khẩu"-->
+<!--                 formControlName="password" />-->
+<!--          <label class="form-label" for="registerPassword">Password</label>-->
+<!--        </div>-->
 
-        <div
-          *ngIf="!registerForm.get('birthday')?.invalid && (registerForm.get('birthday')?.dirty || registerForm.get('birthday')?.touched)">
-          <div style="color: red" *ngIf="registerForm.get('birthday')?.errors?.['required']">
-            <div>Ngày sinh không được bỏ trống</div>
-          </div>
-        </div>
-        <!--end birthday -->
+<!--        <p-->
+<!--          *ngIf="!registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)">-->
+<!--        </p>-->
+<!--        <p style="color: red" *ngIf="registerForm.get('password')?.errors?.['minlength']">-->
+<!--          Mật khẩu phải có ít nhất 6 kí tự-->
+<!--        </p>-->
+<!--        <p style="color: red" *ngIf="registerForm.get('password')?.errors?.['maxlength']">-->
+<!--          Mật khẩu tối đa 32 kí tự-->
+<!--        </p>-->
+<!--        &lt;!&ndash; End password &ndash;&gt;-->
 
-        <!--fistName-->
-        <div class="form-outline mb-4">
-          <input type="text" class="form-control" placeholder="Nhập First Name"
-                 formControlName="fistName" id="registerName">
-          <label class="form-label" for="registerName">First Name</label>
+<!--        &lt;!&ndash; Confirm password &ndash;&gt;-->
+<!--        <div class="form-outline mb-4">-->
+<!--          <input class="form-control" id="registerRepeatPassword" type="password" placeholder="Nhập lại mật khẩu"-->
+<!--                 formControlName="confirmPassword" (change)="checkConfirmPassword()">-->
+<!--          <label class="form-label" for="registerRepeatPassword">Repeat password</label>-->
+<!--          <div style="display: none;color: red" id="abc">-->
+<!--            <div>Mật khẩu nhập lại không đúng</div>-->
+<!--          </div>-->
+<!--        </div>-->
 
-        </div>
+<!--        <p-->
+<!--          *ngIf="!registerForm.get('confirmPassword')?.invalid && (registerForm.get('confirmPassword')?.dirty || registerForm.get('confirmPassword')?.touched)"></p>-->
+<!--        <p style="color: red" *ngIf="registerForm.get('confirmPassword')?.errors?.['minlength']">-->
+<!--          Xác nhận mật khẩu phải có ít nhất 6 kí tự-->
+<!--        </p>-->
+<!--        <p style="color: red" *ngIf="registerForm.get('confirmPassword')?.errors?.['maxlength']">-->
+<!--          Xác nhận mật khẩu tối đa 32 kí tự-->
+<!--        </p>-->
+<!--        &lt;!&ndash; End Confirm password &ndash;&gt;-->
 
-        <!--end fistName-->
+<!--        &lt;!&ndash; Email input &ndash;&gt;-->
+<!--        <div class="form-outline mb-4">-->
+<!--          <input type="email" id="registerEmail" class="form-control" placeholder="Nhập email" formControlName="email" />-->
+<!--          <label class="form-label" for="registerEmail">Email</label>-->
+<!--        </div>-->
 
-        <!--lastName-->
+<!--        <p-->
+<!--          *ngIf="!registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)">-->
+<!--        <p style="color: red" *ngIf="registerForm.get('email')?.errors?.['required']">-->
+<!--        </p>-->
+<!--        <p style="color: red" *ngIf="registerForm.get('email')?.errors?.['email']">-->
+<!--          Email nhập không dúng định dạng-->
+<!--        </p>-->
+<!--        <p id="checkMail" style="color: red " *ngIf="!checkDuplicateMail">Email đã tồn tại</p>-->
+<!--        &lt;!&ndash; End Email &ndash;&gt;-->
 
-        <div class="form-outline mb-4">
-          <input type="text" class="form-control" placeholder="Nhập Last Name"
-                 formControlName="lastName" id="registerLastName">
-          <label class="form-label" for="registerLastName">Last Name</label>
+<!--        &lt;!&ndash; Phone &ndash;&gt;-->
+<!--        <div class="form-outline mb-4">-->
+<!--          <input type="text" class="form-control" id="registerPhone" placeholder="Nhập số điện thoại"-->
+<!--                 formControlName="phoneNumber">-->
+<!--          <label class="form-label" for="registerPhone">Phone</label>-->
 
-        </div>
-        <!--end lastName-->
-
-        <!--gender-->
-        <div class="form-outline mb-4">
-          <input type="text" class="form-control" placeholder="Nhập giới tính"
-                 formControlName="gender" id="registerGender">
-          <label class="form-label" for="registerGender">Gender</label>
-
-        </div>
-        <!--end gender-->
-
-        <!--address-->
-
-        <div class="form-outline mb-4">
-          <input type="text" class="form-control" placeholder="Nhập địa chỉ"
-                 formControlName="address" id="registerAddress">
-          <label class="form-label" for="registerAddress">Address</label>
-
-        </div>
-        <!--end address-->
-
-        <!-- Button -->
-        <div class="d-grid">
-          <button type="submit" [disabled]="!registerForm.valid" class="btn btn-primary btn-block mb-3">Đăng ký</button>
-        </div>
-      </form>
-
-    </div>
-  </div>
-  <!-- Pills content -->
-
-
-
-</div>
-<div id="imgLogin">
-  <img src="https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-       alt="Sample photo" class="img-fluid">
-</div>
-</body>
-
-<style>
-  #signIn{
-    /*margin: 200px 500px 100px 500px  ;*/
-    position: fixed;
-    width: 400px;
-    top: 20px;
-    left: 500px;
-    background-color: snow;
-    background-size: cover ;
-    padding: 5px;
-    border-radius:3% 3% 3% 3%;
-  }
-
-  #imgLogin{
+<!--        </div>-->
 
 
-  }
+<!--        <div-->
+<!--          *ngIf="!registerForm.get('phoneNumber')?.invalid && (registerForm.get('phoneNumber')?.dirty || registerForm.get('phoneNumber')?.touched)">-->
+<!--          <div style="color: red" *ngIf="registerForm.get('phoneNumber')?.errors?.['required']">-->
+<!--            <div>Số điện thoại không được bỏ trống</div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <p style="color: red" *ngIf="registerForm.get('phoneNumber')?.errors?.['pattern']">-->
+<!--          Số điện thoại không đúng định dạng - 10 so-->
+<!--        </p>-->
 
-</style>
+<!--        &lt;!&ndash;End Phone &ndash;&gt;-->
+
+<!--        &lt;!&ndash;birthday &ndash;&gt;-->
+<!--        <div class="form-outline mb-4">-->
+<!--          <input type="date" class="form-control" id="datePickerId" formControlName="birthday">-->
+<!--        </div>-->
+
+<!--        <div-->
+<!--          *ngIf="!registerForm.get('birthday')?.invalid && (registerForm.get('birthday')?.dirty || registerForm.get('birthday')?.touched)">-->
+<!--          <div style="color: red" *ngIf="registerForm.get('birthday')?.errors?.['required']">-->
+<!--            <div>Ngày sinh không được bỏ trống</div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash;end birthday &ndash;&gt;-->
+
+<!--        &lt;!&ndash;fistName&ndash;&gt;-->
+<!--        <div class="form-outline mb-4">-->
+<!--          <input type="text" class="form-control" placeholder="Nhập First Name"-->
+<!--                 formControlName="fistName" id="registerName">-->
+<!--          <label class="form-label" for="registerName">First Name</label>-->
+
+<!--        </div>-->
+
+<!--        &lt;!&ndash;end fistName&ndash;&gt;-->
+
+<!--        &lt;!&ndash;lastName&ndash;&gt;-->
+
+<!--        <div class="form-outline mb-4">-->
+<!--          <input type="text" class="form-control" placeholder="Nhập Last Name"-->
+<!--                 formControlName="lastName" id="registerLastName">-->
+<!--          <label class="form-label" for="registerLastName">Last Name</label>-->
+
+<!--        </div>-->
+<!--        &lt;!&ndash;end lastName&ndash;&gt;-->
+
+<!--        &lt;!&ndash;gender&ndash;&gt;-->
+<!--        <div class="form-outline mb-4">-->
+<!--          <input type="text" class="form-control" placeholder="Nhập giới tính"-->
+<!--                 formControlName="gender" id="registerGender">-->
+<!--          <label class="form-label" for="registerGender">Gender</label>-->
+
+<!--        </div>-->
+<!--        &lt;!&ndash;end gender&ndash;&gt;-->
+
+<!--        &lt;!&ndash;address&ndash;&gt;-->
+
+<!--        <div class="form-outline mb-4">-->
+<!--          <input type="text" class="form-control" placeholder="Nhập địa chỉ"-->
+<!--                 formControlName="address" id="registerAddress">-->
+<!--          <label class="form-label" for="registerAddress">Address</label>-->
+
+<!--        </div>-->
+<!--        &lt;!&ndash;end address&ndash;&gt;-->
+
+<!--        &lt;!&ndash; Button &ndash;&gt;-->
+<!--        <div class="d-grid">-->
+<!--          <button type="submit" [disabled]="!registerForm.valid" href="signin-signup.component.html" class="btn btn-primary btn-block mb-3">Đăng ký</button>-->
+<!--        </div>-->
+<!--      </form>-->
+
+<!--    </div>-->
+<!--  </div>-->
+<!--  &lt;!&ndash; Pills content &ndash;&gt;-->
 
 
-<!-- Font Awesome -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-  rel="stylesheet"
-/>
-<!-- Google Fonts -->
-<link
-  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-  rel="stylesheet"
-/>
-<!-- MDB -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css"
-  rel="stylesheet"
-/>
+
+<!--</div>-->
+<!--<div id="imgLogin">-->
+<!--  <img src="https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"-->
+<!--       alt="Sample photo" class="img-fluid">-->
+<!--</div>-->
+<!--</body>-->
+
+<!--<style>-->
+<!--  #signIn{-->
+<!--    /*margin: 200px 500px 100px 500px  ;*/-->
+<!--    position: fixed;-->
+<!--    width: 400px;-->
+<!--    top: 20px;-->
+<!--    left: 500px;-->
+<!--    background-color: snow;-->
+<!--    background-size: cover ;-->
+<!--    padding: 5px;-->
+<!--    border-radius:3% 3% 3% 3%;-->
+<!--  }-->
+
+<!--  #imgLogin{-->
+
+
+<!--  }-->
+
+<!--</style>-->
+
+
+<!--&lt;!&ndash; Font Awesome &ndash;&gt;-->
+<!--<link-->
+<!--  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"-->
+<!--  rel="stylesheet"-->
+<!--/>-->
+<!--&lt;!&ndash; Google Fonts &ndash;&gt;-->
+<!--<link-->
+<!--  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"-->
+<!--  rel="stylesheet"-->
+<!--/>-->
+<!--&lt;!&ndash; MDB &ndash;&gt;-->
+<!--<link-->
+<!--  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css"-->
+<!--  rel="stylesheet"-->
+<!--/>-->
