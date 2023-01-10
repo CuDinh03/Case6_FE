@@ -27,7 +27,7 @@ export class PageMainComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.view()
+    this.view();
   }
 
   createForm = new FormGroup({

@@ -149,8 +149,8 @@
                            alt="">
                       <div class="ml-2">
                         <div>
-                          boy dep trai
-                        </div>
+                          {{userName}}
+                        </div>1
                         <div class="btn-group">
                           <button type="button" class="btn p-0" data-bs-toggle="dropdown" aria-expanded="false">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
@@ -167,17 +167,17 @@
                             </svg>
                           </button>
 
-                          <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Công khai</a></li>
-                            <li><a class="dropdown-item" href="#">Bạn bè </a></li>
-                            <li><a class="dropdown-item" href="#">Chỉ mình tôi </a></li>
-                          </ul>
+                          <select class="dropdown-menu" formControlName="status">
+                            <option class="dropdown-item" href="#" value="1">Công khai</option>
+                            <option class="dropdown-item" href="#" value="2">Bạn bè </option>
+                            <option class="dropdown-item" href="#" value="3">Chỉ mình tôi </option>
+                          </select>
                         </div>
                       </div>
                     </div>
                   </div>
                   <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                            placeholder="Username, đang nghĩ gì thế ?"></textarea>
+                            placeholder="{{userName}}, đang nghĩ gì thế ?" formControlName="content"></textarea>
                   <!--                  click vao de up anh-->
                   <textarea readonly class="form-control" rows="5">
                                           ---------
