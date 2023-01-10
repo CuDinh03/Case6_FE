@@ -74,7 +74,7 @@
             <div class="cover-body d-flex justify-content-between align-items-center">
               <div>
                 <img class="profile-pic" src="{{friend.img}}" alt="profile">
-                <span class="profile-name">{{friend.fistName}} {{friend.lastName}}</span><br>
+                <span class="profile-name">{{friend.firstName}} {{friend.lastName}}</span><br>
 
               </div>
 
@@ -101,7 +101,7 @@
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                   <circle cx="12" cy="7" r="4"></circle>
                 </svg>
-                <a class="pt-1px d-none d-md-block" href="#">About : {{friend.fistName}}</a>
+                <a class="pt-1px d-none d-md-block" href="#">About : {{friend.firstName}}</a>
               </li>
               <li class="header-link-item ml-3 pl-3 border-left d-flex align-items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users mr-1 icon-md">
@@ -458,7 +458,7 @@
                               <img class="img-xs rounded-circle" src="{{f.img}}" alt="">
                             </div>
                             </th>
-                            <td  style="text-align: center">{{f.fistName}} {{f.lastName}}</td>
+                            <td  style="text-align: center">{{f.firstName}} {{f.lastName}}</td>
                         </table>
 
                         <div class="modal-footer">
@@ -475,7 +475,7 @@
                   <div class="d-flex align-items-center hover-pointer">
                     <img class="img-xs rounded-circle" src="{{m.img}}" alt="">
                     <div class="ml-2">
-                      <p>{{m.fistName}} {{m.lastName}}</p>
+                      <p>{{m.firstName}} {{m.lastName}}</p>
                     </div>
                   </div>
                 </div>

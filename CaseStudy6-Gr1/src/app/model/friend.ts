@@ -1,7 +1,7 @@
 export class Friend{
 
   id !: number;
-  fistName !: string;
+  firstName !: string;
   lastName !: string;
   birthDay !: Date;
   img !: string;
@@ -9,9 +9,9 @@ export class Friend{
   address !: string;
   phoneNumber !: string;
 
-  constructor(id: number, fistName: string, lastName: string, birthDay: Date, img: string, gender: string, address: string, phoneNumber: string) {
+  constructor(id: number, firstName: string, lastName: string, birthDay: Date, img: string, gender: string, address: string, phoneNumber: string) {
     this.id = id;
-    this.fistName = fistName;
+    this.firstName = firstName;
     this.lastName = lastName;
     this.birthDay = birthDay;
     this.img = img;
