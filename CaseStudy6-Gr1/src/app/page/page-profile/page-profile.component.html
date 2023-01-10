@@ -251,7 +251,7 @@
       </div>
       <!-- left wrapper end -->
       <!-- middle wrapper start -->
-      <div class="col-md-8 col-xl-6 middle-wrapper">
+      <div class="col-md-8 col-xl-6 middle-wrapper" *ngFor="let s of statuses, index as i">
         <div class="row">
           <div class="col-md-12 grid-margin">
             <div class="card rounded">
@@ -260,8 +260,8 @@
                   <div class="d-flex align-items-center">
                     <img class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg" alt="">
                     <div class="ml-2">
-                      <p>boy dep trai</p>
-                      <p class="tx-11 text-muted">1 min ago</p>
+                      <p>{{s.account.userName}}</p>
+                      <p class="tx-11 text-muted">{{s.postDay}}</p>
                     </div>
                   </div>
                   <div class="dropdown">
@@ -364,8 +364,8 @@
                   <div class="d-flex align-items-center">
                     <img class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg" alt="">
                     <div class="ml-2">
-                      <p>Mike Popescu</p>
-                      <p class="tx-11 text-muted">5 min ago</p>
+                      <p>{{s.account.userName}}</p>
+                      <p class="tx-11 text-muted">{{s.postDay}}</p>
                     </div>
                   </div>
                   <div class="dropdown">
@@ -422,7 +422,7 @@
                 </div>
               </div>
               <div class="card-body">
-                <p class="mb-3 tx-14">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <p class="mb-3 tx-14">{{s.content}}</p>
                 <img class="img-fluid" src="../../../assets/images/sample2.jpg" alt="">
               </div>
               <div class="card-footer">
