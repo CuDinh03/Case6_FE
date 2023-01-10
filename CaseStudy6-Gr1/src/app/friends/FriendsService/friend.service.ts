@@ -24,7 +24,7 @@ userToken : any;
   }
 
   getAllFriends() :Observable<Friend[]>{
-  return this.http.get<Friend[]>("http://localhost:8080/" + this.userToken.id);
+  return this.http.get<Friend[]>("http://localhost:8080/profile/" + this.userToken.id);
 }
 getInFor(id:number) :Observable<Friend>{
     return this.http.get<Friend>("http://localhost:8080/profileId/"+id);

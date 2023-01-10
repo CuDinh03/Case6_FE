@@ -3,6 +3,8 @@ import {Router} from "@angular/router";
 import {StatusService} from "../../service/status.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Status} from "../../model/status";
+import {Friend} from "../../model/friend";
+import {FriendService} from "../../friends/FriendsService/friend.service";
 
 @Component({
   selector: 'app-page-main',
@@ -15,12 +17,17 @@ export class PageMainComponent implements OnInit {
   statusE!: Status;
   userToken : any;
 
-  constructor(private router: Router, private statusService: StatusService ) {
+
+  friendList ! : Friend[];
+  friendInF! : Friend;
+
+  constructor(public friendservice :FriendService, private router: Router, private statusService: StatusService ) {
   }
 
   view(): void {
     this.statusService.getAll().subscribe((data) => {
       this.statuses = data[0];
+
       console.log(this.statuses);
     })
   }
@@ -29,6 +36,7 @@ export class PageMainComponent implements OnInit {
     this.view();
     // @ts-ignore
     this.userToken = JSON.parse(localStorage.getItem("userToken"));
+    this.getAllFriends();
   }
 
   createForm = new FormGroup({
@@ -49,6 +57,13 @@ export class PageMainComponent implements OnInit {
       this.router.navigate(["/main"]);
     })
 
+  }
+
+  getAllFriends(){
+    this.friendservice.getAllFriends().subscribe((friends) => {
+      this.friendList=friends;
+
+    })
   }
 
   showEdtit(index: number) {
