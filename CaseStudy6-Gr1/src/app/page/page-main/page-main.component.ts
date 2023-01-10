@@ -49,7 +49,7 @@ export class PageMainComponent implements OnInit {
 
   }
 
-  showEdtit(index: number) {
+  showEdit(index: number) {
     console.log(index);
     this.statusService.findById(index).subscribe((result) => {
       console.log(result);
