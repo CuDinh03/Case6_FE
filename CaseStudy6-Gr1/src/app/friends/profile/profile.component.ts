@@ -12,8 +12,12 @@ import {Router} from "@angular/router";
 export class ProfileComponent implements  OnInit{
   ngOnInit(): void {
     this.getInFor();
+    this.getMutualFriend();
+    this.getAllFriendsOfFriend()
   }
+  mutualFriend!:Friend[];
   friend!:Friend;
+  fiendList!:Friend[];
   constructor(private friendService: FriendService,private router: Router) {
   }
 getInFor(){
@@ -21,12 +25,25 @@ getInFor(){
       this.friend = data;
     });
 
+
   }
+  getMutualFriend(): void{
+    this.friendService.getMutualFriend(this.friendService.idInf).subscribe((data)=>{
+      this.mutualFriend = data;
+
+    });
+
+  };
   mainView(){
     this.router.navigate(['/main'])
   }
   profileView(){
     this.router.navigate(['/profile'])
+  }
+  getAllFriendsOfFriend(){
+    this.friendService.getAllFriends1(this.friendService.idInf).subscribe((data)=>{
+      this.fiendList= data;
+    })
   }
 
 

@@ -123,7 +123,7 @@
                   <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                 </svg>
                 <a class="pt-1px d-none d-md-block" type="button" data-bs-target="#exampleModalToggle"
-                   data-bs-toggle="modal">Friends <span class="text-muted tx-12">3,765</span></a>
+                   data-bs-toggle="modal">Friends <span class="text-muted tx-12">{{friendList.length}}</span></a>
               </li>
               <li class="header-link-item ml-3 pl-3 border-left d-flex align-items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -554,9 +554,7 @@
                                     style="text-align: center">{{f.fistName}} {{f.lastName}}</button>
                         </table>
 
-                        <div class="modal-footer">
-                          <!--                          <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>-->
-                        </div>
+
                       </div>
                     </div>
                   </div>
