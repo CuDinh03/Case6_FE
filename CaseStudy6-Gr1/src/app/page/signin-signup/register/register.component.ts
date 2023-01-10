@@ -1,21 +1,23 @@
 import {Component, OnInit} from '@angular/core';
-import {LoginService} from "../../account/AccountService/user.service";
-import {Router} from "@angular/router";
+
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 import Swal from "sweetalert2";
+import {LoginService} from "../../../account/AccountService/user.service";
 
 @Component({
-  selector: 'app-signin-signup',
-  templateUrl: './signin-signup.component.html',
-
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class SigninSignupComponent implements OnInit{
+export class RegisterComponent implements OnInit {
 
   checkDuplicateMail: boolean = true
   checkDuplicateUsername: boolean = true
 
   constructor(private loginService: LoginService, private router: Router) {
   }
+
   ngOnInit(): void {
   }
 
@@ -65,19 +67,4 @@ export class SigninSignupComponent implements OnInit{
       document.getElementById("abc").style.display = "none";
     }
   }
-
-  loginForm = new FormGroup({
-    userName: new FormControl("",Validators.required),
-    password: new FormControl("",Validators.required)
-  })
-
-  login(){
-    this.loginService.login(this.loginForm.value).subscribe((data)=>{
-      this.loginService.setUserToken(data);
-      this.loginService.setToken(data.accessToken);
-      this.router.navigate(["/main"])
-    })
-  }
-
-
 }

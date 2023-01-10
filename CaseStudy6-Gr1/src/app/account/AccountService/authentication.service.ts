@@ -3,7 +3,7 @@ import {environment} from "../../environments/environment";
 import {BehaviorSubject, map, Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {UserToken} from "../../model/user-token";
-import {User} from "../../model/user";
+import {Router} from "@angular/router";
 
 
 const API_URL = environment.apiUrl;
@@ -15,14 +15,14 @@ export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<UserToken>;
   public currentUser: Observable<UserToken>
   update = new EventEmitter<string>();
-  constructor(private httpClient : HttpClient) {
+  constructor(private httpClient : HttpClient , private router: Router) {
     this.currentUserSubject = new BehaviorSubject<UserToken>(JSON.parse(<string>localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-
   logout() {
     localStorage.clear();
+    this.router.navigate(["/login"]);
   }
 
 }

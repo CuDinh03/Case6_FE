@@ -3,6 +3,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 import {Router} from "@angular/router";
 import {LoginService} from "../../../account/AccountService/user.service";
+import {AuthenticationService} from "../../../account/AccountService/authentication.service";
+
 
 @Component({
   selector: 'app-login',
@@ -11,7 +13,7 @@ import {LoginService} from "../../../account/AccountService/user.service";
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService: LoginService, private router: Router) {
+  constructor(private loginService: LoginService, private router: Router, private authenticationService : AuthenticationService) {
   }
 
   ngOnInit(): void {
@@ -29,6 +31,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(["/main"])
     })
   }
-
-
+  logout(){
+    this.authenticationService.logout();
+  }
 }
