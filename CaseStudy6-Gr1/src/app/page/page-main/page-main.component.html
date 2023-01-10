@@ -30,10 +30,12 @@
 
           </td>
           <td class="nav1">
-
-            <img type="button" (click)="profileView()" class="img-xs rounded-circle"
-                 src="../../../assets/pic/img.jpeg" alt="">
-
+            <svg type="button" (click)="profileView()" xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                 fill="currentColor" class="bi bi-file-earmark-person" viewBox="0 0 16 16">
+              <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+              <path
+                d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5v2z"/>
+            </svg>
           </td>
         </tr>
       </div>
@@ -45,10 +47,11 @@
 <div class="container">
   <div class="btn-group dropup" id="messenger">
     <button type="button" class="btn " data-bs-toggle="dropdown" aria-expanded="false">
-      <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-messenger"
+      <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-chat-dots"
            viewBox="0 0 16 16">
+        <path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
         <path
-          d="M0 7.76C0 3.301 3.493 0 8 0s8 3.301 8 7.76-3.493 7.76-8 7.76c-.81 0-1.586-.107-2.316-.307a.639.639 0 0 0-.427.03l-1.588.702a.64.64 0 0 1-.898-.566l-.044-1.423a.639.639 0 0 0-.215-.456C.956 12.108 0 10.092 0 7.76zm5.546-1.459-2.35 3.728c-.225.358.214.761.551.506l2.525-1.916a.48.48 0 0 1 .578-.002l1.869 1.402a1.2 1.2 0 0 0 1.735-.32l2.35-3.728c.226-.358-.214-.761-.551-.506L9.728 7.381a.48.48 0 0 1-.578.002L7.281 5.98a1.2 1.2 0 0 0-1.735.32z"/>
+          d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z"/>
       </svg>
     </button>
     <ul class="dropdown-menu">
@@ -108,11 +111,11 @@
               <div class="card-header">
                 <div class="d-flex align-items-center justify-content-between">
                   <div class="d-flex align-items-center">
-                    <img class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg" alt="">
+                    <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
                     <div class="ml-2">
 
                       <!--                      nhập trạng thái-->
-                      <input readonly data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" type="text"
+                      <input data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" type="text"
                              class="form-control" id="formGroupExampleInput2" placeholder="Hôm nay bạn nghĩ gì">
                     </div>
                   </div>
@@ -133,12 +136,14 @@
           </div>
 
           <!--modal bai viet-->
+
           <div class="modal fade" id="exampleModalToggle2" aria-hidden="true"
                aria-labelledby="exampleModalToggleLabel2"
                tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <form [formGroup]="createForm" (ngSubmit)="create()">
+              <form [formGroup]="createForm" (ngSubmit)="create()">
+                <div class="modal-content">
+
                   <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Tạo bài viết</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -149,8 +154,8 @@
                            alt="">
                       <div class="ml-2">
                         <div>
-                          {{userName}}
-                        </div>1
+                          <p>{{userName}}</p>
+                        </div>
                         <div class="btn-group">
                           <button type="button" class="btn p-0" data-bs-toggle="dropdown" aria-expanded="false">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
@@ -166,11 +171,10 @@
                                 d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0ZM4.882 1.731a.482.482 0 0 0 .14.291.487.487 0 0 1-.126.78l-.291.146a.721.721 0 0 0-.188.135l-.48.48a1 1 0 0 1-1.023.242l-.02-.007a.996.996 0 0 0-.462-.04 7.03 7.03 0 0 1 2.45-2.027Zm-3 9.674.86-.216a1 1 0 0 0 .758-.97v-.184a1 1 0 0 1 .445-.832l.04-.026a1 1 0 0 0 .152-1.54L3.121 6.621a.414.414 0 0 1 .542-.624l1.09.818a.5.5 0 0 0 .523.047.5.5 0 0 1 .724.447v.455a.78.78 0 0 0 .131.433l.795 1.192a1 1 0 0 1 .116.238l.73 2.19a1 1 0 0 0 .949.683h.058a1 1 0 0 0 .949-.684l.73-2.189a1 1 0 0 1 .116-.238l.791-1.187A.454.454 0 0 1 11.743 8c.16 0 .306.084.392.218.557.875 1.63 2.282 2.365 2.282a.61.61 0 0 0 .04-.001 7.003 7.003 0 0 1-12.658.905Z"/>
                             </svg>
                           </button>
-
                           <select class="dropdown-menu" formControlName="status">
                             <option class="dropdown-item" href="#" value="1">Công khai</option>
-                            <option class="dropdown-item" href="#" value="2">Bạn bè </option>
-                            <option class="dropdown-item" href="#" value="3">Chỉ mình tôi </option>
+                            <option class="dropdown-item" href="#" value="2">Bạn bè</option>
+                            <option class="dropdown-item" href="#" value="3">Chỉ mình tôi</option>
                           </select>
                         </div>
                       </div>
@@ -184,36 +188,39 @@
                     ------------Thêm ảnh------------
                                           ---------
                   </textarea>
-                </form>
-              </div>
-              <div class="themGido">
-                <div class="choiceBonus">
-                  <td>
-                    <p>Thêm vào bài viết của bạn</p>
-
-                  </td>
-                  <td>
-
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-light position-relative">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                           class="bi bi-image" viewBox="0 0 16 16">
-                        <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                        <path
-                          d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/>
-                      </svg>
-                    </button>
-
-                  </td>
 
                 </div>
+                <div class="themGido">
+                  <div class="choiceBonus">
+                    <td>
+                      <p>Thêm vào bài viết của bạn</p>
 
-              </div>
-              <div class="modal-footer">
-                <button class="btn btn-primary">Đăng</button>
-              </div>
+                    </td>
+                    <td>
+
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-light position-relative">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-image" viewBox="0 0 16 16">
+                          <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                          <path
+                            d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/>
+                        </svg>
+                      </button>
+
+                    </td>
+
+                  </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-primary">Đăng</button>
+
+                </div>
+              </form>
             </div>
+
           </div>
         </div>
 
@@ -299,7 +306,8 @@
                                     placeholder="" formControlName="content"></textarea>
                         </div>
                         <div class="modal-footer">
-                          <button class="btn btn-primary">Đăng</button>
+                          <button class="btn btn-primary" data-bs-dismiss="modal">Đăng</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal" hidden>Close</button>
                         </div>
                       </form>
                     </div>

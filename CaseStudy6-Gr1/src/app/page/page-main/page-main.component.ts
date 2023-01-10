@@ -40,14 +40,15 @@ export class PageMainComponent implements OnInit {
       content: this.createForm.value.content,
       status: this.createForm.value.status,
       account: {
-        id: localStorage.getItem("id")
+        id : 1
       }
     }
+    console.log(this.status1);
     this.statusService.saveStatus(this.status1).subscribe((data) => {
+      this.view();
       this.createForm.reset();
-      this.router.navigate(["/main"]);
+      this.mainView();
     })
-
   }
 
   showEdtit(index: number) {
@@ -68,14 +69,15 @@ export class PageMainComponent implements OnInit {
     this.statusService.editStatus(index, status2).subscribe(() => {
       this.view();
       this.createForm.reset();
-      this.router.navigate(["/main"]);
+      this.mainView();
     })
   }
 
   deleteEdit(index: number) {
     this.statusService.deleteStatus(index).subscribe(() => {
       this.view();
-      this.router.navigate(['/main'])})
+      this.mainView();
+    })
   }
 
   mainView() {
