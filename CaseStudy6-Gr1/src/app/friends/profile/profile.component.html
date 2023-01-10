@@ -27,10 +27,9 @@
 
           </td>
           <td class="nav1">
-            <svg type="button" (click)="profileView()"  xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-file-earmark-person" viewBox="0 0 16 16">
-              <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-              <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5v2z"/>
-            </svg>
+
+            <img type="button" (click)="profileView()" class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg" alt="">
+
           </td>
         </tr>
       </div>
@@ -41,22 +40,21 @@
 <div class="container">
   <div class="btn-group dropup" id="messenger">
     <button type="button" class="btn " data-bs-toggle="dropdown" aria-expanded="false">
-      <svg  xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
-        <path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-        <path d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z"/>
+      <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-messenger" viewBox="0 0 16 16">
+        <path d="M0 7.76C0 3.301 3.493 0 8 0s8 3.301 8 7.76-3.493 7.76-8 7.76c-.81 0-1.586-.107-2.316-.307a.639.639 0 0 0-.427.03l-1.588.702a.64.64 0 0 1-.898-.566l-.044-1.423a.639.639 0 0 0-.215-.456C.956 12.108 0 10.092 0 7.76zm5.546-1.459-2.35 3.728c-.225.358.214.761.551.506l2.525-1.916a.48.48 0 0 1 .578-.002l1.869 1.402a1.2 1.2 0 0 0 1.735-.32l2.35-3.728c.226-.358-.214-.761-.551-.506L9.728 7.381a.48.48 0 0 1-.578.002L7.281 5.98a1.2 1.2 0 0 0-1.735.32z"/>
       </svg>
     </button>
     <ul class="dropdown-menu">
       <li><a class="dropdown-item" href="#">
-        <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
+        <img class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg" alt="">
         name user
       </a></li>
       <li><a class="dropdown-item" href="#">
-        <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
+        <img class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg" alt="">
         name user
       </a></li>
       <li><a class="dropdown-item" href="#">
-        <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
+        <img class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg" alt="">
         name user
       </a></li>
 
@@ -69,15 +67,15 @@
           <div class="cover">
             <div class="gray-shade"></div>
             <figure>
-              <img src="https://bootdey.com/img/Content/bg1.jpg" class="img-fluid" alt="profile cover">
+              <img src="https://i.ytimg.com/vi/xvc1pUxBII8/hqdefault.jpg">
             </figure>
             <div class="cover-body d-flex justify-content-between align-items-center">
               <div>
-                <img class="profile-pic" src="{{friend.img}}" alt="profile">
-                <span class="profile-name">{{friend.fistName}} {{friend.lastName}}</span>
+                <img class="profile-pic" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="profile">
+                <span class="profile-name">Amiah Burton</span>
               </div>
               <div class="d-none d-md-block">
-                <button class="btn btn-primary btn-icon-text btn-edit-profile">
+                <button class="btn " style="background-color: #d3d7f4;">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit btn-icon-prepend">
                     <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                     <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
@@ -99,7 +97,7 @@
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                   <circle cx="12" cy="7" r="4"></circle>
                 </svg>
-                <a class="pt-1px d-none d-md-block" href="#">About : {{friend.fistName}}</a>
+                <a class="pt-1px d-none d-md-block" href="#">About</a>
               </li>
               <li class="header-link-item ml-3 pl-3 border-left d-flex align-items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users mr-1 icon-md">
@@ -167,20 +165,20 @@
             </div>
             <p>Hi! I'm Amiah the Senior UI Designer at Vibrant. We hope you enjoy the design and quality of Social.</p>
             <div class="mt-3">
-              <label class="tx-11 font-weight-bold mb-0 text-uppercase">BirthDay :</label>
-              <p class="text-muted">{{friend.birthDay}}</p>
+              <label class="tx-11 font-weight-bold mb-0 text-uppercase">Joined:</label>
+              <p class="text-muted">November 15, 2015</p>
             </div>
             <div class="mt-3">
               <label class="tx-11 font-weight-bold mb-0 text-uppercase">Lives:</label>
-              <p class="text-muted">{{friend.address}}</p>
+              <p class="text-muted">New York, USA</p>
             </div>
             <div class="mt-3">
-              <label class="tx-11 font-weight-bold mb-0 text-uppercase">PhoneNumber:</label>
-              <p class="text-muted">{{friend.phoneNumber}}</p>
+              <label class="tx-11 font-weight-bold mb-0 text-uppercase">Email:</label>
+              <p class="text-muted">me@nobleui.com</p>
             </div>
             <div class="mt-3">
-              <label class="tx-11 font-weight-bold mb-0 text-uppercase">Gender:</label>
-              <p class="text-muted">{{friend.gender}}</p>
+              <label class="tx-11 font-weight-bold mb-0 text-uppercase">Website:</label>
+              <p class="text-muted">www.nobleui.com</p>
             </div>
             <div class="mt-3 d-flex social-links">
               <a href="javascript:;" class="btn d-flex align-items-center justify-content-center border mr-2 btn-icon github">
@@ -213,9 +211,9 @@
               <div class="card-header">
                 <div class="d-flex align-items-center justify-content-between">
                   <div class="d-flex align-items-center">
-                    <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
+                    <img class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg" alt="">
                     <div class="ml-2">
-                      <p>Mike Popescu</p>
+                      <p>boy dep trai</p>
                       <p class="tx-11 text-muted">1 min ago</p>
                     </div>
                   </div>
@@ -296,7 +294,7 @@
               <div class="card-header">
                 <div class="d-flex align-items-center justify-content-between">
                   <div class="d-flex align-items-center">
-                    <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
+                    <img class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg" alt="">
                     <div class="ml-2">
                       <p>Mike Popescu</p>
                       <p class="tx-11 text-muted">5 min ago</p>
@@ -438,7 +436,7 @@
                 <h6 class="card-title">suggestions for you</h6>
                 <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
                   <div class="d-flex align-items-center hover-pointer">
-                    <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="">
+                    <img class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg" alt="">
                     <div class="ml-2">
                       <p>Mike Popescu</p>
                       <p class="tx-11 text-muted" >12 Mutual Friends</p>
@@ -453,15 +451,19 @@
                           <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Danh sách bạn bè </h1>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-<!--                        <table class="table table-striped" style="background-color: darksalmon">-->
+                        <table class="table table-striped" style="background-color: darksalmon">
 
-<!--                          <tr *ngFor="let f of friendList ">-->
-<!--                            <th><div class="modal-body">-->
-<!--                              <img class="img-xs rounded-circle" src="{{f.img}}" alt="">-->
-<!--                            </div>-->
-<!--                            </th>-->
-<!--                            <button (click)="showProfile(f.id)" style="text-align: center">{{f.fistName}} {{f.lastName}}</button>-->
-<!--                        </table>-->
+                          <tr *ngFor="let f of friendList ">
+                            <th><div class="modal-body">
+                              <img class="img-xs rounded-circle" src="{{f.img}}" alt="">
+                            </div>
+                            </th>
+                            <th style="text-align: center">{{f.fistName}} {{f.lastName}}</th>
+                            <th style="text-align: center">{{f.address}} </th>
+
+                          </tr>
+
+                        </table>
 
                         <div class="modal-footer">
                           <!--                          <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>-->
@@ -483,7 +485,7 @@
                 </div>
                 <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
                   <div class="d-flex align-items-center hover-pointer">
-                    <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
+                    <img class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg" alt="">
                     <div class="ml-2">
                       <p>Mike Popescu</p>
                       <p class="tx-11 text-muted">12 Mutual Friends</p>
@@ -500,7 +502,7 @@
                 </div>
                 <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
                   <div class="d-flex align-items-center hover-pointer">
-                    <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="">
+                    <img class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg" alt="">
                     <div class="ml-2">
                       <p>Mike Popescu</p>
                       <p class="tx-11 text-muted">12 Mutual Friends</p>
@@ -517,7 +519,7 @@
                 </div>
                 <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
                   <div class="d-flex align-items-center hover-pointer">
-                    <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="">
+                    <img class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg" alt="">
                     <div class="ml-2">
                       <p>Mike Popescu</p>
                       <p class="tx-11 text-muted">12 Mutual Friends</p>

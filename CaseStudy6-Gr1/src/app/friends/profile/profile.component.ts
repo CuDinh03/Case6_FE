@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {FriendService} from "../FriendsService/friend.service";
-import {dateTimestampProvider} from "rxjs/internal/scheduler/dateTimestampProvider";
 import {Friend} from "../../model/friend";
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../../account/AccountService/authentication.service";
