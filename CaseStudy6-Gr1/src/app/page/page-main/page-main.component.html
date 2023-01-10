@@ -125,56 +125,61 @@
           </div>
 
           <!--modal bai viet-->
-          <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
-               tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Tạo bài viết</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <div class="dropdown">
-                    <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
 
-                    <div class="btn-group">
-                      <button type="button" class="btn p-0" data-bs-toggle="dropdown" aria-expanded="false">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                             class="feather feather-more-horizontal icon-lg pb-3px">
-                          <circle cx="12" cy="12" r="1"></circle>
-                          <circle cx="19" cy="12" r="1"></circle>
-                          <circle cx="5" cy="12" r="1"></circle>
-                        </svg>
-                      </button>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Công khai</a></li>
-                        <li><a class="dropdown-item" href="#">Bạn bè </a></li>
-                        <li><a class="dropdown-item" href="#">Chỉ mình tôi </a></li>
-                      </ul>
-                    </div>
+            <div class="modal fade" id="exampleModalToggle2" aria-hidden="true"
+                 aria-labelledby="exampleModalToggleLabel2"
+                 tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <form [formGroup]="createForm" (ngSubmit)="create()">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Tạo bài viết</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                            placeholder="Username, đang nghĩ gì thế ?"></textarea>
-                </div>
-                <div class="modal-footer">
-                  <button class="btn btn-primary">Đăng</button>
+                  <div class="modal-body">
+                    <div class="dropdown">
+                      <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png"
+                           alt="">
+
+                      <div class="btn-group">
+                        <button type="button" class="btn p-0" data-bs-toggle="dropdown" aria-expanded="false">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                               class="feather feather-more-horizontal icon-lg pb-3px">
+                            <circle cx="12" cy="12" r="1"></circle>
+                            <circle cx="19" cy="12" r="1"></circle>
+                            <circle cx="5" cy="12" r="1"></circle>
+                          </svg>
+                        </button>
+                        <select class="dropdown-menu" formControlName="status">
+                          <option class="dropdown-item" href="#" value="1">Công khai</option>
+                          <option class="dropdown-item" href="#" value="2">Bạn bè </option>
+                          <option class="dropdown-item" href="#" value="3">Chỉ mình tôi </option>
+                        </select>
+                      </div>
+                    </div>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                              placeholder= "{{userName}}, đang nghĩ gì thế ?" formControlName="content"></textarea>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-primary">Đăng</button>
+                  </div>
+                  </form>
                 </div>
               </div>
             </div>
-          </div>
 
 
-          <!--baif viet -->
-          <div class="col-md-12 grid-margin">
+          <!--bai viet -->
+          <div class="col-md-12 grid-margin" *ngFor="let s of statuses, index as i">
             <div class="card rounded">
               <div class="card-header">
                 <div class="d-flex align-items-center justify-content-between">
                   <div class="d-flex align-items-center">
                     <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
                     <div class="ml-2">
-                      <p>Mike Popescu</p>
-                      <p class="tx-11 text-muted">1 min ago</p>
+                      <p>{{s.account.userName}}</p>
+                      <p class="tx-11 text-muted">{{s.postDay}}</p>
                     </div>
                   </div>
 
@@ -192,12 +197,12 @@
                       </button>
                       <ul class="dropdown-menu">
                         <li>
-                          <button class="dropdown-item" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">
+                          <button class="dropdown-item" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" (click)="showedtit(s.id)">
                             Chỉnh sửa bài viết
                           </button>
                         </li>
                         <li>
-                          <button class="dropdown-item">Chỉnh sửa đối tượng</button>
+                          <button class="dropdown-item" >Chỉnh sửa đối tượng</button>
                         </li>
                         <li>
                           <hr class="dropdown-divider">
@@ -208,10 +213,14 @@
                   </div>
 
 
+
                   <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
                        aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+
                     <div class="modal-dialog modal-dialog-centered">
+
                       <div class="modal-content">
+                        <form [formGroup]="createForm" (ngSubmit)="edit(s.id)">
                         <div class="modal-header">
                           <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Sửa bài viết</h1>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -238,14 +247,18 @@
                             </div>
                           </div>
                           <textarea class="form-control" id="exampleFormControlTextarea" rows="3"
-                                    placeholder="noi dung cần sửa"></textarea>
+                                    placeholder="noi dung cần sửa">{{statusE.content}}</textarea>
                         </div>
                         <div class="modal-footer">
                           <button class="btn btn-primary">Đăng</button>
                         </div>
+                        </form>
                       </div>
+
                     </div>
+
                   </div>
+
 
 
                 </div>
@@ -257,7 +270,7 @@
                 <!--                //noi dung cua bai viet -->
 
 
-                <p class="mb-3 tx-14">Nội dung bài viết</p>
+                <p class="mb-3 tx-14">{{s.content}}</p>
                 <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
               </div>
               <div class="card-footer">
@@ -332,8 +345,8 @@
   </div>
 </div>
 
-    <link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/style.css">
 
 
-    <!---->
+<!---->
 

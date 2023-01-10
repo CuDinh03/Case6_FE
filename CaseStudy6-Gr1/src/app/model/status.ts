@@ -5,13 +5,13 @@ export class Status{
   content: string;
   postDay: string
   status: string;
-  owner: Account;
+  account: Account;
 
-  constructor(id: number, content: string, postDay: string, status: string, owner: Account){
+  constructor(id: number, content: string, postDay: string, status: string, account: Account){
     this.id = id;
     this.content = content;
     this.postDay = postDay;
     this.status = status;
-    this.owner = owner;
+    this.account = account;
   }
 }
