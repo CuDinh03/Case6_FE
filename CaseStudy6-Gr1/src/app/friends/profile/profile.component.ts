@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FriendService} from "../FriendsService/friend.service";
+import {dateTimestampProvider} from "rxjs/internal/scheduler/dateTimestampProvider";
 import {Friend} from "../../model/friend";
 import {Router} from "@angular/router";
-import {AuthenticationService} from "../../account/AccountService/authentication.service";
 
 @Component({
   selector: 'app-profile',
@@ -10,31 +10,41 @@ import {AuthenticationService} from "../../account/AccountService/authentication
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements  OnInit{
-
-  userToken: any;
-
   ngOnInit(): void {
     this.getInFor();
-    // @ts-ignore
-    this.userToken=JSON.parse(localStorage.getItem("userToken"));
+    this.getMutualFriend();
+    this.getAllFriendsOfFriend()
   }
+  mutualFriend!:Friend[];
   friend!:Friend;
-  constructor(private friendService: FriendService,private router: Router , private authenticationService : AuthenticationService) {
+  fiendList!:Friend[];
+  constructor(private friendService: FriendService,private router: Router) {
   }
 getInFor(){
     this.friendService.getInFor(this.friendService.idInf).subscribe((data)=>{
       this.friend = data;
     });
 
+
   }
+  getMutualFriend(): void{
+    this.friendService.getMutualFriend(this.friendService.idInf).subscribe((data)=>{
+      this.mutualFriend = data;
+
+    });
+
+  };
   mainView(){
     this.router.navigate(['/main'])
   }
   profileView(){
     this.router.navigate(['/profile'])
   }
-logout(){
-    this.authenticationService.logout()
-}
+  getAllFriendsOfFriend(){
+    this.friendService.getAllFriends1(this.friendService.idInf).subscribe((data)=>{
+      this.fiendList= data;
+    })
+  }
+
 
 }
