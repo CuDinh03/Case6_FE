@@ -18,11 +18,15 @@ export class PageMainComponent implements OnInit {
   constructor(private router: Router, private statusService: StatusService) {
   }
 
-  ngOnInit(): void {
+  view(): void {
     this.statusService.getAll().subscribe((data) => {
       this.statuses = data[0];
       console.log(this.statuses);
     })
+  }
+
+  ngOnInit(): void {
+    this.view()
   }
 
   createForm = new FormGroup({
@@ -39,18 +43,20 @@ export class PageMainComponent implements OnInit {
       }
     }
     this.statusService.saveStatus(this.status1).subscribe((data) => {
-      this.createForm.reset()
+      this.createForm.reset();
       this.router.navigate(["/main"]);
     })
 
   }
 
-  showedtit(index: number) {
+  showEdtit(index: number) {
     console.log(index);
     this.statusService.findById(index).subscribe((result) => {
       console.log(result);
-      this.statusE = result;
-      console.log(this.statusE);
+      this.createForm.patchValue({
+        content: result.content,
+        status: result.status,
+      })
     })
   }
 
@@ -59,12 +65,22 @@ export class PageMainComponent implements OnInit {
     const status2: Status = {content: this.createForm.value.content, status: this.createForm.value.status}
     console.log(status2);
     this.statusService.editStatus(index, status2).subscribe(() => {
+      this.view();
+      this.createForm.reset();
+      this.router.navigate(["/main"]);
+    })
+  }
+
+  deleteEdit(index: number) {
+    this.statusService.deleteStatus(index).subscribe(() => {
+      this.view();
       this.router.navigate(['/main'])})
   }
 
   mainView(){
     this.router.navigate(['/main'])
   }
+
   profileView(){
     this.router.navigate(['/profile'])
   }
