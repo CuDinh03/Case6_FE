@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {StatusService} from "../../service/status.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Status} from "../../model/status";
+import {FriendService} from "../../friends/FriendsService/friend.service";
 
 @Component({
   selector: 'app-page-main',
@@ -15,7 +16,7 @@ export class PageMainComponent implements OnInit {
   statusE!: Status;
   userToken : any;
 
-  constructor(private router: Router, private statusService: StatusService ) {
+  constructor(private router: Router, private statusService: StatusService,private friendService: FriendService) {
   }
 
   view(): void {
@@ -29,6 +30,7 @@ export class PageMainComponent implements OnInit {
     this.view();
     // @ts-ignore
     this.userToken = JSON.parse(localStorage.getItem("userToken"));
+    this.friendService.userToken=this.userToken;
   }
 
   createForm = new FormGroup({

@@ -15,6 +15,7 @@ export class PageProfileComponent implements OnInit {
   friendList ! : Friend[];
   friendInF! : Friend;
   statuses: Status[] = [];
+  userToken!:any;
 
   constructor(public friendservice :FriendService, private router: Router) {
 
@@ -22,12 +23,10 @@ export class PageProfileComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // @ts-ignore
-    this.statusService.findById(localStorage.getItem("id")).subscribe((data) => {
-      this.statuses = data;
-      console.log(this.statuses);
-    })
+
+    this.userToken = this.friendservice.userToken;
     this.getAllFriends();
+
   }
 
   mainView(){
@@ -37,15 +36,12 @@ export class PageProfileComponent implements OnInit {
     this.router.navigate(['/profile'])
   }
   getAllFriends(){
-    this.friendservice.getAllFriends().subscribe((friends) => {
+    this.friendservice.getAllFriends(this.friendservice.userToken.id).subscribe((friends) => {
       this.friendList=friends;
-
     })
   }
   showProfile(id : number){
     this.friendservice.idInf=id;
     this.router.navigate(['showProfile'])
   }
-
-
 }

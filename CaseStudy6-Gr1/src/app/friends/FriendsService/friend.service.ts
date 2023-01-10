@@ -11,14 +11,17 @@ export class FriendService implements  OnInit{
   fiendList!:Friend[];
   idInf!:number;
   name!:string;
+  idToFind!:number;
+  userToken!:any;
+
 
   constructor( private  http: HttpClient) { }
 
   ngOnInit(): void {
-    this.getAllFriends();
+
   }
-  getAllFriends() :Observable<Friend[]>{
-  return this.http.get<Friend[]>("http://localhost:8080/8");
+  getAllFriends(id:number) :Observable<Friend[]>{
+  return this.http.get<Friend[]>("http://localhost:8080/"+id);
 }
 getInFor(id:number) :Observable<Friend>{
     return this.http.get<Friend>("http://localhost:8080/profileId/"+id);
