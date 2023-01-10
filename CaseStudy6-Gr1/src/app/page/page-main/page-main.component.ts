@@ -7,6 +7,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./page-main.component.css']
 })
 export class PageMainComponent {
+
   constructor(private router: Router) {
   }
 
@@ -15,6 +16,9 @@ export class PageMainComponent {
   }
   profileView(){
     this.router.navigate(['/profile'])
+  }
+  findByName(name: string){
+
   }
 
   modalView(){

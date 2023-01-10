@@ -10,6 +10,7 @@ export class FriendService implements  OnInit{
 
   fiendList!:Friend[];
   idInf!:number;
+  name!:string;
 
   constructor( private  http: HttpClient) { }
 
@@ -22,6 +23,16 @@ export class FriendService implements  OnInit{
 getInFor(id:number) :Observable<Friend>{
     return this.http.get<Friend>("http://localhost:8080/profileId/"+id);
 }
+getMutualFriend(id:number) :Observable<Friend[]>{
+    return this.http.get<Friend[]>("http://localhost:8080/mutualfriend/1/"+id)
+}
+  getAllFriends1(id: number) :Observable<Friend[]>{
+    return this.http.get<Friend[]>("http://localhost:8080/"+id);
+  }
+  findFriend(name:string){
+    this.http.get<Friend[]>("http://localhost:8080/")
+  }
+
 
 
 }

@@ -74,15 +74,17 @@
             <div class="cover-body d-flex justify-content-between align-items-center">
               <div>
                 <img class="profile-pic" src="{{friend.img}}" alt="profile">
-                <span class="profile-name">{{friend.fistName}} {{friend.lastName}}</span>
+                <span class="profile-name">{{friend.firstName}} {{friend.lastName}}</span><br>
+
               </div>
+
               <div class="d-none d-md-block">
-                <button class="btn btn-primary btn-icon-text btn-edit-profile">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit btn-icon-prepend">
-                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                  </svg> Edit profile
-                </button>
+<!--                <button class="btn btn-primary btn-icon-text btn-edit-profile">-->
+<!--                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit btn-icon-prepend">-->
+<!--                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>-->
+<!--                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>-->
+<!--                  </svg>-->
+<!--                </button>-->
               </div>
             </div>
           </div>
@@ -99,7 +101,7 @@
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                   <circle cx="12" cy="7" r="4"></circle>
                 </svg>
-                <a class="pt-1px d-none d-md-block" href="#">About : {{friend.fistName}}</a>
+                <a class="pt-1px d-none d-md-block" href="#">About : {{friend.firstName}}</a>
               </li>
               <li class="header-link-item ml-3 pl-3 border-left d-flex align-items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users mr-1 icon-md">
@@ -108,7 +110,7 @@
                   <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                   <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                 </svg>
-                <a class="pt-1px d-none d-md-block"  type="button" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Friends <span class="text-muted tx-12">3,765</span></a>
+                <a class="pt-1px d-none d-md-block"  type="button" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Friends <span class="text-muted tx-12">{{fiendList.length}}</span></a>
               </li>
               <li class="header-link-item ml-3 pl-3 border-left d-flex align-items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image mr-1 icon-md">
@@ -435,14 +437,10 @@
           <div class="col-md-12 grid-margin">
             <div class="card rounded">
               <div class="card-body">
-                <h6 class="card-title">suggestions for you</h6>
+                <h6 class="card-title">{{mutualFriend.length}} bạn chung</h6>
                 <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
                   <div class="d-flex align-items-center hover-pointer">
-                    <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="">
-                    <div class="ml-2">
-                      <p>Mike Popescu</p>
-                      <p class="tx-11 text-muted" >12 Mutual Friends</p>
-                    </div>
+
                   </div>
 
 
@@ -453,15 +451,15 @@
                           <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Danh sách bạn bè </h1>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-<!--                        <table class="table table-striped" style="background-color: darksalmon">-->
+                        <table class="table table-striped" style="background-color: darksalmon">
 
-<!--                          <tr *ngFor="let f of friendList ">-->
-<!--                            <th><div class="modal-body">-->
-<!--                              <img class="img-xs rounded-circle" src="{{f.img}}" alt="">-->
-<!--                            </div>-->
-<!--                            </th>-->
-<!--                            <button (click)="showProfile(f.id)" style="text-align: center">{{f.fistName}} {{f.lastName}}</button>-->
-<!--                        </table>-->
+                          <tr *ngFor="let f of fiendList ">
+                            <th><div class="modal-body">
+                              <img class="img-xs rounded-circle" src="{{f.img}}" alt="">
+                            </div>
+                            </th>
+                            <td  style="text-align: center">{{f.firstName}} {{f.lastName}}</td>
+                        </table>
 
                         <div class="modal-footer">
                           <!--                          <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>-->
@@ -472,99 +470,14 @@
 
 
 
-                  <button class="btn btn-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus" data-toggle="tooltip" title="" data-original-title="Connect">
-                      <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                      <circle cx="8.5" cy="7" r="4"></circle>
-                      <line x1="20" y1="8" x2="20" y2="14"></line>
-                      <line x1="23" y1="11" x2="17" y2="11"></line>
-                    </svg>
-                  </button>
                 </div>
-                <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
+                <div class="d-flex justify-content-between mb-2 pb-2 border-bottom" *ngFor="let m of mutualFriend">
                   <div class="d-flex align-items-center hover-pointer">
-                    <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
+                    <img class="img-xs rounded-circle" src="{{m.img}}" alt="">
                     <div class="ml-2">
-                      <p>Mike Popescu</p>
-                      <p class="tx-11 text-muted">12 Mutual Friends</p>
+                      <p>{{m.firstName}} {{m.lastName}}</p>
                     </div>
                   </div>
-                  <button class="btn btn-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus" data-toggle="tooltip" title="" data-original-title="Connect">
-                      <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                      <circle cx="8.5" cy="7" r="4"></circle>
-                      <line x1="20" y1="8" x2="20" y2="14"></line>
-                      <line x1="23" y1="11" x2="17" y2="11"></line>
-                    </svg>
-                  </button>
-                </div>
-                <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
-                  <div class="d-flex align-items-center hover-pointer">
-                    <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="">
-                    <div class="ml-2">
-                      <p>Mike Popescu</p>
-                      <p class="tx-11 text-muted">12 Mutual Friends</p>
-                    </div>
-                  </div>
-                  <button class="btn btn-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus" data-toggle="tooltip" title="" data-original-title="Connect">
-                      <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                      <circle cx="8.5" cy="7" r="4"></circle>
-                      <line x1="20" y1="8" x2="20" y2="14"></line>
-                      <line x1="23" y1="11" x2="17" y2="11"></line>
-                    </svg>
-                  </button>
-                </div>
-                <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
-                  <div class="d-flex align-items-center hover-pointer">
-                    <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="">
-                    <div class="ml-2">
-                      <p>Mike Popescu</p>
-                      <p class="tx-11 text-muted">12 Mutual Friends</p>
-                    </div>
-                  </div>
-                  <button class="btn btn-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus" data-toggle="tooltip" title="" data-original-title="Connect">
-                      <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                      <circle cx="8.5" cy="7" r="4"></circle>
-                      <line x1="20" y1="8" x2="20" y2="14"></line>
-                      <line x1="23" y1="11" x2="17" y2="11"></line>
-                    </svg>
-                  </button>
-                </div>
-                <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
-                  <div class="d-flex align-items-center hover-pointer">
-                    <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
-                    <div class="ml-2">
-                      <p>Mike Popescu</p>
-                      <p class="tx-11 text-muted">12 Mutual Friends</p>
-                    </div>
-                  </div>
-                  <button class="btn btn-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus" data-toggle="tooltip" title="" data-original-title="Connect">
-                      <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                      <circle cx="8.5" cy="7" r="4"></circle>
-                      <line x1="20" y1="8" x2="20" y2="14"></line>
-                      <line x1="23" y1="11" x2="17" y2="11"></line>
-                    </svg>
-                  </button>
-                </div>
-                <div class="d-flex justify-content-between">
-                  <div class="d-flex align-items-center hover-pointer">
-                    <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
-                    <div class="ml-2">
-                      <p>Mike Popescu</p>
-                      <p class="tx-11 text-muted">12 Mutual Friends</p>
-                    </div>
-                  </div>
-                  <button class="btn btn-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus" data-toggle="tooltip" title="" data-original-title="Connect">
-                      <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                      <circle cx="8.5" cy="7" r="4"></circle>
-                      <line x1="20" y1="8" x2="20" y2="14"></line>
-                      <line x1="23" y1="11" x2="17" y2="11"></line>
-                    </svg>
-                  </button>
                 </div>
 
               </div>
