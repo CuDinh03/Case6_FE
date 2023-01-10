@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {Router} from "@angular/router";
 import {StatusService} from "../../service/status.service";
 import {Status} from "../../model/status";
+import {Friend} from "../../model/friend";
 
 @Component({
   selector: 'app-page-profile',
@@ -10,6 +11,7 @@ import {Status} from "../../model/status";
 })
 export class PageProfileComponent {
   statuses: Status[] = [];
+  friendList: Friend[] = [];
 
   constructor(private router: Router, private statusService: StatusService) {
   }
