@@ -2,39 +2,53 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {FriendService} from "../../friends/FriendsService/friend.service";
 import {Friend} from "../../model/friend";
+import {AuthenticationService} from "../../account/AccountService/authentication.service";
+
 
 @Component({
   selector: 'app-page-profile',
   templateUrl: './page-profile.component.html',
   styleUrls: ['./page-profile.component.css']
 })
+
 export class PageProfileComponent implements OnInit {
 
-  friendList ! : Friend[];
-  friendInF! : Friend;
+  friendList !: Friend[];
+  friendInF!: Friend;
 
-  constructor(public friendservice :FriendService, private router: Router) {
+  userToken: any;
+
+  constructor(public friendservice: FriendService, private router: Router, private authenticationService : AuthenticationService) {
   }
 
-  mainView(){
+
+  mainView() {
     this.router.navigate(['/main'])
   }
-  profileView(){
+
+  profileView() {
     this.router.navigate(['/profile'])
   }
-  getAllFriends(){
+
+  getAllFriends() {
     this.friendservice.getAllFriends().subscribe((friends) => {
-      this.friendList=friends;
+      this.friendList = friends;
 
     })
   }
-  showProfile(id : number){
-    this.friendservice.idInf=id;
+
+  showProfile(id: number) {
+    this.friendservice.idInf = id;
     this.router.navigate(['showProfile'])
   }
 
   ngOnInit(): void {
     this.getAllFriends();
-  }
+    // @ts-ignore
+    this.userToken=JSON.parse(localStorage.getItem("userToken"));
 
+  }
+  logout(){
+    this.authenticationService.logout();
+  }
 }

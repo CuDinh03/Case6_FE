@@ -50,6 +50,7 @@ export class LoginService {
     return this.http.post<any>("http://localhost:8080",account);
   }
 
+
   setToken(token: string){
     localStorage.setItem("token",token);
   }
