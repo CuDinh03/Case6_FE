@@ -14,6 +14,8 @@ import {AuthInterceptor} from "./auth/jwt-interceptor";
 import {SigninSignupComponent} from "./page/signin-signup/signin-signup.component";
 import {ProfileComponent} from "./friends/profile/profile.component";
 
+import {HttpClientModule} from "@angular/common/http";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -36,6 +38,13 @@ import {ProfileComponent} from "./friends/profile/profile.component";
       useClass: AuthInterceptor, multi: true
     }
   ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule
+    ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
