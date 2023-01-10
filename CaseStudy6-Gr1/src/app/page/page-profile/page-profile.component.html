@@ -31,7 +31,7 @@
           </td>
           <td class="nav1">
 
-            <img type="button" (click)="profileView()" class="img-xs rounded-circle"
+            <img type="button" (click)="profileView()" class="img-xs rounded-circle" src="{{userToken.img}}"
                  alt="">
 
           </td>
@@ -77,8 +77,8 @@
             </figure>
             <div class="cover-body d-flex justify-content-between align-items-center">
               <div>
-                <img class="profile-pic" >
-                <span class="profile-name"></span>
+                <img class="profile-pic" src="{{userToken.img}}">
+                <span class="profile-name">{{userToken.userName}}</span>
               </div>
               <div class="d-none d-md-block">
                 <button class="btn " style="background-color: #d3d7f4;">
@@ -550,8 +550,8 @@
                                 <img class="img-xs rounded-circle" src="{{f.img}}" alt="">
                               </div>
                             </th>
-                            <button (click)="showProfile(f.id)" data-bs-dismiss="modal"
-                                    style="text-align: center">{{f.firstName}} {{f.lastName}}</button>
+                            <button class="btn btn-light" (click)="showProfile(f.id)" data-bs-dismiss="modal"
+                                    style="text-align: center">{{f.fistName}} {{f.lastName}}</button>
                         </table>
 
 

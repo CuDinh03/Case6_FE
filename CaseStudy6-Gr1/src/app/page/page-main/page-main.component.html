@@ -5,7 +5,7 @@
       <div class="inputWithIcon">
         <tr>
           <td class="nav1">
-            <input class="form-control mr-sm-4" type="search" align="center" placeholder="Search" aria-label="Search">
+            <input #input (change)="findByName(input.value)" class="form-control mr-sm-4" type="search" align="center" placeholder="Search" aria-label="Search">
           </td>
           <td class="nav1">
             <a type="button" class="btn btn-light position-relative" data-bs-toggle="collapse" href="#collapseExample"
@@ -80,7 +80,12 @@
             <div class="mt-3">
               <label class="tx-11 font-weight-bold mb-0 text-uppercase">Trang chủ </label>
               <br>
-              <label class="tx-11 font-weight-bold mb-0 text-uppercase">Trang cá nhân</label>
+
+              <hr>
+            </div>
+            <div class="mt-3">
+
+              <label (click)="profileView()" class="tx-11 font-weight-bold mb-0 text-uppercase" >Trang cá nhân</label>
               <p class="text-muted"></p>
               <hr>
             </div>
@@ -133,8 +138,7 @@
           </div>
 
           <!--modal bai viet-->
-          <div class="modal fade" id="exampleModalToggle2" aria-hidden="true"
-               aria-labelledby="exampleModalToggleLabel2"
+          <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
                tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
@@ -265,19 +269,11 @@
                 </div>
 
 
-<<<<<<<<< Temporary merge branch 1
-
-                  <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
-                       aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-
-=========
-                  <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
-                       aria-labelledby="exampleModalToggleLabel" tabindex="-1">
->>>>>>>>> Temporary merge branch 2
-                    <div class="modal-dialog modal-dialog-centered">
-
-                      <div class="modal-content">
-                        <form [formGroup]="createForm" (ngSubmit)="edit(s.id)">
+                <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
+                     aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <form [formGroup]="createForm" (ngSubmit)="edit(s.id)">
                         <div class="modal-header">
                           <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Sửa bài viết</h1>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
