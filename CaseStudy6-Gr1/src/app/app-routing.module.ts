@@ -10,7 +10,7 @@ import {RegisterComponent} from "./page/signin-signup/register/register.componen
 const routes: Routes = [
   {path: 'main',component: PageMainComponent},
   {path: 'profile', component: PageProfileComponent},
-  {path: 'login', component: LoginComponent},
+  {path: '', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'showProfile', component: ProfileComponent}
 
