@@ -13,9 +13,9 @@ export class PageMainComponent implements OnInit {
   statuses: Status[] = [];
   status1: any;
   statusE!: Status;
-  userName = localStorage.getItem('userName');
+  userToken : any;
 
-  constructor(private router: Router, private statusService: StatusService) {
+  constructor(private router: Router, private statusService: StatusService ) {
   }
 
   view(): void {
@@ -27,6 +27,8 @@ export class PageMainComponent implements OnInit {
 
   ngOnInit(): void {
     this.view();
+    // @ts-ignore
+    this.userToken = JSON.parse(localStorage.getItem("userToken"));
   }
 
   createForm = new FormGroup({
