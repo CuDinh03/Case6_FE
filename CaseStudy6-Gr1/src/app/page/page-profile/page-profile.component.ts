@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {StatusService} from "../../service/status.service";
-import {Status} from "../../model/status";
+import {FriendService} from "../../friends/FriendsService/friend.service";
 import {Friend} from "../../model/friend";
 
 @Component({
@@ -9,19 +8,12 @@ import {Friend} from "../../model/friend";
   templateUrl: './page-profile.component.html',
   styleUrls: ['./page-profile.component.css']
 })
-export class PageProfileComponent {
-  statuses: Status[] = [];
-  friendList: Friend[] = [];
+export class PageProfileComponent implements OnInit {
 
-  constructor(private router: Router, private statusService: StatusService) {
-  }
+  friendList ! : Friend[];
+  friendInF! : Friend;
 
-  ngOnInit(): void {
-    // @ts-ignore
-    this.statusService.findById(localStorage.getItem("id")).subscribe((data) => {
-      this.statuses = data;
-      console.log(this.statuses);
-    })
+  constructor(public friendservice :FriendService, private router: Router) {
   }
 
   mainView(){
@@ -29,6 +21,20 @@ export class PageProfileComponent {
   }
   profileView(){
     this.router.navigate(['/profile'])
+  }
+  getAllFriends(){
+    this.friendservice.getAllFriends().subscribe((friends) => {
+      this.friendList=friends;
+
+    })
+  }
+  showProfile(id : number){
+    this.friendservice.idInf=id;
+    this.router.navigate(['showProfile'])
+  }
+
+  ngOnInit(): void {
+    this.getAllFriends();
   }
 
 }
