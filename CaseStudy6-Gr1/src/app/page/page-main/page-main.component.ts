@@ -109,5 +109,4 @@ export class PageMainComponent implements OnInit {
   modalView(){
     this.router.navigate(['/modal'])
   }
-
 }
