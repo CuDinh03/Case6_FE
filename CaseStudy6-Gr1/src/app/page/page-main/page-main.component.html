@@ -215,7 +215,7 @@
 
                 </div>
                 <div class="modal-footer">
-                  <button class="btn btn-primary">Đăng</button>
+                  <button class="btn btn-primary" data-bs-dismiss="modal">Đăng</button>
 
                 </div>
               </form>
@@ -276,7 +276,7 @@
                      aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
-                      <form [formGroup]="createForm" (ngSubmit)="edit(s.id)">
+                      <form [formGroup]="createForm" (ngSubmit)="edit(id)">
                         <div class="modal-header">
                           <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Sửa bài viết</h1>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -307,7 +307,6 @@
                         </div>
                         <div class="modal-footer">
                           <button class="btn btn-primary" data-bs-dismiss="modal">Đăng</button>
-                          <button type="button" class="btn btn-default" data-dismiss="modal" hidden>Close</button>
                         </div>
                       </form>
                     </div>

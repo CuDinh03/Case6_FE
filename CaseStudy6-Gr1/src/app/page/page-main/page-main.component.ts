@@ -15,6 +15,7 @@ export class PageMainComponent implements OnInit {
   status1: any;
   statusE!: Status;
   userName = localStorage.getItem('userName');
+  id: any;
 
   constructor(private router: Router, private statusService: StatusService, private authenticationService:AuthenticationService) {
   }
@@ -55,6 +56,7 @@ export class PageMainComponent implements OnInit {
     console.log(index);
     this.statusService.findById(index).subscribe((result) => {
       console.log(result);
+      this.id = index;
       this.createForm.patchValue({
         content: result.content,
         status: result.status,
@@ -63,6 +65,7 @@ export class PageMainComponent implements OnInit {
   }
 
   edit(index: number) {
+    console.log(index);
     // @ts-ignore
     const status2: Status = {content: this.createForm.value.content, status: this.createForm.value.status}
     console.log(status2);
