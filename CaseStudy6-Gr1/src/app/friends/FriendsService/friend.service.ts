@@ -10,8 +10,7 @@ export class FriendService implements  OnInit{
 
   fiendList!:Friend[];
   idInf!:number;
-  name!:string;
-  idToFind!:number;
+  name !:string;
   userToken!:any;
 
 

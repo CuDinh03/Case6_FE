@@ -51,7 +51,6 @@ export class PageProfileComponent implements OnInit {
   getAllFriends(){
     this.friendservice.getAllFriends(this.friendservice.userToken.id).subscribe((friends) => {
       this.friendList=friends;
-
     })
   }
   showProfile(id : number){
