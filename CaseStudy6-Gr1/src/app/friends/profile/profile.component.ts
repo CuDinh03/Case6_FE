@@ -13,6 +13,8 @@ import {Router} from "@angular/router";
 export class ProfileComponent implements  OnInit{
 
   ngOnInit(): void {
+    // @ts-ignore
+    this.userToken = JSON.parse(localStorage.getItem("userToken"));
     this.getInFor();
     this.getMutualFriend();
     this.getAllFriendsOfFriend();
@@ -33,11 +35,9 @@ getInFor(){
 
   }
   getMutualFriend(): void{
-    this.friendService.getMutualFriend(this.friendService.idInf).subscribe((data)=>{
+    this.friendService.getMutualFriend(this.userToken.id,this.friendService.idInf).subscribe((data)=>{
       this.mutualFriend = data;
-
     });
-
   };
   mainView(){
     this.router.navigate(['/main'])
