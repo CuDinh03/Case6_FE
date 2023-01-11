@@ -235,7 +235,7 @@ img {
 
 }
 #formGroupExampleInput2{
-  width: 540px;
+  width: 100%;
   margin-left: 10px;
 }
 .nav1{
@@ -247,13 +247,13 @@ img {
 #leftMain{
   position: fixed;
   top: 80px;
-  width: 300px;
+  left: 10px;
 
 }
 #rightMain{
   position: fixed;
   top: 80px;
-  right: 30px;
+  right: 10px;
 }
 #messenger{
   position: fixed;

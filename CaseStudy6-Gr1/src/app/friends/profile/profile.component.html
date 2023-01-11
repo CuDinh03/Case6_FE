@@ -1,17 +1,19 @@
-
 <div id="fixNav">
-  <nav class="navbar navbar-light bg-light justify-content-between" >
-    <p class="navbar-brand" type="button" (click)="mainView()">BackMain</p>
-    <form class="form-inline" >
+  <nav class="navbar navbar-light bg-light justify-content-between">
+    <img type="button" style="padding-left: 5px; height: 50px; width: 50px" class="img-xs rounded-circle" src="https://media.istockphoto.com/id/1145987687/vi/vec-to/logo-meow-s%E1%BA%A1ch-s%E1%BA%BD-%C4%91%C6%B0%E1%BB%A3c-c%C3%A1ch-ly-tr%C3%AAn-n%E1%BB%81n-tr%E1%BA%AFng.jpg?s=612x612&w=0&k=20&c=d1H6tN95EvGEc531qppw9iZr2rcBkmlFXtc0-MykkuA=" (click)="mainView()">
+    <form class="form-inline">
       <div class="inputWithIcon">
         <tr>
           <td class="nav1">
             <input class="form-control mr-sm-4" type="search" align="center" placeholder="Search" aria-label="Search">
           </td>
           <td class="nav1">
-            <a type="button" class="btn btn-light position-relative" data-bs-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
-                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+            <a type="button" class="btn btn-light position-relative" data-bs-toggle="collapse" href="#collapseExample"
+               aria-expanded="false" aria-controls="collapseExample">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell"
+                   viewBox="0 0 16 16">
+                <path
+                  d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
               </svg>
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
 <!--                chỗ này để hiển thị số thông báo -->
@@ -21,16 +23,16 @@
             </a>
             <div class="collapse" id="collapseExample">
               <div class="card card-body">
-                Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                Some placeholder content for the collapse component. This panel is hidden by default but revealed when
+                the user activates the relevant trigger.
               </div>
             </div>
 
           </td>
           <td class="nav1">
-            <svg type="button" (click)="profileView()"  xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-file-earmark-person" viewBox="0 0 16 16">
-              <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-              <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5v2z"/>
-            </svg>
+
+            <img type="button" (click)="profileView()" class="img-xs rounded-circle" src="{{userToken.img.name}}" alt="">
+
           </td>
         </tr>
       </div>
@@ -73,7 +75,8 @@
             </figure>
             <div class="cover-body d-flex justify-content-between align-items-center">
               <div>
-                <img class="profile-pic" src="{{friend.img}}" alt="profile">
+                <img class="img-xs rounded-circle" src="{{friend.img}}" alt="profile">
+
                 <span class="profile-name">{{friend.firstName}} {{friend.lastName}}</span><br>
 
               </div>

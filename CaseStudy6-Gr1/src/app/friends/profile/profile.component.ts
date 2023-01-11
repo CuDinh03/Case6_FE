@@ -25,6 +25,7 @@ export class ProfileComponent implements  OnInit{
   friend!:Friend;
   userToken: any;
   fiendList!:Friend[];
+
   constructor(private friendService: FriendService,private router: Router) {
   }
 getInFor(){

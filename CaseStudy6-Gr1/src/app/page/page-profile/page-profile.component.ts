@@ -7,7 +7,7 @@ import {Status} from "../../model/status";
 
 @Component({
   selector: 'app-page-profile',
-  templateUrl: './page-profile.component.html',
+  templateUrl:'./page-profile.component.html',
   styleUrls: ['./page-profile.component.css']
 })
 export class PageProfileComponent implements OnInit {
@@ -17,16 +17,29 @@ export class PageProfileComponent implements OnInit {
   statuses: Status[] = [];
   userToken!:any;
 
-  constructor(public friendservice :FriendService, private router: Router) {
+  constructor(public friendservice :FriendService, private router: Router, private statusService: StatusService ) {
 
+  }
+
+  view(): void {
+    this.statusService.getAll().subscribe((data) => {
+      this.statuses = data[0];
+      console.log(this.statuses);
+    })
   }
 
 
   ngOnInit(): void {
+    // @ts-ignore
+    this.statusService.findById(localStorage.getItem("id")).subscribe((data) => {
+      this.statuses = data;
+      console.log(this.statuses);
+    })
+    // @ts-ignore
+    this.userToken = JSON.parse(localStorage.getItem("userToken"));
 
     this.userToken = this.friendservice.userToken;
     this.getAllFriends();
-
   }
 
   mainView(){
@@ -38,10 +51,13 @@ export class PageProfileComponent implements OnInit {
   getAllFriends(){
     this.friendservice.getAllFriends(this.friendservice.userToken.id).subscribe((friends) => {
       this.friendList=friends;
+
     })
   }
   showProfile(id : number){
     this.friendservice.idInf=id;
     this.router.navigate(['showProfile'])
   }
+
+
 }

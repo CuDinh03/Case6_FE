@@ -1,4 +1,11 @@
-export interface Img {
+export class img {
   id: number;
-  img: string
+  name !: string
+
+  constructor(id: number,img: string)
+{
+  this.id = id;
+  this.name = img;
+}
+
 }

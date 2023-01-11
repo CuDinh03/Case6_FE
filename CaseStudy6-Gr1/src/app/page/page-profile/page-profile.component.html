@@ -1,6 +1,6 @@
 <div id="fixNav">
   <nav class="navbar navbar-light bg-light justify-content-between">
-    <p class="navbar-brand" type="button" (click)="mainView()">BackMain</p>
+    <img type="button" style="padding-left: 5px; height: 50px; width: 50px" class="img-xs rounded-circle" src="https://media.istockphoto.com/id/1145987687/vi/vec-to/logo-meow-s%E1%BA%A1ch-s%E1%BA%BD-%C4%91%C6%B0%E1%BB%A3c-c%C3%A1ch-ly-tr%C3%AAn-n%E1%BB%81n-tr%E1%BA%AFng.jpg?s=612x612&w=0&k=20&c=d1H6tN95EvGEc531qppw9iZr2rcBkmlFXtc0-MykkuA=" (click)="mainView()">
     <form class="form-inline">
       <div class="inputWithIcon">
         <tr>
@@ -31,7 +31,8 @@
           </td>
           <td class="nav1">
 
-            <img src="{{userToken.img.name}}" type="button" (click)="profileView()" class="img-xs rounded-circle"
+            <img type="button" (click)="profileView()" class="img-xs rounded-circle"
+                        src="{{userToken.img.name}}"
                  alt="">
 
           </td>
@@ -77,8 +78,10 @@
             </figure>
             <div class="cover-body d-flex justify-content-between align-items-center">
               <div>
-                <img class="profile-pic"  src="{{userToken.img.name}}">
-                <span class="profile-name">Đức Chết Tiệc</span>
+                <img class="img-xs rounded-circle" style="height: 100px; width: 100px" src="{{userToken.img.name}}" >
+
+                <span class="profile-name">{{userToken.userName}} </span>
+
               </div>
               <div class="d-none d-md-block">
                 <button class="btn " style="background-color: #d3d7f4;">
@@ -251,7 +254,7 @@
       </div>
       <!-- left wrapper end -->
       <!-- middle wrapper start -->
-      <div class="col-md-8 col-xl-6 middle-wrapper">
+      <div class="col-md-8 col-xl-6 middle-wrapper" *ngFor="let s of statuses, index as i">
         <div class="row">
           <div class="col-md-12 grid-margin">
             <div class="card rounded">
@@ -260,8 +263,8 @@
                   <div class="d-flex align-items-center">
                     <img class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg" alt="">
                     <div class="ml-2">
-                      <p>boy dep trai</p>
-                      <p class="tx-11 text-muted">1 min ago</p>
+                      <p>{{s.account.userName}}</p>
+                      <p class="tx-11 text-muted">{{s.postDay}}</p>
                     </div>
                   </div>
                   <div class="dropdown">
@@ -364,8 +367,8 @@
                   <div class="d-flex align-items-center">
                     <img class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg" alt="">
                     <div class="ml-2">
-                      <p>Mike Popescu</p>
-                      <p class="tx-11 text-muted">5 min ago</p>
+                      <p>{{s.account.userName}}</p>
+                      <p class="tx-11 text-muted">{{s.postDay}}</p>
                     </div>
                   </div>
                   <div class="dropdown">
@@ -422,7 +425,7 @@
                 </div>
               </div>
               <div class="card-body">
-                <p class="mb-3 tx-14">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <p class="mb-3 tx-14">{{s.content}}</p>
                 <img class="img-fluid" src="../../../assets/images/sample2.jpg" alt="">
               </div>
               <div class="card-footer">
@@ -550,7 +553,7 @@
                                 <img class="img-xs rounded-circle" src="{{f.img}}" alt="">
                               </div>
                             </th>
-                            <button (click)="showProfile(f.id)" data-bs-dismiss="modal"
+                            <button class="btn btn-light" (click)="showProfile(f.id)" data-bs-dismiss="modal"
                                     style="text-align: center">{{f.firstName}} {{f.lastName}}</button>
                         </table>
 
