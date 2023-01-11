@@ -1,10 +1,11 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {StatusService} from "../../service/status.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Status} from "../../model/status";
 import {Friend} from "../../model/friend";
 import {FriendService} from "../../friends/FriendsService/friend.service";
+import {AuthenticationService} from "../../account/AccountService/authentication.service";
 
 @Component({
   selector: 'app-page-main',
@@ -15,14 +16,14 @@ export class PageMainComponent implements OnInit {
   statuses: Status[] = [];
   status1: any;
   statusE!: Status;
-  userToken : any;
+  userToken: any;
   idS!: number;
   imgowner: any;
 
-  friendList ! : Friend[];
-  friendInF! : Friend;
+  friendList !: Friend[];
+  friendInF!: Friend;
 
-  constructor(public friendService :FriendService, private router: Router, private statusService: StatusService ) {
+  constructor(public friendService: FriendService, private router: Router, private statusService: StatusService, private authenticationService: AuthenticationService) {
   }
 
   view(): void {
@@ -46,7 +47,7 @@ export class PageMainComponent implements OnInit {
   })
 
   create() {
-    this.status1 ={
+    this.status1 = {
       content: this.createForm.value.content,
       status: this.createForm.value.status,
       account: {
@@ -62,9 +63,9 @@ export class PageMainComponent implements OnInit {
 
   }
 
-  getAllFriends(){
+  getAllFriends() {
     this.friendService.getAllFriends(this.friendService.idInf).subscribe((friends) => {
-      this.friendList=friends;
+      this.friendList = friends;
 
     })
   }
@@ -98,15 +99,19 @@ export class PageMainComponent implements OnInit {
     })
   }
 
-  mainView(){
+  mainView() {
     this.router.navigate(['/main'])
   }
 
-  profileView(){
+  profileView() {
     this.router.navigate(['/profile'])
   }
 
-  modalView(){
+  modalView() {
     this.router.navigate(['/modal'])
+  }
+
+  logout() {
+    this.authenticationService.logout();
   }
 }
