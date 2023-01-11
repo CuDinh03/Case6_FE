@@ -3,59 +3,113 @@
     <img type="button" style="padding-left: 5px; height: 50px; width: 50px" class="img-xs rounded-circle" src="https://media.istockphoto.com/id/1145987687/vi/vec-to/logo-meow-s%E1%BA%A1ch-s%E1%BA%BD-%C4%91%C6%B0%E1%BB%A3c-c%C3%A1ch-ly-tr%C3%AAn-n%E1%BB%81n-tr%E1%BA%AFng.jpg?s=612x612&w=0&k=20&c=d1H6tN95EvGEc531qppw9iZr2rcBkmlFXtc0-MykkuA=" (click)="mainView()">
     <form class="form-inline">
       <div class="inputWithIcon">
-        <tr>
-          <td class="nav1">
-            <input class="form-control mr-sm-4" type="search" align="center" placeholder="Search" aria-label="Search">
-          </td>
-          <td class="nav1">
-            <a type="button" class="btn btn-light position-relative" data-bs-toggle="collapse" href="#collapseExample"
-               aria-expanded="false" aria-controls="collapseExample">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell"
-                   viewBox="0 0 16 16">
-                <path
-                  d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
-              </svg>
-              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        <div  class="nav1">
+          <input class="form-control mr-sm-4" type="search" align="center" placeholder="Search" aria-label="Search">
+        </div>
+        <div class="nav1">
+          <a type="button" class="btn btn-light position-relative" data-bs-toggle="collapse" href="#collapseExample"
+             aria-expanded="false" aria-controls="collapseExample">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell"
+                 viewBox="0 0 16 16">
+              <path
+                d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+            </svg>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
 <!--                chỗ này để hiển thị số thông báo -->
     99+
     <span class="visually-hidden">unread messages</span>
   </span>
-            </a>
-            <div class="collapse" id="collapseExample">
-              <div class="card card-body">
-                Some placeholder content for the collapse component. This panel is hidden by default but revealed when
-                the user activates the relevant trigger.
+          </a>
+          <!--            thong bao-->
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+
+              <div class="button-notification">
+                <tr>
+                  <th>
+                    <p align="center" class="tx-11 font-weight-bold mb-0 text-uppercase">Bạn bè</p>
+                  </th>
+                  <th>
+                    <p class="tx-11 font-weight-bold mb-0 text-uppercase">Tất cả</p>
+                  </th>
+                  <th>
+                    <p class="tx-11 font-weight-bold mb-0 text-uppercase">Chưa đọc</p>
+
+
+                  </th>
+                </tr>
+                <tr>
+                  <td><div class="options-friends">
+                    <a type="button" class="btn btn-light position-relative" data-bs-toggle="collapse" href="#collapseExample1"
+                       aria-expanded="false" aria-controls="collapseExample1">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-down" viewBox="0 0 16 16">
+                        <path d="M12.5 9a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7Zm.354 5.854 1.5-1.5a.5.5 0 0 0-.708-.708l-.646.647V10.5a.5.5 0 0 0-1 0v2.793l-.646-.647a.5.5 0 0 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0ZM11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                        <path d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z"/>
+                      </svg>
+                    </a>
+                    <div class="collapse" id="collapseExample1">
+                      <div class="card card-body">
+                        Some placeholder content for the collapse component. This panel is hidden by default but revealed when
+                        the user activates the relevant trigger.
+                      </div>
+                    </div>
+                  </div>
+
+                    <div class="options-friends">
+                      <a type="button" class="btn btn-light position-relative" data-bs-toggle="collapse" href="#collapseExample2"
+                         aria-expanded="false" aria-controls="collapseExample2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-up" viewBox="0 0 16 16">
+                          <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.354-5.854 1.5 1.5a.5.5 0 0 1-.708.708L13 11.707V14.5a.5.5 0 0 1-1 0v-2.793l-.646.647a.5.5 0 0 1-.708-.708l1.5-1.5a.5.5 0 0 1 .708 0ZM11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                          <path d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z"/>
+                        </svg>
+                      </a>
+                      <div class="collapse" id="collapseExample2">
+                        <div class="card card-body">
+                          Some placeholder content for the collapse component. This panel is hidden by default but revealed when
+                          the user activates the relevant trigger.
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td></td>
+                  <td></td>
+                </tr>
+
+
+
               </div>
+
+            </div>
+          </div>
+
+        </div>
+        <div class="nav1">
+
+          <img type="button" (click)="profileView()" class="img-xs rounded-circle"
+               src="{{userToken.img.name}}"
+               alt="">
+
+        </div>
+        <div class="nav1">
+          <div class="btn-group">
+            <button type="button" class="btn p-0" data-bs-toggle="dropdown" aria-expanded="false">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
+                <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+                <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+              </svg>
+            </button>
+            <div id="dropMenuAcc">
+              <ul class="dropdown-menu" id="menuAcc">
+                <li><a class="dropdown-item" href="#">Cài đặt</a></li>
+                <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#" (click)="logout()">Đăng xuất</a></li>
+              </ul>
             </div>
 
-          </td>
-          <td class="nav1">
+          </div>
+        </div>
 
-            <img type="button" (click)="profileView()" class="img-xs rounded-circle"
-                 src="{{userToken.img.name}}"
-                 alt="">
-
-          </td>
-          <td>
-            <div class="btn-group">
-              <button type="button" class="btn p-0" data-bs-toggle="dropdown" aria-expanded="false">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
-                  <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
-                  <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
-                </svg>
-              </button>
-              <div id="dropMenuAcc">
-                <ul class="dropdown-menu" id="menuAcc">
-                  <li><a class="dropdown-item" href="#">Cài đặt</a></li>
-                  <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#" (click)="logout()">Đăng xuất</a></li>
-                </ul>
-              </div>
-
-            </div>
-          </td>
-        </tr>
       </div>
     </form>
   </nav>
@@ -64,47 +118,47 @@
 
 <div id="modaledit" style="width: 100%; height: 100%;">
 
-<div class="modal fade" id="exampleModalToggle" aria-hidden="true"
-     aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <form [formGroup]="createForm" (ngSubmit)="edit(idS)">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Sửa bài viết</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="this.createForm.reset()"></button>
-        </div>
-        <div class="modal-body">
-          <div class="dropdown">
-            <img class="img-xs rounded-circle"
-                 src="{{userToken.img.name}}"
-                 alt="">
-            <div class="btn-group">
-              <button type="button" class="btn p-0" data-bs-toggle="dropdown" aria-expanded="false">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                     stroke-linejoin="round" class="feather feather-more-horizontal icon-lg pb-3px">
-                  <circle cx="12" cy="12" r="1"></circle>
-                  <circle cx="19" cy="12" r="1"></circle>
-                  <circle cx="5" cy="12" r="1"></circle>
-                </svg>
-              </button>
-              <select class="dropdown-menu" formControlName="status">
-                <option class="dropdown-item" href="#" value="1">Công khai</option>
-                <option class="dropdown-item" href="#" value="2">Bạn bè</option>
-                <option class="dropdown-item" href="#" value="3">Chỉ mình tôi</option>
-              </select>
-            </div>
+  <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
+       aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <form [formGroup]="createForm" (ngSubmit)="edit(idS)">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Sửa bài viết</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="this.createForm.reset()"></button>
           </div>
-          <textarea class="form-control" id="exampleFormControlTextarea" rows="3"
-                    placeholder="" formControlName="content"></textarea>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" data-bs-dismiss="modal">Sửa</button>
-        </div>
-      </form>
+          <div class="modal-body">
+            <div class="dropdown">
+              <img class="img-xs rounded-circle"
+                   src="{{userToken.img.name}}"
+                   alt="">
+              <div class="btn-group">
+                <button type="button" class="btn p-0" data-bs-toggle="dropdown" aria-expanded="false">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                       fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                       stroke-linejoin="round" class="feather feather-more-horizontal icon-lg pb-3px">
+                    <circle cx="12" cy="12" r="1"></circle>
+                    <circle cx="19" cy="12" r="1"></circle>
+                    <circle cx="5" cy="12" r="1"></circle>
+                  </svg>
+                </button>
+                <select class="dropdown-menu" formControlName="status" [value]="1">
+                  <option class="dropdown-item" href="#" [value]="1"> Công khai</option>
+                  <option class="dropdown-item" href="#" value="2">Bạn bè</option>
+                  <option class="dropdown-item" href="#" value="3">Chỉ mình tôi</option>
+                </select>
+              </div>
+            </div>
+            <textarea class="form-control" id="exampleFormControlTextarea" rows="3"
+                      placeholder="" formControlName="content"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" data-bs-dismiss="modal">Sửa</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
-</div>
 
 </div>
 
@@ -119,19 +173,12 @@
       </svg>
     </button>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">
-        <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
-        name user
-      </a></li>
-      <li><a class="dropdown-item" href="#">
-        <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
-        name user
-      </a></li>
-      <li><a class="dropdown-item" href="#">
-        <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
-        name user
-      </a></li>
-
+      <tr *ngFor="let f of friendList, index as i">
+        <li><a class="dropdown-item" href="">
+          <img class="img-xs rounded-circle" src="{{f.img}}" alt="">
+          {{f.firstName}} + {{f.lastName}}
+        </a></li>
+      </tr>
     </ul>
   </div>
 
@@ -157,7 +204,7 @@
               <hr>
             </div>
             <div class="mt-3">
-              <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModalToggle1"  class="tx-11 font-weight-bold mb-0 text-uppercase">Lời mời đã gửi</a>
+              <a type="button"  class="tx-11 font-weight-bold mb-0 text-uppercase">Lời mời đã gửi</a>
               <p class="text-muted"></p>
               <hr>
             </div>
@@ -166,29 +213,6 @@
               <p class="text-muted"></p>
               <hr>
             </div>
-
-
-            <div class="modal fade" id="exampleModalToggle1" aria-hidden="true" aria-labelledby="exampleModalToggleLabel1" tabindex="-1">
-              <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel1">Modal 1</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    Show a second modal and hide this one with the button below.
-                  </div>
-                  <div class="modal-footer">
-
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-
-
-
 
 
 
@@ -292,7 +316,16 @@
                             formControlName="content"></textarea>
                   <!--                  click vao de up anh-->
 
-                  <input type="file" name="file">
+
+                  <div style="margin: 10px">
+                    <label for="upload-photo">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
+                        <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                        <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/>
+                      </svg>
+                    </label>
+                    <input type="file" name="photo" id="upload-photo" />
+                  </div>
 
                   <div class="modal-footer">
                     <button class="btn btn-primary" type="submit" data-bs-dismiss="modal">Đăng</button>
@@ -453,136 +486,136 @@
         </div>
       </div>
     </div>
-      <!-- middle wrapper end -->
-      <!-- right wrapper start -->
-      <div class="d-none d-xl-block col-xl-3 right-wrapper" id="rightMain">
-        <div class="row">
+    <!-- middle wrapper end -->
+    <!-- right wrapper start -->
+    <div class="d-none d-xl-block col-xl-3 right-wrapper" id="rightMain">
+      <div class="row">
 
-          <div class="col-md-12 grid-margin">
-            <div class="card rounded">
-              <div class="card-body">
-                <h6 class="card-title">Đề xuất bạn bè </h6>
+        <div class="col-md-12 grid-margin">
+          <div class="card rounded">
+            <div class="card-body">
+              <h6 class="card-title">Đề xuất bạn bè </h6>
 
 
-                <!--đề xuất bạn bè -->
-                <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-                  <div class="carousel-inner">
-                    <div class="carousel-item active" data-bs-interval="10000">
-                      <td>
-                        <div class="card" style="width: 6rem;">
-                          <img src="..." class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <p class="card-title">Card title</p>
-                            <a class="btn btn-primary">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                   class="bi bi-person-add" viewBox="0 0 16 16">
-                                <path
-                                  d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
-                                <path
-                                  d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z"/>
-                              </svg>
-                              <p class="tx-9 text-muted ">Thêm </p>
-                            </a>
-                          </div>
+              <!--đề xuất bạn bè -->
+              <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active" data-bs-interval="10000">
+                    <td>
+                      <div class="card" style="width: 6rem;">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <p class="card-title">Card title</p>
+                          <a class="btn btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-person-add" viewBox="0 0 16 16">
+                              <path
+                                d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
+                              <path
+                                d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z"/>
+                            </svg>
+                            <p class="tx-9 text-muted ">Thêm </p>
+                          </a>
                         </div>
-                      </td>
-                      <td>
-                        <div class="card" style="width: 6rem;">
-                          <img src="..." class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <p class="card-title">Card title</p>
-                            <a class="btn btn-primary">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                   class="bi bi-person-add" viewBox="0 0 16 16">
-                                <path
-                                  d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
-                                <path
-                                  d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z"/>
-                              </svg>
-                              <p class="tx-9 text-muted ">Thêm </p>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="card" style="width: 6rem;">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <p class="card-title">Card title</p>
+                          <a class="btn btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-person-add" viewBox="0 0 16 16">
+                              <path
+                                d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
+                              <path
+                                d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z"/>
+                            </svg>
+                            <p class="tx-9 text-muted ">Thêm </p>
 
-                            </a>
-                          </div>
+                          </a>
                         </div>
-                      </td>
-                      <td>
-                        <div class="card" style="width: 6rem;">
-                          <img src="..." class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <p class="card-title">Card title</p>
-                            <a class="btn btn-primary">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                   class="bi bi-person-add" viewBox="0 0 16 16">
-                                <path
-                                  d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
-                                <path
-                                  d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z"/>
-                              </svg>
-                              <p class="tx-9 text-muted ">Thêm </p>
-                            </a>
-                          </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="card" style="width: 6rem;">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <p class="card-title">Card title</p>
+                          <a class="btn btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-person-add" viewBox="0 0 16 16">
+                              <path
+                                d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
+                              <path
+                                d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z"/>
+                            </svg>
+                            <p class="tx-9 text-muted ">Thêm </p>
+                          </a>
                         </div>
-                      </td>
-                    </div>
-                    <div class="carousel-item" data-bs-interval="2000">
-                      <img
-                        src="https://gamek.mediacdn.vn/133514250583805952/2021/12/18/photo-1-1639800734447959976977.jpg"
-                        class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                      <img src="https://openseauserdata.com/files/02d992a4c7039936aea0bce0ec7a5e1e.jpg"
-                           class="d-block w-100" alt="...">
-                    </div>
+                      </div>
+                    </td>
                   </div>
-                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
-                          data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                  </button>
-                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
-                          data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                  </button>
+                  <div class="carousel-item" data-bs-interval="2000">
+                    <img
+                      src="https://gamek.mediacdn.vn/133514250583805952/2021/12/18/photo-1-1639800734447959976977.jpg"
+                      class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="https://openseauserdata.com/files/02d992a4c7039936aea0bce0ec7a5e1e.jpg"
+                         class="d-block w-100" alt="...">
+                  </div>
                 </div>
-
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+                        data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+                        data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
               </div>
+
             </div>
           </div>
+        </div>
 
 
-          <div class="col-md-12 grid-margin">
-            <div class="card rounded">
-              <div class="card-body">
+        <div class="col-md-12 grid-margin">
+          <div class="card rounded">
+            <div class="card-body">
 
-                <!--                người liên hệ user có thể chat luôn -->
-                <h6 class="card-title">Người liên hệ </h6>
-                <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
-                  <div class="d-flex align-items-center hover-pointer">
+              <!--                người liên hệ user có thể chat luôn -->
+              <h6 class="card-title">Người liên hệ </h6>
+              <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
+                <div class="d-flex align-items-center hover-pointer">
 
-<!--                    <tr *ngFor="let f of friendList ">-->
-<!--                      <th>-->
-<!--                        <div class="modal-body">-->
-<!--                          <img class="img-xs rounded-circle" src="{{f.img}}" a lt="">-->
+                  <!--                    <tr *ngFor="let f of friendList ">-->
+                  <!--                      <th>-->
+                  <!--                        <div class="modal-body">-->
+                  <!--                          <img class="img-xs rounded-circle" src="{{f.img}}" a lt="">-->
 
-<!--                        </div>-->
-<!--                      </th>-->
-<!--                      <th>-->
-<!--                        {{f.firstName}} {{f.lastName}}-->
-<!--                      </th>-->
-                  </div>
+                  <!--                        </div>-->
+                  <!--                      </th>-->
+                  <!--                      <th>-->
+                  <!--                        {{f.firstName}} {{f.lastName}}-->
+                  <!--                      </th>-->
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- right wrapper end -->
     </div>
+    <!-- right wrapper end -->
   </div>
+</div>
 
 
-  <link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/style.css">
 
 
 

@@ -8,10 +8,8 @@ import {HttpClient} from "@angular/common/http";
 })
 export class FriendService implements  OnInit{
 
-  fiendList!:Friend[];
   idInf!:number;
-  name!:string;
-  idToFind!:number;
+  name !:string;
   userToken!:any;
 
 

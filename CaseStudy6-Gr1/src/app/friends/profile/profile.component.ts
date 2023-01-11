@@ -3,6 +3,7 @@ import {FriendService} from "../FriendsService/friend.service";
 import {dateTimestampProvider} from "rxjs/internal/scheduler/dateTimestampProvider";
 import {Friend} from "../../model/friend";
 import {Router} from "@angular/router";
+import {AuthenticationService} from "../../account/AccountService/authentication.service";
 
 
 @Component({
@@ -13,6 +14,8 @@ import {Router} from "@angular/router";
 export class ProfileComponent implements  OnInit{
 
   ngOnInit(): void {
+    // @ts-ignore
+    this.userToken = JSON.parse(localStorage.getItem("userToken"));
     this.getInFor();
     this.getMutualFriend();
     this.getAllFriendsOfFriend();
@@ -22,9 +25,9 @@ export class ProfileComponent implements  OnInit{
   isFriend=2;
   friend!:Friend;
   userToken: any;
-  fiendList!:Friend[];
+  friendList!:Friend[];
 
-  constructor(private friendService: FriendService,private router: Router) {
+  constructor(private friendService: FriendService,private router: Router, private authenticationService: AuthenticationService) {
   }
 getInFor(){
     this.friendService.getInFor(this.friendService.idInf).subscribe((data)=>{
@@ -48,7 +51,7 @@ getInFor(){
   }
   getAllFriendsOfFriend(){
     this.friendService.getAllFriends1(this.friendService.idInf).subscribe((data)=>{
-      this.fiendList= data;
+      this.friendList= data;
     })
   }
   removeFriend(id1:number,id2:number){
@@ -62,6 +65,10 @@ this.friendService.removeFriend(id1,id2);
   removeRequest(id1:number,id2:number){
     this.isFriend=0;
     this.friendService.removeRequest(id1,id2);
+  }
+
+  logout() {
+    this.authenticationService.logout();
   }
 
 }
