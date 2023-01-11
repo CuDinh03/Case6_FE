@@ -38,6 +38,7 @@ export class PageMainComponent implements OnInit {
     this.view();
     // @ts-ignore
     this.userToken = JSON.parse(localStorage.getItem("userToken"));
+
     this.friendService.userToken=this.userToken;
   }
 
