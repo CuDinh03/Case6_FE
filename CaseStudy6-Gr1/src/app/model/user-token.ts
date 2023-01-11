@@ -26,7 +26,9 @@ export interface UserToken {
   email: string;
   phone: string;
   birthday: string;
-  fullname: string;
+  firstname: string;
+  lastname: string;
+  gender: string;
   address: string;
   roles: [Role];
   accessToken: string;
