@@ -14,6 +14,8 @@ export class PageMainComponent implements OnInit {
   status1: any;
   statusE!: Status;
   userToken : any;
+  idS!: number;
+  currentUser = localStorage.getItem('currentUser');
 
   constructor(private router: Router, private statusService: StatusService ) {
   }
@@ -55,6 +57,7 @@ export class PageMainComponent implements OnInit {
     console.log(index);
     this.statusService.findById(index).subscribe((result) => {
       console.log(result);
+      this.idS = index;
       this.createForm.patchValue({
         content: result.content,
         status: result.status,
@@ -69,6 +72,7 @@ export class PageMainComponent implements OnInit {
     this.statusService.editStatus(index, status2).subscribe(() => {
       this.view();
       this.createForm.reset();
+      this.idS = -1;
       this.router.navigate(["/main"]);
     })
   }
