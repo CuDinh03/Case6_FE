@@ -30,7 +30,6 @@ export class PageProfileComponent implements OnInit {
 
 
   ngOnInit(): void {
-
     // @ts-ignore
     this.userToken = this.friendservice.userToken;
     this.getAllFriends();
@@ -55,6 +54,4 @@ export class PageProfileComponent implements OnInit {
   logout() {
     this.authenticationService.logout();
   }
-
-
 }
