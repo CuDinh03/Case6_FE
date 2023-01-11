@@ -20,7 +20,6 @@ import {ProfileComponent} from "./friends/profile/profile.component";
     LoginComponent,
     RegisterComponent,
     ProfileComponent
-
   ],
   imports: [
     BrowserModule,
