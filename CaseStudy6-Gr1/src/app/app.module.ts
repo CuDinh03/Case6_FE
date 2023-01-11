@@ -11,6 +11,7 @@ import {AuthInterceptor} from "./auth/jwt-interceptor";
 import {LoginComponent} from "./page/signin-signup/login/login.component";
 import {RegisterComponent} from "./page/signin-signup/register/register.component";
 import {ProfileComponent} from "./friends/profile/profile.component";
+import { ChangePasswordComponent } from './page/edit-Account/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {ProfileComponent} from "./friends/profile/profile.component";
     PageProfileComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,

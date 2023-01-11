@@ -34,6 +34,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {UserToken} from "../../model/user-token";
+import {ChangePassword} from "../../model/changePassword";
 
 
 @Injectable({
@@ -48,6 +49,9 @@ export class LoginService {
   }
   register(account: any): Observable<any>{
     return this.http.post<any>("http://localhost:8080/register",account);
+  }
+  changePassword(changePassword: any): Observable<any>{
+    return this.http.put<any>("http://localhost:8080/change-password",changePassword);
   }
 
 
