@@ -4,19 +4,24 @@ import {dateTimestampProvider} from "rxjs/internal/scheduler/dateTimestampProvid
 import {Friend} from "../../model/friend";
 import {Router} from "@angular/router";
 
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements  OnInit{
+
   ngOnInit(): void {
     this.getInFor();
     this.getMutualFriend();
-    this.getAllFriendsOfFriend()
+    this.getAllFriendsOfFriend();
+    this.userToken=this.friendService.userToken;
   }
   mutualFriend!:Friend[];
+  isFriend=2;
   friend!:Friend;
+  userToken: any;
   fiendList!:Friend[];
 
   constructor(private friendService: FriendService,private router: Router) {
@@ -46,6 +51,17 @@ getInFor(){
       this.fiendList= data;
     })
   }
-
+  removeFriend(id1:number,id2:number){
+    this.isFriend=0;
+this.friendService.removeFriend(id1,id2);
+  }
+  addFriend(id1:number,id2:number){
+    this.isFriend=1;
+    this.friendService.addFriend(id1,id2);
+  }
+  removeRequest(id1:number,id2:number){
+    this.isFriend=0;
+    this.friendService.removeRequest(id1,id2);
+  }
 
 }

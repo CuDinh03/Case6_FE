@@ -10,6 +10,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {AuthInterceptor} from "./auth/jwt-interceptor";
 import {LoginComponent} from "./page/signin-signup/login/login.component";
 import {RegisterComponent} from "./page/signin-signup/register/register.component";
+import {ProfileComponent} from "./friends/profile/profile.component";
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {RegisterComponent} from "./page/signin-signup/register/register.componen
     PageProfileComponent,
     LoginComponent,
     RegisterComponent,
+    ProfileComponent
 
   ],
   imports: [

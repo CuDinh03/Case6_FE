@@ -6,25 +6,22 @@ import {HttpClient} from "@angular/common/http";
 @Injectable({
   providedIn: 'root'
 })
-export class FriendService{
+export class FriendService implements  OnInit{
 
   fiendList!:Friend[];
   idInf!:number;
   name!:string;
-userToken : any;
-  constructor( private http:HttpClient) { }
+  idToFind!:number;
+  userToken!:any;
+
+
+  constructor( private  http: HttpClient) { }
 
   ngOnInit(): void {
 
-    // @ts-ignore
-    this.userToken = JSON.parse(localStorage.getItem("userToken"));
-
-    this.getAllFriends();
-
   }
-
-  getAllFriends() :Observable<Friend[]>{
-  return this.http.get<Friend[]>("http://localhost:8080/profile/" + this.userToken.id);
+  getAllFriends(id:number) :Observable<Friend[]>{
+  return this.http.get<Friend[]>("http://localhost:8080/"+id);
 }
 getInFor(id:number) :Observable<Friend>{
     return this.http.get<Friend>("http://localhost:8080/profileId/"+id);
@@ -39,6 +36,17 @@ getMutualFriend(id:number) :Observable<Friend[]>{
     this.http.get<Friend[]>("http://localhost:8080/")
   }
 
+  removeFriend(id1:number,id2:number){
+    this.http.delete("http://localhost:8080/delete/"+id1+"/"+id2).subscribe((data)=>{
+    });
+  }
+  addFriend(id1:number,id2:number){
+    this.http.post("http://localhost:8080/addFriend/"+ id1 + "/" +id2,"").subscribe((data)=>{
+    });
+  }
+removeRequest(id1:number,id2:number){
+    this.http.delete("http://localhost:8080/deleteRequest/"+id1 + "/" +id2).subscribe((data)=>{})
+}
 
 
 }
