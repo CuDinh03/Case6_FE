@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {FriendService} from "../FriendsService/friend.service";
-import {dateTimestampProvider} from "rxjs/internal/scheduler/dateTimestampProvider";
 import {Friend} from "../../model/friend";
 import {Router} from "@angular/router";
 
@@ -24,7 +23,7 @@ export class ProfileComponent implements  OnInit{
   isFriend=2;
   friend!:Friend;
   userToken: any;
-  fiendList!:Friend[];
+  friendList!:Friend[];
 
   constructor(private friendService: FriendService,private router: Router) {
   }
@@ -49,7 +48,7 @@ getInFor(){
   }
   getAllFriendsOfFriend(){
     this.friendService.getAllFriends1(this.friendService.idInf).subscribe((data)=>{
-      this.fiendList= data;
+      this.friendList= data;
     })
   }
   removeFriend(id1:number,id2:number){

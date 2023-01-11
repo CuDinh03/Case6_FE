@@ -119,19 +119,12 @@
       </svg>
     </button>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">
-        <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
-        name user
+      <tr *ngFor="let f of friendList, index as i">
+      <li><a class="dropdown-item" href="">
+        <img class="img-xs rounded-circle" src="{{f.img.name}}" alt="">
+        {{f.firstName}} + {{f.lastName}}
       </a></li>
-      <li><a class="dropdown-item" href="#">
-        <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
-        name user
-      </a></li>
-      <li><a class="dropdown-item" href="#">
-        <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
-        name user
-      </a></li>
-
+      </tr>
     </ul>
   </div>
 

@@ -1,5 +1,6 @@
 import { img } from "./img";
 
+
 export class Account {
   id: number;
   userName: string;
@@ -11,7 +12,7 @@ export class Account {
   address: string;
   birthday: Date;
   gender: string;
-  img :  img;
+  img : img;
 
   constructor(id: number, userName: string, password: string, email: string, firstname: string, lastname: string,
               phone: string, address: string, birthday: Date, gender: string, img : img)
