@@ -3,11 +3,10 @@
     <img type="button" style="padding-left: 5px; height: 50px; width: 50px" class="img-xs rounded-circle" src="https://media.istockphoto.com/id/1145987687/vi/vec-to/logo-meow-s%E1%BA%A1ch-s%E1%BA%BD-%C4%91%C6%B0%E1%BB%A3c-c%C3%A1ch-ly-tr%C3%AAn-n%E1%BB%81n-tr%E1%BA%AFng.jpg?s=612x612&w=0&k=20&c=d1H6tN95EvGEc531qppw9iZr2rcBkmlFXtc0-MykkuA=" (click)="mainView()">
     <form class="form-inline">
       <div class="inputWithIcon">
-        <tr>
-          <td class="nav1">
+          <div  class="nav1">
             <input class="form-control mr-sm-4" type="search" align="center" placeholder="Search" aria-label="Search">
-          </td>
-          <td class="nav1">
+          </div>
+          <div class="nav1">
             <a type="button" class="btn btn-light position-relative" data-bs-toggle="collapse" href="#collapseExample"
                aria-expanded="false" aria-controls="collapseExample">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell"
@@ -21,22 +20,77 @@
     <span class="visually-hidden">unread messages</span>
   </span>
             </a>
+<!--            thong bao-->
             <div class="collapse" id="collapseExample">
               <div class="card card-body">
-                Some placeholder content for the collapse component. This panel is hidden by default but revealed when
-                the user activates the relevant trigger.
+
+                <div class="button-notification">
+                  <tr>
+                    <th>
+                      <p align="center" class="tx-11 font-weight-bold mb-0 text-uppercase">Bạn bè</p>
+                    </th>
+                    <th>
+                      <p class="tx-11 font-weight-bold mb-0 text-uppercase">Tất cả</p>
+                    </th>
+                    <th>
+                      <p class="tx-11 font-weight-bold mb-0 text-uppercase">Chưa đọc</p>
+
+
+                    </th>
+                  </tr>
+                  <tr>
+                    <td><div class="options-friends">
+                      <a type="button" class="btn btn-light position-relative" data-bs-toggle="collapse" href="#collapseExample1"
+                         aria-expanded="false" aria-controls="collapseExample1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-down" viewBox="0 0 16 16">
+                          <path d="M12.5 9a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7Zm.354 5.854 1.5-1.5a.5.5 0 0 0-.708-.708l-.646.647V10.5a.5.5 0 0 0-1 0v2.793l-.646-.647a.5.5 0 0 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0ZM11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                          <path d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z"/>
+                        </svg>
+                      </a>
+                      <div class="collapse" id="collapseExample1">
+                        <div class="card card-body">
+                          Some placeholder content for the collapse component. This panel is hidden by default but revealed when
+                          the user activates the relevant trigger.
+                        </div>
+                      </div>
+                    </div>
+
+                      <div class="options-friends">
+                        <a type="button" class="btn btn-light position-relative" data-bs-toggle="collapse" href="#collapseExample2"
+                           aria-expanded="false" aria-controls="collapseExample2">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-up" viewBox="0 0 16 16">
+                            <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.354-5.854 1.5 1.5a.5.5 0 0 1-.708.708L13 11.707V14.5a.5.5 0 0 1-1 0v-2.793l-.646.647a.5.5 0 0 1-.708-.708l1.5-1.5a.5.5 0 0 1 .708 0ZM11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                            <path d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z"/>
+                          </svg>
+                        </a>
+                        <div class="collapse" id="collapseExample2">
+                          <div class="card card-body">
+                            Some placeholder content for the collapse component. This panel is hidden by default but revealed when
+                            the user activates the relevant trigger.
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+
+
+
+                </div>
+
               </div>
             </div>
 
-          </td>
-          <td class="nav1">
+          </div>
+          <div class="nav1">
 
             <img type="button" (click)="profileView()" class="img-xs rounded-circle"
                  src="{{userToken.img.name}}"
                  alt="">
 
-          </td>
-          <td>
+          </div>
+          <div class="nav1">
             <div class="btn-group">
               <button type="button" class="btn p-0" data-bs-toggle="dropdown" aria-expanded="false">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
@@ -54,8 +108,8 @@
               </div>
 
             </div>
-          </td>
-        </tr>
+          </div>
+
       </div>
     </form>
   </nav>
@@ -121,7 +175,7 @@
     <ul class="dropdown-menu">
       <tr *ngFor="let f of friendList, index as i">
       <li><a class="dropdown-item" href="">
-        <img class="img-xs rounded-circle" src="{{f.img.name}}" alt="">
+        <img class="img-xs rounded-circle" src="{{f.img}}" alt="">
         {{f.firstName}} + {{f.lastName}}
       </a></li>
       </tr>
@@ -150,7 +204,7 @@
               <hr>
             </div>
             <div class="mt-3">
-              <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModalToggle1"  class="tx-11 font-weight-bold mb-0 text-uppercase">Lời mời đã gửi</a>
+              <a type="button"  class="tx-11 font-weight-bold mb-0 text-uppercase">Lời mời đã gửi</a>
               <p class="text-muted"></p>
               <hr>
             </div>
@@ -159,29 +213,6 @@
               <p class="text-muted"></p>
               <hr>
             </div>
-
-
-            <div class="modal fade" id="exampleModalToggle1" aria-hidden="true" aria-labelledby="exampleModalToggleLabel1" tabindex="-1">
-              <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel1">Modal 1</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    Show a second modal and hide this one with the button below.
-                  </div>
-                  <div class="modal-footer">
-
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-
-
-
 
 
 

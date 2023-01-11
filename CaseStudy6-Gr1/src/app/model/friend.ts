@@ -1,4 +1,3 @@
-import {img} from "./img";
 
 export class Friend{
 
@@ -6,12 +5,12 @@ export class Friend{
   firstName !: string;
   lastName !: string;
   birthDay !: Date;
-  img !: img;
+  img !: string;
   gender !: string;
   address !: string;
   phoneNumber !: string;
 
-  constructor(id: number, firstName: string, lastName: string, birthDay: Date, img: img, gender: string, address: string, phoneNumber: string) {
+  constructor(id: number, firstName: string, lastName: string, birthDay: Date, img: string, gender: string, address: string, phoneNumber: string) {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;

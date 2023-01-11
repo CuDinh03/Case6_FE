@@ -38,7 +38,7 @@ export class PageMainComponent implements OnInit {
     this.view();
     // @ts-ignore
     this.userToken = JSON.parse(localStorage.getItem("userToken"));
-    // this.friendService.userToken=this.userToken;
+    this.friendService.userToken=this.userToken;
   }
 
   createForm = new FormGroup({
@@ -61,13 +61,6 @@ export class PageMainComponent implements OnInit {
       this.mainView();
     })
 
-  }
-
-  getAllFriends() {
-    this.friendService.getAllFriends(this.friendService.idInf).subscribe((friends) => {
-      this.friendList = friends;
-
-    })
   }
 
   showEdtit(index: number) {
@@ -107,9 +100,9 @@ export class PageMainComponent implements OnInit {
     this.router.navigate(['/profile'])
   }
 
-  modalView() {
-    this.router.navigate(['/modal'])
-  }
+  // modalView() {
+  //   this.router.navigate(['/modal'])
+  // }
 
   logout() {
     this.authenticationService.logout();

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FriendService} from "../FriendsService/friend.service";
 import {Friend} from "../../model/friend";
 import {Router} from "@angular/router";
+import {AuthenticationService} from "../../account/AccountService/authentication.service";
 
 
 @Component({
@@ -25,7 +26,7 @@ export class ProfileComponent implements  OnInit{
   userToken: any;
   friendList!:Friend[];
 
-  constructor(private friendService: FriendService,private router: Router) {
+  constructor(private friendService: FriendService,private router: Router, private authenticationService: AuthenticationService) {
   }
 getInFor(){
     this.friendService.getInFor(this.friendService.idInf).subscribe((data)=>{
@@ -35,7 +36,6 @@ getInFor(){
 
   }
   getMutualFriend(): void{
-    alert(this.userToken.id)
     this.friendService.getMutualFriend(this.userToken.id,this.friendService.idInf).subscribe((data)=>{
       this.mutualFriend = data;
     });
@@ -62,6 +62,10 @@ this.friendService.removeFriend(id1,id2);
   removeRequest(id1:number,id2:number){
     this.isFriend=0;
     this.friendService.removeRequest(id1,id2);
+  }
+
+  logout() {
+    this.authenticationService.logout();
   }
 
 }

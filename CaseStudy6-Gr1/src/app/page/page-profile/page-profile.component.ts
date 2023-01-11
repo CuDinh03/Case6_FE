@@ -4,6 +4,7 @@ import {FriendService} from "../../friends/FriendsService/friend.service";
 import {Friend} from "../../model/friend";
 import {StatusService} from "../../service/status.service";
 import {Status} from "../../model/status";
+import {AuthenticationService} from "../../account/AccountService/authentication.service";
 
 @Component({
   selector: 'app-page-profile',
@@ -13,11 +14,10 @@ import {Status} from "../../model/status";
 export class PageProfileComponent implements OnInit {
 
   friendList ! : Friend[];
-  friendInF! : Friend;
   statuses: Status[] = [];
   userToken!:any;
 
-  constructor(public friendservice :FriendService, private router: Router, private statusService: StatusService ) {
+  constructor(public friendservice :FriendService, private router: Router, private statusService: StatusService, private authenticationService: AuthenticationService ) {
 
   }
 
@@ -30,14 +30,8 @@ export class PageProfileComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // @ts-ignore
-    this.statusService.findById(localStorage.getItem("id")).subscribe((data) => {
-      this.statuses = data;
-      console.log(this.statuses);
-    })
-    // @ts-ignore
-    this.userToken = JSON.parse(localStorage.getItem("userToken"));
 
+    // @ts-ignore
     this.userToken = this.friendservice.userToken;
     this.getAllFriends();
   }
@@ -56,6 +50,10 @@ export class PageProfileComponent implements OnInit {
   showProfile(id : number){
     this.friendservice.idInf=id;
     this.router.navigate(['showProfile'])
+  }
+
+  logout() {
+    this.authenticationService.logout();
   }
 
 
