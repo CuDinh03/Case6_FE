@@ -69,7 +69,7 @@ export class PageMainComponent implements OnInit {
     })
   }
 
-  showEdtit(index: number) {
+  showEdit(index: number) {
     this.statusService.findById(index).subscribe((result) => {
       this.idS = index;
       this.createForm.patchValue({

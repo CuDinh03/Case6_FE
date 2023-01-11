@@ -1,17 +1,19 @@
 <div id="fixNav">
   <nav class="navbar navbar-light bg-light justify-content-between">
-    <img type="button" style="padding-left: 5px; height: 50px; width: 50px" class="img-xs rounded-circle" src="https://media.istockphoto.com/id/1145987687/vi/vec-to/logo-meow-s%E1%BA%A1ch-s%E1%BA%BD-%C4%91%C6%B0%E1%BB%A3c-c%C3%A1ch-ly-tr%C3%AAn-n%E1%BB%81n-tr%E1%BA%AFng.jpg?s=612x612&w=0&k=20&c=d1H6tN95EvGEc531qppw9iZr2rcBkmlFXtc0-MykkuA=" (click)="mainView()">
+    <img (click)="mainView()" class="img-xs rounded-circle" src="https://media.istockphoto.com/id/1145987687/vi/vec-to/logo-meow-s%E1%BA%A1ch-s%E1%BA%BD-%C4%91%C6%B0%E1%BB%A3c-c%C3%A1ch-ly-tr%C3%AAn-n%E1%BB%81n-tr%E1%BA%AFng.jpg?s=612x612&w=0&k=20&c=d1H6tN95EvGEc531qppw9iZr2rcBkmlFXtc0-MykkuA="
+         style="padding-left: 5px; height: 50px; width: 50px"
+         type="button">
     <form class="form-inline">
       <div class="inputWithIcon">
         <tr>
           <td class="nav1">
-            <input class="form-control mr-sm-4" type="search" align="center" placeholder="Search" aria-label="Search">
+            <input align="center" aria-label="Search" class="form-control mr-sm-4" placeholder="Search" type="search">
           </td>
           <td class="nav1">
-            <a type="button" class="btn btn-light position-relative" data-bs-toggle="collapse" href="#collapseExample"
-               aria-expanded="false" aria-controls="collapseExample">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell"
-                   viewBox="0 0 16 16">
+            <a aria-controls="collapseExample" aria-expanded="false" class="btn btn-light position-relative" data-bs-toggle="collapse"
+               href="#collapseExample" type="button">
+              <svg class="bi bi-bell" fill="currentColor" height="16" viewBox="0 0 16 16" width="16"
+                   xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
               </svg>
@@ -31,9 +33,9 @@
           </td>
           <td class="nav1">
 
-            <img type="button" (click)="profileView()" class="img-xs rounded-circle"
-                        src="{{userToken.img.name}}"
-                 alt="">
+            <img (click)="profileView()" alt="" class="img-xs rounded-circle"
+                 src="{{userToken.img.name}}"
+                 type="button">
 
           </td>
         </tr>
@@ -42,26 +44,74 @@
   </nav>
 </div>
 
+<!--modal edit-->
+<div id="modaledit" style="width: 100%; height: 100%;">
+
+  <div aria-hidden="true" aria-labelledby="exampleModalToggleLabel" class="modal fade"
+       id="exampleModalToggle1" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <form (ngSubmit)="edit(id)" [formGroup]="createForm">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalToggleLabel1">Sửa bài viết</h1>
+            <button (click)="this.createForm.reset()" aria-label="Close" class="btn-close" data-bs-dismiss="modal"
+                    type="button"></button>
+          </div>
+          <div class="modal-body">
+            <div class="dropdown">
+              <img alt=""
+                   class="img-xs rounded-circle"
+                   src="{{userToken.img.name}}">
+              <div class="btn-group">
+                <button aria-expanded="false" class="btn p-0" data-bs-toggle="dropdown" type="button">
+                  <svg class="feather feather-more-horizontal icon-lg pb-3px" fill="none" height="20" stroke="currentColor"
+                       stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                       width="20" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="1"></circle>
+                    <circle cx="19" cy="12" r="1"></circle>
+                    <circle cx="5" cy="12" r="1"></circle>
+                  </svg>
+                </button>
+                <select class="dropdown-menu" formControlName="status">
+                  <option class="dropdown-item" href="#" value="1">Công khai</option>
+                  <option class="dropdown-item" href="#" value="2">Bạn bè</option>
+                  <option class="dropdown-item" href="#" value="3">Chỉ mình tôi</option>
+                </select>
+              </div>
+            </div>
+            <textarea class="form-control" formControlName="content" id="exampleFormControlTextarea"
+                      placeholder="" rows="3"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" data-bs-dismiss="modal">Sửa</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+
 <div class="container">
   <div class="btn-group dropup" id="messenger">
-    <button type="button" class="btn " data-bs-toggle="dropdown" aria-expanded="false">
-      <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-messenger"
-           viewBox="0 0 16 16">
+    <button aria-expanded="false" class="btn " data-bs-toggle="dropdown" type="button">
+      <svg class="bi bi-messenger" fill="currentColor" height="35" viewBox="0 0 16 16" width="35"
+           xmlns="http://www.w3.org/2000/svg">
         <path
           d="M0 7.76C0 3.301 3.493 0 8 0s8 3.301 8 7.76-3.493 7.76-8 7.76c-.81 0-1.586-.107-2.316-.307a.639.639 0 0 0-.427.03l-1.588.702a.64.64 0 0 1-.898-.566l-.044-1.423a.639.639 0 0 0-.215-.456C.956 12.108 0 10.092 0 7.76zm5.546-1.459-2.35 3.728c-.225.358.214.761.551.506l2.525-1.916a.48.48 0 0 1 .578-.002l1.869 1.402a1.2 1.2 0 0 0 1.735-.32l2.35-3.728c.226-.358-.214-.761-.551-.506L9.728 7.381a.48.48 0 0 1-.578.002L7.281 5.98a1.2 1.2 0 0 0-1.735.32z"/>
       </svg>
     </button>
     <ul class="dropdown-menu">
       <li><a class="dropdown-item" href="#">
-        <img class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg" alt="">
+        <img alt="" class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg">
         name user
       </a></li>
       <li><a class="dropdown-item" href="#">
-        <img class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg" alt="">
+        <img alt="" class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg">
         name user
       </a></li>
       <li><a class="dropdown-item" href="#">
-        <img class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg" alt="">
+        <img alt="" class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg">
         name user
       </a></li>
 
@@ -78,16 +128,16 @@
             </figure>
             <div class="cover-body d-flex justify-content-between align-items-center">
               <div>
-                <img class="img-xs rounded-circle" style="height: 100px; width: 100px" src="{{userToken.img.name}}" >
+                <img class="img-xs rounded-circle" src="{{userToken.img.name}}" style="height: 100px; width: 100px">
 
                 <span class="profile-name">{{userToken.userName}} </span>
 
               </div>
               <div class="d-none d-md-block">
                 <button class="btn " style="background-color: #d3d7f4;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                       class="feather feather-edit btn-icon-prepend">
+                  <svg class="feather feather-edit btn-icon-prepend" fill="none" height="24" stroke="currentColor" stroke-linecap="round"
+                       stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"
+                       xmlns="http://www.w3.org/2000/svg">
                     <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                     <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
                   </svg>
@@ -99,51 +149,51 @@
           <div class="header-links">
             <ul class="links d-flex align-items-center mt-3 mt-md-0">
               <li class="header-link-item d-flex align-items-center active">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                     class="feather feather-columns mr-1 icon-md">
+                <svg class="feather feather-columns mr-1 icon-md" fill="none" height="24" stroke="currentColor" stroke-linecap="round"
+                     stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"
+                     xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M12 3h7a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-7m0-18H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7m0-18v18"></path>
                 </svg>
                 <a class="pt-1px d-none d-md-block" href="#">Timeline</a>
               </li>
               <li class="header-link-item ml-3 pl-3 border-left d-flex align-items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                     class="feather feather-user mr-1 icon-md">
+                <svg class="feather feather-user mr-1 icon-md" fill="none" height="24" stroke="currentColor" stroke-linecap="round"
+                     stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"
+                     xmlns="http://www.w3.org/2000/svg">
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                   <circle cx="12" cy="7" r="4"></circle>
                 </svg>
                 <a class="pt-1px d-none d-md-block" href="#">About</a>
               </li>
               <li class="header-link-item ml-3 pl-3 border-left d-flex align-items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                     class="feather feather-users mr-1 icon-md">
+                <svg class="feather feather-users mr-1 icon-md" fill="none" height="24" stroke="currentColor" stroke-linecap="round"
+                     stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"
+                     xmlns="http://www.w3.org/2000/svg">
                   <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                   <circle cx="9" cy="7" r="4"></circle>
                   <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                   <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                 </svg>
-                <a class="pt-1px d-none d-md-block" type="button" data-bs-target="#exampleModalToggle"
-                   data-bs-toggle="modal">Friends :<span class="text-muted tx-12">{{friendList.length}}</span></a>
+                <a class="pt-1px d-none d-md-block" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
+                   type="button">Friends :<span class="text-muted tx-12"></span></a>
               </li>
               <li class="header-link-item ml-3 pl-3 border-left d-flex align-items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                     class="feather feather-image mr-1 icon-md">
-                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <svg class="feather feather-image mr-1 icon-md" fill="none" height="24" stroke="currentColor" stroke-linecap="round"
+                     stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"
+                     xmlns="http://www.w3.org/2000/svg">
+                  <rect height="18" rx="2" ry="2" width="18" x="3" y="3"></rect>
                   <circle cx="8.5" cy="8.5" r="1.5"></circle>
                   <polyline points="21 15 16 10 5 21"></polyline>
                 </svg>
                 <a class="pt-1px d-none d-md-block" href="#">Photos</a>
               </li>
               <li class="header-link-item ml-3 pl-3 border-left d-flex align-items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                     class="feather feather-video mr-1 icon-md">
+                <svg class="feather feather-video mr-1 icon-md" fill="none" height="24" stroke="currentColor" stroke-linecap="round"
+                     stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"
+                     xmlns="http://www.w3.org/2000/svg">
                   <polygon points="23 7 16 12 23 17 23 7"></polygon>
-                  <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                  <rect height="14" rx="2" ry="2" width="15" x="1" y="5"></rect>
                 </svg>
                 <a class="pt-1px d-none d-md-block" href="#">Videos</a>
               </li>
@@ -160,38 +210,38 @@
             <div class="d-flex align-items-center justify-content-between mb-2">
               <h6 class="card-title mb-0">About</h6>
               <div class="dropdown">
-                <button class="btn p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                       class="feather feather-more-horizontal icon-lg text-muted pb-3px">
+                <button aria-expanded="false" aria-haspopup="true" class="btn p-0" data-toggle="dropdown"
+                        id="dropdownMenuButton" type="button">
+                  <svg class="feather feather-more-horizontal icon-lg text-muted pb-3px" fill="none" height="24" stroke="currentColor" stroke-linecap="round"
+                       stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"
+                       xmlns="http://www.w3.org/2000/svg">
                     <circle cx="12" cy="12" r="1"></circle>
                     <circle cx="19" cy="12" r="1"></circle>
                     <circle cx="5" cy="12" r="1"></circle>
                   </svg>
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div aria-labelledby="dropdownMenuButton" class="dropdown-menu">
                   <a class="dropdown-item d-flex align-items-center" href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                         class="feather feather-edit-2 icon-sm mr-2">
+                    <svg class="feather feather-edit-2 icon-sm mr-2" fill="none" height="24" stroke="currentColor" stroke-linecap="round"
+                         stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"
+                         xmlns="http://www.w3.org/2000/svg">
                       <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
                     </svg>
                     <span class="">Edit</span></a>
                   <a class="dropdown-item d-flex align-items-center" href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                         class="feather feather-git-branch icon-sm mr-2">
-                      <line x1="6" y1="3" x2="6" y2="15"></line>
+                    <svg class="feather feather-git-branch icon-sm mr-2" fill="none" height="24" stroke="currentColor" stroke-linecap="round"
+                         stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"
+                         xmlns="http://www.w3.org/2000/svg">
+                      <line x1="6" x2="6" y1="3" y2="15"></line>
                       <circle cx="18" cy="6" r="3"></circle>
                       <circle cx="6" cy="18" r="3"></circle>
                       <path d="M18 9a9 9 0 0 1-9 9"></path>
                     </svg>
                     <span class="">Update</span></a>
                   <a class="dropdown-item d-flex align-items-center" href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                         class="feather feather-eye icon-sm mr-2">
+                    <svg class="feather feather-eye icon-sm mr-2" fill="none" height="24" stroke="currentColor" stroke-linecap="round"
+                         stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"
+                         xmlns="http://www.w3.org/2000/svg">
                       <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                       <circle cx="12" cy="12" r="3"></circle>
                     </svg>
@@ -217,35 +267,35 @@
               <p class="text-muted">www.nobleui.com</p>
             </div>
             <div class="mt-3 d-flex social-links">
-              <a href="javascript:;"
-                 class="btn d-flex align-items-center justify-content-center border mr-2 btn-icon github">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                     class="feather feather-github" data-toggle="tooltip" title=""
-                     data-original-title="github.com/nobleui">
+              <a class="btn d-flex align-items-center justify-content-center border mr-2 btn-icon github"
+                 href="javascript:;">
+                <svg class="feather feather-github" data-original-title="github.com/nobleui" data-toggle="tooltip" fill="none" height="24"
+                     stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                     title="" viewBox="0 0 24 24" width="24"
+                     xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                 </svg>
               </a>
-              <a href="javascript:;"
-                 class="btn d-flex align-items-center justify-content-center border mr-2 btn-icon twitter">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                     class="feather feather-twitter" data-toggle="tooltip" title=""
-                     data-original-title="twitter.com/nobleui">
+              <a class="btn d-flex align-items-center justify-content-center border mr-2 btn-icon twitter"
+                 href="javascript:;">
+                <svg class="feather feather-twitter" data-original-title="twitter.com/nobleui" data-toggle="tooltip" fill="none" height="24"
+                     stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                     title="" viewBox="0 0 24 24" width="24"
+                     xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
                 </svg>
               </a>
-              <a href="javascript:;"
-                 class="btn d-flex align-items-center justify-content-center border mr-2 btn-icon instagram">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                     class="feather feather-instagram" data-toggle="tooltip" title=""
-                     data-original-title="instagram.com/nobleui">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <a class="btn d-flex align-items-center justify-content-center border mr-2 btn-icon instagram"
+                 href="javascript:;">
+                <svg class="feather feather-instagram" data-original-title="instagram.com/nobleui" data-toggle="tooltip" fill="none" height="24"
+                     stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                     title="" viewBox="0 0 24 24" width="24"
+                     xmlns="http://www.w3.org/2000/svg">
+                  <rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect>
                   <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
                 </svg>
               </a>
             </div>
@@ -254,213 +304,155 @@
       </div>
       <!-- left wrapper end -->
       <!-- middle wrapper start -->
-      <div class="col-md-8 col-xl-6 middle-wrapper" *ngFor="let s of statuses, index as i">
+      <div *ngFor="let s of statuses, index as i" class="col-md-8 col-xl-6 middle-wrapper">
         <div class="row">
-          <div class="col-md-12 grid-margin">
+          <!--baif viet-->
+          <div class="col-md-12 grid-margin" *ngFor="let s of statuses, index as i">
             <div class="card rounded">
               <div class="card-header">
                 <div class="d-flex align-items-center justify-content-between">
                   <div class="d-flex align-items-center">
-                    <img class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg" alt="">
+                    <img class="img-xs rounded-circle" src="{{s.account.img.name}}" alt="">
                     <div class="ml-2">
-                      <p>{{s.account.userName}}</p>
-                      <p class="tx-11 text-muted">{{s.postDay}}</p>
+                      <div>
+                        {{s.account.userName}}
+                      </div>
+                      <div>
+                        <p class="tx-9 text-muted">{{s.postDay}}</p>
+                      </div>
                     </div>
                   </div>
+                  <!--                  select status-->
                   <div class="dropdown">
-                    <button class="btn p-0" type="button" id="dropdownMenuButton2" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                           class="feather feather-more-horizontal icon-lg pb-3px">
-                        <circle cx="12" cy="12" r="1"></circle>
-                        <circle cx="19" cy="12" r="1"></circle>
-                        <circle cx="5" cy="12" r="1"></circle>
-                      </svg>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                      <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="btn-group">
+                      <button type="button" class="btn p-0" data-bs-toggle="dropdown" aria-expanded="false">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                             class="feather feather-meh icon-sm mr-2">
-                          <circle cx="12" cy="12" r="10"></circle>
-                          <line x1="8" y1="15" x2="16" y2="15"></line>
-                          <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                          <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                             class="feather feather-more-horizontal icon-lg pb-3px">
+                          <circle cx="12" cy="12" r="1"></circle>
+                          <circle cx="19" cy="12" r="1"></circle>
+                          <circle cx="5" cy="12" r="1"></circle>
                         </svg>
-                        <span class="">Unfollow</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                             class="feather feather-corner-right-up icon-sm mr-2">
-                          <polyline points="10 9 15 4 20 9"></polyline>
-                          <path d="M4 20h7a4 4 0 0 0 4-4V4"></path>
-                        </svg>
-                        <span class="">Go to post</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                             class="feather feather-share-2 icon-sm mr-2">
-                          <circle cx="18" cy="5" r="3"></circle>
-                          <circle cx="6" cy="12" r="3"></circle>
-                          <circle cx="18" cy="19" r="3"></circle>
-                          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-                          <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-                        </svg>
-                        <span class="">Share</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                             class="feather feather-copy icon-sm mr-2">
-                          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                        </svg>
-                        <span class="">Copy link</span></a>
+                      </button>
+                      <ul class="dropdown-menu" *ngIf="s.account.id == userToken.id">
+                        <li>
+                          <button class="dropdown-item" data-bs-target="#exampleModalToggle1" data-bs-toggle="modal"
+                                  (click)="showEdit(s.id)">
+                            Chỉnh sửa bài viết
+                          </button>
+                        </li>
+                        <li>
+                          <button class="dropdown-item">Chỉnh sửa đối tượng</button>
+                        </li>
+                        <li>
+                          <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" (click)="deleteEdit(s.id)">Chuyển vào thùng rác </a></li>
+                      </ul>
                     </div>
                   </div>
+
+
                 </div>
               </div>
+
               <div class="card-body">
-                <p class="mb-3 tx-14">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus minima
-                  delectus nemo unde quae recusandae assumenda.</p>
+                <!--                //noi dung cua bai viet -->
+                <p class="mb-3 tx-14">{{s.content}}</p>
                 <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
               </div>
               <div class="card-footer">
                 <div class="d-flex post-actions">
-                  <a href="javascript:;" class="d-flex align-items-center text-muted mr-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                         class="feather feather-heart icon-md">
-                      <path
-                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                    </svg>
-                    <p class="d-none d-md-block ml-2">Like</p>
-                  </a>
-                  <a href="javascript:;" class="d-flex align-items-center text-muted mr-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                         class="feather feather-message-square icon-md">
-                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                    </svg>
-                    <p class="d-none d-md-block ml-2">Comment</p>
-                  </a>
-                  <a href="javascript:;" class="d-flex align-items-center text-muted">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                         class="feather feather-share icon-md">
-                      <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                      <polyline points="16 6 12 2 8 6"></polyline>
-                      <line x1="12" y1="2" x2="12" y2="15"></line>
-                    </svg>
-                    <p class="d-none d-md-block ml-2">Share</p>
-                  </a>
+
+                  <button class="btn btn-light position-relative">
+                    <div>
+                      <td>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                             class="feather feather-heart icon-md">
+                          <path
+                            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                      </td>
+                      <td>
+                        <p class="d-none d-md-block ml-2">Like</p>
+                      </td>
+                    </div>
+                  </button>
+
+
+                  <button class="btn btn-light position-relative">
+                    <div>
+                      <td>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                             class="feather feather-message-square icon-md">
+                          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                      </td>
+                      <td>
+                        <p class="d-none d-md-block ml-2" id="comment1">Comment</p>
+                      </td>
+                    </div>
+                  </button>
+                </div>
+              </div>
+
+              <div class="o-hide">
+                <div class="card-footer">
+                  <div class="d-flex post-actions">
+                    <div class="comment">
+                      <div class="d-flex align-items-center">
+                        <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png"
+                             alt="">
+                        <div class="input-group">
+
+                          <input type="text" class="form-control" style="border: none; width: 450px"
+                                 placeholder="Viết bình luận...">
+                          <span style="border: none">
+
+                          <span type="button" style="border: none; margin-left: 1px">
+
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                   class="bi bi-image" viewBox="0 0 16 16">
+  <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+  <path
+    d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/>
+</svg>
+                          </span>
+                          </span>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <br>
+                  <!--                  showcomment-->
+                  <div class="comment">
+                    <div class="d-flex align-items-center">
+                      <div class="d-flex align-items-center">
+                        <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png"
+                             alt="">
+                        <div class="ml-2">
+                          <div>
+                            username
+                          </div>
+                          <div>
+                            <p>vai ca llll</p>
+                          </div>
+                        </div>
+
+                      </div>
+
+
+                    </div>
+
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-
-          <div class="col-md-12">
-            <div class="card rounded">
-              <div class="card-header">
-                <div class="d-flex align-items-center justify-content-between">
-                  <div class="d-flex align-items-center">
-                    <img class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg" alt="">
-                    <div class="ml-2">
-                      <p>{{s.account.userName}}</p>
-                      <p class="tx-11 text-muted">{{s.postDay}}</p>
-                    </div>
-                  </div>
-                  <div class="dropdown">
-                    <button class="btn p-0" type="button" id="dropdownMenuButton3" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                           class="feather feather-more-horizontal icon-lg pb-3px">
-                        <circle cx="12" cy="12" r="1"></circle>
-                        <circle cx="19" cy="12" r="1"></circle>
-                        <circle cx="5" cy="12" r="1"></circle>
-                      </svg>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                      <a class="dropdown-item d-flex align-items-center" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                             class="feather feather-meh icon-sm mr-2">
-                          <circle cx="12" cy="12" r="10"></circle>
-                          <line x1="8" y1="15" x2="16" y2="15"></line>
-                          <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                          <line x1="15" y1="9" x2="15.01" y2="9"></line>
-                        </svg>
-                        <span class="">Unfollow</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                             class="feather feather-corner-right-up icon-sm mr-2">
-                          <polyline points="10 9 15 4 20 9"></polyline>
-                          <path d="M4 20h7a4 4 0 0 0 4-4V4"></path>
-                        </svg>
-                        <span class="">Go to post</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                             class="feather feather-share-2 icon-sm mr-2">
-                          <circle cx="18" cy="5" r="3"></circle>
-                          <circle cx="6" cy="12" r="3"></circle>
-                          <circle cx="18" cy="19" r="3"></circle>
-                          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-                          <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-                        </svg>
-                        <span class="">Share</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                             class="feather feather-copy icon-sm mr-2">
-                          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                        </svg>
-                        <span class="">Copy link</span></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <p class="mb-3 tx-14">{{s.content}}</p>
-                <img class="img-fluid" src="../../../assets/images/sample2.jpg" alt="">
-              </div>
-              <div class="card-footer">
-                <div class="d-flex post-actions">
-                  <a href="javascript:;" class="d-flex align-items-center text-muted mr-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                         class="feather feather-heart icon-md">
-                      <path
-                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                    </svg>
-                    <p class="d-none d-md-block ml-2">Like</p>
-                  </a>
-                  <a href="javascript:;" class="d-flex align-items-center text-muted mr-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                         class="feather feather-message-square icon-md">
-                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                    </svg>
-                    <p class="d-none d-md-block ml-2">Comment</p>
-                  </a>
-                  <a href="javascript:;" class="d-flex align-items-center text-muted">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                         class="feather feather-share icon-md">
-                      <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                      <polyline points="16 6 12 2 8 6"></polyline>
-                      <line x1="12" y1="2" x2="12" y2="15"></line>
-                    </svg>
-                    <p class="d-none d-md-block ml-2">Share</p>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
       <!-- middle wrapper end -->
@@ -475,47 +467,47 @@
                   <div class="row">
                     <div class="col-md-4">
                       <figure>
-                        <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                        <img alt="" class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar1.png">
                       </figure>
                     </div>
                     <div class="col-md-4">
                       <figure>
-                        <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="">
+                        <img alt="" class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar2.png">
                       </figure>
                     </div>
                     <div class="col-md-4">
                       <figure>
-                        <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
+                        <img alt="" class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar3.png">
                       </figure>
                     </div>
                     <div class="col-md-4">
                       <figure>
-                        <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="">
+                        <img alt="" class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar4.png">
                       </figure>
                     </div>
                     <div class="col-md-4">
                       <figure>
-                        <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="">
+                        <img alt="" class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar5.png">
                       </figure>
                     </div>
                     <div class="col-md-4">
                       <figure>
-                        <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
+                        <img alt="" class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar6.png">
                       </figure>
                     </div>
                     <div class="col-md-4">
                       <figure class="mb-0">
-                        <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+                        <img alt="" class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar7.png">
                       </figure>
                     </div>
                     <div class="col-md-4">
                       <figure class="mb-0">
-                        <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar8.png" alt="">
+                        <img alt="" class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar8.png">
                       </figure>
                     </div>
                     <div class="col-md-4">
                       <figure class="mb-0">
-                        <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar9.png" alt="">
+                        <img alt="" class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar9.png">
                       </figure>
                     </div>
                   </div>
@@ -529,7 +521,7 @@
                 <h6 class="card-title">suggestions for you</h6>
                 <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
                   <div class="d-flex align-items-center hover-pointer">
-                    <img class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg" alt="">
+                    <img alt="" class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg">
                     <div class="ml-2">
                       <p>Mike Popescu</p>
                       <p class="tx-11 text-muted">12 Mutual Friends</p>
@@ -537,23 +529,23 @@
                   </div>
 
 
-                  <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
-                       aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                  <div aria-hidden="true" aria-labelledby="exampleModalToggleLabel" class="modal fade"
+                       id="exampleModalToggle" tabindex="-1">
                     <div class="modal-dialog modal-dialog-centered">
                       <div class="modal-content">
                         <div class="modal-header">
                           <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Danh sách bạn bè </h1>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
                         </div>
                         <table class="table table-striped" style="background-color: darksalmon">
 
                           <tr *ngFor="let f of friendList ">
                             <th>
                               <div class="modal-body">
-                                <img class="img-xs rounded-circle" src="{{f.img}}" alt="">
+                                <img alt="" class="img-xs rounded-circle" src="{{f.img}}">
                               </div>
                             </th>
-                            <button class="btn btn-light" (click)="showProfile(f.id)" data-bs-dismiss="modal"
+                            <button (click)="showProfile(f.id)" class="btn btn-light" data-bs-dismiss="modal"
                                     style="text-align: center">{{f.firstName}} {{f.lastName}}</button>
                         </table>
 
@@ -564,108 +556,108 @@
 
 
                   <button class="btn btn-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                         class="feather feather-user-plus" data-toggle="tooltip" title="" data-original-title="Connect">
+                    <svg class="feather feather-user-plus" data-original-title="Connect" data-toggle="tooltip" fill="none" height="24"
+                         stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                         title="" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                       <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                       <circle cx="8.5" cy="7" r="4"></circle>
-                      <line x1="20" y1="8" x2="20" y2="14"></line>
-                      <line x1="23" y1="11" x2="17" y2="11"></line>
+                      <line x1="20" x2="20" y1="8" y2="14"></line>
+                      <line x1="23" x2="17" y1="11" y2="11"></line>
                     </svg>
                   </button>
                 </div>
                 <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
                   <div class="d-flex align-items-center hover-pointer">
-                    <img class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg" alt="">
+                    <img alt="" class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg">
                     <div class="ml-2">
                       <p>Mike Popescu</p>
                       <p class="tx-11 text-muted">12 Mutual Friends</p>
                     </div>
                   </div>
                   <button class="btn btn-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                         class="feather feather-user-plus" data-toggle="tooltip" title="" data-original-title="Connect">
+                    <svg class="feather feather-user-plus" data-original-title="Connect" data-toggle="tooltip" fill="none" height="24"
+                         stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                         title="" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                       <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                       <circle cx="8.5" cy="7" r="4"></circle>
-                      <line x1="20" y1="8" x2="20" y2="14"></line>
-                      <line x1="23" y1="11" x2="17" y2="11"></line>
+                      <line x1="20" x2="20" y1="8" y2="14"></line>
+                      <line x1="23" x2="17" y1="11" y2="11"></line>
                     </svg>
                   </button>
                 </div>
                 <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
                   <div class="d-flex align-items-center hover-pointer">
-                    <img class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg" alt="">
+                    <img alt="" class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg">
                     <div class="ml-2">
                       <p>Mike Popescu</p>
                       <p class="tx-11 text-muted">12 Mutual Friends</p>
                     </div>
                   </div>
                   <button class="btn btn-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                         class="feather feather-user-plus" data-toggle="tooltip" title="" data-original-title="Connect">
+                    <svg class="feather feather-user-plus" data-original-title="Connect" data-toggle="tooltip" fill="none" height="24"
+                         stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                         title="" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                       <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                       <circle cx="8.5" cy="7" r="4"></circle>
-                      <line x1="20" y1="8" x2="20" y2="14"></line>
-                      <line x1="23" y1="11" x2="17" y2="11"></line>
+                      <line x1="20" x2="20" y1="8" y2="14"></line>
+                      <line x1="23" x2="17" y1="11" y2="11"></line>
                     </svg>
                   </button>
                 </div>
                 <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
                   <div class="d-flex align-items-center hover-pointer">
-                    <img class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg" alt="">
+                    <img alt="" class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg">
                     <div class="ml-2">
                       <p>Mike Popescu</p>
                       <p class="tx-11 text-muted">12 Mutual Friends</p>
                     </div>
                   </div>
                   <button class="btn btn-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                         class="feather feather-user-plus" data-toggle="tooltip" title="" data-original-title="Connect">
+                    <svg class="feather feather-user-plus" data-original-title="Connect" data-toggle="tooltip" fill="none" height="24"
+                         stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                         title="" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                       <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                       <circle cx="8.5" cy="7" r="4"></circle>
-                      <line x1="20" y1="8" x2="20" y2="14"></line>
-                      <line x1="23" y1="11" x2="17" y2="11"></line>
+                      <line x1="20" x2="20" y1="8" y2="14"></line>
+                      <line x1="23" x2="17" y1="11" y2="11"></line>
                     </svg>
                   </button>
                 </div>
                 <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
                   <div class="d-flex align-items-center hover-pointer">
-                    <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
+                    <img alt="" class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png">
                     <div class="ml-2">
                       <p>Mike Popescu</p>
                       <p class="tx-11 text-muted">12 Mutual Friends</p>
                     </div>
                   </div>
                   <button class="btn btn-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                         class="feather feather-user-plus" data-toggle="tooltip" title="" data-original-title="Connect">
+                    <svg class="feather feather-user-plus" data-original-title="Connect" data-toggle="tooltip" fill="none" height="24"
+                         stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                         title="" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                       <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                       <circle cx="8.5" cy="7" r="4"></circle>
-                      <line x1="20" y1="8" x2="20" y2="14"></line>
-                      <line x1="23" y1="11" x2="17" y2="11"></line>
+                      <line x1="20" x2="20" y1="8" y2="14"></line>
+                      <line x1="23" x2="17" y1="11" y2="11"></line>
                     </svg>
                   </button>
                 </div>
                 <div class="d-flex justify-content-between">
                   <div class="d-flex align-items-center hover-pointer">
-                    <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+                    <img alt="" class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar7.png">
                     <div class="ml-2">
                       <p>Mike Popescu</p>
                       <p class="tx-11 text-muted">12 Mutual Friends</p>
                     </div>
                   </div>
                   <button class="btn btn-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                         class="feather feather-user-plus" data-toggle="tooltip" title="" data-original-title="Connect">
+                    <svg class="feather feather-user-plus" data-original-title="Connect" data-toggle="tooltip" fill="none" height="24"
+                         stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                         title="" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                       <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                       <circle cx="8.5" cy="7" r="4"></circle>
-                      <line x1="20" y1="8" x2="20" y2="14"></line>
-                      <line x1="23" y1="11" x2="17" y2="11"></line>
+                      <line x1="20" x2="20" y1="8" y2="14"></line>
+                      <line x1="23" x2="17" y1="11" y2="11"></line>
                     </svg>
                   </button>
                 </div>
@@ -680,6 +672,6 @@
   </div>
 </div>
 
-<link rel="stylesheet" href="/assets/css/style.css">
+<link href="/assets/css/style.css" rel="stylesheet">
 
 <!---->
