@@ -229,7 +229,7 @@
                   <input type="file" name="file">
 
                   <div class="modal-footer">
-                    <button class="btn btn-primary" type="submit">Đăng</button>
+                    <button class="btn btn-primary" type="submit" data-bs-dismiss="modal">Đăng</button>
                   </div>
                 </form>
 
@@ -266,7 +266,7 @@
                           <circle cx="5" cy="12" r="1"></circle>
                         </svg>
                       </button>
-                      <ul class="dropdown-menu">
+                      <ul class="dropdown-menu" *ngIf="s.account.id == userToken.id">
                         <li>
                           <button class="dropdown-item" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
                                   (click)="showEdtit(s.id)">
@@ -289,7 +289,7 @@
                        aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                     <div class="modal-dialog modal-dialog-centered">
                       <div class="modal-content">
-                        <form [formGroup]="createForm" (ngSubmit)="edit(s.id)">
+                        <form [formGroup]="createForm" (ngSubmit)="edit(idS)">
                           <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Sửa bài viết</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

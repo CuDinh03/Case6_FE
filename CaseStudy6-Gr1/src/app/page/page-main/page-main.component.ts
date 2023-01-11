@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {StatusService} from "../../service/status.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Status} from "../../model/status";
+import {Friend} from "../../model/friend";
 import {FriendService} from "../../friends/FriendsService/friend.service";
 
 @Component({
@@ -15,14 +16,18 @@ export class PageMainComponent implements OnInit {
   status1: any;
   statusE!: Status;
   userToken : any;
-  friendList !: [];
+  idS!: number;
 
-  constructor(private router: Router, private statusService: StatusService,private friendService: FriendService) {
+  friendList ! : Friend[];
+  friendInF! : Friend;
+
+  constructor(public friendservice :FriendService, private router: Router, private statusService: StatusService ) {
   }
 
   view(): void {
     this.statusService.getAll().subscribe((data) => {
       this.statuses = data[0];
+
       console.log(this.statuses);
     })
   }
@@ -44,20 +49,28 @@ export class PageMainComponent implements OnInit {
       content: this.createForm.value.content,
       status: this.createForm.value.status,
       account: {
-        id: localStorage.getItem("id")
+        id: this.userToken.id
       }
     }
+    console.log(this.status1);
     this.statusService.saveStatus(this.status1).subscribe((data) => {
       this.createForm.reset();
-      this.router.navigate(["/main"]);
+      this.view();
+      this.mainView();
     })
 
   }
 
+  getAllFriends(){
+    this.friendservice.getAllFriends().subscribe((friends) => {
+      this.friendList=friends;
+
+    })
+  }
+
   showEdtit(index: number) {
-    console.log(index);
     this.statusService.findById(index).subscribe((result) => {
-      console.log(result);
+      this.idS = index;
       this.createForm.patchValue({
         content: result.content,
         status: result.status,
@@ -70,16 +83,18 @@ export class PageMainComponent implements OnInit {
     const status2: Status = {content: this.createForm.value.content, status: this.createForm.value.status}
     console.log(status2);
     this.statusService.editStatus(index, status2).subscribe(() => {
+      this.idS = -1;
       this.view();
       this.createForm.reset();
-      this.router.navigate(["/main"]);
+      this.mainView();
     })
   }
 
   deleteEdit(index: number) {
     this.statusService.deleteStatus(index).subscribe(() => {
       this.view();
-      this.router.navigate(['/main'])})
+      this.mainView();
+    })
   }
 
   mainView(){
