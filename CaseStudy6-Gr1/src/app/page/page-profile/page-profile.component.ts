@@ -31,10 +31,11 @@ export class PageProfileComponent implements OnInit {
 
   ngOnInit(): void {
     // @ts-ignore
-    // this.statusService.findById(localStorage.getItem("id")).subscribe((data) => {
-    //   this.statuses = data;
-    //   console.log(this.statuses);
-    // })
+    this.statusService.findById(localStorage.getItem("id")).subscribe((data) => {
+      this.statuses = data;
+      console.log(this.statuses);
+    })
+    // @ts-ignore
     this.userToken = JSON.parse(localStorage.getItem("userToken"));
 
     this.getAllFriends();
