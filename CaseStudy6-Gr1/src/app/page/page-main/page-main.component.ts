@@ -17,11 +17,12 @@ export class PageMainComponent implements OnInit {
   statusE!: Status;
   userToken : any;
   idS!: number;
+  imgowner: any;
 
   friendList ! : Friend[];
   friendInF! : Friend;
 
-  constructor(public friendservice :FriendService, private router: Router, private statusService: StatusService ) {
+  constructor(public friendService :FriendService, private router: Router, private statusService: StatusService ) {
   }
 
   view(): void {
@@ -36,7 +37,7 @@ export class PageMainComponent implements OnInit {
     this.view();
     // @ts-ignore
     this.userToken = JSON.parse(localStorage.getItem("userToken"));
-    this.friendService.userToken=this.userToken;
+    // this.friendService.userToken=this.userToken;
   }
 
   createForm = new FormGroup({
@@ -62,7 +63,7 @@ export class PageMainComponent implements OnInit {
   }
 
   getAllFriends(){
-    this.friendservice.getAllFriends().subscribe((friends) => {
+    this.friendService.getAllFriends(this.friendService.idInf).subscribe((friends) => {
       this.friendList=friends;
 
     })
