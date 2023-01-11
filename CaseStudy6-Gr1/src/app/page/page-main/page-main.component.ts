@@ -14,6 +14,9 @@ import {AuthenticationService} from "../../account/AccountService/authentication
 })
 export class PageMainComponent implements OnInit {
   statuses: Status[] = [];
+  listFound!:Friend[];
+  listSent!:Friend[];
+  listReceived!: Friend[];
   status1: any;
   statusE!: Status;
   userToken: any;
@@ -38,8 +41,9 @@ export class PageMainComponent implements OnInit {
     this.view();
     // @ts-ignore
     this.userToken = JSON.parse(localStorage.getItem("userToken"));
-
     this.friendService.userToken=this.userToken;
+    this.requestSent();
+    this.requestReceived();
   }
 
   createForm = new FormGroup({
@@ -105,4 +109,21 @@ export class PageMainComponent implements OnInit {
   logout() {
     this.authenticationService.logout();
   }
+  findFriend(name: any){
+    this.friendService.findFriend(name).subscribe((data) => {
+      this.listFound=data;
+    })
+    alert(this.listFound.length)
+  }
+  requestSent(){
+    this.friendService.listRequest(this.userToken.id).subscribe((data1) => {
+      this.listSent=data1;
+    })
+  }
+  requestReceived(){
+    this.friendService.listReceived(this.userToken.id).subscribe((data2)=>{
+      this.listReceived=data2
+    })
+  }
+
 }

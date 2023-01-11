@@ -4,7 +4,7 @@
     <form class="form-inline">
       <div class="inputWithIcon">
           <div  class="nav1">
-            <input class="form-control mr-sm-4" type="search" align="center" placeholder="Search" aria-label="Search">
+            <input  #input (change)="findFriend(input.value)" class="form-control mr-sm-4" type="search" align="center" placeholder="Search" aria-label="Search">
           </div>
           <div class="nav1">
             <a type="button" class="btn btn-light position-relative" data-bs-toggle="collapse" href="#collapseExample"
@@ -17,8 +17,8 @@
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
 <!--                chỗ này để hiển thị số thông báo -->
     99+
-    <span class="visually-hidden">unread messages</span>
-  </span>
+      <span class="visually-hidden">unread messages</span>
+    </span>
             </a>
 <!--            thong bao-->
             <div class="collapse" id="collapseExample">
@@ -47,10 +47,20 @@
                           <path d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z"/>
                         </svg>
                       </a>
+<!--                      List Cac Request da duoc gui di-->
                       <div class="collapse" id="collapseExample1">
                         <div class="card card-body">
-                          Some placeholder content for the collapse component. This panel is hidden by default but revealed when
-                          the user activates the relevant trigger.
+                          <table class="table table-striped" style="background-color: darksalmon">
+
+                            <tr *ngFor="let f of listReceived">
+                              <th>
+                                <div class="modal-body">
+                                  <img class="img-xs rounded-circle" src="{{f.img}}" alt="">
+                                </div>
+                              </th>
+                              <a class="btn btn-light" data-bs-dismiss="modal"
+                                      style="text-align: center"> {{f.id}} {{f.firstName}} {{f.lastName}}</a>
+                          </table>
                         </div>
                       </div>
                     </div>
@@ -63,10 +73,20 @@
                             <path d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z"/>
                           </svg>
                         </a>
+<!--                        list các request nhận được-->
                         <div class="collapse" id="collapseExample2">
                           <div class="card card-body">
-                            Some placeholder content for the collapse component. This panel is hidden by default but revealed when
-                            the user activates the relevant trigger.
+                            <table class="table table-striped" style="background-color: darksalmon">
+
+                              <tr *ngFor="let l of listSent ">
+                                <th>
+                                  <div class="modal-body">
+                                    <img class="img-xs rounded-circle" src="{{l.img}}" alt="">
+                                  </div>
+                                </th>
+                                <a class="btn btn-light" data-bs-dismiss="modal"
+                                        style="text-align: center">{{l.id}} {{l.firstName}} {{l.lastName}}</a>
+                            </table>
                           </div>
                         </div>
                       </div>
