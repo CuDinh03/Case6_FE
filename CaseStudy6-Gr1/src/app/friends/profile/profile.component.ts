@@ -34,7 +34,7 @@ getInFor(){
 
   }
   getMutualFriend(): void{
-    this.friendService.getMutualFriend(this.friendService.idInf).subscribe((data)=>{
+    this.friendService.getMutualFriend(this.userToken.id,this.friendService.idInf).subscribe((data)=>{
       this.mutualFriend = data;
 
     });

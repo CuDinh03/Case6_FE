@@ -15,6 +15,7 @@ export class PageMainComponent implements OnInit {
   status1: any;
   statusE!: Status;
   userToken : any;
+  friendList !: [];
 
   constructor(private router: Router, private statusService: StatusService,private friendService: FriendService) {
   }
