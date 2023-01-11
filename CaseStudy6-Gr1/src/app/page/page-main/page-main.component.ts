@@ -101,9 +101,6 @@ export class PageMainComponent implements OnInit {
     this.router.navigate(['/profile'])
   }
 
-  // modalView() {
-  //   this.router.navigate(['/modal'])
-  // }
 
   logout() {
     this.authenticationService.logout();
