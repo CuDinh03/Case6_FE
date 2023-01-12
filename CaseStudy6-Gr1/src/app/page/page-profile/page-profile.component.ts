@@ -20,6 +20,7 @@ export class PageProfileComponent implements OnInit {
   status1: any;
   id!: number;
   userToken:any;
+  time: any;
 
   constructor(public friendservice :FriendService, private router: Router, private statusService: StatusService, private authenticationService: AuthenticationService ) {
 

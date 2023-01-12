@@ -19,6 +19,7 @@ export class PageMainComponent implements OnInit {
   userToken: any;
   idS!: number;
   imgowner: any;
+  default:number = 1;
 
   friendList !: Friend[];
   friendInF!: Friend;
@@ -41,7 +42,7 @@ export class PageMainComponent implements OnInit {
 
   createForm = new FormGroup({
     content: new FormControl(""),
-    status: new FormControl(""),
+    status: new FormControl(this.default),
   })
 
   create() {

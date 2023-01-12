@@ -321,7 +321,7 @@
                         {{s.account.userName}}
                       </div>
                       <div>
-                        <p class="tx-9 text-muted">{{s.postDay}}</p>
+                        <p class="tx-9 text-muted">{{s.postDay | date: "hh:mm dd/MM/yyyy"}}</p>
                       </div>
                       <div >
                         <p class="tx-9 text-muted" *ngIf="s.status == '1'">Công khai</p>

@@ -302,10 +302,10 @@
                       </button>
 
                       <div class="btn-group">
-                        <select class="dropdown-menu" formControlName="status">
-                          <option class="dropdown-item" value="1">Công khai</option>
-                          <option class="dropdown-item" value="2">Bạn bè</option>
-                          <option class="dropdown-item" value="3">Chỉ mình tôi</option>
+                        <select class="dropdown-menu" formControlName="status" >
+                          <option class="dropdown-item" [ngValue]="1" [selected]="">Công khai</option>
+                          <option class="dropdown-item" [ngValue]="2" >Bạn bè</option>
+                          <option class="dropdown-item" [ngValue]="3" >Chỉ mình tôi</option>
                         </select>
                       </div>
 
