@@ -1,4 +1,4 @@
-import { img } from "./img";
+import { Img } from "./img";
 
 
 export class Account {
@@ -12,10 +12,10 @@ export class Account {
   address: string;
   birthday: Date;
   gender: string;
-  img : img;
+  img : Img;
 
   constructor(id: number, userName: string, password: string, email: string, firstname: string, lastname: string,
-              phone: string, address: string, birthday: Date, gender: string, img : img)
+              phone: string, address: string, birthday: Date, gender: string, img : Img)
 {
   this.id = id;
   this.userName = userName;

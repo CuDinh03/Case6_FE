@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   login(){
     this.loginService.login(this.loginForm.value).subscribe((data)=>{
       this.loginService.setUserToken(data);
-      this.loginService.setToken(data.accessToken);
+      this.loginService.setToken(data.token);
       this.router.navigate(["/main"])
     })
   }

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import Swal from 'sweetalert2';
-import {LoginService} from "../../../account/AccountService/user.service";
+import {LoginService} from "../../account/AccountService/user.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 
@@ -16,32 +16,24 @@ export class ChangePasswordComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  userToken: any;
   checkExistPassword: boolean = true;
 
   constructor(private loginService: LoginService, private router: Router) {
   }
 
-  changePasswordForm  = new FormGroup({
-      oldPassword: new FormControl("", Validators.required),
-      newPassword: new FormControl("", [Validators.required, Validators.minLength(6)]),
-      // confirmNewPassword: new FormControl("", [Validators.required]),
-    })
+  changePasswordForm = new FormGroup({
+    oldPassword: new FormControl("", Validators.required),
+    newPassword: new FormControl("", [Validators.required, Validators.minLength(6)]),
+    confirmNewPassword: new FormControl("", [Validators.required]),
+  })
 
   editPassword() {
-    console.log("ok2")
     this.loginService.changePassword(this.changePasswordForm.value).subscribe(data => {
-      alert("12321321");
-      this.router.navigate(["/main"])
+      this.checkExistPassword = data;
       if (data) {
-        alert("ok1")
-        this.checkExistPassword = true;
         this.messagePassSuccess();
-        this.router.navigate(["/profile"])
-      } else {
-        alert("ok3")
-        this.checkExistPassword = false;
-        this.messagePassFail()
-        this.router.navigate(["/change-password"])
+        this.router.navigate(["/main"])
       }
     })
   }

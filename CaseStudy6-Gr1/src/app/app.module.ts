@@ -1,17 +1,18 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { PageMainComponent } from './page/page-main/page-main.component';
-import { PageProfileComponent } from './page/page-profile/page-profile.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {PageMainComponent} from './page/page-main/page-main.component';
+import {PageProfileComponent} from './page/page-profile/page-profile.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthInterceptor} from "./auth/jwt-interceptor";
 import {LoginComponent} from "./page/signin-signup/login/login.component";
 import {RegisterComponent} from "./page/signin-signup/register/register.component";
 import {ProfileComponent} from "./friends/profile/profile.component";
-import { ChangePasswordComponent } from './page/edit-Account/change-password/change-password.component';
+import {ChangePasswordComponent} from "./page/change-password/change-password.component";
+
 
 @NgModule({
   declarations: [
@@ -28,7 +29,6 @@ import { ChangePasswordComponent } from './page/edit-Account/change-password/cha
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-
   ],
   providers: [
     {
@@ -38,4 +38,5 @@ import { ChangePasswordComponent } from './page/edit-Account/change-password/cha
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

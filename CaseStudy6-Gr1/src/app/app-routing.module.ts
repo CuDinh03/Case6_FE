@@ -6,7 +6,7 @@ import {PageProfileComponent} from "./page/page-profile/page-profile.component";
 import {ProfileComponent} from "./friends/profile/profile.component";
 import {LoginComponent} from "./page/signin-signup/login/login.component";
 import {RegisterComponent} from "./page/signin-signup/register/register.component";
-import {ChangePasswordComponent} from "./page/edit-Account/change-password/change-password.component";
+import {ChangePasswordComponent} from "./page/change-password/change-password.component";
 import {AuthGuard} from "./auth/auth-guard";
 
 const routes: Routes = [
