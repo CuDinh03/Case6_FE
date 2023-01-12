@@ -1,6 +1,5 @@
 import { img } from "./img";
 
-
 export class Account {
   id: number;
   userName: string;
