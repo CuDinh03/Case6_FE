@@ -92,7 +92,9 @@
 
 </div>
 
+
 <div class="container">
+  <!--Chat-->
   <div class="btn-group dropup" id="messenger">
     <button aria-expanded="false" class="btn " data-bs-toggle="dropdown" type="button">
       <svg class="bi bi-messenger" fill="currentColor" height="35" viewBox="0 0 16 16" width="35"
@@ -303,8 +305,9 @@
         </div>
       </div>
       <!-- left wrapper end -->
+
       <!-- middle wrapper start -->
-      <div *ngFor="let s of statuses, index as i" class="col-md-8 col-xl-6 middle-wrapper">
+      <div class="col-md-8 col-xl-6 middle-wrapper">
         <div class="row">
           <!--baif viet-->
           <div class="col-md-12 grid-margin" *ngFor="let s of statuses, index as i">
@@ -456,6 +459,7 @@
         </div>
       </div>
       <!-- middle wrapper end -->
+
       <!-- right wrapper start -->
       <div class="d-none d-xl-block col-xl-3 right-wrapper">
         <div class="row">
@@ -668,6 +672,7 @@
         </div>
       </div>
       <!-- right wrapper end -->
+
     </div>
   </div>
 </div>

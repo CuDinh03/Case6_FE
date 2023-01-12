@@ -29,7 +29,6 @@ export class PageProfileComponent implements OnInit {
     // @ts-ignore
     this.userToken = JSON.parse(localStorage.getItem("userToken"));
     this.view();
-    // this.userToken = this.friendservice.userToken;
     this.getAllFriends();
   }
 
