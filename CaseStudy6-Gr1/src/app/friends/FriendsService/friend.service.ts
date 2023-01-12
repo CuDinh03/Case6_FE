@@ -43,13 +43,13 @@ getMutualFriend(id1:number,id2:number) :Observable<Friend[]>{
     });
   }
 removeRequest(id1:number,id2:number){
-    this.http.delete("http://localhost:8080/deleteRequest/"+id1 + "/" +id2).subscribe((data)=>{})
+    this.http.delete("http://localhost:8080/deleteRequest/"+id1 +"/" +id2).subscribe((data)=>{})
 }
 listRequest(id:number):Observable<Friend[]>{
-   return  this.http.get<Friend[]>("http://localhost:8080/sent/"+id);
+   return this.http.get<Friend[]>("http://localhost:8080/sent/"+id);
 }
 listReceived(id:number):Observable<Friend[]>{
-    return  this.http.get<Friend[]>("http://localhost:8080/received/"+id);
+    return this.http.get<Friend[]>("http://localhost:8080/received/"+id);
 }
 
 }

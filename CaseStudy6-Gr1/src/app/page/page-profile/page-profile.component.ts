@@ -17,15 +17,16 @@ export class PageProfileComponent implements OnInit {
   friendList ! : Friend[];
   friendInF! : Friend;
   statuses: Status[] = [];
-  listFound!:Friend[];
+  userToken!:any;
   listSent!:Friend[];
+  listFound!:Friend[];
   listReceived!: Friend[];
   status1: any;
   id!: number;
-  userToken:any;
 
-  constructor(public friendService :FriendService, private router: Router, private statusService: StatusService, private authenticationService: AuthenticationService ) {
 
+
+  constructor(public friendservice :FriendService, private router: Router, private statusService: StatusService, private authenticationService: AuthenticationService ) {
   }
 
   ngOnInit(): void {
@@ -40,6 +41,10 @@ export class PageProfileComponent implements OnInit {
     this.statusService.getAll().subscribe((data) => {
       this.statuses = data[0];
       console.log(this.statuses);
+    })
+    createForm = new FormGroup({
+      content: new FormControl(""),
+      status: new FormControl(""),
     })
   }
   createForm = new FormGroup({
@@ -80,6 +85,10 @@ export class PageProfileComponent implements OnInit {
 
   edit(index: number) {
     // @ts-ignore
+    this.userToken = JSON.parse(localStorage.getItem("userToken"));
+    this.getAllFriends();
+    this.view();
+    this.requestSent();
     const status2: Status = {content: this.createForm.value.content, status: this.createForm.value.status}
     console.log(status2);
     this.statusService.editStatus(index, status2).subscribe(() => {
@@ -103,14 +112,36 @@ export class PageProfileComponent implements OnInit {
   profileView(){
     this.router.navigate(['/profile'])
   }
+  getAllFriends(){
+    this.friendservice.getAllFriends(this.userToken.id).subscribe((friends) => {
+      this.friendList=friends;
+      console.log("friendList")
+      console.log(this.friendList)
+    })
+  }
 
   showProfile(id : number){
     this.friendService.idInf=id;
     this.router.navigate(['showProfile'])
   }
-
+  requestSent(){
+    this.friendservice.listRequest(this.userToken.id).subscribe((requestSent) => {
+      this.listSent= requestSent ;
+      console.log(this.userToken.id)
+      console.log("listSent")
+      console.log(this.listSent)
+    })
+  }
   logout() {
     this.authenticationService.logout();
+  }
+
+
+  findFriend(name: any){
+    this.friendService.findFriend(name).subscribe((data) => {
+      this.listFound=data;
+    })
+    alert(this.listFound.length)
   }
   findFriend(name: any){
     this.friendService.findFriend(name).subscribe((data) => {

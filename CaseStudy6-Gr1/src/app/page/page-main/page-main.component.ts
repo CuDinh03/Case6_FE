@@ -38,7 +38,6 @@ export class PageMainComponent implements OnInit {
   view(): void {
     this.statusService.getAll().subscribe((data) => {
       this.statuses = data[0];
-
       console.log(this.statuses);
     })
   }
@@ -48,8 +47,8 @@ export class PageMainComponent implements OnInit {
     // @ts-ignore
     this.userToken = JSON.parse(localStorage.getItem("userToken"));
     this.friendService.userToken=this.userToken;
-    this.requestSent();
     this.requestReceived();
+
   }
 
   createForm = new FormGroup({
@@ -122,13 +121,14 @@ export class PageMainComponent implements OnInit {
     alert(this.listFound.length)
   }
   requestSent(){
-    this.friendService.listRequest(this.userToken.id).subscribe((data1) => {
-      this.listSent=data1;
+    this.friendService.listRequest(this.userToken.id).subscribe((requestSent) => {
+      this.listSent=requestSent;
+      console.log(requestSent)
     })
   }
   requestReceived(){
-    this.friendService.listReceived(this.userToken.id).subscribe((data2)=>{
-      this.listReceived=data2
+    this.friendService.listReceived(this.userToken.id).subscribe((requestReceived)=>{
+      this.listReceived= requestReceived;
     })
   }
 
