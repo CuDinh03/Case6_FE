@@ -298,12 +298,12 @@
                     <div class="container" *ngIf="loading">
                       <h3>Loading ...</h3>
                     </div>
-                    <img *ngFor="let ls of listPicture" [src]="ls">
+                    <img *ngFor="let ls of listPicture" [src]="ls" width="200" height="250">
                   </div>
 
 
                   <div class="modal-footer">
-                    <button class="btn btn-primary" type="submit" data-bs-dismiss="modal">Đăng
+                    <button class="btn btn-primary" type="submit" data-bs-dismiss="modal" (click)="savePicture()">Đăng
                     </button>
                   </div>
                 </form>

@@ -1,4 +1,4 @@
-import {asNativeElements, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
 import {StatusService} from "../../service/status.service";
 import {FormControl, FormGroup} from "@angular/forms";
@@ -7,10 +7,9 @@ import {Friend} from "../../model/friend";
 import {FriendService} from "../../friends/FriendsService/friend.service";
 import {AuthenticationService} from "../../account/AccountService/authentication.service";
 import {FileUploadService} from "../../service/file-upload.service";
-import {AngularFireModule} from "@angular/fire/compat";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
-import * as url from "url";
 import {finalize} from "rxjs";
+import {ImageService} from "../../service/image.service";
 
 @Component({
   selector: 'app-page-main',
@@ -19,8 +18,8 @@ import {finalize} from "rxjs";
 })
 export class PageMainComponent implements OnInit {
   statuses: Status[] = [];
-  listFound!:Friend[];
-  listSent!:Friend[];
+  listFound!: Friend[];
+  listSent!: Friend[];
   listReceived!: Friend[];
   status1: any;
   statusE!: Status;
@@ -32,7 +31,7 @@ export class PageMainComponent implements OnInit {
   file!: File;
 
   selectedImage: any;
-  @ViewChild('uploadFile', {static: true})public avatarDom: ElementRef | undefined;
+  @ViewChild('uploadFile', {static: true}) public avatarDom: ElementRef | undefined;
   arrayPicture = "";
   listPicture: string[] = [];
 
@@ -40,7 +39,13 @@ export class PageMainComponent implements OnInit {
   friendInF!: Friend;
 
 
-  constructor(private storage: AngularFireStorage, private fileUploadService: FileUploadService, public friendService: FriendService, private router: Router, private statusService: StatusService, private authenticationService: AuthenticationService) {
+  constructor(private storage: AngularFireStorage,
+              private fileUploadService: FileUploadService,
+              public friendService: FriendService,
+              private router: Router,
+              private statusService: StatusService,
+              private authenticationService: AuthenticationService,
+              private imageService: ImageService) {
   }
 
   view(): void {
@@ -55,7 +60,7 @@ export class PageMainComponent implements OnInit {
     this.view();
     // @ts-ignore
     this.userToken = JSON.parse(localStorage.getItem("userToken"));
-    this.friendService.userToken=this.userToken;
+    this.friendService.userToken = this.userToken;
     this.requestSent();
     this.requestReceived();
   }
@@ -123,20 +128,23 @@ export class PageMainComponent implements OnInit {
   logout() {
     this.authenticationService.logout();
   }
-  findFriend(name: any){
+
+  findFriend(name: any) {
     this.friendService.findFriend(name).subscribe((data) => {
-      this.listFound=data;
+      this.listFound = data;
     })
     alert(this.listFound.length)
   }
-  requestSent(){
+
+  requestSent() {
     this.friendService.listRequest(this.userToken.id).subscribe((data1) => {
-      this.listSent=data1;
+      this.listSent = data1;
     })
   }
-  requestReceived(){
-    this.friendService.listReceived(this.userToken.id).subscribe((data2)=>{
-      this.listReceived=data2
+
+  requestReceived() {
+    this.friendService.listReceived(this.userToken.id).subscribe((data2) => {
+      this.listReceived = data2
     })
   }
 
@@ -168,17 +176,24 @@ export class PageMainComponent implements OnInit {
     this.selectedImage = this.avatarDom?.nativeElement.files[0];
     this.submit();
 
-}
+  }
 
-submit(): void {
+  submit(): void {
     if (this.selectedImage != null) {
       const filePath = this.selectedImage.name;
       const fileRef = this.storage.ref(filePath);
       this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(finalize
-      (()=>(fileRef.getDownloadURL().subscribe(url =>{this.listPicture.push(url);
+      (() => (fileRef.getDownloadURL().subscribe(url => {
+        this.listPicture.push(url);
         console.log(this.arrayPicture);
       })))).subscribe();
-}
-}
+    }
+  }
+
+  savePicture(): void {
+    this.imageService.saveImage(this.listPicture).subscribe((data) => {
+      console.log(data);
+    });
+  }
 
 }
