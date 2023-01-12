@@ -17,6 +17,9 @@ import {ApiService} from "../../service/api.service";
 })
 export class PageMainComponent implements OnInit {
   statuses: Status[] = [];
+  listFound!:Friend[];
+  listSent!:Friend[];
+  listReceived!: Friend[];
   status1: any;
   statusE!: Status;
   userToken: any;
@@ -40,14 +43,18 @@ export class PageMainComponent implements OnInit {
   view(): void {
     this.statusService.getAll().subscribe((data) => {
       this.statuses = data[0];
+
       console.log(this.statuses);
     })
   }
 
   ngOnInit(): void {
+    this.view();
     // @ts-ignore
     this.userToken = JSON.parse(localStorage.getItem("userToken"));
-    this.view();
+    this.friendService.userToken=this.userToken;
+    this.requestSent();
+    this.requestReceived();
   }
 
   createForm = new FormGroup({
@@ -113,34 +120,21 @@ export class PageMainComponent implements OnInit {
   logout() {
     this.authenticationService.logout();
   }
-
-
-  // // @ts-ignore
-  // onFileSelected(event) {
-  //   let n = Date.now();
-  //   const file = event.target.files[0];
-  //   const filePath = `pic/${n}`;
-  //   const fileRef = this.storage.ref(filePath);
-  //   const task = this.storage.upload(`pic/${n}`, file);
-  //   task
-  //     .snapshotChanges()
-  //     .pipe(
-  //       finalize(() => {
-  //         this.downloadURL = fileRef.getDownloadURL();
-  //         this.downloadURL.subscribe(url => {
-  //           if (url) {
-  //             this.fb = url;
-  //           }
-  //           console.log(this.fb);
-  //         });
-  //       })
-  //     )
-  //     .subscribe(url => {
-  //       if (url) {
-  //         console.log(url);
-  //       }
-  //     });
-  // }
-
+  findFriend(name: any){
+    this.friendService.findFriend(name).subscribe((data) => {
+      this.listFound=data;
+    })
+    alert(this.listFound.length)
+  }
+  requestSent(){
+    this.friendService.listRequest(this.userToken.id).subscribe((data1) => {
+      this.listSent=data1;
+    })
+  }
+  requestReceived(){
+    this.friendService.listReceived(this.userToken.id).subscribe((data2)=>{
+      this.listReceived=data2
+    })
+  }
 
 }

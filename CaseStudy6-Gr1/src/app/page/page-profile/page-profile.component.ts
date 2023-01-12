@@ -4,7 +4,6 @@ import {FriendService} from "../../friends/FriendsService/friend.service";
 import {Friend} from "../../model/friend";
 import {StatusService} from "../../service/status.service";
 import {Status} from "../../model/status";
-import {FormControl, FormGroup} from "@angular/forms";
 import {AuthenticationService} from "../../account/AccountService/authentication.service";
 
 @Component({

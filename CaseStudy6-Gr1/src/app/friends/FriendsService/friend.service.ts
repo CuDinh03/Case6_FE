@@ -30,8 +30,8 @@ getMutualFriend(id1:number,id2:number) :Observable<Friend[]>{
   getAllFriends1(id: number) :Observable<Friend[]>{
     return this.http.get<Friend[]>("http://localhost:8080/"+id);
   }
-  findFriend(name:string){
-    this.http.get<Friend[]>("http://localhost:8080/")
+  findFriend(name:string):Observable<Friend[]>{
+   return  this.http.get<Friend[]>("http://localhost:8080/find"+name);
   }
 
   removeFriend(id1:number,id2:number){
@@ -45,6 +45,11 @@ getMutualFriend(id1:number,id2:number) :Observable<Friend[]>{
 removeRequest(id1:number,id2:number){
     this.http.delete("http://localhost:8080/deleteRequest/"+id1 + "/" +id2).subscribe((data)=>{})
 }
-
+listRequest(id:number):Observable<Friend[]>{
+   return  this.http.get<Friend[]>("http://localhost:8080/sent/"+id);
+}
+listReceived(id:number):Observable<Friend[]>{
+    return  this.http.get<Friend[]>("http://localhost:8080/received/"+id);
+}
 
 }
