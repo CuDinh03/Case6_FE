@@ -351,6 +351,10 @@
                       <div>
                         <p class="tx-9 text-muted">{{s.postDay}}</p>
                       </div>
+                      <div >
+                        <p class="tx-9 text-muted" *ngIf="s.status == '1'">Công khai</p>
+                        <p class="tx-9" *ngIf="s.status == '2'">Bạn bè</p>
+                      </div>
                     </div>
                   </div>
                   <!--                  select status-->

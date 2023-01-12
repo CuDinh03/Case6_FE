@@ -29,16 +29,14 @@ export class PageMainComponent implements OnInit {
   view(): void {
     this.statusService.getAll().subscribe((data) => {
       this.statuses = data[0];
-
       console.log(this.statuses);
     })
   }
 
   ngOnInit(): void {
-    this.view();
     // @ts-ignore
     this.userToken = JSON.parse(localStorage.getItem("userToken"));
-    this.friendService.userToken=this.userToken;
+    this.view();
   }
 
   createForm = new FormGroup({
