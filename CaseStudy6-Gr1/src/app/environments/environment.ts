@@ -2,20 +2,20 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:8080/',
 
-
-  firebaseConfig: {
-    apiKey: "AIzaSyDUaBbdIV90k3yk-fyUe467G-xajOeINmw",
-    authDomain: "socialnetwork-cb9cc.firebaseapp.com",
-    databaseURL: "https://socialnetwork-cb9cc-default-rtdb.firebaseio.com/",
-    projectId: "socialnetwork-cb9cc",
-    storageBucket: "socialnetwork-cb9cc.appspot.com",
-    messagingSenderId: "52946647881",
-    appId: "1:52946647881:web:fbe0737e06b7aeb3eeb898",
-    measurementId: "G-XKPR9XRX4T"
+  firebaseConfig : {
+    apiKey: "AIzaSyDRvLQk6dtDxTyWNAIy_cudcAf0l5gTvk4",
+    authDomain: "mangxh-2da99.firebaseapp.com",
+    databaseURL: "https://mangxh-2da99-default-rtdb.firebaseio.com/",
+    projectId: "mangxh-2da99",
+    storageBucket: "mangxh-2da99.appspot.com",
+    messagingSenderId: "882928206491",
+    appId: "1:882928206491:web:4d77fe9c97e5cf44167c3e",
+    measurementId: "G-VY9ZQZVR13"
   }
 };
 

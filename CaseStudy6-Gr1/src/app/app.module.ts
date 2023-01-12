@@ -12,6 +12,7 @@ import {LoginComponent} from "./page/signin-signup/login/login.component";
 import {RegisterComponent} from "./page/signin-signup/register/register.component";
 import {ProfileComponent} from "./friends/profile/profile.component";
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +27,7 @@ import {ProfileComponent} from "./friends/profile/profile.component";
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+
 
   ],
   providers: [

@@ -6,6 +6,9 @@ import {Status} from "../../model/status";
 import {Friend} from "../../model/friend";
 import {FriendService} from "../../friends/FriendsService/friend.service";
 import {AuthenticationService} from "../../account/AccountService/authentication.service";
+import {finalize, Observable} from "rxjs";
+// import {AngularFireStorage} from "@angular/fire/compat/storage";
+import {ApiService} from "../../service/api.service";
 
 @Component({
   selector: 'app-page-main',
@@ -23,7 +26,15 @@ export class PageMainComponent implements OnInit {
   friendList !: Friend[];
   friendInF!: Friend;
 
-  constructor(public friendService: FriendService, private router: Router, private statusService: StatusService, private authenticationService: AuthenticationService) {
+  title = "cloudsSorage";
+
+  fb!: string;
+  downloadURL!: Observable<string> ;
+
+
+
+
+  constructor(public friendService: FriendService, private router: Router, private statusService: StatusService, private authenticationService: AuthenticationService,private Api: ApiService) {
   }
 
   view(): void {
@@ -102,4 +113,34 @@ export class PageMainComponent implements OnInit {
   logout() {
     this.authenticationService.logout();
   }
+
+
+  // // @ts-ignore
+  // onFileSelected(event) {
+  //   let n = Date.now();
+  //   const file = event.target.files[0];
+  //   const filePath = `pic/${n}`;
+  //   const fileRef = this.storage.ref(filePath);
+  //   const task = this.storage.upload(`pic/${n}`, file);
+  //   task
+  //     .snapshotChanges()
+  //     .pipe(
+  //       finalize(() => {
+  //         this.downloadURL = fileRef.getDownloadURL();
+  //         this.downloadURL.subscribe(url => {
+  //           if (url) {
+  //             this.fb = url;
+  //           }
+  //           console.log(this.fb);
+  //         });
+  //       })
+  //     )
+  //     .subscribe(url => {
+  //       if (url) {
+  //         console.log(url);
+  //       }
+  //     });
+  // }
+
+
 }
