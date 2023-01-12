@@ -6,9 +6,7 @@ import {Status} from "../../model/status";
 import {Friend} from "../../model/friend";
 import {FriendService} from "../../friends/FriendsService/friend.service";
 import {AuthenticationService} from "../../account/AccountService/authentication.service";
-import {finalize, Observable} from "rxjs";
-// import {AngularFireStorage} from "@angular/fire/compat/storage";
-import {ApiService} from "../../service/api.service";
+import {FileUploadService} from "../../service/file-upload.service";
 
 @Component({
   selector: 'app-page-main',
@@ -26,18 +24,15 @@ export class PageMainComponent implements OnInit {
   idS!: number;
   imgowner: any;
 
+  shortLink: string = "";
+  loading: boolean = false;
+  file!: File;
+
   friendList !: Friend[];
   friendInF!: Friend;
 
-  title = "cloudsSorage";
 
-  fb!: string;
-  downloadURL!: Observable<string> ;
-
-
-
-
-  constructor(public friendService: FriendService, private router: Router, private statusService: StatusService, private authenticationService: AuthenticationService,private Api: ApiService) {
+  constructor(private fileUploadService: FileUploadService, public friendService: FriendService, private router: Router, private statusService: StatusService, private authenticationService: AuthenticationService) {
   }
 
   view(): void {
@@ -136,5 +131,31 @@ export class PageMainComponent implements OnInit {
       this.listReceived=data2
     })
   }
+
+
+  // On file Select
+  onChange(event: any) {
+    this.file = event.target.files[0];
+  }
+
+  // OnClick of button Upload
+  onUpload() {
+    this.loading = !this.loading;
+    console.log(this.file);
+    this.fileUploadService.upload(this.file).subscribe(
+      (event: any) => {
+        if (typeof (event) === 'object') {
+
+          // Short link via api response
+          this.shortLink = event.link;
+
+          this.loading = false; // Flag variable
+        }
+      }
+    );
+  }
+
+
+
 
 }

@@ -5,6 +5,7 @@ import {Friend} from "../../model/friend";
 import {StatusService} from "../../service/status.service";
 import {Status} from "../../model/status";
 import {AuthenticationService} from "../../account/AccountService/authentication.service";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-page-profile',
@@ -16,11 +17,14 @@ export class PageProfileComponent implements OnInit {
   friendList ! : Friend[];
   friendInF! : Friend;
   statuses: Status[] = [];
+  listFound!:Friend[];
+  listSent!:Friend[];
+  listReceived!: Friend[];
   status1: any;
   id!: number;
   userToken:any;
 
-  constructor(public friendservice :FriendService, private router: Router, private statusService: StatusService, private authenticationService: AuthenticationService ) {
+  constructor(public friendService :FriendService, private router: Router, private statusService: StatusService, private authenticationService: AuthenticationService ) {
 
   }
 
@@ -38,31 +42,28 @@ export class PageProfileComponent implements OnInit {
       console.log(this.statuses);
     })
   }
-
-
-
   createForm = new FormGroup({
     content: new FormControl(""),
     status: new FormControl(""),
   })
-  // create() {
-  //   this.status1 ={
-  //     content: this.createForm.value.content,
-  //     status: this.createForm.value.status,
-  //     account: {
-  //       id: this.userToken.id
-  //     }
-  //   }
-  //   console.log(this.status1);
-  //   this.statusService.saveStatus(this.statuses).subscribe((data) => {
-  //     this.createForm.reset();
-  //     this.view();
-  //     this.mainView();
-  //   })
-  // }
+  create() {
+    this.status1 ={
+      content: this.createForm.value.content,
+      status: this.createForm.value.status,
+      account: {
+        id: this.userToken.id
+      }
+    }
+    console.log(this.status1);
+    this.statusService.saveStatus(this.statuses).subscribe((data) => {
+      this.createForm.reset();
+      this.view();
+      this.mainView();
+    })
+  }
 
   getAllFriends(){
-    this.friendservice.getAllFriends(this.userToken.id).subscribe((friends) => {
+    this.friendService.getAllFriends(this.userToken.id).subscribe((friends) => {
       this.friendList=friends;
 
     })
@@ -104,12 +105,28 @@ export class PageProfileComponent implements OnInit {
   }
 
   showProfile(id : number){
-    this.friendservice.idInf=id;
+    this.friendService.idInf=id;
     this.router.navigate(['showProfile'])
   }
 
   logout() {
     this.authenticationService.logout();
+  }
+  findFriend(name: any){
+    this.friendService.findFriend(name).subscribe((data) => {
+      this.listFound=data;
+    })
+    alert(this.listFound.length)
+  }
+  requestSent(){
+    this.friendService.listRequest(this.userToken.id).subscribe((data1) => {
+      this.listSent=data1;
+    })
+  }
+  requestReceived(){
+    this.friendService.listReceived(this.userToken.id).subscribe((data2)=>{
+      this.listReceived=data2
+    })
   }
 
 

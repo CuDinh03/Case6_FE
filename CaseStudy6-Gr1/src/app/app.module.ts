@@ -11,6 +11,9 @@ import {AuthInterceptor} from "./auth/jwt-interceptor";
 import {LoginComponent} from "./page/signin-signup/login/login.component";
 import {RegisterComponent} from "./page/signin-signup/register/register.component";
 import {ProfileComponent} from "./friends/profile/profile.component";
+import {AngularFireModule} from "@angular/fire/compat";
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+
 
 
 @NgModule({
@@ -20,13 +23,23 @@ import {ProfileComponent} from "./friends/profile/profile.component";
     PageProfileComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp({apiKey: "AIzaSyDRvLQk6dtDxTyWNAIy_cudcAf0l5gTvk4",
+      authDomain: "mangxh-2da99.firebaseapp.com",
+      databaseURL: "https://mangxh-2da99-default-rtdb.firebaseio.com/",
+      projectId: "mangxh-2da99",
+      storageBucket: "mangxh-2da99.appspot.com",
+      messagingSenderId: "882928206491",
+      appId: "1:882928206491:web:4d77fe9c97e5cf44167c3e",
+      measurementId: "G-VY9ZQZVR13"}),
+
 
 
   ],

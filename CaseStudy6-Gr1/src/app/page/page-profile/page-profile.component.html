@@ -1,48 +1,142 @@
 <div id="fixNav">
-  <nav class="navbar navbar-light bg-light justify-content-between">
-    <img (click)="mainView()" class="img-xs rounded-circle" src="https://media.istockphoto.com/id/1145987687/vi/vec-to/logo-meow-s%E1%BA%A1ch-s%E1%BA%BD-%C4%91%C6%B0%E1%BB%A3c-c%C3%A1ch-ly-tr%C3%AAn-n%E1%BB%81n-tr%E1%BA%AFng.jpg?s=612x612&w=0&k=20&c=d1H6tN95EvGEc531qppw9iZr2rcBkmlFXtc0-MykkuA="
-         style="padding-left: 5px; height: 50px; width: 50px"
-         type="button">
-    <form class="form-inline">
-      <div class="inputWithIcon">
-        <tr>
-          <td class="nav1">
-            <input align="center" aria-label="Search" class="form-control mr-sm-4" placeholder="Search" type="search">
-          </td>
-          <td class="nav1">
-            <a aria-controls="collapseExample" aria-expanded="false" class="btn btn-light position-relative" data-bs-toggle="collapse"
-               href="#collapseExample" type="button">
-              <svg class="bi bi-bell" fill="currentColor" height="16" viewBox="0 0 16 16" width="16"
-                   xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
-              </svg>
-              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+<nav class="navbar navbar-light bg-light justify-content-between">
+  <img type="button" style="padding-left: 5px; height: 50px; width: 50px" class="img-xs rounded-circle" src="https://media.istockphoto.com/id/1145987687/vi/vec-to/logo-meow-s%E1%BA%A1ch-s%E1%BA%BD-%C4%91%C6%B0%E1%BB%A3c-c%C3%A1ch-ly-tr%C3%AAn-n%E1%BB%81n-tr%E1%BA%AFng.jpg?s=612x612&w=0&k=20&c=d1H6tN95EvGEc531qppw9iZr2rcBkmlFXtc0-MykkuA=" (click)="mainView()">
+  <form class="form-inline">
+    <div class="inputWithIcon">
+      <div  class="nav1">
+        <input  #input (change)="findFriend(input.value)" class="form-control mr-sm-4" type="search" align="center" placeholder="Search" aria-label="Search">
+      </div>
+      <div class="nav1">
+        <a type="button" class="btn btn-light position-relative" data-bs-toggle="collapse" href="#collapseExample"
+           aria-expanded="false" aria-controls="collapseExample">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell"
+               viewBox="0 0 16 16">
+            <path
+              d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+          </svg>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
 <!--                chỗ này để hiển thị số thông báo -->
     99+
-    <span class="visually-hidden">unread messages</span>
-  </span>
-            </a>
-            <div class="collapse" id="collapseExample">
-              <div class="card card-body">
-                Some placeholder content for the collapse component. This panel is hidden by default but revealed when
-                the user activates the relevant trigger.
-              </div>
+      <span class="visually-hidden">unread messages</span>
+    </span>
+        </a>
+        <!--            thong bao-->
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+
+            <div class="button-notification">
+              <tr>
+                <th>
+                  <p align="center" class="tx-11 font-weight-bold mb-0 text-uppercase">Bạn bè</p>
+                </th>
+                <th>
+                  <p class="tx-11 font-weight-bold mb-0 text-uppercase">Tất cả</p>
+                </th>
+                <th>
+                  <p class="tx-11 font-weight-bold mb-0 text-uppercase">Chưa đọc</p>
+
+
+                </th>
+              </tr>
+              <tr>
+                <td><div class="options-friends">
+                  <a type="button" class="btn btn-light position-relative" data-bs-toggle="collapse" href="#collapseExample1"
+                     aria-expanded="false" aria-controls="collapseExample1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-down" viewBox="0 0 16 16">
+                      <path d="M12.5 9a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7Zm.354 5.854 1.5-1.5a.5.5 0 0 0-.708-.708l-.646.647V10.5a.5.5 0 0 0-1 0v2.793l-.646-.647a.5.5 0 0 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0ZM11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                      <path d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z"/>
+                    </svg>
+                  </a>
+                  <!--                      List Cac Request da duoc gui di-->
+                  <div class="collapse" id="collapseExample1">
+                    <div class="card card-body">
+                      <table class="table table-striped" style="background-color: darksalmon">
+
+                        <tr *ngFor="let f of listReceived">
+                          <th>
+                            <div class="modal-body">
+                              <img class="img-xs rounded-circle" src="{{f.img}}" alt="">
+                            </div>
+                          </th>
+                          <a class="btn btn-light" data-bs-dismiss="modal"
+                             style="text-align: center"> {{f.id}} {{f.firstName}} {{f.lastName}}</a>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                  <div class="options-friends">
+                    <a type="button" class="btn btn-light position-relative" data-bs-toggle="collapse" href="#collapseExample2"
+                       aria-expanded="false" aria-controls="collapseExample2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-up" viewBox="0 0 16 16">
+                        <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.354-5.854 1.5 1.5a.5.5 0 0 1-.708.708L13 11.707V14.5a.5.5 0 0 1-1 0v-2.793l-.646.647a.5.5 0 0 1-.708-.708l1.5-1.5a.5.5 0 0 1 .708 0ZM11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                        <path d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z"/>
+                      </svg>
+                    </a>
+                    <!--                        list các request nhận được-->
+                    <div class="collapse" id="collapseExample2">
+                      <div class="card card-body">
+                        <table class="table table-striped" style="background-color: darksalmon">
+
+                          <tr *ngFor="let l of listSent ">
+                            <th>
+                              <div class="modal-body">
+                                <img class="img-xs rounded-circle" src="{{l.img}}" alt="">
+                              </div>
+                            </th>
+                            <a class="btn btn-light" data-bs-dismiss="modal"
+                               style="text-align: center">{{l.id}} {{l.firstName}} {{l.lastName}}</a>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td></td>
+                <td></td>
+              </tr>
+
+
+
             </div>
 
-          </td>
-          <td class="nav1">
+          </div>
+        </div>
 
-            <img (click)="profileView()" alt="" class="img-xs rounded-circle"
-                 src="{{userToken.img.name}}"
-                 type="button">
-
-          </td>
-        </tr>
       </div>
-    </form>
-  </nav>
-</div>
+      <div class="nav1">
+
+        <img type="button" (click)="profileView()" class="img-xs rounded-circle"
+             src="{{userToken.img.name}}"
+             alt="">
+
+      </div>
+      <div class="nav1">
+        <div class="btn-group">
+          <button type="button" class="btn p-0" data-bs-toggle="dropdown" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
+              <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+              <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+            </svg>
+          </button>
+          <div id="dropMenuAcc">
+            <ul class="dropdown-menu" id="menuAcc">
+              <li><a class="dropdown-item" (click)="profileView()">Trang cá nhân</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Cài đặt</a></li>
+
+              <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#" (click)="logout()">Đăng xuất</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </form>
+</nav>
+</div>>
 
 <!--modal edit-->
 <div id="modaledit" style="width: 100%; height: 100%;">
