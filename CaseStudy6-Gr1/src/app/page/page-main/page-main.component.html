@@ -303,9 +303,9 @@
 
                       <div class="btn-group">
                         <select class="dropdown-menu" formControlName="status" >
-                          <option class="dropdown-item" [ngValue]="1" [selected]="">Công khai</option>
-                          <option class="dropdown-item" [ngValue]="2" >Bạn bè</option>
-                          <option class="dropdown-item" [ngValue]="3" >Chỉ mình tôi</option>
+                          <option class="dropdown-item" value="1" >Công khai</option>
+                          <option class="dropdown-item" value="2" >Bạn bè</option>
+                          <option class="dropdown-item" value="3" >Chỉ mình tôi</option>
                         </select>
                       </div>
 
@@ -349,7 +349,7 @@
                         {{s.account.userName}}
                       </div>
                       <div>
-                        <p class="tx-9 text-muted">{{s.postDay}}</p>
+                        <p class="tx-9 text-muted">{{s.postDay| date: "hh:mm dd/MM/yyyy"}}</p>
                       </div>
                       <div >
                         <p class="tx-9 text-muted" *ngIf="s.status == '1'">Công khai</p>

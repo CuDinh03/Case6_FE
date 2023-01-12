@@ -56,6 +56,8 @@ export class PageMainComponent implements OnInit {
     console.log(this.status1);
     this.statusService.saveStatus(this.status1).subscribe((data) => {
       this.createForm.reset();
+      // @ts-ignore
+      this.createForm.get("status").setValue(this.default)
       this.view();
       this.mainView();
     })
