@@ -13,6 +13,7 @@ import {RegisterComponent} from "./page/signin-signup/register/register.componen
 import {ProfileComponent} from "./friends/profile/profile.component";
 import {AngularFireModule} from "@angular/fire/compat";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import { PageSearchComponent } from './page/page-search/page-search.component';
 
 
 
@@ -24,6 +25,7 @@ import {AngularFireStorageModule} from "@angular/fire/compat/storage";
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
+    PageSearchComponent,
   ],
   imports: [
     BrowserModule,

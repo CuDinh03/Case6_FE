@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {FriendService} from "../../friends/FriendsService/friend.service";
 import {Friend} from "../../model/friend";
 import {StatusService} from "../../service/status.service";
 import {Status} from "../../model/status";
 import {AuthenticationService} from "../../account/AccountService/authentication.service";
 import {FormControl, FormGroup} from "@angular/forms";
+import {FriendService} from "../../friends/FriendsService/friend.service";
 
 @Component({
   selector: 'app-page-profile',
@@ -26,7 +26,7 @@ export class PageProfileComponent implements OnInit {
 
 
 
-  constructor(public friendservice :FriendService, private router: Router, private statusService: StatusService, private authenticationService: AuthenticationService ) {
+  constructor(public friendService : FriendService, private router: Router, private statusService: StatusService, private authenticationService: AuthenticationService ) {
   }
 
   ngOnInit(): void {
@@ -42,10 +42,7 @@ export class PageProfileComponent implements OnInit {
       this.statuses = data[0];
       console.log(this.statuses);
     })
-    createForm = new FormGroup({
-      content: new FormControl(""),
-      status: new FormControl(""),
-    })
+
   }
   createForm = new FormGroup({
     content: new FormControl(""),
@@ -67,12 +64,7 @@ export class PageProfileComponent implements OnInit {
     })
   }
 
-  getAllFriends(){
-    this.friendService.getAllFriends(this.userToken.id).subscribe((friends) => {
-      this.friendList=friends;
 
-    })
-  }
   showEdit(index: number) {
     this.statusService.findById(index).subscribe((result) => {
       this.id = index;
@@ -83,12 +75,18 @@ export class PageProfileComponent implements OnInit {
     })
   }
 
+
+  getAllFriends(){
+    this.friendService.getAllFriends(this.userToken.id).subscribe((friends) => {
+      this.friendList=friends;
+      console.log("friendList")
+      console.log(this.friendList)
+    })
+  }
+
   edit(index: number) {
     // @ts-ignore
-    this.userToken = JSON.parse(localStorage.getItem("userToken"));
-    this.getAllFriends();
-    this.view();
-    this.requestSent();
+
     const status2: Status = {content: this.createForm.value.content, status: this.createForm.value.status}
     console.log(status2);
     this.statusService.editStatus(index, status2).subscribe(() => {
@@ -112,26 +110,15 @@ export class PageProfileComponent implements OnInit {
   profileView(){
     this.router.navigate(['/profile'])
   }
-  getAllFriends(){
-    this.friendservice.getAllFriends(this.userToken.id).subscribe((friends) => {
-      this.friendList=friends;
-      console.log("friendList")
-      console.log(this.friendList)
-    })
-  }
+
+
+
 
   showProfile(id : number){
     this.friendService.idInf=id;
     this.router.navigate(['showProfile'])
   }
-  requestSent(){
-    this.friendservice.listRequest(this.userToken.id).subscribe((requestSent) => {
-      this.listSent= requestSent ;
-      console.log(this.userToken.id)
-      console.log("listSent")
-      console.log(this.listSent)
-    })
-  }
+
   logout() {
     this.authenticationService.logout();
   }
@@ -143,12 +130,7 @@ export class PageProfileComponent implements OnInit {
     })
     alert(this.listFound.length)
   }
-  findFriend(name: any){
-    this.friendService.findFriend(name).subscribe((data) => {
-      this.listFound=data;
-    })
-    alert(this.listFound.length)
-  }
+
   requestSent(){
     this.friendService.listRequest(this.userToken.id).subscribe((data1) => {
       this.listSent=data1;

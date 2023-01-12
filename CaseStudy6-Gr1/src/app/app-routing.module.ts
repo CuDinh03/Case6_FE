@@ -6,13 +6,15 @@ import {PageProfileComponent} from "./page/page-profile/page-profile.component";
 import {ProfileComponent} from "./friends/profile/profile.component";
 import {LoginComponent} from "./page/signin-signup/login/login.component";
 import {RegisterComponent} from "./page/signin-signup/register/register.component";
+import {PageSearchComponent} from "./page/page-search/page-search.component";
 
 const routes: Routes = [
   {path: 'main',component: PageMainComponent},
   {path: 'profile', component: PageProfileComponent},
   {path: '', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'showProfile', component: ProfileComponent}
+  {path: 'showProfile', component: ProfileComponent},
+  {path: 'search', component: PageSearchComponent}
 
 
   ];
