@@ -10,6 +10,7 @@ import {LoginService} from "../../../account/AccountService/user.service";
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
+
 export class RegisterComponent implements OnInit {
 
   checkDuplicateMail: boolean = true

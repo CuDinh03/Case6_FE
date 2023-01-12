@@ -21,7 +21,7 @@ import { ChangePasswordComponent } from './page/edit-Account/change-password/cha
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,

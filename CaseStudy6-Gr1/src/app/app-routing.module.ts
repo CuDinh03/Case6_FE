@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'showProfile', component: ProfileComponent},
-  {path: 'change-password', component: ChangePasswordComponent},
+  {path: 'changepassword', component: ChangePasswordComponent},
 
 
   ];
