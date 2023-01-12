@@ -142,5 +142,9 @@ export class PageProfileComponent implements OnInit {
     })
   }
 
+  searchView() {
+    this.router.navigate(['/search'])
+  }
+
 
 }

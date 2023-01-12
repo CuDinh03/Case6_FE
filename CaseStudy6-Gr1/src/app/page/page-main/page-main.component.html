@@ -9,7 +9,7 @@
             </label>
           </div>
         <div class="nav1">
-          <button type="button" id="searchIn4" class="btn btn-outline-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+          <button type="button" (click)="searchView()" id="searchIn4" class="btn btn-outline-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
           </svg></button>
         </div>
@@ -277,17 +277,17 @@
 
 
                   <div style="margin: 10px">
-                  <label for="upload-photo" >
+<!--                  <label for="upload-photo" >-->
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
                       <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
                       <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/>
                     </svg>
-                  </label>
-                    <td>
-                      <input type="file" name="photo" id="upload-photo"
-                             (click)="onChange($event)"
-                      />
-                    </td>
+<!--                  </label>-->
+<!--                    <td>-->
+<!--                      <input type="file" name="photo" id="upload-photo"-->
+<!--                             (click)="onChange($event)"-->
+<!--                      />-->
+<!--                    </td>-->
                       <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
                       <div class="container" *ngIf="loading">
                         <h3>Loading ...</h3>
@@ -298,7 +298,7 @@
 
 
                   <div class="modal-footer">
-                    <button class="btn btn-primary" (click)="onUpload()"  type="submit" data-bs-dismiss="modal">Đăng</button>
+                    <button class="btn btn-primary" type="submit" data-bs-dismiss="modal">Đăng</button>
                   </div>
                 </form>
 
@@ -566,6 +566,17 @@
                 <h6 class="card-title">Người liên hệ </h6>
                 <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
                   <div class="d-flex align-items-center hover-pointer">
+                    <tr *ngFor="let f of friendList">
+                      <label for="info">
+                        <th>
+                          <div class="list-friends-body">
+                            <img id="info" alt="" class="img-xs rounded-circle" src="{{f.img}}">
+                          </div>
+                        </th>
+                        <button class="btn btn-light" (click)="showProfile(f.id)" data-bs-dismiss="modal"
+                                style="text-align: center">  {{f.firstName}} {{f.lastName}}</button>
+                      </label>
+                    </tr>
 
 <!--                    <tr *ngFor="let f of friendList ">-->
 <!--                      <th>-->

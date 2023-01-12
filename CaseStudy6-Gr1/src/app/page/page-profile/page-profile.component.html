@@ -9,7 +9,7 @@
           </label>
         </div>
         <div class="nav1">
-          <button type="button" id="searchIn4" class="btn btn-outline-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+          <button type="button" (click)="searchView()" id="searchIn4" class="btn btn-outline-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
           </svg></button>
         </div>
@@ -585,16 +585,21 @@
                           <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Danh sách bạn bè </h1>
                           <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
                         </div>
-                        <table class="table table-striped" style="background-color: darksalmon">
+                        <table class="table table-striped" >
 
-                          <tr *ngFor="let f of friendList ">
-                            <th>
-                              <div class="modal-body">
-                                <img alt="" class="img-xs rounded-circle" src="{{f.img}}">
-                              </div>
-                            </th>
-                            <button class="btn btn-light" (click)="showProfile(f.id)" data-bs-dismiss="modal"
-                                    style="text-align: center">  {{f.firstName}} {{f.lastName}}</button>
+                          <tr *ngFor="let f of friendList, index as i ">
+                                <td>
+                                  <label for="button-change">
+                                <img class="img-xs rounded-circle" src="{{f.img}}">
+                                  </label>
+                                </td>
+                                <td>
+                                  <a type="button"  class="tx-11 font-weight-bold mb-0 text-uppercase" id="button-change" (click)="showProfile(f.id)" data-bs-dismiss="modal"
+                                     style="text-align: center; text-decoration: none">  {{f.firstName}} {{f.lastName}}</a>
+                                </td>
+                                <td>
+
+
                         </table>
 
 

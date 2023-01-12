@@ -56,6 +56,11 @@ export class PageMainComponent implements OnInit {
     status: new FormControl(""),
   })
 
+  showProfile(id : number){
+    this.friendService.idInf=id;
+    // this.router.navigate(['showProfile'])
+  }
+
   create() {
     this.status1 = {
       content: this.createForm.value.content,
@@ -110,6 +115,10 @@ export class PageMainComponent implements OnInit {
     this.router.navigate(['/profile'])
   }
 
+  searchView() {
+    this.router.navigate(['/search'])
+  }
+
 
   logout() {
     this.authenticationService.logout();
@@ -131,31 +140,6 @@ export class PageMainComponent implements OnInit {
       this.listReceived= requestReceived;
     })
   }
-
-
-  // On file Select
-  onChange(event: any) {
-    this.file = event.target.files[0];
-  }
-
-  // OnClick of button Upload
-  onUpload() {
-    this.loading = !this.loading;
-    console.log(this.file);
-    this.fileUploadService.upload(this.file).subscribe(
-      (event: any) => {
-        if (typeof (event) === 'object') {
-
-          // Short link via api response
-          this.shortLink = event.link;
-
-          this.loading = false; // Flag variable
-        }
-      }
-    );
-  }
-
-
 
 
 }

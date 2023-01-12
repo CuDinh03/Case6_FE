@@ -25,8 +25,14 @@ export class ProfileComponent implements  OnInit{
   friend!:Friend;
   userToken: any;
   friendList!:Friend[];
+  listFound!:Friend[];
+
 
   constructor(private friendService: FriendService,private router: Router, private authenticationService: AuthenticationService) {
+  }
+
+  searchView() {
+    this.router.navigate(['/search'])
   }
 getInFor(){
     this.friendService.getInFor(this.friendService.idInf).subscribe((data)=>{
@@ -34,6 +40,13 @@ getInFor(){
     });
 
 
+  }
+
+  findFriend(name: any){
+    this.friendService.findFriend(name).subscribe((data) => {
+      this.listFound=data;
+    })
+    alert(this.listFound.length)
   }
   getMutualFriend(): void{
     this.friendService.getMutualFriend(this.userToken.id,this.friendService.idInf).subscribe((data)=>{
