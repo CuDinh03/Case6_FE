@@ -16,9 +16,9 @@ export class PageProfileComponent implements OnInit {
   friendList ! : Friend[];
   statuses: Status[] = [];
   userToken!:any;
+  listSent!:Friend[];
 
   constructor(public friendservice :FriendService, private router: Router, private statusService: StatusService, private authenticationService: AuthenticationService ) {
-
   }
 
   view(): void {
@@ -31,8 +31,9 @@ export class PageProfileComponent implements OnInit {
 
   ngOnInit(): void {
     // @ts-ignore
-    this.userToken = this.friendservice.userToken;
+    this.userToken = JSON.parse(localStorage.getItem("userToken"));
     this.getAllFriends();
+    this.requestSent();
   }
 
   mainView(){
@@ -42,15 +43,24 @@ export class PageProfileComponent implements OnInit {
     this.router.navigate(['/profile'])
   }
   getAllFriends(){
-    this.friendservice.getAllFriends(this.friendservice.userToken.id).subscribe((friends) => {
+    this.friendservice.getAllFriends(this.userToken.id).subscribe((friends) => {
       this.friendList=friends;
+      console.log("friendList")
+      console.log(this.friendList)
     })
   }
   showProfile(id : number){
     this.friendservice.idInf=id;
     this.router.navigate(['showProfile'])
   }
-
+  requestSent(){
+    this.friendservice.listRequest(this.userToken.id).subscribe((requestSent) => {
+      this.listSent= requestSent ;
+      console.log(this.userToken.id)
+      console.log("listSent")
+      console.log(this.listSent)
+    })
+  }
   logout() {
     this.authenticationService.logout();
   }

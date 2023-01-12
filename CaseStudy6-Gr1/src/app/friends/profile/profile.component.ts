@@ -15,10 +15,10 @@ export class ProfileComponent implements  OnInit{
   ngOnInit(): void {
     // @ts-ignore
     this.userToken = JSON.parse(localStorage.getItem("userToken"));
+
     this.getInFor();
     this.getMutualFriend();
     this.getAllFriendsOfFriend();
-    this.userToken=this.friendService.userToken;
   }
   mutualFriend!:Friend[];
   isFriend=2;
