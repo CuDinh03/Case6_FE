@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {asNativeElements, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
 import {StatusService} from "../../service/status.service";
 import {FormControl, FormGroup} from "@angular/forms";
@@ -7,6 +7,10 @@ import {Friend} from "../../model/friend";
 import {FriendService} from "../../friends/FriendsService/friend.service";
 import {AuthenticationService} from "../../account/AccountService/authentication.service";
 import {FileUploadService} from "../../service/file-upload.service";
+import {AngularFireModule} from "@angular/fire/compat";
+import {AngularFireStorage} from "@angular/fire/compat/storage";
+import * as url from "url";
+import {finalize} from "rxjs";
 
 @Component({
   selector: 'app-page-main',
@@ -22,17 +26,21 @@ export class PageMainComponent implements OnInit {
   statusE!: Status;
   userToken: any;
   idS!: number;
-  imgowner: any;
 
   shortLink: string = "";
   loading: boolean = false;
   file!: File;
 
+  selectedImage: any;
+  @ViewChild('uploadFile', {static: true})public avatarDom: ElementRef | undefined;
+  arrayPicture = "";
+  listPicture: string[] = [];
+
   friendList !: Friend[];
   friendInF!: Friend;
 
 
-  constructor(private fileUploadService: FileUploadService, public friendService: FriendService, private router: Router, private statusService: StatusService, private authenticationService: AuthenticationService) {
+  constructor(private storage: AngularFireStorage, private fileUploadService: FileUploadService, public friendService: FriendService, private router: Router, private statusService: StatusService, private authenticationService: AuthenticationService) {
   }
 
   view(): void {
@@ -133,29 +141,44 @@ export class PageMainComponent implements OnInit {
   }
 
 
-  // On file Select
-  onChange(event: any) {
-    this.file = event.target.files[0];
-  }
+  // // On file Select
+  // onChange(event: any) {
+  //   this.file = event.target.files[0];
+  // }
+  //
+  // // OnClick of button Upload
+  // onUpload() {
+  //   this.loading = !this.loading;
+  //   console.log(this.file);
+  //   this.fileUploadService.upload(this.file).subscribe(
+  //     (event: any) => {
+  //       if (typeof (event) === 'object') {
+  //
+  //         // Short link via api response
+  //         this.shortLink = event.link;
+  //
+  //         this.loading = false; // Flag variable
+  //       }
+  //     }
+  //   );
+  // }
 
-  // OnClick of button Upload
-  onUpload() {
-    this.loading = !this.loading;
-    console.log(this.file);
-    this.fileUploadService.upload(this.file).subscribe(
-      (event: any) => {
-        if (typeof (event) === 'object') {
+  uploadFileImg(): void {
 
-          // Short link via api response
-          this.shortLink = event.link;
+    this.selectedImage = this.avatarDom?.nativeElement.files[0];
+    this.submit();
 
-          this.loading = false; // Flag variable
-        }
-      }
-    );
-  }
+}
 
-
-
+submit(): void {
+    if (this.selectedImage != null) {
+      const filePath = this.selectedImage.name;
+      const fileRef = this.storage.ref(filePath);
+      this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(finalize
+      (()=>(fileRef.getDownloadURL().subscribe(url =>{this.listPicture.push(url);
+        console.log(this.arrayPicture);
+      })))).subscribe();
+}
+}
 
 }

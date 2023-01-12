@@ -13,6 +13,8 @@ import {RegisterComponent} from "./page/signin-signup/register/register.componen
 import {ProfileComponent} from "./friends/profile/profile.component";
 import {AngularFireModule} from "@angular/fire/compat";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import {AngularFireAuthModule} from "@angular/fire/compat/auth";
+import {environment} from "./environments/environment";
 
 
 
@@ -31,17 +33,8 @@ import {AngularFireStorageModule} from "@angular/fire/compat/storage";
     HttpClientModule,
     ReactiveFormsModule,
     AngularFireStorageModule,
-    AngularFireModule.initializeApp({apiKey: "AIzaSyDRvLQk6dtDxTyWNAIy_cudcAf0l5gTvk4",
-      authDomain: "mangxh-2da99.firebaseapp.com",
-      databaseURL: "https://mangxh-2da99-default-rtdb.firebaseio.com/",
-      projectId: "mangxh-2da99",
-      storageBucket: "mangxh-2da99.appspot.com",
-      messagingSenderId: "882928206491",
-      appId: "1:882928206491:web:4d77fe9c97e5cf44167c3e",
-      measurementId: "G-VY9ZQZVR13"}),
-
-
-
+    AngularFireAuthModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [
     {
