@@ -111,35 +111,8 @@ export class PageProfileComponent implements OnInit {
     this.router.navigate(['/profile'])
   }
 
-
-
-
-  showProfile(id : number){
-    this.friendService.idInf=id;
-    this.router.navigate(['showProfile'])
-  }
-
   logout() {
     this.authenticationService.logout();
-  }
-
-
-  findFriend(name: any){
-    this.friendService.findFriend(name).subscribe((data) => {
-      this.listFound=data;
-    })
-    alert(this.listFound.length)
-  }
-
-  requestSent(){
-    this.friendService.listRequest(this.userToken.id).subscribe((data1) => {
-      this.listSent=data1;
-    })
-  }
-  requestReceived(){
-    this.friendService.listReceived(this.userToken.id).subscribe((data2)=>{
-      this.listReceived=data2
-    })
   }
 
   searchView() {
