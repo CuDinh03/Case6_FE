@@ -10,6 +10,7 @@ import {FileUploadService} from "../../service/file-upload.service";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {finalize} from "rxjs";
 import {ImageService} from "../../service/image.service";
+import {img} from "../../model/img";
 
 @Component({
   selector: 'app-page-main',
@@ -25,15 +26,12 @@ export class PageMainComponent implements OnInit {
   statusE!: Status;
   userToken: any;
   idS!: number;
-
-  shortLink: string = "";
-  loading: boolean = false;
-  file!: File;
+  img: any;
 
   selectedImage: any;
   @ViewChild('uploadFile', {static: true}) public avatarDom: ElementRef | undefined;
-  arrayPicture = "";
-  listPicture: string[] = [];
+  listPicture: img[] = [];
+
 
   friendList !: Friend[];
   friendInF!: Friend;
@@ -51,8 +49,10 @@ export class PageMainComponent implements OnInit {
   view(): void {
     this.statusService.getAll().subscribe((data) => {
       this.statuses = data[0];
-
       console.log(this.statuses);
+      this.img = data[0][0].img;
+      console.log(this.img);
+
     })
   }
 
@@ -80,6 +80,7 @@ export class PageMainComponent implements OnInit {
     }
     console.log(this.status1);
     this.statusService.saveStatus(this.status1).subscribe((data) => {
+      this.savePicture();
       this.createForm.reset();
       this.view();
       this.mainView();
@@ -172,10 +173,8 @@ export class PageMainComponent implements OnInit {
   // }
 
   uploadFileImg(): void {
-
     this.selectedImage = this.avatarDom?.nativeElement.files[0];
     this.submit();
-
   }
 
   submit(): void {
@@ -184,15 +183,21 @@ export class PageMainComponent implements OnInit {
       const fileRef = this.storage.ref(filePath);
       this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(finalize
       (() => (fileRef.getDownloadURL().subscribe(url => {
-        this.listPicture.push(url);
-        console.log(this.arrayPicture);
+        console.log(url);
+        let image: img = {id: 0,name: ""};
+        image.name = url;
+        this.listPicture.push(image);
+        console.log(this.listPicture);
       })))).subscribe();
     }
   }
 
+  // @ts-ignore
   savePicture(): void {
     this.imageService.saveImage(this.listPicture).subscribe((data) => {
       console.log(data);
+      console.log(this.listPicture);
+     this.listPicture = [];
     });
   }
 

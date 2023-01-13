@@ -290,20 +290,20 @@
                       </svg>
                     </label>
                     <td>
-                      <input type="file" name="photo" id="upload-photo"
+                      <input type="file" name="photo" id="upload-photo" multiple
                              (change)="uploadFileImg()" #uploadFile
                       />
                     </td>
-                    <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
-                    <div class="container" *ngIf="loading">
-                      <h3>Loading ...</h3>
-                    </div>
-                    <img *ngFor="let ls of listPicture" [src]="ls" width="200" height="250">
+<!--                    <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>-->
+<!--                    <div class="container" >-->
+<!--                      <h3>Loading ...</h3>-->
+<!--                    </div>-->
+                    <img *ngFor="let ls of listPicture" [src]="ls.name" width="200" height="250">
                   </div>
 
 
                   <div class="modal-footer">
-                    <button class="btn btn-primary" type="submit" data-bs-dismiss="modal" (click)="savePicture()">Đăng
+                    <button class="btn btn-primary" type="submit" data-bs-dismiss="modal">Đăng
                     </button>
                   </div>
                 </form>
@@ -370,7 +370,10 @@
               <div class="card-body">
                 <!--                //noi dung cua bai viet -->
                 <p class="mb-3 tx-14">{{s.content}}</p>
-                <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
+                <div>
+                  <img class="img-fluid" *ngFor="let p of s.img, index as i1" src="{{p.name}}" alt="index" width="200" height="250">
+                </div>
+
               </div>
               <div class="card-footer">
                 <div class="d-flex post-actions">
