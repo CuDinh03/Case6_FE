@@ -47,19 +47,18 @@ export class PageMainComponent implements OnInit {
   }
 
   view(): void {
-    this.statusService.getAll().subscribe((data) => {
+    this.statusService.findAll(this.userToken.id).subscribe((data) => {
       this.statuses = data[0];
       console.log(this.statuses);
       this.img = data[0][0].img;
       console.log(this.img);
-
     })
   }
 
   ngOnInit(): void {
-    this.view();
     // @ts-ignore
     this.userToken = JSON.parse(localStorage.getItem("userToken"));
+    this.view();
     this.friendService.userToken = this.userToken;
     this.requestSent();
     this.requestReceived();
@@ -112,8 +111,9 @@ export class PageMainComponent implements OnInit {
     console.log(status2);
     this.statusService.editStatus(index, status2).subscribe(() => {
       this.idS = -1;
-      this.view();
       this.createForm.reset();
+      this.listPicture = [];
+      this.view();
       this.mainView();
     })
   }
@@ -186,4 +186,8 @@ export class PageMainComponent implements OnInit {
     });
   }
 
+  resetmodal(): void {
+    this.listPicture = [];
+    this.createForm.reset();
+  }
 }

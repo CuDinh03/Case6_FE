@@ -29,7 +29,6 @@ export class PageProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     // @ts-ignore
     this.userToken = JSON.parse(localStorage.getItem("userToken"));
     this.view();
@@ -37,7 +36,7 @@ export class PageProfileComponent implements OnInit {
   }
 
   view(): void {
-    this.statusService.getAll().subscribe((data) => {
+    this.statusService.findAll(this.userToken.id).subscribe((data) => {
       this.statuses = data[0];
       console.log(this.statuses);
     })

@@ -13,8 +13,8 @@ export class StatusService {
   constructor(private http:HttpClient) {
   }
 
-  getAll(): Observable<any>{
-    return this.http.get<Status[]>(API_URL+'/statuses');
+  findAll(userId: any): Observable<any>{
+    return this.http.get<Status[]>(API_URL+'/statuses?userId=' + userId);
   }
 
   saveStatus(status: any): Observable<Status> {

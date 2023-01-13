@@ -102,7 +102,7 @@
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Sửa bài viết</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                    (click)="this.createForm.reset()"></button>
+                    (click)="resetmodal()"></button>
           </div>
           <div class="modal-body">
             <div class="dropdown">
@@ -242,7 +242,7 @@
                 <form [formGroup]="createForm" (ngSubmit)="create()">
                   <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Tạo bài viết</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetmodal()"></button>
                   </div>
                   <div class="modal-body">
                     <div class="dropdown">
