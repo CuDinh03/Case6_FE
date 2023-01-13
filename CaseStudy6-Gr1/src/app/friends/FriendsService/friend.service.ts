@@ -60,5 +60,8 @@ isFriend(id1:number,id2:number){
 acceptRequest(id1:number,id2:number){
     return this.http.post("http://localhost:8080/acceptRequest/"+id1+"/" +id2,"").subscribe((data)=>{})
 }
+findByUserName(name:string):Observable<Friend>{
+    return this.http.get<Friend>("http://localhost:8080/profile/"+name);
+}
 
 }

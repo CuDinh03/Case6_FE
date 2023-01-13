@@ -9,8 +9,9 @@ export class Friend{
   gender !: string;
   address !: string;
   phoneNumber !: string;
+  status !: number
 
-  constructor(id: number, firstName: string, lastName: string, birthDay: Date, img: string, gender: string, address: string, phoneNumber: string) {
+  constructor(id: number, firstName: string, lastName: string, birthDay: Date, img: string, gender: string, address: string, phoneNumber: string,status:number) {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
@@ -19,5 +20,6 @@ export class Friend{
     this.gender = gender;
     this.address = address;
     this.phoneNumber = phoneNumber;
+    this.status= status;
   }
 }

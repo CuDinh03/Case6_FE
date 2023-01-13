@@ -14,6 +14,7 @@ import {ProfileComponent} from "./friends/profile/profile.component";
 import {AngularFireModule} from "@angular/fire/compat";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import { PageSearchComponent } from './page/page-search/page-search.component';
+import { GuestProfileComponent } from './friends/guest-profile/guest-profile.component';
 
 
 
@@ -26,6 +27,7 @@ import { PageSearchComponent } from './page/page-search/page-search.component';
     RegisterComponent,
     ProfileComponent,
     PageSearchComponent,
+    GuestProfileComponent,
   ],
   imports: [
     BrowserModule,

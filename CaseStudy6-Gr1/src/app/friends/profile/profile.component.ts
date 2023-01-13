@@ -4,6 +4,8 @@ import {Friend} from "../../model/friend";
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../../account/AccountService/authentication.service";
 import { ActivatedRoute } from '@angular/router';
+import {ChangeDetectorRef } from '@angular/core';
+import { NgZone } from '@angular/core';
 
 @Component({
   selector: 'app-profile',
@@ -16,6 +18,8 @@ export class ProfileComponent implements  OnInit{
     // @ts-ignore
     this.userToken = JSON.parse(localStorage.getItem("userToken"));
     this.idInf = this.route.snapshot.paramMap.get("smty") ;
+    this.userName = this.route.snapshot.paramMap.get("smt") ;
+    this.findByUserName();
     this.isFriendorNot();
     this.getInFor();
     this.getMutualFriend();
@@ -23,6 +27,7 @@ export class ProfileComponent implements  OnInit{
   }
 
   idInf!:any;
+  userName: any;
   mutualFriend!:Friend[];
   isFriend!:number;
   friend!:Friend;
@@ -32,7 +37,21 @@ export class ProfileComponent implements  OnInit{
   listReceived!:Friend[];
 
 
-  constructor(private friendService: FriendService,private router: Router, private authenticationService: AuthenticationService,private route :ActivatedRoute) {
+
+  constructor(private ngZone: NgZone,private friendService: FriendService,private router: Router, private authenticationService: AuthenticationService,private route :ActivatedRoute) {
+  }
+
+  refresh(id: number) {
+    if (id==this.userToken.id){
+      this.router.navigate(['/profile']);
+    }else {
+      this.idInf=id;
+      this.isFriendorNot();
+      this.getInFor();
+      this.getMutualFriend();
+      this.getAllFriendsOfFriend();
+      this.router.navigate(['/showProfile/'+id]);
+      }
   }
   isFriendorNot() {
     this.friendService.isFriend(this.userToken.id,this.idInf).subscribe((data1)=>{
@@ -43,9 +62,7 @@ export class ProfileComponent implements  OnInit{
             this.isFriend=4;
           }
         })
-
       }
-
     })
   }
 
@@ -57,12 +74,12 @@ getInFor(){
       this.friend = data;
     });
   }
-
-  findFriend(name: any){
-    this.friendService.findFriend(name).subscribe((data) => {
-      this.listFound=data;
+  findByUserName(){
+    this.friendService.findByUserName(this.userName).subscribe((data)=>{
+      this.friend = data;
     })
   }
+
   getMutualFriend(): void{
     this.friendService.getMutualFriend(this.userToken.id,this.idInf).subscribe((data)=>{
       this.mutualFriend = data;
@@ -91,13 +108,13 @@ this.friendService.removeFriend(id1,id2);
     this.isFriend=0
     this.friendService.removeRequest(id1,id2);
   }
-
-  logout() {
-    this.authenticationService.logout();
-  }
   acceptRequest(){
     this.isFriend=2
     this.friendService.acceptRequest(this.userToken.id,this.idInf);
   }
+  logout() {
+    this.authenticationService.logout();
+  }
+
 
 }

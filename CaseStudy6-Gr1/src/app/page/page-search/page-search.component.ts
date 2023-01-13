@@ -17,6 +17,7 @@ import { ActivatedRoute } from '@angular/router';
 export class PageSearchComponent implements OnInit{
 
   statuses: Status[] = [];
+  isFriend=1;
   listFound!:Friend[];
   listSent!:Friend[];
   listReceived!: Friend[];
@@ -109,20 +110,31 @@ export class PageSearchComponent implements OnInit{
     this.router.navigate(['/search'])
   }
 
-
-
   logout() {
     this.authenticationService.logout();
   }
   findFriend(){
-    this.friendService.findFriend(this.anyThing).subscribe((data) => {
-      this.listFound=data;
-      for (let i = 0; i < this.listFound.length; i++) {
-        if (this.listFound[i].id == this.userToken.id) {
-          this.listFound.splice(i,1);
+    if (this.anyThing!="listReceived"&&this.anyThing!="listSent"){
+      this.friendService.findFriend(this.anyThing).subscribe((data1) => {
+        this.listFound=data1;
+        for (let i = 0; i < this.listFound.length; i++) {
+          if (this.listFound[i].id == this.userToken.id) {
+            this.listFound.splice(i,1);
+          }
         }
-      }
-    })
+      })
+    }
+
+    if(this.anyThing=="listReceived"){
+      this.friendService.listReceived(this.userToken.id).subscribe((data2) => {
+        this.listFound=data2;
+      })
+    }
+    if(this.anyThing=="listSent"){
+      this.friendService.listRequest(this.userToken.id).subscribe((data3) => {
+        this.listFound=data3;
+      })
+    }
 
   }
   requestReceived(){
@@ -143,6 +155,20 @@ export class PageSearchComponent implements OnInit{
     })
 
   }
-
+  acceptRequest(id:number){
+    this.isFriend=2
+    this.friendService.acceptRequest(this.userToken.id,id);
+  }
+  removeRequest(id2:number){
+    this.isFriend=0;
+    this.friendService.removeRequest(this.userToken.id,id2);
+  }
+  removeRequestReceived(id2:number){
+  this.isFriend =0;
+  }
+  addFriend(id2:number){
+    this.isFriend=1;
+    this.friendService.addFriend(this.userToken.id,id2);
+  }
 
 }
