@@ -47,7 +47,6 @@ export class PageMainComponent implements OnInit {
     // @ts-ignore
     this.userToken = JSON.parse(localStorage.getItem("userToken"));
     this.friendService.userToken=this.userToken;
-    this.requestReceived();
 
   }
 
@@ -115,30 +114,11 @@ export class PageMainComponent implements OnInit {
     this.router.navigate(['/profile'])
   }
 
-  searchView() {
-    this.router.navigate(['/search'])
-  }
+
 
 
   logout() {
     this.authenticationService.logout();
-  }
-  findFriend(name: any){
-    this.friendService.findFriend(name).subscribe((data) => {
-      this.listFound=data;
-    })
-    alert(this.listFound.length)
-  }
-  requestSent(){
-    this.friendService.listRequest(this.userToken.id).subscribe((requestSent) => {
-      this.listSent=requestSent;
-      console.log(requestSent)
-    })
-  }
-  requestReceived(){
-    this.friendService.listReceived(this.userToken.id).subscribe((requestReceived)=>{
-      this.listReceived= requestReceived;
-    })
   }
 
 

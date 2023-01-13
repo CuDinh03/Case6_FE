@@ -7,7 +7,7 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class FriendService implements  OnInit{
-
+   sttFriend!:number;
   idInf!:number;
   name !:string;
   userToken!:any;
@@ -16,7 +16,10 @@ export class FriendService implements  OnInit{
   constructor( private  http: HttpClient) { }
 
   ngOnInit(): void {
-
+    // @ts-ignore
+    this.userToken = JSON.parse(localStorage.getItem("userToken"));
+   this.listReceived(this.userToken.id);
+   this.listRequest(this.userToken.id);
   }
   getAllFriends(id:number) :Observable<Friend[]>{
   return this.http.get<Friend[]>("http://localhost:8080/"+id);
@@ -31,7 +34,7 @@ getMutualFriend(id1:number,id2:number) :Observable<Friend[]>{
     return this.http.get<Friend[]>("http://localhost:8080/"+id);
   }
   findFriend(name:string):Observable<Friend[]>{
-   return  this.http.get<Friend[]>("http://localhost:8080/find"+name);
+   return  this.http.get<Friend[]>("http://localhost:8080/find/"+name);
   }
 
   removeFriend(id1:number,id2:number){
@@ -50,6 +53,15 @@ listRequest(id:number):Observable<Friend[]>{
 }
 listReceived(id:number):Observable<Friend[]>{
     return this.http.get<Friend[]>("http://localhost:8080/received/"+id);
+}
+isFriend(id1:number,id2:number){
+    return  this.http.get<number>("http://localhost:8080/isFriends/"+id1+"/"+id2)
+}
+acceptRequest(id1:number,id2:number){
+    return this.http.post("http://localhost:8080/acceptRequest/"+id1+"/" +id2,"").subscribe((data)=>{})
+}
+findByUserName(name:string):Observable<Friend>{
+    return this.http.get<Friend>("http://localhost:8080/profile/"+name);
 }
 
 }

@@ -7,16 +7,21 @@ import {ProfileComponent} from "./friends/profile/profile.component";
 import {LoginComponent} from "./page/signin-signup/login/login.component";
 import {RegisterComponent} from "./page/signin-signup/register/register.component";
 import {PageSearchComponent} from "./page/page-search/page-search.component";
+import {AuthGuard} from "./auth/auth-guard";
+import {GuestProfileComponent} from "./friends/guest-profile/guest-profile.component";
+import * as path from "path";
+
 
 const routes: Routes = [
   {path: 'main',component: PageMainComponent},
   {path: 'profile', component: PageProfileComponent},
   {path: '', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'showProfile', component: ProfileComponent},
-  {path: 'search', component: PageSearchComponent}
-
-
+  {path: 'showProfile/:smty', component: ProfileComponent},
+  {path: 'search/:smt', component: PageSearchComponent},
+  {path:'guest/:smt', component:GuestProfileComponent},
+  {path:'search/listSent', component: PageSearchComponent},
+  {path:'search/listReceived', component: PageSearchComponent},
   ];
 
 @NgModule({

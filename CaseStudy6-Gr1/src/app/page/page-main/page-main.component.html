@@ -5,11 +5,11 @@
       <div class="inputWithIcon">
           <div  class="nav1">
             <label for="searchIn4">
-            <input  #input (change)="findFriend(input.value)" class="form-control mr-sm-4" type="search" align="center" placeholder="Search" aria-label="Search">
+            <input  #input  [value]="input.value" class="form-control mr-sm-4" type="search" align="center" placeholder="Search" aria-label="Search">
             </label>
           </div>
         <div class="nav1">
-          <button type="button" (click)="searchView()" id="searchIn4" class="btn btn-outline-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+          <button type="button" [routerLink]="'/search/'+input.value" id="searchIn4" class="btn btn-outline-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
           </svg></button>
         </div>
@@ -149,7 +149,7 @@
     <ul class="dropdown-menu">
       <tr *ngFor="let f of friendList, index as i">
       <li><a class="dropdown-item" href="">
-        <img class="img-xs rounded-circle" src="{{f.img}}" alt="">
+        <img class="img-xs rounded-circle"  src="{{f.img}}" alt="">
         {{f.firstName}} + {{f.lastName}}
       </a></li>
       </tr>
@@ -172,6 +172,16 @@
 
               <hr>
             </div>
+            <div class="mt-3">
+              <label class="tx-11 font-weight-bold mb-0 text-uppercase"> <a style="text-decoration: none" routerLink="/search/listReceived">Lời mời kết bạn</a> </label>
+            <p class="text-muted"></p>
+            <hr>
+          </div>
+            <div class="mt-3">
+            <label class="tx-11 font-weight-bold mb-0 text-uppercase"><a style="text-decoration: none" routerLink="/search/listSent">Lời mời đã gửi</a> </label>
+            <p class="text-muted"></p>
+            <hr>
+          </div>
 
 
 
@@ -182,7 +192,7 @@
               <p class="text-muted"></p>
               <hr>
             </div>
-            Meta © 2023
+            MeowMeow Social © 2023
 
           </div>
         </div>
@@ -200,7 +210,7 @@
 
                   <!--                      nhập trạng thái-->
 
-                  <img class="img-xs rounded-circle" src="{{userToken.img.name}}" alt="">
+                  <img class="img-xs rounded-circle" type="button" (click)="profileView()" src="{{userToken.img.name}}" alt="">
 
                   <input readonly data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" type="text"
                          class="form-control" id="formGroupExampleInput2" placeholder="Hôm nay bạn nghĩ gì">
@@ -244,7 +254,7 @@
 
                       <!--             username nguoi dang -->
 
-                      {{userToken.userName}}
+                      {{userToken.firstName}} {{userToken.lastName}}
                       <button type="button" class="btn p-0" data-bs-toggle="dropdown" aria-expanded="false">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -271,7 +281,7 @@
                     </div>
                   </div>
                   <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                            placeholder="{{userToken.userName}}, đang nghĩ gì thế ?"
+                            placeholder="{{userToken.firstName}}, đang nghĩ gì thế ?"
                             formControlName="content"></textarea>
                   <!--                  click vao de up anh-->
 

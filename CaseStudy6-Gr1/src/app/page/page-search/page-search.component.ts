@@ -7,6 +7,7 @@ import {Router} from "@angular/router";
 import {StatusService} from "../../service/status.service";
 import {AuthenticationService} from "../../account/AccountService/authentication.service";
 import {FormControl, FormGroup} from "@angular/forms";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-page-search',
@@ -16,6 +17,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 export class PageSearchComponent implements OnInit{
 
   statuses: Status[] = [];
+  isFriend=1;
   listFound!:Friend[];
   listSent!:Friend[];
   listReceived!: Friend[];
@@ -24,6 +26,7 @@ export class PageSearchComponent implements OnInit{
   userToken: any;
   idS!: number;
   imgowner: any;
+  anyThing!:any;
 
   shortLink: string = "";
   loading: boolean = false;
@@ -33,7 +36,7 @@ export class PageSearchComponent implements OnInit{
   friendInF!: Friend;
 
 
-  constructor(private fileUploadService: FileUploadService, public friendService: FriendService, private router: Router, private statusService: StatusService, private authenticationService: AuthenticationService) {
+  constructor(private fileUploadService: FileUploadService, public friendService: FriendService, private router: Router, private statusService: StatusService, private authenticationService: AuthenticationService,private route : ActivatedRoute ) {
   }
 
   view(): void {
@@ -48,6 +51,8 @@ export class PageSearchComponent implements OnInit{
     // @ts-ignore
     this.userToken = JSON.parse(localStorage.getItem("userToken"));
     this.friendService.userToken=this.userToken;
+     this.anyThing = this.route.snapshot.paramMap.get("smt");
+     this.findFriend();
     this.requestReceived();
 
   }
@@ -72,16 +77,6 @@ export class PageSearchComponent implements OnInit{
       this.mainView();
     })
 
-  }
-
-  showEdtit(index: number) {
-    this.statusService.findById(index).subscribe((result) => {
-      this.idS = index;
-      this.createForm.patchValue({
-        content: result.content,
-        status: result.status,
-      })
-    })
   }
 
   edit(index: number) {
@@ -115,54 +110,65 @@ export class PageSearchComponent implements OnInit{
     this.router.navigate(['/search'])
   }
 
-
-
   logout() {
     this.authenticationService.logout();
   }
-  findFriend(name: any){
-    this.friendService.findFriend(name).subscribe((data) => {
-      this.listFound=data;
-    })
-    alert(this.listFound.length)
-  }
-  requestSent(){
-    this.friendService.listRequest(this.userToken.id).subscribe((requestSent) => {
-      this.listSent=requestSent;
-      console.log(requestSent)
-    })
+  findFriend(){
+    if (this.anyThing!="listReceived"&&this.anyThing!="listSent"){
+      this.friendService.findFriend(this.anyThing).subscribe((data1) => {
+        this.listFound=data1;
+        for (let i = 0; i < this.listFound.length; i++) {
+          if (this.listFound[i].id == this.userToken.id) {
+            this.listFound.splice(i,1);
+          }
+        }
+      })
+    }
+
+    if(this.anyThing=="listReceived"){
+      this.friendService.listReceived(this.userToken.id).subscribe((data2) => {
+        this.listFound=data2;
+      })
+    }
+    if(this.anyThing=="listSent"){
+      this.friendService.listRequest(this.userToken.id).subscribe((data3) => {
+        this.listFound=data3;
+      })
+    }
+
   }
   requestReceived(){
     this.friendService.listReceived(this.userToken.id).subscribe((requestReceived)=>{
       this.listReceived= requestReceived;
+
     })
   }
-
-
-  // On file Select
-  onChange(event: any) {
-    this.file = event.target.files[0];
-  }
-
-  // OnClick of button Upload
-  onUpload() {
-    this.loading = !this.loading;
-    console.log(this.file);
-    this.fileUploadService.upload(this.file).subscribe(
-      (event: any) => {
-        if (typeof (event) === 'object') {
-
-          // Short link via api response
-          this.shortLink = event.link;
-
-          this.loading = false; // Flag variable
+  findFriend2(smt:any){
+    this.anyThing =smt;
+    this.friendService.findFriend(this.anyThing).subscribe((data) => {
+      this.listFound=data;
+      for (let i = 0; i < this.listFound.length; i++) {
+        if (this.listFound[i].id == this.userToken.id) {
+          this.listFound.splice(i,1);
         }
       }
-    );
+    })
+
   }
-
-
-
-
+  acceptRequest(id:number){
+    this.isFriend=2
+    this.friendService.acceptRequest(this.userToken.id,id);
+  }
+  removeRequest(id2:number){
+    this.isFriend=0;
+    this.friendService.removeRequest(this.userToken.id,id2);
+  }
+  removeRequestReceived(id2:number){
+  this.isFriend =0;
+  }
+  addFriend(id2:number){
+    this.isFriend=1;
+    this.friendService.addFriend(this.userToken.id,id2);
+  }
 
 }
