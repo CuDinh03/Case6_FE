@@ -95,6 +95,14 @@ export class PageMainComponent implements OnInit {
         content: result.content,
         status: result.status,
       })
+      this.showImg(index)
+    })
+  }
+
+  showImg(index: number) {
+    this.imageService.findByStatusId(index).subscribe((data) => {
+      this.listPicture = data[0];
+      console.log(this.listPicture);
     })
   }
 
@@ -149,29 +157,6 @@ export class PageMainComponent implements OnInit {
     })
   }
 
-
-  // // On file Select
-  // onChange(event: any) {
-  //   this.file = event.target.files[0];
-  // }
-  //
-  // // OnClick of button Upload
-  // onUpload() {
-  //   this.loading = !this.loading;
-  //   console.log(this.file);
-  //   this.fileUploadService.upload(this.file).subscribe(
-  //     (event: any) => {
-  //       if (typeof (event) === 'object') {
-  //
-  //         // Short link via api response
-  //         this.shortLink = event.link;
-  //
-  //         this.loading = false; // Flag variable
-  //       }
-  //     }
-  //   );
-  // }
-
   uploadFileImg(): void {
     this.selectedImage = this.avatarDom?.nativeElement.files[0];
     this.submit();
@@ -184,7 +169,7 @@ export class PageMainComponent implements OnInit {
       this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(finalize
       (() => (fileRef.getDownloadURL().subscribe(url => {
         console.log(url);
-        let image: img = {id: 0,name: ""};
+        let image: img = {id: 0, name: ""};
         image.name = url;
         this.listPicture.push(image);
         console.log(this.listPicture);
@@ -197,7 +182,7 @@ export class PageMainComponent implements OnInit {
     this.imageService.saveImage(this.listPicture).subscribe((data) => {
       console.log(data);
       console.log(this.listPicture);
-     this.listPicture = [];
+      this.listPicture = [];
     });
   }
 

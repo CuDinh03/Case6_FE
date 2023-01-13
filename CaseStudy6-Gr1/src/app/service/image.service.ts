@@ -14,6 +14,10 @@ export class ImageService {
   constructor(private http:HttpClient) { }
 
   saveImage(img: any): Observable<any> {
-    return this.http.post<img>(API_URL + '/img', img);
+    return this.http.post<img>(API_URL + '/images', img);
+  }
+
+  findByStatusId(id: number): Observable<any> {
+    return this.http.get<img[]>(`${API_URL}/images/${id}`)
   }
 }
