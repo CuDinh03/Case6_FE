@@ -71,6 +71,7 @@ export class PageMainComponent implements OnInit {
   })
 
   create() {
+
     this.status1 = {
       content: this.createForm.value.content,
       status: this.createForm.value.status,
@@ -83,9 +84,8 @@ export class PageMainComponent implements OnInit {
       this.savePicture();
       this.createForm.reset();
       this.view();
-      this.mainView();
+      this.mainView()
     })
-
   }
 
   showEdtit(index: number) {
