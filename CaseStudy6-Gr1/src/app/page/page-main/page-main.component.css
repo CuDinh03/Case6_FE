@@ -1,0 +1,15 @@
+.image {
+  position: relative;
+  display: inline-block;
+}
+
+.image .actions {
+  right: 1em;
+  top: 1em;
+  display: block;
+  position: absolute;
+}
+
+.image .actions a {
+  display: inline-block;
+}

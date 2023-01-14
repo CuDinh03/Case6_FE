@@ -8,14 +8,13 @@ export const environment = {
   apiUrl: 'http://localhost:8080/',
 
   firebaseConfig : {
-    apiKey: "AIzaSyDRvLQk6dtDxTyWNAIy_cudcAf0l5gTvk4",
-    authDomain: "mangxh-2da99.firebaseapp.com",
-    databaseURL: "https://mangxh-2da99-default-rtdb.firebaseio.com/",
-    projectId: "mangxh-2da99",
-    storageBucket: "mangxh-2da99.appspot.com",
-    messagingSenderId: "882928206491",
-    appId: "1:882928206491:web:4d77fe9c97e5cf44167c3e",
-    measurementId: "G-VY9ZQZVR13"
+    apiKey: "AIzaSyCC1znez7BXuAcWKlvUAaI2I99RAGEk_lU",
+    authDomain: "fir-ef3e5.firebaseapp.com",
+    projectId: "fir-ef3e5",
+    storageBucket: "fir-ef3e5.appspot.com",
+    messagingSenderId: "318016988591",
+    appId: "1:318016988591:web:bd58cce84f0abbf1ee7b5a",
+    measurementId: "G-0VM1VQ64MB"
   }
 };
 
