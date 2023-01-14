@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { Observable } from 'rxjs';
 import {img} from "../model/img";
+import {Status} from "../model/status";
 
 
 const API_URL = `http://localhost:8080`;
@@ -19,5 +20,9 @@ export class ImageService {
 
   findByStatusId(id: number): Observable<any> {
     return this.http.get<img[]>(`${API_URL}/images/${id}`)
+  }
+
+  editPicture(id: number, status: Status): Observable<Status>{
+    return this.http.put<Status>(`${API_URL}/statuses/${id}`, status);
   }
 }

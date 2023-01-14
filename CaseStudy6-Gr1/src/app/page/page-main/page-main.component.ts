@@ -98,18 +98,13 @@ export class PageMainComponent implements OnInit {
     })
   }
 
-  showImg(index: number) {
-    this.imageService.findByStatusId(index).subscribe((data) => {
-      this.listPicture = data[0];
-      console.log(this.listPicture);
-    })
-  }
 
   edit(index: number) {
     // @ts-ignore
     const status2: Status = {content: this.createForm.value.content, status: this.createForm.value.status}
     console.log(status2);
     this.statusService.editStatus(index, status2).subscribe(() => {
+      this.editPicture(this.idS);
       this.idS = -1;
       this.createForm.reset();
       this.listPicture = [];
@@ -117,6 +112,7 @@ export class PageMainComponent implements OnInit {
       this.mainView();
     })
   }
+
 
   deleteEdit(index: number) {
     this.statusService.deleteStatus(index).subscribe(() => {
@@ -177,6 +173,13 @@ export class PageMainComponent implements OnInit {
     }
   }
 
+  showImg(index: number) {
+    this.imageService.findByStatusId(index).subscribe((data) => {
+      this.listPicture = data[0];
+      console.log(this.listPicture);
+    })
+  }
+
   // @ts-ignore
   savePicture(): void {
     this.imageService.saveImage(this.listPicture).subscribe((data) => {
@@ -185,6 +188,13 @@ export class PageMainComponent implements OnInit {
       this.listPicture = [];
     });
   }
+
+  deletePicture(index: number): void {
+    this.listPicture.splice(index, 1);
+    console.log(this.listPicture);
+  }
+
+  editPicture(index: number): void {}
 
   resetmodal(): void {
     this.listPicture = [];
