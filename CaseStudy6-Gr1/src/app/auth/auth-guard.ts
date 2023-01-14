@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     let userToken = this.loginService.getUserToken();
     for (const role of userToken?.roles) {
-      if (role.name == "ROLE_USER") {
+      if (role.name == "ROLE_USER"|| role.name == "ADMIN") {
         return true;
       }
     }

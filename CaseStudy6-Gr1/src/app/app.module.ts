@@ -12,6 +12,7 @@ import {LoginComponent} from "./page/signin-signup/login/login.component";
 import {RegisterComponent} from "./page/signin-signup/register/register.component";
 import {ProfileComponent} from "./friends/profile/profile.component";
 import {ChangePasswordComponent} from "./page/change-password/change-password.component";
+import { PageAdminComponent } from './page/page-admin/page-admin.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import {ChangePasswordComponent} from "./page/change-password/change-password.co
     RegisterComponent,
     ProfileComponent,
     ChangePasswordComponent,
+    PageAdminComponent,
   ],
   imports: [
     BrowserModule,

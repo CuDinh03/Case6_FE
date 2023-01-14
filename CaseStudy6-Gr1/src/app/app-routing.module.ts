@@ -8,6 +8,7 @@ import {LoginComponent} from "./page/signin-signup/login/login.component";
 import {RegisterComponent} from "./page/signin-signup/register/register.component";
 import {ChangePasswordComponent} from "./page/change-password/change-password.component";
 import {AuthGuard} from "./auth/auth-guard";
+import {PageAdminComponent} from "./page/page-admin/page-admin.component";
 
 const routes: Routes = [
   {path: 'main',component: PageMainComponent, canActivate: [AuthGuard]},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'showProfile', component: ProfileComponent},
   {path: 'changepassword', component: ChangePasswordComponent},
+  {path: 'all-user-information', component: PageAdminComponent},
 
 
   ];

@@ -19,18 +19,20 @@ export class PageMainComponent implements OnInit {
   userToken: any;
   idS!: number;
   imgowner: any;
-
   friendList !: Friend[];
   friendInF!: Friend;
-
+  checkAdmin!: boolean;
+roleAdmin! : number;
   constructor(public friendService: FriendService, private router: Router, private statusService: StatusService, private authenticationService: AuthenticationService) {
   }
 
   view(): void {
     this.statusService.getAll().subscribe((data) => {
       this.statuses = data[0];
+      if (this.userToken.roles[0].id ==1 ){
+        this.checkAdmin = true;
+      }else {this.checkAdmin =false }
 
-      console.log(this.statuses);
     })
   }
 
@@ -38,7 +40,8 @@ export class PageMainComponent implements OnInit {
     this.view();
     // @ts-ignore
     this.userToken = JSON.parse(localStorage.getItem("userToken"));
-    this.friendService.userToken=this.userToken;
+    this.friendService.userToken = this.userToken;
+
   }
 
   createForm = new FormGroup({
@@ -104,4 +107,6 @@ export class PageMainComponent implements OnInit {
   logout() {
     this.authenticationService.logout();
   }
+
+
 }

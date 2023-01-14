@@ -97,11 +97,11 @@
 
             <!--birthday -->
             <div class="mb-3 input-group-lg">
-              <input type="date" class="form-control" id="datePickerId" formControlName="birthday">
+              <input type="date" class="form-control" id="datePickerId" formControlName="birthDay">
             </div>
             <div
-              *ngIf="!registerForm.get('birthday')?.invalid && (registerForm.get('birthday')?.dirty || registerForm.get('birthday')?.touched)">
-              <div style="color: red" *ngIf="registerForm.get('birthday')?.errors?.['required']">
+              *ngIf="!registerForm.get('birthDay')?.invalid && (registerForm.get('birthDay')?.dirty || registerForm.get('birthDay')?.touched)">
+              <div style="color: red" *ngIf="registerForm.get('birthDay')?.errors?.['required']">
                 <div>Ngày sinh không được bỏ trống</div>
               </div>
             </div>
