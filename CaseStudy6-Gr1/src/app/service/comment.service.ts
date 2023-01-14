@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {comment} from "../model/comment";
-import {Status} from "../model/status";
-import {Comment} from "@angular/compiler";
+
 
 
 const API_URL = `http://localhost:8080`;
