@@ -13,6 +13,7 @@ import {ImageService} from "../../service/image.service";
 import {img} from "../../model/img";
 import {CommentService} from "../../service/comment.service";
 import {comment} from "../../model/comment";
+import {set} from "@angular/fire/database";
 
 @Component({
   selector: 'app-page-main',
@@ -73,6 +74,7 @@ export class PageMainComponent implements OnInit {
     this.requestSent();
     this.requestReceived();
     // this.showComment();
+    this.getAllFriends();
   }
 
   createForm = new FormGroup({
@@ -233,6 +235,7 @@ export class PageMainComponent implements OnInit {
       console.log(this.comment1);
       console.log(this.listComment);
     })
+
   }
 
 
@@ -241,6 +244,14 @@ export class PageMainComponent implements OnInit {
   resetmodal(): void {
     this.listPicture = [];
     this.createForm.reset();
+  }
+
+  getAllFriends(){
+    this.friendService.getAllFriends(this.userToken.id).subscribe((friends) => {
+      this.friendList=friends;
+      console.log("friendList")
+      console.log(this.friendList)
+    })
   }
 
 

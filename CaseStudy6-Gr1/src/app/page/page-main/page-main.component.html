@@ -154,13 +154,14 @@
           d="M0 7.76C0 3.301 3.493 0 8 0s8 3.301 8 7.76-3.493 7.76-8 7.76c-.81 0-1.586-.107-2.316-.307a.639.639 0 0 0-.427.03l-1.588.702a.64.64 0 0 1-.898-.566l-.044-1.423a.639.639 0 0 0-.215-.456C.956 12.108 0 10.092 0 7.76zm5.546-1.459-2.35 3.728c-.225.358.214.761.551.506l2.525-1.916a.48.48 0 0 1 .578-.002l1.869 1.402a1.2 1.2 0 0 0 1.735-.32l2.35-3.728c.226-.358-.214-.761-.551-.506L9.728 7.381a.48.48 0 0 1-.578.002L7.281 5.98a1.2 1.2 0 0 0-1.735.32z"/>
       </svg>
     </button>
-    <ul class="dropdown-menu">
-      <tr *ngFor="let f of friendList, index as i">
-        <li><a class="dropdown-item" href="">
+    <ul class="dropdown-menu" >
+        <li *ngFor="let f of friendList, index as i">
+          <a class="dropdown-item" type="button" >
           <img class="img-xs rounded-circle" src="{{f.img}}" alt="">
-          {{f.firstName}} + {{f.lastName}}
-        </a></li>
-      </tr>
+          {{f.firstName}} {{f.lastName}}
+        </a>
+        </li>
+
     </ul>
   </div>
 
@@ -471,20 +472,20 @@
 
                     <!--                  showcomment-->
                     <div class="comment" *ngFor="let c of s.comment" >
-                      <div class="d-flex align-items-center">
+                      <div class="d-flex align-items-center"  >
                         <div class="d-flex align-items-center">
                           <img class="img-xs rounded-circle" src="{{c.account.img.name}}"
                                alt="">
                           <div class="ml-2">
                             <div>
-                              {{s.account.userName}}
+                              {{c.account.userName}}
                             </div>
                             <div>
                               <p>{{c.text}}</p>
                             </div>
                           </div>
                         </div>
-                      </div>
+                    </div>
                     </div>
                   </div>
                 </div>
@@ -572,11 +573,11 @@
                     <div class="carousel-item" data-bs-interval="2000">
                       <img
                         src="https://gamek.mediacdn.vn/133514250583805952/2021/12/18/photo-1-1639800734447959976977.jpg"
-                        class="d-block w-100" alt="...">
+                        class="d-block w-100" alt="..."đề height="250px" width="150">
                     </div>
                     <div class="carousel-item">
                       <img src="https://openseauserdata.com/files/02d992a4c7039936aea0bce0ec7a5e1e.jpg"
-                           class="d-block w-100" alt="...">
+                           class="d-block w-100" alt="..." height="250px" width="150">
                     </div>
                   </div>
                   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
@@ -602,32 +603,25 @@
 
                 <!--                người liên hệ user có thể chat luôn -->
                 <h6 class="card-title">Người liên hệ </h6>
+                <tr *ngFor="let f of friendList">
                 <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
                   <div class="d-flex align-items-center hover-pointer">
-                    <tr *ngFor="let f of friendList">
                       <label for="info">
-                        <th>
                           <div class="list-friends-body">
-                            <img id="info" alt="" class="img-xs rounded-circle" src="{{f.img}}">
+                            <td>
+                              <img id="info" alt="" class="img-xs rounded-circle" src="{{f.img}}">
+
+                            </td>
+                            <td>
+                              <a type="button" (click)="showProfile(f.id)"
+                                 style="text-align: center">  {{f.firstName}} {{f.lastName}}</a>
+                            </td>
                           </div>
-                        </th>
-                        <button class="btn btn-light" (click)="showProfile(f.id)" data-bs-dismiss="modal"
-                                style="text-align: center">  {{f.firstName}} {{f.lastName}}</button>
                       </label>
-                    </tr>
 
-<!--                    <tr *ngFor="let f of friendList ">-->
-<!--                      <th>-->
-<!--                        <div class="modal-body">-->
-<!--                          <img class="img-xs rounded-circle" src="{{f.img}}" a lt="">-->
-
-<!--                        </div>-->
-<!--                      </th>-->
-<!--                      <th>-->
-<!--                        {{f.firstName}} {{f.lastName}}-->
-<!--                      </th>-->
                   </div>
                 </div>
+                </tr>
               </div>
             </div>
           </div>
