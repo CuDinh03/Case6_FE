@@ -1,16 +1,16 @@
 <div id="fixNav">
   <nav class="navbar navbar-light bg-light justify-content-between">
-    <img type="button" style="padding-left: 5px; height: 50px; width: 50px" class="img-xs rounded-circle" src="https://media.istockphoto.com/id/1145987687/vi/vec-to/logo-meow-s%E1%BA%A1ch-s%E1%BA%BD-%C4%91%C6%B0%E1%BB%A3c-c%C3%A1ch-ly-tr%C3%AAn-n%E1%BB%81n-tr%E1%BA%AFng.jpg?s=612x612&w=0&k=20&c=d1H6tN95EvGEc531qppw9iZr2rcBkmlFXtc0-MykkuA=" (click)="mainView()">
+    <img type="button"  style="padding-left: 5px; height: 50px; width: 50px" class="img-xs rounded-circle" src="https://media.istockphoto.com/id/1145987687/vi/vec-to/logo-meow-s%E1%BA%A1ch-s%E1%BA%BD-%C4%91%C6%B0%E1%BB%A3c-c%C3%A1ch-ly-tr%C3%AAn-n%E1%BB%81n-tr%E1%BA%AFng.jpg?s=612x612&w=0&k=20&c=d1H6tN95EvGEc531qppw9iZr2rcBkmlFXtc0-MykkuA=" (click)="mainView()">
     <form class="form-inline">
       <div class="inputWithIcon">
           <div  class="nav1">
 
-            <input  #input (change)="findFriend(input.value)" class="form-control mr-sm-4" type="search" align="center" placeholder="Search" aria-label="Search">
+            <input  #input (change)="findFriend(input.value)" class="form-control mr-sm-4"  type="search" align="center" placeholder="Tìm gì đó trên meow" aria-label="Search">
           </div>
 
           <div class="nav1">
             <a type="button" class="btn btn-light position-relative" data-bs-toggle="collapse" href="#collapseExample"
-               aria-expanded="false" aria-controls="collapseExample">
+               aria-expanded="false" aria-controls="collapseExample" >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell"
                    viewBox="0 0 16 16">
                 <path
@@ -436,7 +436,7 @@
                       </td>
                       <td>
                         <label for="comment{{s.id}}">
-                        <p class="d-none d-md-block ml-2" id="comment">Comment</p>
+                        <p class="d-none d-md-block ml-2" id="comment">Comment <span style="color: #6ea8fe">{{s.comment.length}}</span>  </p>
                         </label>
                       </td>
                     </div>
@@ -453,7 +453,9 @@
 
                             <input #box type="text" class="form-control" id="comment{{s.id}}" style="border: none;"
                                    placeholder="Viết bình luận..." (keyup.enter)="comment(box.value)">
+
                             <span style="border: none">
+
                           <span type="button" style="border: none; margin-left: 1px">
                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                    class="bi bi-image" viewBox="0 0 16 16">
@@ -469,23 +471,19 @@
 
                     </div>
                     <br>
-
                     <!--                  showcomment-->
-                    <div class="comment" *ngFor="let c of s.comment" >
+                    <div class="overflow-auto" *ngFor="let c of s.comment" >
                       <div class="d-flex align-items-center"  >
                         <div class="d-flex align-items-center">
                           <img class="img-xs rounded-circle" src="{{c.account.img.name}}"
                                alt="">
-                          <div class="ml-2">
-                            <div>
-                              {{c.account.userName}}
-                            </div>
-                            <div>
-                              <p>{{c.text}}</p>
-                            </div>
-                          </div>
+                          <span>{{c.account.userName}}</span>
+
                         </div>
                     </div>
+                      <div id="content">
+                        {{c.text}}
+                      </div>
                     </div>
                   </div>
                 </div>
