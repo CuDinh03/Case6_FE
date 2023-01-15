@@ -192,6 +192,9 @@ export class PageMainComponent implements OnInit {
   deletePicture(index: number): void {
     this.listPicture.splice(index, 1);
     console.log(this.listPicture);
+    this.imageService.deleteImage(index).subscribe((data) => {
+
+    })
   }
 
   editPicture(index: number): void {}
