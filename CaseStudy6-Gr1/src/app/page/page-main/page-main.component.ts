@@ -33,13 +33,12 @@ export class PageMainComponent implements OnInit {
   idS!: number;
   img: any;
   comment1 !: any;
+  id: any;
 
   selectedImage: any;
   @ViewChild('uploadFile', {static: true}) public avatarDom: ElementRef | undefined;
   listPicture: img[] = [];
   listComment: comment[] = [];
-
-
 
   friendList !: Friend[];
   friendInF!: Friend;
@@ -230,10 +229,12 @@ export class PageMainComponent implements OnInit {
         id: this.userToken.id
       }
     }
-    this.commentService.saveComment(this.comment1).subscribe((data)=>{
+    this.commentService.saveComment(this.comment1, this.id).subscribe((data)=>{
       console.log(data);
       console.log(this.comment1);
-      console.log(this.listComment);
+      this.createForm.reset();
+      this.view();
+      this.mainView();
     })
 
   }

@@ -14,8 +14,8 @@ export class CommentService {
 
   constructor(private  http: HttpClient) { }
 
-  saveComment(comment: any): Observable<any>{
-    return this.http.post<comment>(API_URL+ '/comments', comment)
+  saveComment(comment: any, id: number): Observable<any>{
+    return this.http.post<comment>(`${API_URL}/comments/${id}`, comment)
   }
 
   findCommentByStatusId(id:number): Observable<any>{
