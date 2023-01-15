@@ -25,13 +25,13 @@
       <th>Gender</th>
       <th>Img</th>
       <th>Trạng Thái Tài Khoản</th>
-      <th></th>
+      <th>Quản lý</th>
     </tr>
     </thead>
-    <tbody>
-    <tr *ngFor="let t of listAccount; index as i">
+    <tbody *ngFor="let t of listAccount; index as i">
+    <tr >
       <th>{{t.id}}</th>
-      <th>{{t.roles}}</th>
+      <th>{{t.roles[0].name}}</th>
       <th>{{t.userName}}</th>
       <th>{{t.email}}</th>
       <th>{{t.password}}</th>
@@ -41,8 +41,11 @@
       <th>{{t.birthDay}}</th>
       <th>{{t.address}}</th>
       <th>{{t.gender}}</th>
-      <th>{{t.img}}</th>
-      <th>Trạng Thái Tài Khoản</th>
+      <th><img src="{{t.img.name}}" width="70" height="50"></th>
+      <th *ngIf="(t.status==0)">Hoạt Động</th>
+      <th *ngIf="(t.status==1)" style="color: red">Tài Khoản Bị Khóa</th>
+      <th *ngIf="(t.status==0)"><button type="button" class="btn btn-info">BLock</button>
+      <th *ngIf="(t.status==1)"><button type="button" class="btn btn-danger">UnBlock</button>
     </tr>
     </tbody>
   </table>
