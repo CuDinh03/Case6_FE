@@ -63,5 +63,8 @@ acceptRequest(id1:number,id2:number){
 findByUserName(name:string):Observable<Friend>{
     return this.http.get<Friend>("http://localhost:8080/profile/"+name);
 }
-
+removeRequestReceived(id1:number,id2:number){
+return this.http.delete("http://localhost:8080/deleteRequest/"+id2+"/"+id1).subscribe((data)=>{
+})
+ }
 }

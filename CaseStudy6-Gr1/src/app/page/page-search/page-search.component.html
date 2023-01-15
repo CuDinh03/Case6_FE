@@ -212,12 +212,6 @@
                         <div class="ml-2">
                           <th style="text-align: center"><a type="button"  class="tx-11 font-weight-bold mb-0 text-uppercase" id="button-change" [routerLink]="'/showProfile/'+l.id" data-bs-dismiss="modal"
                              style="text-align: center; text-decoration: none">    {{l.firstName}} {{l.lastName}}</a></th>
-                          <th style="text-align: center"> <button *ngIf="anyThing=='listReceived'&&isFriend==1"  class="btn btn-success" (click)="acceptRequest(l.id)">Chấp nhận </button></th>
-                          <th style="text-align: center"> <button *ngIf="isFriend==2"  class="btn btn-success" (click)="removeRequest(l.id)">Đã là bạn bè </button></th>
-                          <th style="text-align: center">  <button  *ngIf="anyThing=='listReceived'&&isFriend==1" class="btn btn-danger" (click)="removeRequestReceived(l.id)">Xóa</button></th>
-                          <th style="text-align: center"> <button   *ngIf="anyThing=='listSent'&&isFriend==1"  class="btn btn-danger" (click)="removeRequest(l.id)">Hủy yêu cầu</button></th>
-                          <th style="text-align: center"> <button   *ngIf="isFriend==0"  class="btn btn-danger" (click)="addFriend(l.id)">+Thêm Bạn</button></th>
-
                         </div>
                         </table>
                       </div>

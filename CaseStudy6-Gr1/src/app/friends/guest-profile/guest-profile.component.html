@@ -1,6 +1,6 @@
 <div id="fixNav">
   <nav class="navbar navbar-light bg-light justify-content-between">
-    <img type="button" style="padding-left: 5px; height: 50px; width: 50px" class="img-xs rounded-circle" src="https://media.istockphoto.com/id/1145987687/vi/vec-to/logo-meow-s%E1%BA%A1ch-s%E1%BA%BD-%C4%91%C6%B0%E1%BB%A3c-c%C3%A1ch-ly-tr%C3%AAn-n%E1%BB%81n-tr%E1%BA%AFng.jpg?s=612x612&w=0&k=20&c=d1H6tN95EvGEc531qppw9iZr2rcBkmlFXtc0-MykkuA=" >
+    <img type="button" [routerLink]="'/'" style="padding-left: 5px; height: 50px; width: 50px" class="img-xs rounded-circle" src="https://media.istockphoto.com/id/1145987687/vi/vec-to/logo-meow-s%E1%BA%A1ch-s%E1%BA%BD-%C4%91%C6%B0%E1%BB%A3c-c%C3%A1ch-ly-tr%C3%AAn-n%E1%BB%81n-tr%E1%BA%AFng.jpg?s=612x612&w=0&k=20&c=d1H6tN95EvGEc531qppw9iZr2rcBkmlFXtc0-MykkuA=" >
     <form class="form-inline">
       <div class="inputWithIcon">
         <div  class="nav1">
@@ -9,7 +9,7 @@
           </label>
         </div>
         <div class="nav1">
-          <button type="button" [routerLink]="'/search/'+input.value"id="searchIn4" class="btn btn-outline-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+          <button type="button"[routerLink]="'/'"  id="searchIn4" class="btn btn-outline-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
           </svg></button>
         </div>
@@ -69,7 +69,7 @@
             <div id="dropMenuAcc">
               <ul class="dropdown-menu" id="menuAcc">
 <!--                <li><a class="dropdown-item" (click)="profileView()">Trang cá nhân</a></li>-->
-                <li><a class="dropdown-item" >Đăng nhập</a></li>
+                <li><a class="dropdown-item" [routerLink]="'/'"  >Đăng nhập</a></li>
                 <li><hr class="dropdown-divider"></li>
 <!--                <li><a class="dropdown-item" href="#">Cài đặt</a></li>-->
 

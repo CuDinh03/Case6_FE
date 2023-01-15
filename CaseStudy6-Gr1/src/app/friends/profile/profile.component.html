@@ -139,6 +139,13 @@
                   <p *ngIf="isFriend==4" (click)="acceptRequest()" ><i class='fas fa-exclamation-triangle'></i>
                       Chấp nhận lời mời</p>
 
+
+                </button>
+
+                <button class="btn btn-danger" *ngIf="isFriend==4" >
+                  <p *ngIf="isFriend==4" (click)="removeRequestSent(userToken.id,friend.id)" ><i class='fas fa-exclamation-triangle'></i>
+                  Xóa yêu cầu
+                  </p>
                 </button>
               </div>
             </div>

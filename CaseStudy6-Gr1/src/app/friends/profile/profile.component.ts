@@ -115,6 +115,10 @@ this.friendService.removeFriend(id1,id2);
   logout() {
     this.authenticationService.logout();
   }
+ removeRequestSent(id1:number,id2:number){
+    this.isFriend=0
+   this.friendService.removeRequestReceived(id1, id2)
 
+ }
 
 }
