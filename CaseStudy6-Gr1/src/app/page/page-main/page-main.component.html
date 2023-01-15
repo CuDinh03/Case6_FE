@@ -452,7 +452,7 @@
                           <div class="input-group">
 
                             <input #box type="text" class="form-control" id="comment{{s.id}}" style="border: none;"
-                                   placeholder="Viết bình luận..." (keyup.enter)="comment(box.value)">
+                                   placeholder="Viết bình luận..." (keydown.enter)="id = s.id" (keyup.enter)="comment(box.value)">
                             <span style="border: none">
                           <span type="button" style="border: none; margin-left: 1px">
                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
