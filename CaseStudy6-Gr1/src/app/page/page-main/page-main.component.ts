@@ -232,7 +232,9 @@ export class PageMainComponent implements OnInit {
     this.commentService.saveComment(this.comment1, this.id).subscribe((data)=>{
       console.log(data);
       console.log(this.comment1);
-      console.log(this.listComment);
+      this.createForm.reset();
+      this.view();
+      this.mainView();
     })
 
   }
