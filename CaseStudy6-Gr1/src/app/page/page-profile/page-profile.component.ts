@@ -6,6 +6,7 @@ import {Status} from "../../model/status";
 import {AuthenticationService} from "../../account/AccountService/authentication.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {FriendService} from "../../friends/FriendsService/friend.service";
+import {Account} from "../../model/account";
 
 @Component({
   selector: 'app-page-profile',
@@ -13,6 +14,9 @@ import {FriendService} from "../../friends/FriendsService/friend.service";
   styleUrls: ['./page-profile.component.css']
 })
 export class PageProfileComponent implements OnInit {
+  account!: Account;
+  stt1!:number;
+  stt2!:number;
 
   friendList ! : Friend[];
   friendInF! : Friend;
@@ -32,6 +36,11 @@ export class PageProfileComponent implements OnInit {
   ngOnInit(): void {
     // @ts-ignore
     this.userToken = JSON.parse(localStorage.getItem("userToken"));
+    this.account.firstname=this.userToken.firstname;
+    this.account.lastname=this.userToken.lastname;
+    this.account.gender = this.userToken.gender;
+    this.account.address = this.userToken.address;
+    this.account.phone=this.userToken.phone;
     this.view();
     this.getAllFriends();
   }
@@ -117,6 +126,11 @@ export class PageProfileComponent implements OnInit {
   searchView() {
     this.router.navigate(['/search'])
   }
+  updateAccount(){
+
+    this.friendService.updateAccount(this.account);
+  }
+
 
 
 }

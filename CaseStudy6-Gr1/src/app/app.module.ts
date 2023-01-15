@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { PageMainComponent } from './page/page-main/page-main.component';
 import { PageProfileComponent } from './page/page-profile/page-profile.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthInterceptor} from "./auth/jwt-interceptor";
 import {LoginComponent} from "./page/signin-signup/login/login.component";
 import {RegisterComponent} from "./page/signin-signup/register/register.component";
@@ -31,15 +31,16 @@ import { GuestProfileComponent } from './friends/guest-profile/guest-profile.com
     PageSearchComponent,
     GuestProfileComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    AngularFireStorageModule,
-    AngularFireAuthModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        AngularFireStorageModule,
+        AngularFireAuthModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        FormsModule
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

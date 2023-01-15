@@ -2,6 +2,7 @@ import {Injectable, OnChanges, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {Friend} from "../../model/friend";
 import {HttpClient} from "@angular/common/http";
+import {Account} from "../../model/account";
 
 @Injectable({
   providedIn: 'root'
@@ -62,6 +63,9 @@ acceptRequest(id1:number,id2:number){
 }
 findByUserName(name:string):Observable<Friend>{
     return this.http.get<Friend>("http://localhost:8080/profile/"+name);
+}
+updateAccount(account:Account){
+    return this.http.put("http://localhost:8080/update",account).subscribe((data)=>{})
 }
 
 }

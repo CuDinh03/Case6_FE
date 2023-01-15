@@ -208,24 +208,56 @@
                         alt="">
                  </div>
                   <br>
-                  <div id="nameUser">
-                    <p>Ten: </p>
-                    <input type="text">
+                  <div id="lastName" >
+                    <h4>Họ : </h4>
+                    <input type="text" [(ngModel)]="account.lastname">
                   </div>
                   <br>
-                  <div id="hoUser">
-                    <p>Ho: </p>
-                    <input type="text">
+                  <div id="fistName" >
+                    <h4>Tên: </h4>
+                    <input type="text" [(ngModel)]="account.firstname">
                   </div>
                   <br>
-                  <div id="email">
-                    <p>Email: </p>
-                    <input type="email">
+                  <div id="phoneNumber" >
+                    <h4>Số điện thoại: </h4>
+                    <input type="tel" [(ngModel)]="account.phone">
                   </div>
                   <br>
-                <div id="address">
-                    <p>Địa chỉ: </p>
-                    <input type="text">
+                   <div id="address" >
+                    <h4>Địa chỉ: </h4>
+                    <input type="text" [(ngModel)]="account.address">
+                  </div>
+                  <div id="birthDay">
+                    <h4>Ngày sinh: </h4>
+                    <input type="date" [(ngModel)]="account.birthday">
+                  </div>
+                  <div id="gender">
+                    <h4>Giới tính: </h4>
+                    <select [(ngModel)]="account.gender">
+                      <option value="Nam">Nam</option>
+                      <option value="Nữ">Nữ</option>
+                      <option value="Giới tính thứ ba">Giới tính thứ ba</option>
+                      <option value="Gay">Gay</option>
+                      <option value="Bue Đê">Bê Đuê</option>
+                      <option value="Không muốn tiết lộ">Không muốn tiết lộ</option>
+                    </select>
+
+                  </div>
+                  <div>
+                    <h4>
+                      Danh sách bạn bè :
+                    </h4>
+                    <select id="status1" [(ngModel)]="stt1">
+                      <option value="1">Công khai</option>
+                      <option value="2">Chỉ mình tôi</option>
+                    </select>
+                  </div>
+                  <div>
+                    <h4>Thông tin :</h4>
+                  <select id="status2" [(ngModel)]="stt2">
+                    <option value="1">Công khai</option>
+                    <option value="2">Chỉ mình tôi</option>
+                  </select>
                   </div>
                 </div>
                 <div class="modal-footer">
