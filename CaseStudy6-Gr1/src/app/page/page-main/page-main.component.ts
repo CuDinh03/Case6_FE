@@ -193,7 +193,10 @@ export class PageMainComponent implements OnInit {
     this.listPicture.splice(index, 1);
     console.log(this.listPicture);
     this.imageService.deleteImage(index).subscribe((data) => {
-
+      this.createForm.reset();
+      this.listPicture = [];
+      this.view();
+      this.mainView();
     })
   }
 
