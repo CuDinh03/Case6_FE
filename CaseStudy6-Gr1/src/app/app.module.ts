@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { PageMainComponent } from './page/page-main/page-main.component';
 import { PageProfileComponent } from './page/page-profile/page-profile.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthInterceptor} from "./auth/jwt-interceptor";
 import {LoginComponent} from "./page/signin-signup/login/login.component";
 import {RegisterComponent} from "./page/signin-signup/register/register.component";
@@ -29,24 +29,26 @@ import { GuestProfileComponent } from './friends/guest-profile/guest-profile.com
     PageSearchComponent,
     GuestProfileComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    AngularFireStorageModule,
-    AngularFireModule.initializeApp({apiKey: "AIzaSyDRvLQk6dtDxTyWNAIy_cudcAf0l5gTvk4",
-      authDomain: "mangxh-2da99.firebaseapp.com",
-      databaseURL: "https://mangxh-2da99-default-rtdb.firebaseio.com/",
-      projectId: "mangxh-2da99",
-      storageBucket: "mangxh-2da99.appspot.com",
-      messagingSenderId: "882928206491",
-      appId: "1:882928206491:web:4d77fe9c97e5cf44167c3e",
-      measurementId: "G-VY9ZQZVR13"}),
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        AngularFireStorageModule,
+        AngularFireModule.initializeApp({
+            apiKey: "AIzaSyDRvLQk6dtDxTyWNAIy_cudcAf0l5gTvk4",
+            authDomain: "mangxh-2da99.firebaseapp.com",
+            databaseURL: "https://mangxh-2da99-default-rtdb.firebaseio.com/",
+            projectId: "mangxh-2da99",
+            storageBucket: "mangxh-2da99.appspot.com",
+            messagingSenderId: "882928206491",
+            appId: "1:882928206491:web:4d77fe9c97e5cf44167c3e",
+            measurementId: "G-VY9ZQZVR13"
+        }),
+        FormsModule,
 
 
-
-  ],
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
