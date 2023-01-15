@@ -178,7 +178,7 @@
 
               </div>
               <div class="d-none d-md-block">
-                <button class="btn " style="background-color: #d3d7f4;">
+                <button class="btn " style="background-color: #d3d7f4;" data-bs-target="#exampleModalToggleEdit" data-bs-toggle="modal">
                   <svg class="feather feather-edit btn-icon-prepend" fill="none" height="24" stroke="currentColor" stroke-linecap="round"
                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"
                        xmlns="http://www.w3.org/2000/svg">
@@ -190,6 +190,73 @@
               </div>
             </div>
           </div>
+
+
+
+          <!--          modaledit-->
+          <div class="modal fade" id="exampleModalToggleEdit" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalToggleLabelEdit">Edit profile</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                 <div id="avatarUSer">
+                   <img type="button" width="100px" height="100px" class="img-xs rounded-circle"
+                        src="{{userToken.img.name}}"
+                        alt="">
+                 </div>
+                  <br>
+                  <div id="nameUser">
+                    <p>Ten: </p>
+                    <input type="text">
+                  </div>
+                  <br>
+                  <div id="hoUser">
+                    <p>Ho: </p>
+                    <input type="text">
+                  </div>
+                  <br>
+                  <div id="email">
+                    <p>Email: </p>
+                    <input type="email">
+                  </div>
+                  <br>
+                <div id="address">
+                    <p>Địa chỉ: </p>
+                    <input type="text">
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-primary" data-bs-target="#exampleModalToggleEdit2" data-bs-toggle="modal">Lưu </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal fade" id="exampleModalToggleEdit2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalToggleLabelEdit2">Save hay ko</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Xác nhận lưu
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-danger" data-bs-target="#exampleModalToggleEdit" data-bs-toggle="modal">Trở lại chỉnh sửa</button>
+                  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal">Xác nhận lưu</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
           <div class="header-links">
             <ul class="links d-flex align-items-center mt-3 mt-md-0">
               <li class="header-link-item d-flex align-items-center active">
