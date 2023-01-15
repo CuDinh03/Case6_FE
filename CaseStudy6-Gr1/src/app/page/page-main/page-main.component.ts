@@ -206,4 +206,6 @@ export class PageMainComponent implements OnInit {
     this.listPicture = [];
     this.createForm.reset();
   }
+
+
 }
