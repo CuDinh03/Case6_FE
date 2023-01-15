@@ -10,6 +10,7 @@ import {PageSearchComponent} from "./page/page-search/page-search.component";
 import {AuthGuard} from "./auth/auth-guard";
 import {GuestProfileComponent} from "./friends/guest-profile/guest-profile.component";
 import * as path from "path";
+import {SearchStatusComponent} from "./page/search-status/search-status.component";
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path:'guest/:smt', component:GuestProfileComponent},
   {path:'search/listSent', component: PageSearchComponent},
   {path:'search/listReceived', component: PageSearchComponent},
+  {path:'searchStatus/:id/:any', component: SearchStatusComponent}
   ];
 
 @NgModule({
