@@ -40,7 +40,7 @@ export class PageSearchComponent implements OnInit{
   }
 
   view(): void {
-    this.statusService.getAll().subscribe((data) => {
+    this.statusService.findAll(this.userToken.id).subscribe((data) => {
       this.statuses = data[0];
       console.log(this.statuses);
     })

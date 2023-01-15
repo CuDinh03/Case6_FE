@@ -11,6 +11,8 @@ import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {finalize} from "rxjs";
 import {ImageService} from "../../service/image.service";
 import {img} from "../../model/img";
+import {CommentService} from "../../service/comment.service";
+import {comment} from "../../model/comment";
 
 @Component({
   selector: 'app-page-main',
@@ -19,18 +21,23 @@ import {img} from "../../model/img";
 })
 export class PageMainComponent implements OnInit {
   statuses: Status[] = [];
-  listFound!: Friend[];
-  listSent!: Friend[];
+
+  value = '';
+  listFound!:Friend[];
+  listSent!:Friend[];
   listReceived!: Friend[];
   status1: any;
   statusE!: Status;
   userToken: any;
   idS!: number;
   img: any;
+  comment1 !: any;
 
   selectedImage: any;
   @ViewChild('uploadFile', {static: true}) public avatarDom: ElementRef | undefined;
   listPicture: img[] = [];
+  listComment: comment[] = [];
+
 
 
   friendList !: Friend[];
@@ -43,7 +50,8 @@ export class PageMainComponent implements OnInit {
               private router: Router,
               private statusService: StatusService,
               private authenticationService: AuthenticationService,
-              private imageService: ImageService) {
+              private imageService: ImageService,
+              private commentService: CommentService) {
   }
 
   view(): void {
@@ -56,6 +64,7 @@ export class PageMainComponent implements OnInit {
     })
   }
 
+
   ngOnInit(): void {
     // @ts-ignore
     this.userToken = JSON.parse(localStorage.getItem("userToken"));
@@ -63,6 +72,7 @@ export class PageMainComponent implements OnInit {
     this.friendService.userToken = this.userToken;
     this.requestSent();
     this.requestReceived();
+    // this.showComment();
   }
 
   createForm = new FormGroup({
@@ -70,10 +80,17 @@ export class PageMainComponent implements OnInit {
     status: new FormControl(""),
   })
 
+  createFormcomment = new FormGroup({
+    text : new FormGroup(""),
+  })
+
+
+
   showProfile(id : number){
     this.friendService.idInf=id;
     // this.router.navigate(['showProfile'])
   }
+
 
   create() {
 
@@ -200,10 +217,42 @@ export class PageMainComponent implements OnInit {
     console.log(this.listPicture);
   }
 
+// tao comment
+
+  comment(value: any) {
+    this.value = value;
+    this.comment1 = {
+      text: this.value,
+      status: 1,
+      account: {
+        id: this.userToken.id
+      }
+    }
+    this.commentService.saveComment(this.comment1).subscribe((data)=>{
+      console.log(data);
+      console.log(this.comment1);
+      console.log(this.listComment);
+    })
+  }
+
+
   editPicture(index: number): void {}
 
   resetmodal(): void {
     this.listPicture = [];
     this.createForm.reset();
   }
+
+
+
+
+  // showComment(): void {
+  //   this.commentService.findCommentByStatusId(this.statusE.id).subscribe((data) => {
+  //     this.listComment = data[0];
+  //
+  //     console.log(this.listComment);
+  //   })
+  // }
+
+
 }
