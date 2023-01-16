@@ -139,12 +139,20 @@
                   <p *ngIf="isFriend==4" (click)="acceptRequest()" ><i class='fas fa-exclamation-triangle'></i>
                       Chấp nhận lời mời</p>
 
+
+                </button>
+
+                <button class="btn btn-danger" *ngIf="isFriend==4" >
+                  <p *ngIf="isFriend==4" (click)="removeRequestSent(userToken.id,friend.id)" ><i class='fas fa-exclamation-triangle'></i>
+                  Xóa yêu cầu
+                  </p>
                 </button>
               </div>
             </div>
           </div>
           <div class="header-links">
             <ul class="links d-flex align-items-center mt-3 mt-md-0">
+
               <li class="header-link-item d-flex align-items-center active">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-columns mr-1 icon-md">
                   <path d="M12 3h7a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-7m0-18H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7m0-18v18"></path>
@@ -175,13 +183,7 @@
                 </svg>
                 <a class="pt-1px d-none d-md-block" href="#">Photos</a>
               </li>
-              <li class="header-link-item ml-3 pl-3 border-left d-flex align-items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-video mr-1 icon-md">
-                  <polygon points="23 7 16 12 23 17 23 7"></polygon>
-                  <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-                </svg>
-                <a class="pt-1px d-none d-md-block" href="#">Videos</a>
-              </li>
+
             </ul>
           </div>
         </div>
@@ -222,22 +224,25 @@
                 </div>
               </div>
             </div>
-            <p>Hi! I'm {{friend.firstName}}  {{friend.lastName}}</p>
+            <p>Hi! I'm {{friend.firstName}} {{friend.lastName}}</p>
             <div class="mt-3">
-              <label class="tx-11 font-weight-bold mb-0 text-uppercase">Sinh nhật :</label>
-              <p class="text-muted" type="date">{{friend.birthDay| date: "dd/MM/yyyy"}} </p>
+              <label class="tx-11 font-weight-bold mb-0 text-uppercase" *ngIf="friend.status==7||friend.status==5" style="color: red">Người dùng đã ẩn thông tin!</label>
             </div>
             <div class="mt-3">
-              <label class="tx-11 font-weight-bold mb-0 text-uppercase">Sống tại:</label>
-              <p class="text-muted">{{friend.address}}</p>
+              <label class="tx-11 font-weight-bold mb-0 text-uppercase" *ngIf="friend.status==4||friend.status==6">Sinh nhật :</label>
+              <p class="text-muted" *ngIf="friend.status==4||friend.status==6">{{friend.birthDay| date: "dd/MM/yyyy"}}</p>
             </div>
             <div class="mt-3">
-              <label class="tx-11 font-weight-bold mb-0 text-uppercase">Số điện thoại:</label>
-              <p class="text-muted">{{friend.phoneNumber}}</p>
+              <label class="tx-11 font-weight-bold mb-0 text-uppercase" *ngIf="friend.status==4||friend.status==6">Sống tại:</label>
+              <p class="text-muted" *ngIf="friend.status==4||friend.status==6">{{friend.address}}</p>
             </div>
             <div class="mt-3">
-              <label class="tx-11 font-weight-bold mb-0 text-uppercase">Giới tính:</label>
-              <p class="text-muted">{{friend.gender}}</p>
+              <label class="tx-11 font-weight-bold mb-0 text-uppercase" *ngIf="friend.status==4||friend.status==6">Số điện thoại:</label>
+              <p class="text-muted" *ngIf="friend.status==4||friend.status==6">{{friend.phoneNumber}}</p>
+            </div>
+            <div class="mt-3">
+              <label class="tx-11 font-weight-bold mb-0 text-uppercase" *ngIf="friend.status==4||friend.status==6">Giới tính:</label>
+              <p class="text-muted" *ngIf="friend.status==4||friend.status==6">{{friend.gender}}</p>
             </div>
             <div class="mt-3 d-flex social-links">
               <a href="javascript:;" class="btn d-flex align-items-center justify-content-center border mr-2 btn-icon github">
@@ -503,7 +508,9 @@
                           <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Danh sách bạn bè </h1>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <table class="table table-striped" style="background-color: darksalmon">
+
+                          <h3 style="color: red" *ngIf="friend.status==6||friend.status==7">Người dùng đã chọn ẩn bạn bè!</h3>
+                          <table class="table table-striped" style="background-color: darksalmon" *ngIf="friend.status==4||friend.status==5">
 
                           <tr *ngFor="let f of friendList ">
                             <th><div class="modal-body">

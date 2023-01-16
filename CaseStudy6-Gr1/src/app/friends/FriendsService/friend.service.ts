@@ -2,6 +2,8 @@ import {Injectable, OnChanges, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {Friend} from "../../model/friend";
 import {HttpClient} from "@angular/common/http";
+import {Account} from "../../model/account";
+import {Acc} from "../../model/acc";
 
 @Injectable({
   providedIn: 'root'
@@ -63,5 +65,13 @@ acceptRequest(id1:number,id2:number){
 findByUserName(name:string):Observable<Friend>{
     return this.http.get<Friend>("http://localhost:8080/profile/"+name);
 }
-
+removeRequestReceived(id1:number,id2:number){
+return this.http.delete("http://localhost:8080/deleteRequest/"+id2+"/"+id1).subscribe((data)=>{})
+ }
+ getAccountByID(id:number):Observable<Friend>{
+   return  this.http.get<Friend>("http://localhost:8080/account/"+id);
+ }
+ updateAccount(account:Acc){
+    return this.http.put("http://localhost:8080/update",account).subscribe((data)=>{})
+ }
 }

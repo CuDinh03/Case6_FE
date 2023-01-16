@@ -6,6 +6,8 @@ import {Status} from "../../model/status";
 import {AuthenticationService} from "../../account/AccountService/authentication.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {FriendService} from "../../friends/FriendsService/friend.service";
+import {Account} from "../../model/account";
+import {Acc} from "../../model/acc";
 
 @Component({
   selector: 'app-page-profile',
@@ -13,6 +15,9 @@ import {FriendService} from "../../friends/FriendsService/friend.service";
   styleUrls: ['./page-profile.component.css']
 })
 export class PageProfileComponent implements OnInit {
+  account!: Acc;
+  stt1!: number;
+  stt2!: number;
 
   friendList ! : Friend[];
   friendInF! : Friend;
@@ -33,7 +38,9 @@ export class PageProfileComponent implements OnInit {
     // @ts-ignore
     this.userToken = JSON.parse(localStorage.getItem("userToken"));
     this.view();
+
     this.getAllFriends();
+    this.getTT()
   }
 
   view(): void {
@@ -117,6 +124,46 @@ export class PageProfileComponent implements OnInit {
   searchView() {
     this.router.navigate(['/search'])
   }
+
+  updateAccount() {
+
+    if(this.stt1==1&&this.stt2==1){
+      this.account.status=4
+    }
+    if(this.stt1==1&&this.stt2==2){
+      this.account.status=5
+    }
+    if(this.stt1==2&&this.stt2==1){
+      this.account.status=6
+    }
+    if(this.stt1==2&&this.stt2==2){
+      this.account.status=7
+    }
+    this.friendService.updateAccount(this.account);
+    this.logout()
+
+
+  }
+  getTT() {
+    this.friendService.getAccountByID(this.userToken.id).subscribe((data)=>{
+      this.account = data;
+      if(this.account.status==4){
+        this.stt1=1;
+        this.stt2=1;
+      }
+      if(this.account.status==5){
+        this.stt1=1;
+        this.stt2=2;
+      }if(this.account.status==6){
+        this.stt1=2;
+        this.stt2=1;
+      }if(this.account.status==7){
+        this.stt1=2;
+        this.stt2=2;
+      }
+    })
+  }
+
 
 
 
