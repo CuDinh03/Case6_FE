@@ -22,4 +22,7 @@ export class CommentService {
     return this.http.get<comment[]>(`${API_URL}/comments/${id}`)
   }
 
+  deleteComment(id: number): Observable<any> {
+    return this.http.delete<any>(`${API_URL}/comments/${id}`)
+  }
 }

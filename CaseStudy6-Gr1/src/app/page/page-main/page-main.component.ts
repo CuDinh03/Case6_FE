@@ -38,6 +38,7 @@ export class PageMainComponent implements OnInit {
   selectedImage: any;
   @ViewChild('uploadFile', {static: true}) public avatarDom: ElementRef | undefined;
   listPicture: img[] = [];
+
   listComment: comment[] = [];
 
   friendList !: Friend[];
@@ -57,7 +58,6 @@ export class PageMainComponent implements OnInit {
   view(): void {
     this.statusService.findAll(this.userToken.id).subscribe((data) => {
       this.statuses = data[0];
-
       console.log(this.statuses);
       this.img = data[0][0].img;
       console.log(this.img);
@@ -69,7 +69,6 @@ export class PageMainComponent implements OnInit {
     // @ts-ignore
     this.userToken = JSON.parse(localStorage.getItem("userToken"));
     this.view();
-    this.friendService.userToken = this.userToken;
     this.requestSent();
     this.requestReceived();
     // this.showComment();
@@ -239,6 +238,19 @@ export class PageMainComponent implements OnInit {
 
   }
 
+  deleteComment(id: number) {
+    this.commentService.deleteComment(id).subscribe((data)=> {
+      this.view();
+      this.mainView();
+    }                                                                                                           )
+  }
+
+  findCommentByStatusId(id: number) {
+    this.commentService.findCommentByStatusId(id).subscribe((data)=> {
+      this.listComment = data;
+    })
+  }
+
 
   editPicture(index: number): void {}
 
@@ -254,17 +266,5 @@ export class PageMainComponent implements OnInit {
       console.log(this.friendList)
     })
   }
-
-
-
-
-  // showComment(): void {
-  //   this.commentService.findCommentByStatusId(this.statusE.id).subscribe((data) => {
-  //     this.listComment = data[0];
-  //
-  //     console.log(this.listComment);
-  //   })
-  // }
-
 
 }
