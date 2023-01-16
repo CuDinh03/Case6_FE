@@ -1,31 +1,35 @@
-import { img } from "./img";
+import {img} from "./img";
+import {Role} from "./role";
 
 export class Account {
   id: number;
   userName: string;
   password: string;
+  status: number;
   email: string;
-  firstname: string;
-  lastname: string;
-  phone: string;
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
   address: string;
-  birthday: Date;
+  birthDay: Date;
   gender: string;
-  img : img;
+  img: img;
+  roles!: Role;
 
-  constructor(id: number, userName: string, password: string, email: string, firstname: string, lastname: string,
-              phone: string, address: string, birthday: Date, gender: string, img : img)
-{
-  this.id = id;
-  this.userName = userName;
-  this.password = password;
-  this.email = email;
-  this.firstname = firstname;
-  this.lastname = lastname;
-  this.phone = phone;
-  this.address = address;
-  this.birthday = birthday;
-  this.gender = gender;
-  this.img = img;
-}
+  constructor(id: number, userName: string, status: number, password: string, email: string, firstName: string, lastName: string,
+              phoneNumber: string, address: string, birthDay: Date, gender: string, img: img, roles: Role) {
+    this.id = id;
+    this.userName = userName;
+    this.password = password;
+    this.email = email;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.phoneNumber = phoneNumber;
+    this.address = address;
+    this.birthDay = birthDay;
+    this.gender = gender;
+    this.img = img;
+    this.status = status;
+    this.roles = roles;
+  }
 }

@@ -10,6 +10,7 @@ import {LoginService} from "../../../account/AccountService/user.service";
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
+
 export class RegisterComponent implements OnInit {
 
   checkDuplicateMail: boolean = true
@@ -27,7 +28,7 @@ export class RegisterComponent implements OnInit {
     password: new FormControl("", [Validators.required, Validators.minLength(6), Validators.maxLength(32)]),
     confirmPassword: new FormControl("", [Validators.required, Validators.minLength(6), Validators.maxLength(32)]),
     phoneNumber: new FormControl("", [Validators.required, Validators.pattern("(03|05|07|08|09)+([0-9]{8})")]),
-    birthday: new FormControl('', [Validators.required]),
+    birthDay: new FormControl('', [Validators.required]),
     fistName: new FormControl('',Validators.nullValidator),
     lastName: new FormControl('',Validators.nullValidator),
     address: new FormControl('',Validators.nullValidator),
@@ -42,7 +43,7 @@ export class RegisterComponent implements OnInit {
       this.checkDuplicateMail = data[1];
       if (data[0] && data[1]) {
         this.message()
-        this.router.navigate(["/"])
+        this.router.navigate([""])
       }
     });
   }

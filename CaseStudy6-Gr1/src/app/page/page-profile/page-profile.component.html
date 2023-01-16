@@ -190,9 +190,6 @@
               </div>
             </div>
           </div>
-
-
-
           <!--          modaledit-->
           <div class="modal fade" id="exampleModalToggleEdit" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
@@ -202,30 +199,62 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                 <div id="avatarUSer">
-                   <img type="button" width="100px" height="100px" class="img-xs rounded-circle"
-                        src="{{userToken.img.name}}"
-                        alt="">
-                 </div>
-                  <br>
-                  <div id="nameUser">
-                    <p>Ten: </p>
-                    <input type="text">
+                  <div id="avatarUSer">
+                    <img type="button" width="100px" height="100px" class="img-xs rounded-circle"
+                         src="{{userToken.img.name}}"
+                         alt="">
                   </div>
                   <br>
-                  <div id="hoUser">
-                    <p>Ho: </p>
-                    <input type="text">
+                  <div id="lastName" >
+                    <h4>Họ : </h4>
+                    <input type="text" [(ngModel)]="account.lastName" >
                   </div>
                   <br>
-                  <div id="email">
-                    <p>Email: </p>
-                    <input type="email">
+                  <div id="fistName" >
+                    <h4>Tên: </h4>
+                    <input type="text" [(ngModel)]="account.firstName" >
                   </div>
                   <br>
-                <div id="address">
-                    <p>Địa chỉ: </p>
-                    <input type="text">
+                  <div id="phoneNumber" >
+                    <h4>Số điện thoại: </h4>
+                    <input type="text" [(ngModel)]="account.phoneNumber">
+                  </div>
+                  <br>
+                  <div id="address" >
+                    <h4>Địa chỉ: </h4>
+                    <input type="text" [(ngModel)]="account.address">
+                  </div>
+                  <div id="birthDay">
+                    <h4>Ngày sinh: </h4>
+                    <input type="date" [(ngModel)]="account.birthDay">
+                  </div>
+                  <div id="gender">
+                    <h4>Giới tính: </h4>
+                    <select [(ngModel)]="account.gender">
+                      <option value="Nam">Nam</option>
+                      <option value="Nữ">Nữ</option>
+                      <option value="Giới tính thứ ba">Giới tính thứ ba</option>
+                      <option value="Gay">Gay</option>
+                      <option value="Bue Đê">Bê Đuê</option>
+                      <option value="Không muốn tiết lộ">Không muốn tiết lộ</option>
+                    </select>
+
+                  </div>
+                  <div>
+                    <h4>
+                      Danh sách bạn bè :
+                    </h4>
+                    <select id="status1" [(ngModel)]="stt1">
+                      <option value="1">Công khai</option>
+                      <option value="2">Chỉ mình tôi</option>
+                    </select>
+                  </div>
+                  <div>
+                    <h4>Thông tin :</h4>
+                    <select id="status2" [(ngModel)]="stt2">
+                      <option value="1">Công khai</option>
+                      <option value="2">Chỉ mình tôi</option>
+                    </select>
                   </div>
                 </div>
                 <div class="modal-footer">
@@ -238,22 +267,19 @@
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalToggleLabelEdit2">Save hay ko</h1>
+                  <h1 class="modal-title fs-5" id="exampleModalToggleLabelEdit2">Bạn có chắc muôn cập nhật thng tin!</h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  Xác nhận lưu
+                 <p style="color: red"> Vui lòng đăng nhập lại để cập nhật!</p>
                 </div>
                 <div class="modal-footer">
                   <button class="btn btn-danger" data-bs-target="#exampleModalToggleEdit" data-bs-toggle="modal">Trở lại chỉnh sửa</button>
-                  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal">Xác nhận lưu</button>
+                  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal" (click)="updateAccount()">Xác nhận lưu</button>
                 </div>
               </div>
             </div>
           </div>
-
-
-
 
 
 
@@ -609,15 +635,14 @@
           <div class="col-md-12 grid-margin">
             <div class="card rounded">
               <div class="card-body">
-                <h6 class="card-title">Cái gì đó thì sẽ sửa sauu</h6>
+                <h6 class="card-title">Tìm bài biết của bạn  </h6>
                 <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
-<!--                  <div class="d-flex align-items-center hover-pointer">-->
-<!--                    <img class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg" alt="">-->
-<!--                    <div class="ml-2">-->
-<!--                      <p>Mike Popescu</p>-->
-<!--                      <p class="tx-11 text-muted">12 Mutual Friends</p>-->
-<!--                    </div>-->
-<!--                  </div>-->
+                  <label for="searchStatus">
+                    <input #input1 [value]="input1.value" type="text" placeholder="Nhập nội dung bài viết của bạn  "  class="form-control">
+                  </label>
+                  <button type="button"  id="searchStatus" [routerLink]="'/searchStatus/'+ userToken.id + '/' + input1.value " class="btn btn-outline-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                  </svg></button>
 
 
                   <div aria-hidden="true" aria-labelledby="exampleModalToggleLabel" class="modal fade"
@@ -645,117 +670,10 @@
 
                         </table>
 
-
+                      </div>
                       </div>
                     </div>
                   </div>
-
-
-<!--                  <button class="btn btn-icon">-->
-<!--                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"-->
-<!--                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"-->
-<!--                         class="feather feather-user-plus" data-toggle="tooltip" title="" data-original-title="Connect">-->
-<!--                      <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>-->
-<!--                      <circle cx="8.5" cy="7" r="4"></circle>-->
-<!--                      <line x1="20" y1="8" x2="20" y2="14"></line>-->
-<!--                      <line x1="23" y1="11" x2="17" y2="11"></line>-->
-<!--                    </svg>-->
-<!--                  </button>-->
-                </div>
-                <div class="d-flex justify-content-between mb-2 pb-2 border-bottom" *ngFor="let r of listSent">
-<!--                  <div class="d-flex align-items-center hover-pointer">-->
-<!--                    <img class="img-xs rounded-circle" src="{{r.img}}" alt="">-->
-<!--                    <div class="ml-2">-->
-<!--                      <p> {{r.id}}  {{r.firstName}} {{r.lastName}}</p>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                  <button class="btn btn-icon">-->
-<!--                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"-->
-<!--                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"-->
-<!--                         class="feather feather-user-plus" data-toggle="tooltip" title="" data-original-title="Connect">-->
-<!--                      <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>-->
-<!--                      <circle cx="8.5" cy="7" r="4"></circle>-->
-<!--                      <line x1="20" y1="8" x2="20" y2="14"></line>-->
-<!--                      <line x1="23" y1="11" x2="17" y2="11"></line>-->
-<!--                    </svg>-->
-<!--                  </button>-->
-                </div>
-<!--                <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">-->
-<!--                  <div class="d-flex align-items-center hover-pointer">-->
-<!--                    <img class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg" alt="">-->
-<!--                    <div class="ml-2">-->
-<!--                      <p>Mike Popescu</p>-->
-<!--                      <p class="tx-11 text-muted">12 Mutual Friends</p>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                  <button class="btn btn-icon">-->
-<!--                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"-->
-<!--                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"-->
-<!--                         class="feather feather-user-plus" data-toggle="tooltip" title="" data-original-title="Connect">-->
-<!--                      <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>-->
-<!--                      <circle cx="8.5" cy="7" r="4"></circle>-->
-<!--                      <line x1="20" y1="8" x2="20" y2="14"></line>-->
-<!--                      <line x1="23" y1="11" x2="17" y2="11"></line>-->
-<!--                    </svg>-->
-<!--                  </button>-->
-<!--                </div>-->
-<!--                <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">-->
-<!--                  <div class="d-flex align-items-center hover-pointer">-->
-<!--                    <img class="img-xs rounded-circle" src="../../../assets/pic/img.jpeg" alt="">-->
-<!--                    <div class="ml-2">-->
-<!--                      <p>Mike Popescu</p>-->
-<!--                      <p class="tx-11 text-muted">12 Mutual Friends</p>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                  <button class="btn btn-icon">-->
-<!--                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"-->
-<!--                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"-->
-<!--                         class="feather feather-user-plus" data-toggle="tooltip" title="" data-original-title="Connect">-->
-<!--                      <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>-->
-<!--                      <circle cx="8.5" cy="7" r="4"></circle>-->
-<!--                      <line x1="20" y1="8" x2="20" y2="14"></line>-->
-<!--                      <line x1="23" y1="11" x2="17" y2="11"></line>-->
-<!--                    </svg>-->
-<!--                  </button>-->
-<!--                </div>-->
-<!--                <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">-->
-<!--                  <div class="d-flex align-items-center hover-pointer">-->
-<!--                    <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">-->
-<!--                    <div class="ml-2">-->
-<!--                      <p>Mike Popescu</p>-->
-<!--                      <p class="tx-11 text-muted">12 Mutual Friends</p>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                  <button class="btn btn-icon">-->
-<!--                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"-->
-<!--                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"-->
-<!--                         class="feather feather-user-plus" data-toggle="tooltip" title="" data-original-title="Connect">-->
-<!--                      <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>-->
-<!--                      <circle cx="8.5" cy="7" r="4"></circle>-->
-<!--                      <line x1="20" y1="8" x2="20" y2="14"></line>-->
-<!--                      <line x1="23" y1="11" x2="17" y2="11"></line>-->
-<!--                    </svg>-->
-<!--                  </button>-->
-<!--                </div>-->
-<!--                <div class="d-flex justify-content-between">-->
-<!--                  <div class="d-flex align-items-center hover-pointer">-->
-<!--                    <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">-->
-<!--                    <div class="ml-2">-->
-<!--                      <p>Mike Popescu</p>-->
-<!--                      <p class="tx-11 text-muted">12 Mutual Friends</p>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                  <button class="btn btn-icon">-->
-<!--                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"-->
-<!--                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"-->
-<!--                         class="feather feather-user-plus" data-toggle="tooltip" title="" data-original-title="Connect">-->
-<!--                      <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>-->
-<!--                      <circle cx="8.5" cy="7" r="4"></circle>-->
-<!--                      <line x1="20" y1="8" x2="20" y2="14"></line>-->
-<!--                      <line x1="23" y1="11" x2="17" y2="11"></line>-->
-<!--                    </svg>-->
-<!--                  </button>-->
-<!--                </div>-->
 
               </div>
             </div>

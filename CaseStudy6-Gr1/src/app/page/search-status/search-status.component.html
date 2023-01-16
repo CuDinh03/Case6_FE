@@ -1,0 +1,255 @@
+<div id="fixNav">
+  <nav class="navbar navbar-light bg-light justify-content-between">
+    <img type="button" style="padding-left: 5px; height: 50px; width: 50px" class="img-xs rounded-circle"
+         src="https://media.istockphoto.com/id/1145987687/vi/vec-to/logo-meow-s%E1%BA%A1ch-s%E1%BA%BD-%C4%91%C6%B0%E1%BB%A3c-c%C3%A1ch-ly-tr%C3%AAn-n%E1%BB%81n-tr%E1%BA%AFng.jpg?s=612x612&w=0&k=20&c=d1H6tN95EvGEc531qppw9iZr2rcBkmlFXtc0-MykkuA="
+         (click)="mainView()">
+    <form class="form-inline">
+      <div class="inputWithIcon">
+        <div class="nav1">
+          <label for="searchIn4">
+            <input #input [value]="input.value" class="form-control mr-sm-4" type="search" align="center"
+                   placeholder="Search" aria-label="Search">
+          </label>
+        </div>
+        <div class="nav1">
+          <button type="button" [routerLink]="'/search/'+input.value" id="searchIn4" class="btn btn-outline-light">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+                 viewBox="0 0 16 16">
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="nav1">
+          <a type="button" class="btn btn-light position-relative" data-bs-toggle="collapse" href="#collapseExample"
+             aria-expanded="false" aria-controls="collapseExample">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell"
+                 viewBox="0 0 16 16">
+              <path
+                d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+            </svg>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+<!--                chỗ này để hiển thị số thông báo -->
+    99+
+      <span class="visually-hidden">unread messages</span>
+    </span>
+          </a>
+          <!--            thong bao-->
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+
+              <div class="button-notification">
+                <ul class="nav nav-tabs">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page">Chung</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page">Bạn bè</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page">Chưa đọc</a>
+                  </li>
+                </ul>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="nav1">
+
+          <img type="button" (click)="profileView()" class="img-xs rounded-circle"
+               src="{{userToken.img.name}}"
+               alt="">
+
+        </div>
+        <div class="nav1">
+          <div class="btn-group">
+            <button type="button" class="btn p-0" data-bs-toggle="dropdown" aria-expanded="false">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-gear"
+                   viewBox="0 0 16 16">
+                <path
+                  d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+                <path
+                  d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+              </svg>
+            </button>
+            <div id="dropMenuAcc">
+              <ul class="dropdown-menu" id="menuAcc">
+                <li><a class="dropdown-item" (click)="profileView()">Trang cá nhân</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Cài đặt</a></li>
+
+                <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#" (click)="logout()">Đăng xuất</a></li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </nav>
+</div>
+
+<div class="container">
+  <div class="btn-group dropup" id="messenger">
+    <button type="button" class="btn " data-bs-toggle="dropdown" aria-expanded="false">
+      <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-messenger"
+           viewBox="0 0 16 16">
+        <path
+          d="M0 7.76C0 3.301 3.493 0 8 0s8 3.301 8 7.76-3.493 7.76-8 7.76c-.81 0-1.586-.107-2.316-.307a.639.639 0 0 0-.427.03l-1.588.702a.64.64 0 0 1-.898-.566l-.044-1.423a.639.639 0 0 0-.215-.456C.956 12.108 0 10.092 0 7.76zm5.546-1.459-2.35 3.728c-.225.358.214.761.551.506l2.525-1.916a.48.48 0 0 1 .578-.002l1.869 1.402a1.2 1.2 0 0 0 1.735-.32l2.35-3.728c.226-.358-.214-.761-.551-.506L9.728 7.381a.48.48 0 0 1-.578.002L7.281 5.98a1.2 1.2 0 0 0-1.735.32z"/>
+      </svg>
+    </button>
+    <ul class="dropdown-menu">
+      <tr *ngFor="let f of friendList, index as i">
+        <li><a class="dropdown-item" href="">
+          <img class="img-xs rounded-circle" src="{{f.img}}" alt="">
+          {{f.firstName}} + {{f.lastName}}
+        </a></li>
+      </tr>
+    </ul>
+  </div>
+
+  <div class="profile-page tx-13">
+
+    <div class="row profile-body">
+      <div class="d-none d-md-block col-md-4 col-xl-3 left-wrapper"></div>
+      <div class="d-none d-md-block col-md-4 col-xl-3 left-wrapper" id="leftMain">
+        <div class="card rounded">
+          <div class="card-body">
+
+
+            <!--            trang cá nhân và trang chủ-->
+            <div class="mt-3">
+              <label class="tx-11 font-weight-bold mb-0 text-uppercase"><a (click)="mainView()"
+                                                                           href="http://localhost:4200/main"
+                                                                           style="text-decoration: none">Trang chủ </a>
+              </label>
+              <br>
+
+              <hr>
+            </div>
+
+            <!--            mở rộng -->
+            MeowMeow Social © 2023
+
+          </div>
+        </div>
+      </div>
+
+
+      <!-- middle wrapper start -->
+
+      <div class="col-md-12 col-xl-6 middle-wrapper">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card rounded">
+              <div class="card-header">
+                <div class="d-flex align-items-center justify-content-between">
+                  <div><h2> Kết quả tìm kiếm cho:{{anyThing}}</h2></div>
+                  <br>
+
+
+                </div>
+
+
+                <!--modal bai viet-->
+
+                <!--baif viet -->
+              </div>
+
+
+            </div>
+          </div>
+          <div class="col-md-12 grid-margin" *ngFor="let s of statuses, index as i">
+            <div class="card rounded">
+              <div class="card-header">
+                <div class="d-flex align-items-center justify-content-between">
+                  <div class="d-flex align-items-center">
+                    <img class="img-xs rounded-circle" src="{{s.account.img.name}}" alt="">
+                    <div class="ml-2">
+                      <div>
+                        {{s.account.userName}}
+                      </div>
+                      <div>
+                        <p class="tx-9 text-muted">{{s.postDay}}</p>
+                      </div>
+                      <div>
+                        <p class="tx-9 text-muted" *ngIf="s.status == '1'">Công khai</p>
+                        <p class="tx-9" *ngIf="s.status == '2'">Bạn bè</p>
+                      </div>
+                    </div>
+                  </div>
+                  <!--                  select status-->
+                </div>
+              </div>
+
+              <div class="card-body">
+                <!--                //noi dung cua bai viet -->
+                <p class="mb-3 tx-14">{{s.content}}</p>
+                <div>
+                  <img class="img-fluid" *ngFor="let p of s.img, index as i1" src="{{p.name}}" alt="index" width="200" height="250">
+                </div>
+
+              </div>
+              <div class="card-footer">
+                <div class="d-flex post-actions">
+
+                  <button class="btn btn-light position-relative">
+                    <div>
+                      <td>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                             class="feather feather-heart icon-md">
+                          <path
+                            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                      </td>
+                      <td>
+                        <p class="d-none d-md-block ml-2">Like</p>
+                      </td>
+                    </div>
+                  </button>
+
+
+                  <button class="btn btn-light position-relative">
+                    <div>
+                      <td>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                             class="feather feather-message-square icon-md">
+                          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                      </td>
+                      <td>
+                        <label for="comment{{s.id}}">
+                          <p class="d-none d-md-block ml-2" id="comment">Comment <span style="color: #6ea8fe">{{s.comment.length}}</span>  </p>
+                        </label>
+                      </td>
+                    </div>
+                  </button>
+                </div>
+                <!-- middle wrapper end -->
+          <!-- right wrapper start -->
+          <!-- right wrapper end -->
+        </div>
+      </div>
+
+          </div>
+        </div>
+
+      <link rel="stylesheet" href="/assets/css/style.css">
+
+
+
+
+
