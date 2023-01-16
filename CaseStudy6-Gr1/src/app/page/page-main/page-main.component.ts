@@ -44,6 +44,8 @@ export class PageMainComponent implements OnInit {
 
   friendList !: Friend[];
   friendInF!: Friend;
+  checkAdmin!: boolean;
+  roleAdmin! : number;
 
 
   constructor(private storage: AngularFireStorage,
@@ -55,9 +57,7 @@ export class PageMainComponent implements OnInit {
               private imageService: ImageService,
               private commentService: CommentService,
               private iLikeService: LikesService) {
-  checkAdmin!: boolean;
-roleAdmin! : number;
-  constructor(public friendService: FriendService, private router: Router, private statusService: StatusService, private authenticationService: AuthenticationService) {
+
   }
 
   view(): void {

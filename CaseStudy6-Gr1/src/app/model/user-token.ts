@@ -1,5 +1,5 @@
 import {Role} from "./role";
-import {Img} from "./img";
+import {img} from "./img";
 
 export class UserToken {
   id !: number;
@@ -12,7 +12,7 @@ export class UserToken {
   lastName!: string;
   address!: string;
   gender!: string;
-  img!: [Img];
+  img!: [img];
   roles!: [Role];
   token!: string;
 }

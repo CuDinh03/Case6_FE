@@ -1,4 +1,4 @@
-import {Img} from "./img";
+import {img} from "./img";
 import {Role} from "./role";
 
 export class Account {
@@ -13,11 +13,11 @@ export class Account {
   address: string;
   birthDay: Date;
   gender: string;
-  img: Img;
+  img: img;
   roles!: Role;
 
   constructor(id: number, userName: string, status: number, password: string, email: string, firstName: string, lastName: string,
-              phoneNumber: string, address: string, birthDay: Date, gender: string, img: Img, roles: Role) {
+              phoneNumber: string, address: string, birthDay: Date, gender: string, img: img, roles: Role) {
     this.id = id;
     this.userName = userName;
     this.password = password;

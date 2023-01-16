@@ -40,16 +40,17 @@ import { SearchStatusComponent } from './page/search-status/search-status.compon
     GuestProfileComponent,
     SearchStatusComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    NgxPaginationModule,
-    AngularFireStorageModule,
-    AngularFireAuthModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        NgxPaginationModule,
+        AngularFireStorageModule,
+        AngularFireAuthModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        FormsModule
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

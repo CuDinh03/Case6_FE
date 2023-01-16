@@ -1,4 +1,4 @@
-export class Img {
+export class img {
   id: number;
   name !: string;
   status!: number
