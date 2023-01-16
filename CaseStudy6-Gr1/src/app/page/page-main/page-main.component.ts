@@ -13,7 +13,7 @@ import {ImageService} from "../../service/image.service";
 import {img} from "../../model/img";
 import {CommentService} from "../../service/comment.service";
 import {comment} from "../../model/comment";
-import {set} from "@angular/fire/database";
+import {LikesService} from "../../service/likes.service";
 
 @Component({
   selector: 'app-page-main',
@@ -35,10 +35,11 @@ export class PageMainComponent implements OnInit {
   comment1 !: any;
   id: any;
 
+  like1: any;
+
   selectedImage: any;
   @ViewChild('uploadFile', {static: true}) public avatarDom: ElementRef | undefined;
   listPicture: img[] = [];
-
   listComment: comment[] = [];
 
   friendList !: Friend[];
@@ -52,17 +53,20 @@ export class PageMainComponent implements OnInit {
               private statusService: StatusService,
               private authenticationService: AuthenticationService,
               private imageService: ImageService,
-              private commentService: CommentService) {
+              private commentService: CommentService,
+              private iLikeService: LikesService) {
   }
 
   view(): void {
     this.statusService.findAll(this.userToken.id).subscribe((data) => {
       this.statuses = data[0];
+
       console.log(this.statuses);
       this.img = data[0][0].img;
       console.log(this.img);
     })
   }
+
 
   ngOnInit(): void {
     // @ts-ignore
@@ -266,5 +270,33 @@ export class PageMainComponent implements OnInit {
       console.log(this.friendList)
     })
   }
+
+  clickLike(id: number){
+
+    this.like1 = {
+      account: {
+        id: this.userToken.id
+      }
+    }
+    this.iLikeService.saveLikes(this.like1, id).subscribe((data)=>{
+      console.log(data);
+      console.log(this.like1);
+      this.view();
+      this.mainView();
+    })
+
+  }
+
+
+
+
+  // showComment(): void {
+  //   this.commentService.findCommentByStatusId(this.statusE.id).subscribe((data) => {
+  //     this.listComment = data[0];
+  //
+  //     console.log(this.listComment);
+  //   })
+  // }
+
 
 }

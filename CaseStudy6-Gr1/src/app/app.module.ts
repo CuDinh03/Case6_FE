@@ -17,6 +17,7 @@ import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {environment} from "./environments/environment";
 import { PageSearchComponent } from './page/page-search/page-search.component';
 import { GuestProfileComponent } from './friends/guest-profile/guest-profile.component';
+import { SearchStatusComponent } from './page/search-status/search-status.component';
 
 
 
@@ -30,6 +31,7 @@ import { GuestProfileComponent } from './friends/guest-profile/guest-profile.com
     ProfileComponent,
     PageSearchComponent,
     GuestProfileComponent,
+    SearchStatusComponent,
   ],
   imports: [
     BrowserModule,
