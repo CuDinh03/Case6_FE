@@ -48,9 +48,8 @@
                   </div>
                   <p *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched" style="color: red">Can't be blank</p>
                 </div>
-                <!-- Check box -->
-
-                <!-- Button -->
+                <p id="checkLogin" style="color: red " *ngIf="checkStatus == 2">Tài Khoản Bạn Đã Bị Block</p>
+                <p id="checkUserName" style="color: red " *ngIf="checkStatus == 3 ">Sai Tài Khoản hoặc Mật Khẩu</p>
                 <div class="align-items-center mt-0">
                   <div class="d-grid">
                     <button class="btn btn-primary mb-0" type="submit">Login</button>

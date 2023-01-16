@@ -55,11 +55,17 @@ export class PageMainComponent implements OnInit {
               private imageService: ImageService,
               private commentService: CommentService,
               private iLikeService: LikesService) {
+  checkAdmin!: boolean;
+roleAdmin! : number;
+  constructor(public friendService: FriendService, private router: Router, private statusService: StatusService, private authenticationService: AuthenticationService) {
   }
 
   view(): void {
     this.statusService.findAll(this.userToken.id).subscribe((data) => {
       this.statuses = data[0];
+      if (this.userToken.roles[0].id ==1 ){
+        this.checkAdmin = true;
+      }else {this.checkAdmin =false }
 
       console.log(this.statuses);
       this.img = data[0][0].img;
@@ -97,7 +103,6 @@ export class PageMainComponent implements OnInit {
 
 
   create() {
-
     this.status1 = {
       content: this.createForm.value.content,
       status: this.createForm.value.status,
