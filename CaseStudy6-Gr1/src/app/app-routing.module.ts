@@ -18,8 +18,6 @@ const routes: Routes = [
   {path: 'showProfile', component: ProfileComponent},
   {path: 'changepassword', component: ChangePasswordComponent},
   {path: 'all-user-information', component: PageAdminComponent},
-
-
   ];
 
 @NgModule({

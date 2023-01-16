@@ -13,7 +13,8 @@ import {RegisterComponent} from "./page/signin-signup/register/register.componen
 import {ProfileComponent} from "./friends/profile/profile.component";
 import {ChangePasswordComponent} from "./page/change-password/change-password.component";
 import { PageAdminComponent } from './page/page-admin/page-admin.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
+NgxPaginationModule
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { PageAdminComponent } from './page/page-admin/page-admin.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
   ],
   providers: [
     {
