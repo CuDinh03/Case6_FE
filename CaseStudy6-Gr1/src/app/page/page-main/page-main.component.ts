@@ -129,7 +129,7 @@ export class PageMainComponent implements OnInit {
     const status2: Status = {content: this.createForm.value.content, status: this.createForm.value.status}
     console.log(status2);
     this.statusService.editStatus(index, status2).subscribe(() => {
-      this.editPicture();
+      this.editPicture(index);
       this.idS = -1;
       this.createForm.reset();
       this.view();
@@ -223,8 +223,12 @@ export class PageMainComponent implements OnInit {
     console.log(this.listPicture);
   }
 
-  editPicture(): void {
-
+  editPicture(id: number): void {
+    this.imageService.editPicture(id, this.listPicture).subscribe((data) => {
+      this.listPicture = [];
+      this.view();
+      this.mainView();
+    })
   }
 
 // tao comment
