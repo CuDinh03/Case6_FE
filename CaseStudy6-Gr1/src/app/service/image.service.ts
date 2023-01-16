@@ -19,7 +19,11 @@ export class ImageService {
   }
 
   findByStatusId(id: number): Observable<any> {
-    return this.http.get<img[]>(`${API_URL}/images/${id}`)
+    return this.http.get<img[]>(`${API_URL}/images/${id}`);
+  }
+
+  deleteImage(id: number): Observable<any> {
+    return this.http.delete<img>(`${API_URL}/images/${id}`);
   }
 
   editPicture(id: number, status: Status): Observable<Status>{

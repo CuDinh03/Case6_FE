@@ -64,11 +64,11 @@ export class PageMainComponent implements OnInit {
     })
   }
 
-
   ngOnInit(): void {
     // @ts-ignore
     this.userToken = JSON.parse(localStorage.getItem("userToken"));
     this.view();
+    this.friendService.userToken = this.userToken;
     this.requestSent();
     this.requestReceived();
     // this.showComment();
