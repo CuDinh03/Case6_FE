@@ -131,6 +131,7 @@ export class PageMainComponent implements OnInit {
     this.statusService.editStatus(index, status2).subscribe(() => {
       this.editPicture(index);
       this.idS = -1;
+      this.listPicture = [];
       this.createForm.reset();
       this.view();
       this.mainView();
