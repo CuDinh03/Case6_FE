@@ -34,9 +34,11 @@ export class PageMainComponent implements OnInit {
   img: any;
   comment1 !: any;
   id: any;
+  idP: any;
 
   selectedImage: any;
   @ViewChild('uploadFile', {static: true}) public avatarDom: ElementRef | undefined;
+  @ViewChild('uploadFile1', {static: true}) public avatarDom1: ElementRef | undefined;
   listPicture: img[] = [];
 
   listComment: comment[] = [];
@@ -77,7 +79,7 @@ export class PageMainComponent implements OnInit {
 
   createForm = new FormGroup({
     content: new FormControl(""),
-    status: new FormControl(""),
+    status: new FormControl("1"),
   })
 
   createFormcomment = new FormGroup({
@@ -127,10 +129,9 @@ export class PageMainComponent implements OnInit {
     const status2: Status = {content: this.createForm.value.content, status: this.createForm.value.status}
     console.log(status2);
     this.statusService.editStatus(index, status2).subscribe(() => {
-      this.editPicture(this.idS);
+      this.editPicture();
       this.idS = -1;
       this.createForm.reset();
-      this.listPicture = [];
       this.view();
       this.mainView();
     })
@@ -178,6 +179,10 @@ export class PageMainComponent implements OnInit {
 
   uploadFileImg(): void {
     this.selectedImage = this.avatarDom?.nativeElement.files[0];
+    if (this.selectedImage == undefined) {
+      // @ts-ignore
+      this.selectedImage = this.avatarDom1.nativeElement.files[0]
+    }
     this.submit();
   }
 
@@ -214,7 +219,12 @@ export class PageMainComponent implements OnInit {
 
   deletePicture(index: number): void {
     this.listPicture.splice(index, 1);
+    this.savePicture();
     console.log(this.listPicture);
+  }
+
+  editPicture(): void {
+
   }
 
 // tao comment
@@ -252,7 +262,7 @@ export class PageMainComponent implements OnInit {
   }
 
 
-  editPicture(index: number): void {}
+
 
   resetmodal(): void {
     this.listPicture = [];

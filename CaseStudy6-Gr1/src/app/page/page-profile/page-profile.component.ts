@@ -37,7 +37,7 @@ export class PageProfileComponent implements OnInit {
   }
 
   view(): void {
-    this.statusService.findAll(this.userToken.id).subscribe((data) => {
+    this.statusService.findByAccountId(this.userToken.id).subscribe((data) => {
       this.statuses = data[0];
       console.log(this.statuses);
     })

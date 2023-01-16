@@ -12,10 +12,10 @@ const API_URL = `http://localhost:8080`;
 })
 export class ImageService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   saveImage(img: any): Observable<any> {
-    return this.http.post<img>(API_URL + '/images', img);
+    return this.http.post<img>(`${API_URL}/images`, img);
   }
 
   findByStatusId(id: number): Observable<any> {
@@ -26,7 +26,7 @@ export class ImageService {
     return this.http.delete<img>(`${API_URL}/images/${id}`);
   }
 
-  editPicture(id: number, status: Status): Observable<Status>{
-    return this.http.put<Status>(`${API_URL}/statuses/${id}`, status);
+  editPicture(id: number, listPicture: img[]): Observable<any>{
+    return this.http.put<any>(`${API_URL}/statuses/${id}`, listPicture);
   }
 }

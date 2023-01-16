@@ -17,6 +17,10 @@ export class StatusService {
     return this.http.get<Status[]>(API_URL+'/statuses?userId=' + userId);
   }
 
+  findByAccountId(id: number): Observable<any> {
+    return this.http.get<Status[]>(`${API_URL}/statuses/${id}`);
+  }
+
   saveStatus(status: any): Observable<Status> {
     return this.http.post<Status>(API_URL + '/statuses', status);
   }
