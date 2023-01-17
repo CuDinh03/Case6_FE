@@ -47,9 +47,10 @@ export class PageSearchComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.view();
+
     // @ts-ignore
     this.userToken = JSON.parse(localStorage.getItem("userToken"));
+    this.view();
     this.friendService.userToken=this.userToken;
      this.anyThing = this.route.snapshot.paramMap.get("smt");
      this.findFriend();
