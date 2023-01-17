@@ -654,6 +654,7 @@
                           <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
                         </div>
                         <table class="table table-striped" >
+                          <h3 *ngIf="friendList.length==0">Hãy tìm thêm bạn bè nào!</h3>
 
                           <tr *ngFor="let f of friendList, index as i ">
                                 <td>
