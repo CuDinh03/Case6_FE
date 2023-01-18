@@ -435,7 +435,7 @@
                 <!--                //noi dung cua bai viet -->
                 <p class="mb-3 tx-14">{{s.content}}</p>
                 <div>
-                  <img class="img-fluid" *ngFor="let p of s.img, index as i1" src="{{p.name}}" alt="index" width="200" height="250">
+                  <img class="img-fluid" *ngFor="let p of s.img, index as i1" src="{{p.name}}" alt="index" style="margin: 2px" width="200" height="250">
                 </div>
 
               </div>
@@ -480,7 +480,7 @@
                 </div>
                 <div class="o-hide">
                   <div class="card-footer">
-                    <div class="d-flex post-actions">
+                    <div>
                       <div class="comment">
                         <div class="d-flex align-items-center">
                           <img class="img-xs rounded-circle" src="{{userToken.img.name}}"
@@ -506,7 +506,8 @@
                     </div>
                     <br>
                     <!--                  showcomment-->
-                    <div class="overflow-auto" *ngFor="let c of s.comment" >
+                    <div *ngFor="let c of s.comment" >
+                    <div class="overflow-auto" >
                       <div *ngIf="c.status == 1">
                         <div class="d-flex align-items-center" >
                           <div class="d-flex align-items-center">
@@ -528,6 +529,7 @@
                           </button>
                         </div>
                       </div>
+                    </div>
                     </div>
                   </div>
                 </div>
