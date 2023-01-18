@@ -291,17 +291,4 @@ export class PageMainComponent implements OnInit {
     })
 
   }
-
-
-
-
-  // showComment(): void {
-  //   this.commentService.findCommentByStatusId(this.statusE.id).subscribe((data) => {
-  //     this.listComment = data[0];
-  //
-  //     console.log(this.listComment);
-  //   })
-  // }
-
-
 }

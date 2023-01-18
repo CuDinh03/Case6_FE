@@ -29,4 +29,12 @@ export class ImageService {
   editPicture(id: number, status: Status): Observable<Status>{
     return this.http.put<Status>(`${API_URL}/statuses/${id}`, status);
   }
+
+  findLastPicture(): Observable<img> {
+    return this.http.get<img>(`${API_URL}/images`);
+  }
+
+  saveone(img: any): Observable<any> {
+    return this.http.post<any>(`${API_URL}/images/one`, img)
+  }
 }

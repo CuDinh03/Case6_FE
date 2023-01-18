@@ -1,3 +1,4 @@
+import { img } from "./img";
 
 export class Acc {
   id !: number;
@@ -7,10 +8,11 @@ export class Acc {
   gender !: string;
   address !: string;
   phoneNumber !: string;
-  status !: number
+  status !: number;
+  img!: img;
 
 
-  constructor(id: number, firstName: string, lastName: string, birthDay: Date, gender: string, address: string, phoneNumber: string, status: number) {
+  constructor(id: number, firstName: string, lastName: string, birthDay: Date, gender: string, address: string, phoneNumber: string, status: number, img: img) {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
@@ -19,5 +21,6 @@ export class Acc {
     this.address = address;
     this.phoneNumber = phoneNumber;
     this.status = status;
+    this.img = img;
   }
 }
