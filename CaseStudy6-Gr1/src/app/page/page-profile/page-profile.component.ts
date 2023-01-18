@@ -116,7 +116,6 @@ export class PageProfileComponent implements OnInit {
       this.view();
       this.profileView();
     })
-
   }
 
   deleteComment(id: number) {
