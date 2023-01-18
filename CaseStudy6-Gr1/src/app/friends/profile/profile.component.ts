@@ -4,8 +4,13 @@ import {Friend} from "../../model/friend";
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../../account/AccountService/authentication.service";
 import { ActivatedRoute } from '@angular/router';
-import {ChangeDetectorRef } from '@angular/core';
 import { NgZone } from '@angular/core';
+import {StatusService} from "../../service/status.service";
+import {Status} from "../../model/status";
+import {FormControl, FormGroup} from "@angular/forms";
+import {ImageService} from "../../service/image.service";
+import {img} from "../../model/img";
+import {CommentService} from "../../service/comment.service";
 
 @Component({
   selector: 'app-profile',
@@ -24,6 +29,7 @@ export class ProfileComponent implements  OnInit{
     this.getInFor();
     this.getMutualFriend();
     this.getAllFriendsOfFriend();
+    this.view();
   }
 
   idInf!:any;
@@ -36,9 +42,75 @@ export class ProfileComponent implements  OnInit{
   listFound!:Friend[];
   listReceived!:Friend[];
 
+  statuses: Status[] = [];
+  value = '';
+  comment1 !: any;
+  idS!: number;
+  listPicture: img[] = [];
+  id!: number;
 
+  constructor(private ngZone: NgZone,
+              private statusService: StatusService,
+              private imageService: ImageService,
+              private commentService: CommentService,
+              private friendService: FriendService,
+              private router: Router,
+              private authenticationService: AuthenticationService,
+              private route :ActivatedRoute) {
+  }
 
-  constructor(private ngZone: NgZone,private friendService: FriendService,private router: Router, private authenticationService: AuthenticationService,private route :ActivatedRoute) {
+  view(): void {
+    this.statusService.findByAccountId(this.idInf).subscribe((data) => {
+      this.statuses = data[0];
+      console.log(this.idInf);
+    })}
+
+  createForm = new FormGroup({
+    content: new FormControl(""),
+    status: new FormControl(""),
+  })
+
+  showEdit(index: number) {
+    this.statusService.findById(index).subscribe((result) => {
+      this.idS = index;
+      this.createForm.patchValue({
+        content: result.content,
+        status: result.status,
+      })
+      this.showImg(index)
+    })
+  }
+
+  showImg(index: number) {
+    this.imageService.findByStatusId(index).subscribe((data) => {
+      this.listPicture = data[0];
+      console.log(this.listPicture);
+    })
+  }
+
+  comment(value: any) {
+    this.value = value;
+    this.comment1 = {
+      text: this.value,
+      status: 1,
+      account: {
+        id: this.userToken.id
+      }
+    }
+    this.commentService.saveComment(this.comment1, this.id).subscribe((data)=>{
+      console.log(data);
+      console.log(this.comment1);
+      this.resetForm();
+      this.view();
+      this.refresh(this.idInf);
+    })
+  }
+
+  deleteComment(id: number) {
+    this.commentService.deleteComment(id).subscribe((data)=> {
+      this.view();
+      this.refresh(this.idInf);
+    }                                                                                                           )
   }
 
   refresh(id: number) {
@@ -121,4 +193,12 @@ this.friendService.removeFriend(id1,id2);
 
  }
 
+  resetForm() {
+    this.createForm.patchValue({content: "", status: "1"});
+  }
+
+  resetmodal(): void {
+    this.listPicture = [];
+    this.resetForm();
+  }
 }
