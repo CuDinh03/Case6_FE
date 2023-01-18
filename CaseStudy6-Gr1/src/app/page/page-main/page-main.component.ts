@@ -40,7 +40,7 @@ export class PageMainComponent implements OnInit {
 
   selectedImage: any;
   @ViewChild('uploadFile', {static: true}) public avatarDom: ElementRef | undefined;
-  // @ViewChild('uploadFile1', {static: true}) public avatarDom1: ElementRef | undefined;
+  @ViewChild('uploadFile1', {static: true}) public avatarDom1: ElementRef | undefined;
   listPicture: img[] = [];
   listComment: comment[] = [];
 
