@@ -22,6 +22,7 @@ import {LikesService} from "../../service/likes.service";
 })
 export class PageMainComponent implements OnInit {
   statuses: Status[] = [];
+  recommendList!:Friend[];
 
   value = '';
   listFound!:Friend[];
@@ -72,6 +73,14 @@ export class PageMainComponent implements OnInit {
       console.log(this.img);
     })
   }
+  getRecommend(id:number){
+     this.friendService.getRecommend().subscribe((data)=>{
+       this.recommendList = data;
+       this.recommendList.splice(id,1);
+     })
+
+
+  }
 
 
   ngOnInit(): void {
@@ -83,6 +92,7 @@ export class PageMainComponent implements OnInit {
     this.requestReceived();
     // this.showComment();
     this.getAllFriends();
+    this.getRecommend(this.userToken.id);
   }
 
   createForm = new FormGroup({
