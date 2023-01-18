@@ -28,13 +28,11 @@ export class PageMainComponent implements OnInit {
   listSent!:Friend[];
   listReceived!: Friend[];
   status1: any;
-  statusE!: Status;
   userToken: any;
   idS!: number;
   img: any;
   comment1 !: any;
   id: any;
-  idP: any;
 
   like1: any;
 
@@ -80,10 +78,8 @@ export class PageMainComponent implements OnInit {
     // @ts-ignore
     this.userToken = JSON.parse(localStorage.getItem("userToken"));
     this.view();
-    this.friendService.userToken = this.userToken;
     this.requestSent();
     this.requestReceived();
-    // this.showComment();
     this.getAllFriends();
   }
 
@@ -91,12 +87,6 @@ export class PageMainComponent implements OnInit {
     content: new FormControl(""),
     status: new FormControl("1"),
   })
-
-  createFormcomment = new FormGroup({
-    text : new FormGroup(""),
-  })
-
-
 
   showProfile(id : number){
     this.friendService.idInf=id;
@@ -115,7 +105,7 @@ export class PageMainComponent implements OnInit {
     console.log(this.status1);
     this.statusService.saveStatus(this.status1).subscribe((data) => {
       this.savePicture();
-      this.createForm.reset();
+      this.resetForm();
       this.view();
       this.mainView()
     })
@@ -136,11 +126,11 @@ export class PageMainComponent implements OnInit {
   edit(index: number) {
     // @ts-ignore
     const status2: Status = {content: this.createForm.value.content, status: this.createForm.value.status}
-    console.log(status2);
     this.statusService.editStatus(index, status2).subscribe(() => {
-      this.editPicture();
+      this.editPicture(index);
       this.idS = -1;
-      this.createForm.reset();
+      this.listPicture = [];
+      this.resetForm();
       this.view();
       this.mainView();
     })
@@ -206,7 +196,8 @@ export class PageMainComponent implements OnInit {
         image.name = url;
         this.listPicture.push(image);
         console.log(this.listPicture);
-      })))).subscribe();
+      })))).subscribe((data) => {
+      });
     }
   }
 
@@ -228,12 +219,16 @@ export class PageMainComponent implements OnInit {
 
   deletePicture(index: number): void {
     this.listPicture.splice(index, 1);
-    this.savePicture();
     console.log(this.listPicture);
   }
 
-  editPicture(): void {
+  editPicture(id: number): void {
+    console.log(id);
+    console.log(this.listPicture);
+    this.imageService.editPicture(id, this.listPicture).subscribe((data) => {
 
+
+    })
   }
 
 // tao comment
@@ -250,7 +245,7 @@ export class PageMainComponent implements OnInit {
     this.commentService.saveComment(this.comment1, this.id).subscribe((data)=>{
       console.log(data);
       console.log(this.comment1);
-      this.createForm.reset();
+      this.resetForm();
       this.view();
       this.mainView();
     })
@@ -268,14 +263,6 @@ export class PageMainComponent implements OnInit {
     this.commentService.findCommentByStatusId(id).subscribe((data)=> {
       this.listComment = data;
     })
-  }
-
-
-
-
-  resetmodal(): void {
-    this.listPicture = [];
-    this.createForm.reset();
   }
 
   getAllFriends(){
@@ -299,19 +286,14 @@ export class PageMainComponent implements OnInit {
       this.view();
       this.mainView();
     })
-
   }
 
+  resetForm() {
+    this.createForm.patchValue({content: "", status: "1"});
+  }
 
-
-
-  // showComment(): void {
-  //   this.commentService.findCommentByStatusId(this.statusE.id).subscribe((data) => {
-  //     this.listComment = data[0];
-  //
-  //     console.log(this.listComment);
-  //   })
-  // }
-
-
+  resetmodal(): void {
+    this.listPicture = [];
+    this.resetForm();
+  }
 }

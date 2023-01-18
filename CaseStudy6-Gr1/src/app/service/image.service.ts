@@ -27,6 +27,6 @@ export class ImageService {
   }
 
   editPicture(id: number, listPicture: img[]): Observable<any>{
-    return this.http.put<any>(`${API_URL}/statuses/${id}`, listPicture);
+    return this.http.put<any>(`${API_URL}/images/${id}`, listPicture);
   }
 }

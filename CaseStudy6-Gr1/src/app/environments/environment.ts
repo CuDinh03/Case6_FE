@@ -10,6 +10,7 @@ export const environment = {
   firebaseConfig : {
     apiKey: "AIzaSyCC1znez7BXuAcWKlvUAaI2I99RAGEk_lU",
     authDomain: "fir-ef3e5.firebaseapp.com",
+    databaseURL: "https://fir-ef3e5-default-rtdb.asia-southeast1.firebasedatabase.app",
     projectId: "fir-ef3e5",
     storageBucket: "fir-ef3e5.appspot.com",
     messagingSenderId: "318016988591",

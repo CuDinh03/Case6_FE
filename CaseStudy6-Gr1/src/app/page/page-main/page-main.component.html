@@ -345,7 +345,6 @@
                     </td>
                     <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
                     <div class="container" >
-                      <h3>Loading ...</h3>
                     </div>
 
                     <div class="image" *ngFor="let ls of listPicture, index as i2">
@@ -383,7 +382,7 @@
                     <img class="img-xs rounded-circle" src="{{s.account.img.name}}" alt="">
                     <div class="ml-2">
                       <div>
-                        {{s.account.userName}}
+                        {{s.account.firstName}} {{s.account.lastName}}
                       </div>
                       <div>
                         <p class="tx-9 text-muted">{{s.postDay | date: "hh:mm dd/MM/yyyy"}}</p>
@@ -431,8 +430,8 @@
               <div class="card-body">
                 <!--                //noi dung cua bai viet -->
                 <p class="mb-3 tx-14">{{s.content}}</p>
-                <div>
-                  <img class="img-fluid" *ngFor="let p of s.img, index as i1" src="{{p.name}}" alt="index" width="200" height="250">
+                <div style="height: auto; width: auto" *ngFor="let p of s.img, index as i1">
+                  <img class="img-fluid cover" *ngIf="p.status == 1" src="{{p.name}}" alt="index" width="auto" height="auto">
                 </div>
 
               </div>
