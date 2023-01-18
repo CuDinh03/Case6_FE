@@ -14,6 +14,7 @@ import {img} from "../../model/img";
 import {CommentService} from "../../service/comment.service";
 import {comment} from "../../model/comment";
 import {LikesService} from "../../service/likes.service";
+import {AppComponent} from "../../app.component";
 
 @Component({
   selector: 'app-page-main',
@@ -46,6 +47,7 @@ export class PageMainComponent implements OnInit {
   friendInF!: Friend;
   checkAdmin!: boolean;
   roleAdmin! : number;
+
 
 
   constructor(private storage: AngularFireStorage,
@@ -83,6 +85,8 @@ export class PageMainComponent implements OnInit {
     this.requestReceived();
     // this.showComment();
     this.getAllFriends();
+    // @ts-ignore
+    this.webSocketAPI = new WebSocketAPI(new PageMainComponent());
   }
 
   createForm = new FormGroup({
@@ -291,6 +295,8 @@ export class PageMainComponent implements OnInit {
     })
 
   }
+
+
 
 
 

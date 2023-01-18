@@ -22,6 +22,7 @@ import {environment} from "./environments/environment";
 import { PageSearchComponent } from './page/page-search/page-search.component';
 import { GuestProfileComponent } from './friends/guest-profile/guest-profile.component';
 import { SearchStatusComponent } from './page/search-status/search-status.component';
+import {ChatComponent} from "./page/chat/chat.component";
 
 
 
@@ -39,6 +40,7 @@ import { SearchStatusComponent } from './page/search-status/search-status.compon
     PageSearchComponent,
     GuestProfileComponent,
     SearchStatusComponent,
+    ChatComponent,
   ],
     imports: [
         BrowserModule,

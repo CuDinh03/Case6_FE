@@ -13,6 +13,7 @@ import {SearchStatusComponent} from "./page/search-status/search-status.componen
 
 import {ChangePasswordComponent} from "./page/change-password/change-password.component";
 import {PageAdminComponent} from "./page/page-admin/page-admin.component";
+import {ChatComponent} from "./page/chat/chat.component";
 
 const routes: Routes = [
   {path: 'main',component: PageMainComponent, canActivate: [AuthGuard]},
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path: 'showProfile', component: ProfileComponent},
   {path: 'changepassword', component: ChangePasswordComponent},
   {path: 'all-user-information', component: PageAdminComponent},
+  {path: 'chat', component: ChatComponent}
   ];
 
 @NgModule({
