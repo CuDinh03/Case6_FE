@@ -184,12 +184,15 @@ export class PageProfileComponent implements OnInit {
     if(this.stt1==2&&this.stt2==2){
       this.account.status=7
     }
-    this.imageService.saveone(this.picture);
-    this.picture = this.imageService.findLastPicture();
-    this.account.img = this.picture;
-    console.log(this.account);
-    this.friendService.updateAccount(this.account);
-    this.logout();
+    this.imageService.saveone(this.listPicture[0]);
+    console.log(this.listPicture[0])
+    this.imageService.findLastPicture().subscribe((data) =>{
+      this.account.img = data;
+      console.log(this.account);
+      this.friendService.updateAccount(this.account);
+      this.logout();
+    })
+
   }
 
   getTT() {
@@ -213,14 +216,7 @@ export class PageProfileComponent implements OnInit {
   }
 
   uploadFileImg(): void {
-    if (this.avatarDom) {
-      this.selectedImage = this.avatarDom.nativeElement.files[0];
-    }
-    if (this.selectedImage == undefined) {
-      // @ts-ignore
-      this.selectedImage = this.avatarDom1.nativeElement.files[0];
-      console.log(this.selectedImage);
-    }
+    this.selectedImage = this.avatarDom?.nativeElement.files[0];
     this.submit();
   }
 
@@ -234,10 +230,12 @@ export class PageProfileComponent implements OnInit {
         image.name = url;
         this.listPicture.push(image);
         console.log(this.listPicture);
-      })))).subscribe(result => {
-    });
+      })))).subscribe((data) => {
+      });
     }
   }
+
+
 
   showImg(index: number) {
     this.imageService.findByStatusId(index).subscribe((data) => {
