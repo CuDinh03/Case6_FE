@@ -22,6 +22,7 @@ import {FormControl, FormGroup} from "@angular/forms";
   styleUrls: ['./page-admin.component.css']
 })
 export class PageAdminComponent implements OnInit {
+  amount=0;
   checkAdmin!: boolean;
   idToBlock!:number;
   listAccount: any;
@@ -67,10 +68,14 @@ export class PageAdminComponent implements OnInit {
         if(this.listAccount[i].roles[0].name=="ADMIN"){
           this.listAccount.splice(i, 1);
         }
+        if(this.listAccount[i].status == 1){
+          this.amount++;
+        }
       }
     })
 
   }
+
   view(): void {
     this.statusService.findAll(this.userToken.id).subscribe((data) => {
       this.statuses = data[0];
