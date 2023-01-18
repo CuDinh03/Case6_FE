@@ -177,10 +177,10 @@
                     <img class="img-xs rounded-circle" src="{{s.account.img.name}}" alt="">
                     <div class="ml-2">
                       <div>
-                        {{s.account.userName}}
+                        {{userToken.firstName}} {{userToken.lastName}}
                       </div>
                       <div>
-                        <p class="tx-9 text-muted">{{s.postDay}}</p>
+                        <p class="tx-9 text-muted">{{s.postDay | date: "hh:mm dd/MM/yyyy"}}</p>
                       </div>
                       <div>
                         <p class="tx-9 text-muted" *ngIf="s.status == '1'">Công khai</p>
