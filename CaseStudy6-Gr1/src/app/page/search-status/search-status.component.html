@@ -1,5 +1,5 @@
 <div id="fixNav">
-  <nav class="navbar navbar-light bg-light justify-content-between">
+  <nav class="navbar">
     <img type="button" style="padding-left: 5px; height: 50px; width: 50px" class="img-xs rounded-circle"
          src="https://media.istockphoto.com/id/1145987687/vi/vec-to/logo-meow-s%E1%BA%A1ch-s%E1%BA%BD-%C4%91%C6%B0%E1%BB%A3c-c%C3%A1ch-ly-tr%C3%AAn-n%E1%BB%81n-tr%E1%BA%AFng.jpg?s=612x612&w=0&k=20&c=d1H6tN95EvGEc531qppw9iZr2rcBkmlFXtc0-MykkuA="
          (click)="mainView()">
@@ -7,8 +7,8 @@
       <div class="inputWithIcon">
         <div class="nav1">
           <label for="searchIn4">
-            <input #input [value]="input.value" class="form-control mr-sm-4" type="search" align="center"
-                   placeholder="Search" aria-label="Search">
+            <input #input [value]="input.value" class="form-control mr-sm-4" type="search" align="center" width="100%"
+                   placeholder="Tìm kiếm bạn bè" aria-label="Search">
           </label>
         </div>
         <div class="nav1">
@@ -47,8 +47,7 @@
                   <li class="nav-item">
                     <a class="nav-link" aria-current="page">Bạn bè</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" aria-current="page">Chưa đọc</a>
+                  <li class="nav-item"><a class="nav-link" aria-current="page">Chưa đọc</a>
                   </li>
                 </ul>
 
@@ -82,13 +81,13 @@
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="#">Cài đặt</a></li>
+                <li><a class="dropdown-item">Cài đặt</a></li>
 
-                <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
+                <li><a class="dropdown-item" routerLink="/changepassword">Đổi mật khẩu</a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="#" (click)="logout()">Đăng xuất</a></li>
+                <li><a class="dropdown-item" (click)="logout()">Đăng xuất</a></li>
               </ul>
             </div>
 
@@ -243,11 +242,16 @@
           <!-- right wrapper end -->
         </div>
       </div>
+          </div>
 
           </div>
+      </div>
         </div>
+  </div>
+</div>
 
       <link rel="stylesheet" href="/assets/css/style.css">
+
 
 
 
