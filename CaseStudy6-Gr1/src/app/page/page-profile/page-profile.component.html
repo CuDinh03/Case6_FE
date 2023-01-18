@@ -70,9 +70,9 @@
               <ul class="dropdown-menu" id="menuAcc">
                 <li><a class="dropdown-item" (click)="profileView()">Trang cá nhân</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Cài đặt</a></li>
+                <li><a class="dropdown-item" >Cài đặt</a></li>
 
-                <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
+                <li><a class="dropdown-item" routerLink="/changepassword">Đổi mật khẩu</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#" (click)="logout()">Đăng xuất</a></li>
               </ul>
@@ -351,8 +351,6 @@
                       <option value="Nam">Nam</option>
                       <option value="Nữ">Nữ</option>
                       <option value="Giới tính thứ ba">Giới tính thứ ba</option>
-                      <option value="Gay">Gay</option>
-                      <option value="Bue Đê">Bê Đuê</option>
                       <option value="Không muốn tiết lộ">Không muốn tiết lộ</option>
                     </select>
 
@@ -384,7 +382,7 @@
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalToggleLabelEdit2">Bạn có chắc muôn cập nhật thng tin!</h1>
+                  <h1 class="modal-title fs-5" id="exampleModalToggleLabelEdit2">Bạn có chắc muôn cập nhật thông tin!</h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
