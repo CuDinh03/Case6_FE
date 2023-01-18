@@ -194,6 +194,7 @@ export class PageMainComponent implements OnInit {
         console.log(url);
         let image: img = {id: 0, name: "", status: 1};
         image.name = url;
+        console.log(image);
         this.listPicture.push(image);
         console.log(this.listPicture);
       })))).subscribe((data) => {
@@ -217,9 +218,11 @@ export class PageMainComponent implements OnInit {
     });
   }
 
-  deletePicture(index: number): void {
+  deletePicture(index: number,id: number): void {
     this.listPicture.splice(index, 1);
-    console.log(this.listPicture);
+    if(id !== 0){
+      this.imageService.deleteImage(id).subscribe((data)=>{})
+    }
   }
 
   editPicture(id: number): void {
