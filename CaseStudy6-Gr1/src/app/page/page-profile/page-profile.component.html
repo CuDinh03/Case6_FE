@@ -87,42 +87,145 @@
 </div>
 
 <!--modal edit-->
+<!--<div id="modaledit" style="width: 100%; height: 100%;">-->
+
+<!--  <div aria-hidden="true" aria-labelledby="exampleModalToggleLabel" class="modal fade"-->
+<!--       id="exampleModalToggle1" tabindex="-1">-->
+<!--    <div class="modal-dialog modal-dialog-centered">-->
+<!--      <div class="modal-content">-->
+<!--        <form (ngSubmit)="edit(id)" [formGroup]="createForm">-->
+<!--          <div class="modal-header">-->
+<!--            <h1 class="modal-title fs-5" id="exampleModalToggleLabel1">Sửa bài viết</h1>-->
+<!--            <button (click)="this.createForm.reset()" aria-label="Close" class="btn-close" data-bs-dismiss="modal"-->
+<!--                    type="button"></button>-->
+<!--          </div>-->
+<!--          <div class="modal-body">-->
+<!--            <div class="dropdown">-->
+<!--              <img alt=""-->
+<!--                   class="img-xs rounded-circle"-->
+<!--                   src="{{userToken.img.name}}">-->
+<!--              <div class="btn-group">-->
+<!--                <button aria-expanded="false" class="btn p-0" data-bs-toggle="dropdown" type="button">-->
+<!--                  <svg class="feather feather-more-horizontal icon-lg pb-3px" fill="none" height="20" stroke="currentColor"-->
+<!--                       stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"-->
+<!--                       width="20" xmlns="http://www.w3.org/2000/svg">-->
+<!--                    <circle cx="12" cy="12" r="1"></circle>-->
+<!--                    <circle cx="19" cy="12" r="1"></circle>-->
+<!--                    <circle cx="5" cy="12" r="1"></circle>-->
+<!--                  </svg>-->
+<!--                </button>-->
+<!--                <select class="dropdown-menu" formControlName="status">-->
+<!--                  <option class="dropdown-item" href="#" value="1">Công khai</option>-->
+<!--                  <option class="dropdown-item" href="#" value="2">Bạn bè</option>-->
+<!--                  <option class="dropdown-item" href="#" value="3">Chỉ mình tôi</option>-->
+<!--                </select>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <textarea class="form-control" formControlName="content" id="exampleFormControlTextarea"-->
+<!--                      placeholder="" rows="3"></textarea>-->
+<!--          </div>-->
+<!--          <div class="modal-footer">-->
+<!--            <button class="btn btn-primary" data-bs-dismiss="modal">Sửa</button>-->
+<!--          </div>-->
+<!--        </form>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--</div>-->
 <div id="modaledit" style="width: 100%; height: 100%;">
 
-  <div aria-hidden="true" aria-labelledby="exampleModalToggleLabel" class="modal fade"
-       id="exampleModalToggle1" tabindex="-1">
+  <div class="modal fade" id="exampleModalToggle1" aria-hidden="true"
+       aria-labelledby="exampleModalToggleLabel" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <form (ngSubmit)="edit(id)" [formGroup]="createForm">
+        <form [formGroup]="createForm" (ngSubmit)="edit(idS)">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="exampleModalToggleLabel1">Sửa bài viết</h1>
-            <button (click)="this.createForm.reset()" aria-label="Close" class="btn-close" data-bs-dismiss="modal"
-                    type="button"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="resetmodal()"></button>
           </div>
           <div class="modal-body">
             <div class="dropdown">
-              <img alt=""
-                   class="img-xs rounded-circle"
-                   src="{{userToken.img.name}}">
+              <img class="img-xs rounded-circle"
+                   src="{{userToken.img.name}}"
+                   alt="">
               <div class="btn-group">
-                <button aria-expanded="false" class="btn p-0" data-bs-toggle="dropdown" type="button">
-                  <svg class="feather feather-more-horizontal icon-lg pb-3px" fill="none" height="20" stroke="currentColor"
-                       stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
-                       width="20" xmlns="http://www.w3.org/2000/svg">
+                <button type="button" class="btn p-0" data-bs-toggle="dropdown" aria-expanded="false">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                       fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                       stroke-linejoin="round" class="feather feather-more-horizontal icon-lg pb-3px">
                     <circle cx="12" cy="12" r="1"></circle>
                     <circle cx="19" cy="12" r="1"></circle>
                     <circle cx="5" cy="12" r="1"></circle>
                   </svg>
                 </button>
                 <select class="dropdown-menu" formControlName="status">
-                  <option class="dropdown-item" href="#" value="1">Công khai</option>
+                  <option class="dropdown-item" href="#" value="1"> Công khai</option>
                   <option class="dropdown-item" href="#" value="2">Bạn bè</option>
                   <option class="dropdown-item" href="#" value="3">Chỉ mình tôi</option>
                 </select>
               </div>
             </div>
-            <textarea class="form-control" formControlName="content" id="exampleFormControlTextarea"
-                      placeholder="" rows="3"></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea" rows="3"
+                      placeholder="" formControlName="content"></textarea>
+            <div style="margin: 10px">
+              <label for="upload-photo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                     class="bi bi-image" viewBox="0 0 16 16">
+                  <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                  <path
+                    d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/>
+                </svg>
+              </label>
+              <td>
+                <input type="file" name="photo" id="upload-photo1" multiple
+                       (change)="uploadFileImg()" #uploadFile
+                />
+              </td>
+
+              <div class="image" *ngFor="let ls of listPicture, index as i2">
+                <div class="actions">
+                  <button type="button" class="btn btn-outline-danger pull-right" (click)="deletePicture(i2, ls.id)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                      <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
+                      <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
+                    </svg>
+                  </button>
+                </div>
+                <img [src]="ls.name" class="img img-responsive full-width" width="200" height="250">
+              </div>
+
+            </div>
+            <!--            <div style="margin: 10px">-->
+            <!--              <label for="upload-photo">-->
+            <!--                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"-->
+            <!--                     class="bi bi-image" viewBox="0 0 16 16">-->
+            <!--                  <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>-->
+            <!--                  <path-->
+            <!--                    d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/>-->
+            <!--                </svg>-->
+            <!--              </label>-->
+            <!--              <td>-->
+            <!--                <input type="file" name="photo" id="upload-photo1" multiple-->
+            <!--                       (change)="uploadFileImg()" #uploadFile1-->
+            <!--                />-->
+            <!--              </td>-->
+            <!--              <div class="image" *ngFor="let ls of listPicture, index as i2">-->
+            <!--                <div class="actions">-->
+            <!--                  <button type="button" class="btn btn-outline-danger pull-right" (click)="deletePicture(i2, ls.id)">-->
+            <!--                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"-->
+            <!--                         class="bi bi-trash" viewBox="0 0 16 16">-->
+            <!--                      <path-->
+            <!--                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>-->
+            <!--                      <path fill-rule="evenodd"-->
+            <!--                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>-->
+            <!--                    </svg>-->
+            <!--                  </button>-->
+            <!--                </div>-->
+            <!--                <img [src]="ls.name" class="img img-responsive full-width" width="200" height="250">-->
+            <!--              </div>-->
+            <!--            </div>-->
           </div>
           <div class="modal-footer">
             <button class="btn btn-primary" data-bs-dismiss="modal">Sửa</button>
@@ -133,7 +236,6 @@
   </div>
 
 </div>
-
 
 <div class="container">
   <!--Chat-->
@@ -203,6 +305,21 @@
                     <img type="button" width="100px" height="100px" class="img-xs rounded-circle"
                          src="{{userToken.img.name}}"
                          alt="">
+                    <div style="margin: 10px">
+                      <label for="upload-photo">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                             class="bi bi-image" viewBox="0 0 16 16">
+                          <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                          <path
+                            d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/>
+                        </svg>
+                      </label>
+                      <td>
+                        <input type="file" name="photo" id="upload-photo" multiple
+                               (change)="uploadFileImg()" #uploadFile
+                        />
+                      </td>
+                    </div>
                   </div>
                   <br>
                   <div id="lastName" >
@@ -429,10 +546,10 @@
                     <img class="img-xs rounded-circle" src="{{s.account.img.name}}" alt="">
                     <div class="ml-2">
                       <div>
-                        {{s.account.userName}}
+                        {{s.account.firstName}} {{s.account.lastName}}
                       </div>
                       <div>
-                        <p class="tx-9 text-muted">{{s.postDay}}</p>
+                        <p class="tx-9 text-muted">{{s.postDay | date: "hh:mm dd/MM/yyyy"}}</p>
                       </div>
                       <div >
                         <p class="tx-9 text-muted" *ngIf="s.status == '1'">Công khai</p>
@@ -475,7 +592,9 @@
               <div class="card-body">
                 <!--                //noi dung cua bai viet -->
                 <p class="mb-3 tx-14">{{s.content}}</p>
-                <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
+                <div style="height: auto; width: auto" *ngFor="let p of s.img, index as i1">
+                  <img class="img-fluid cover" *ngIf="p.status == 1" src="{{p.name}}" alt="index" width="auto" height="auto">
+                </div>
               </div>
               <div class="card-footer">
                 <div class="d-flex post-actions">
@@ -491,7 +610,7 @@
                         </svg>
                       </td>
                       <td>
-                        <p class="d-none d-md-block ml-2">Like</p>
+                        <p class="d-none d-md-block ml-2">Like<span style="color: red">{{s.likes.length}}</span></p>
                       </td>
                     </div>
                   </button>
@@ -507,28 +626,28 @@
                         </svg>
                       </td>
                       <td>
-                        <p class="d-none d-md-block ml-2" id="comment1">Comment</p>
+                        <label for="comment{{s.id}}">
+                          <p class="d-none d-md-block ml-2" id="comment">Comment <span
+                            style="color: #6ea8fe">{{s.comment.length}}</span></p>
+                        </label>
                       </td>
                     </div>
                   </button>
                 </div>
               </div>
-
               <div class="o-hide">
                 <div class="card-footer">
                   <div class="d-flex post-actions">
                     <div class="comment">
                       <div class="d-flex align-items-center">
-                        <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png"
+                        <img class="img-xs rounded-circle" src="{{userToken.img.name}}"
                              alt="">
                         <div class="input-group">
 
-                          <input type="text" class="form-control" style="border: none; width: 450px"
-                                 placeholder="Viết bình luận...">
+                          <input #box type="text" class="form-control" id="comment{{s.id}}" style="border: none;"
+                                 placeholder="Viết bình luận..." (keydown.enter)="id = s.id" (keyup.enter)="comment(box.value)">
                           <span style="border: none">
-
                           <span type="button" style="border: none; margin-left: 1px">
-
                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                    class="bi bi-image" viewBox="0 0 16 16">
   <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
@@ -544,26 +663,32 @@
                   </div>
                   <br>
                   <!--                  showcomment-->
-                  <div class="comment">
-                    <div class="d-flex align-items-center">
-                      <div class="d-flex align-items-center">
-                        <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png"
-                             alt="">
-                        <div class="ml-2">
-                          <div>
-                            username
-                          </div>
-                          <div>
-                            <p>vai ca llll</p>
+                  <div *ngFor="let c of s.comment" >
+                    <div class="overflow-auto" >
+                      <div *ngIf="c.status == 1">
+                        <div class="d-flex align-items-center" >
+                          <div class="d-flex align-items-center">
+                            <img class="img-xs rounded-circle" src="{{c.account.img.name}}"
+                                 alt="">
+                            <span>{{c.account.userName}}</span>
+
                           </div>
                         </div>
-
+                        <div id="content">
+                          {{c.text}}
+                        </div>
+                        <div class="actions" *ngIf="c.account.id == userToken.id">
+                          <button type="button" class="btn btn-outline-danger pull-right" (click)="deleteComment(c.id)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
+                              <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
+                            </svg>
+                          </button>
+                        </div>
                       </div>
-
-
                     </div>
-
                   </div>
+                  <!--                 end showcomment-->
                 </div>
               </div>
             </div>

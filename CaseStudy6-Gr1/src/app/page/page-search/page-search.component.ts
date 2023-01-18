@@ -47,7 +47,6 @@ export class PageSearchComponent implements OnInit{
   }
 
   ngOnInit(): void {
-
     // @ts-ignore
     this.userToken = JSON.parse(localStorage.getItem("userToken"));
     this.view();

@@ -17,6 +17,10 @@ export class StatusService {
     return this.http.get<Status[]>(API_URL+'/statuses?userId=' + userId);
   }
 
+  findByAccountId(id: number): Observable<any> {
+    return this.http.get<Status[]>(`${API_URL}/statuses/${id}`);
+  }
+
   saveStatus(status: any): Observable<Status> {
     return this.http.post<Status>(API_URL + '/statuses', status);
   }
@@ -32,7 +36,12 @@ export class StatusService {
   deleteStatus(id: number): Observable<Status> {
     return this.http.delete<Status>(`${API_URL}/statuses/${id}`);
   }
+
   showMystatus (id:number, anyt: String): Observable<any>{
     return this.http.get<Status[]> (`${API_URL}/statuses/search/${id}/${anyt}`);
+  }
+
+  findAllByGuestId(id: number): Observable<any> {
+    return this.http.get<any>(`${API_URL}/statuses/guest/${id}`);
   }
 }

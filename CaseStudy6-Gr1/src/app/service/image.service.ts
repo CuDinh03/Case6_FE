@@ -26,7 +26,15 @@ export class ImageService {
     return this.http.delete<img>(`${API_URL}/images/${id}`);
   }
 
-  editPicture(id: number, status: Status): Observable<Status>{
-    return this.http.put<Status>(`${API_URL}/statuses/${id}`, status);
+  editPicture(id: number, listPicture: img[]): Observable<any>{
+    return this.http.put<any>(`${API_URL}/images/${id}`, listPicture);
+  }
+
+  findLastPicture(): Observable<img> {
+    return this.http.get<img>(`${API_URL}/images`);
+  }
+
+  saveone(img: any): Observable<any> {
+    return this.http.post<any>(`${API_URL}/images/one`, img)
   }
 }
