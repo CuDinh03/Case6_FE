@@ -36,6 +36,7 @@ export class PageProfileComponent implements OnInit {
 
   selectedImage: any;
   @ViewChild('uploadFile', {static: true}) public avatarDom: ElementRef | undefined;
+  @ViewChild('uploadFile1', {static: true}) public avatarDom1: ElementRef | undefined;
   listPicture: img[] = [];
   picture!: any;
 
@@ -136,13 +137,14 @@ export class PageProfileComponent implements OnInit {
 
   edit(index: number) {
     // @ts-ignore
-
     const status2: Status = {content: this.createForm.value.content, status: this.createForm.value.status}
-    console.log(status2);
     this.statusService.editStatus(index, status2).subscribe(() => {
+      this.editPicture(index);
+      this.idS = -1;
+      this.listPicture = [];
+      this.resetForm();
       this.id = -1;
       this.view();
-      this.createForm.reset();
       this.profileView();
     })
   }
@@ -212,6 +214,12 @@ export class PageProfileComponent implements OnInit {
 
   uploadFileImg(): void {
     this.selectedImage = this.avatarDom?.nativeElement.files[0];
+    console.log(this.selectedImage);
+    if (this.selectedImage == undefined) {
+      // @ts-ignore
+      this.selectedImage = this.avatarDom1.nativeElement.files[0];
+      console.log(this.selectedImage);
+    }
     this.submit();
   }
 
@@ -221,12 +229,10 @@ export class PageProfileComponent implements OnInit {
       const fileRef = this.storage.ref(filePath);
       this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(finalize
       (() => (fileRef.getDownloadURL().subscribe(url => {
-        console.log(url);
         let image: img = {id: 0, name: "", status: 1};
         image.name = url;
-        this.picture = image;
-        this.imageService.saveone(this.picture);
-        console.log(this.picture);
+        this.listPicture.push(image);
+        console.log(this.listPicture);
       })))).subscribe(result => {
     });
     }

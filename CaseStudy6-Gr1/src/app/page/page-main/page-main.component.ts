@@ -205,7 +205,6 @@ export class PageMainComponent implements OnInit {
       const fileRef = this.storage.ref(filePath);
       this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(finalize
       (() => (fileRef.getDownloadURL().subscribe(url => {
-        console.log(url);
         let image: img = {id: 0, name: "", status: 1};
         image.name = url;
         this.listPicture.push(image);
