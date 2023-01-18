@@ -32,23 +32,23 @@
 
                 <!-- Email -->
                 <div class="mb-4">
-                  <label  class="form-label">Tài khoản *<span style="color: red">*</span></label>
+                  <label  class="form-label">User Name <span style="color: red">*</span></label>
                   <div class="input-group input-group-lg">
                     <span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="bi bi-person"></i></span>
-                    <input class="form-control border-0 bg-light rounded-end ps-1" formControlName="userName" placeholder="Tên người dùng hoặc email">
+                    <input class="form-control border-0 bg-light rounded-end ps-1" formControlName="userName" placeholder="Username">
                   </div>
-                  <p *ngIf="!loginForm.get('userName')?.valid && loginForm.get('userName')?.touched" style="color: red">Không được để trống</p>
+                  <p *ngIf="!loginForm.get('userName')?.valid && loginForm.get('userName')?.touched" style="color: red">Can't be blank</p>
                 </div>
                 <!-- Password -->
                 <div class="mb-4">
-                  <label  class="form-label">Mật khẩu *<span style="color: red">*</span></label>
+                  <label  class="form-label">Password <span style="color: red">*</span></label>
                   <div class="input-group input-group-lg">
                     <span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
-                    <input type="password" class="form-control border-0 bg-light rounded-end ps-1" formControlName="password" placeholder="Mật khẩu (Tối thiểu 6 kí tự)" >
+                    <input type="password" class="form-control border-0 bg-light rounded-end ps-1" formControlName="password" placeholder="password" >
                   </div>
                   <p *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched" style="color: red">Không được để trống</p>
                 </div>
-                <p id="checkLogin" style="color: red " *ngIf="checkStatus == 2">Tài Khoản Bạn Đã Bị Khóa</p>
+                <p id="checkLogin" style="color: red " *ngIf="checkStatus == 2">Tài Khoản Bạn Đã Bị Block</p>
                 <p id="checkUserName" style="color: red " *ngIf="checkStatus == 3 ">Sai Tài Khoản hoặc Mật Khẩu</p>
                 <div class="align-items-center mt-0">
                   <div class="d-grid">
@@ -67,12 +67,10 @@
                 </div>
 
                 <!-- Social btn -->
+<!--      dang nhap google o day-->
+<!--                 Social b-->
                 <div class="col-xxl-6 d-grid">
-                  <a href="#" class="btn bg-google mb-2 mb-xxl-0"><i class="fab fa-fw fa-google text-white me-2" ></i>Đăng nhập với  Google</a>
-                </div>
-                <!-- Social btn -->
-                <div class="col-xxl-6 d-grid">
-                  <a href="#" class="btn bg-facebook mb-0"><i class="fab fa-fw fa-facebook-f me-2"></i>Đăng nhập với Facebook</a>
+                  <a class="btn bg-facebook mb-0"><i class="fab fa-fw fa-facebook-f me-2"></i>Đăng nhập với Facebook</a>
                 </div>
               </div>
 
