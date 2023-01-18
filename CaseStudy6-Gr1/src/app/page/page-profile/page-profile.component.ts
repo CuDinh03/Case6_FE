@@ -213,8 +213,9 @@ export class PageProfileComponent implements OnInit {
   }
 
   uploadFileImg(): void {
-    this.selectedImage = this.avatarDom?.nativeElement.files[0];
-    console.log(this.selectedImage);
+    if (this.avatarDom) {
+      this.selectedImage = this.avatarDom.nativeElement.files[0];
+    }
     if (this.selectedImage == undefined) {
       // @ts-ignore
       this.selectedImage = this.avatarDom1.nativeElement.files[0];
