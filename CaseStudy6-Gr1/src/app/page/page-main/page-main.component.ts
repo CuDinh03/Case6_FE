@@ -22,12 +22,14 @@ import {LikesService} from "../../service/likes.service";
 })
 export class PageMainComponent implements OnInit {
   statuses: Status[] = [];
+  recommendList!:Friend[];
 
   value = '';
   listFound!:Friend[];
   listSent!:Friend[];
   listReceived!: Friend[];
   status1: any;
+  statusE!: Status;
   userToken: any;
   idS!: number;
   img: any;
@@ -72,6 +74,14 @@ export class PageMainComponent implements OnInit {
       console.log(this.img);
     })
   }
+  getRecommend(id:number){
+     this.friendService.getRecommend().subscribe((data)=>{
+       this.recommendList = data;
+       this.recommendList.splice(id,1);
+     })
+
+
+  }
 
 
   ngOnInit(): void {
@@ -81,6 +91,7 @@ export class PageMainComponent implements OnInit {
     this.friendService.userToken = this.userToken;
     this.requestSent();
     this.requestReceived();
+    // this.showComment();
     this.getAllFriends();
     // @ts-ignore
     this.webSocketAPI = new WebSocketAPI(new PageMainComponent());
@@ -197,7 +208,6 @@ export class PageMainComponent implements OnInit {
         console.log(url);
         let image: img = {id: 0, name: "", status: 1};
         image.name = url;
-        console.log(image);
         this.listPicture.push(image);
         console.log(this.listPicture);
       })))).subscribe((data) => {

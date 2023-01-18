@@ -74,4 +74,7 @@ return this.http.delete("http://localhost:8080/deleteRequest/"+id2+"/"+id1).subs
  updateAccount(account:Acc){
     return this.http.put("http://localhost:8080/update",account).subscribe((data)=>{})
  }
+ getRecommend():Observable<Friend[]>{
+    return this.http.get<Friend[]>("http://localhost:8080/recommend")
+ }
 }
