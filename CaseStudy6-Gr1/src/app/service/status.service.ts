@@ -32,7 +32,12 @@ export class StatusService {
   deleteStatus(id: number): Observable<Status> {
     return this.http.delete<Status>(`${API_URL}/statuses/${id}`);
   }
+
   showMystatus (id:number, anyt: String): Observable<any>{
     return this.http.get<Status[]> (`${API_URL}/statuses/search/${id}/${anyt}`);
+  }
+
+  findAllByGuestId(id: number): Observable<any> {
+    return this.http.get<any>(`${API_URL}/statuses/guest/${id}`);
   }
 }
